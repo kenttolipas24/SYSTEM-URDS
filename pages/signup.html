@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - URDS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/homepage.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div>
+                <h1>URDS Research Portal</h1>
+                <p>University Research Development System</p>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div style="max-width: 600px; margin: 0 auto;">
+            <div class="section-header">
+                <h2>Create Your Account</h2>
+                <div class="line"></div>
+            </div>
+
+            <div class="login-card">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="signupFullName" placeholder="Enter your full name">
+                </div>
+
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="signupEmail" placeholder="Enter your email">
+                </div>
+
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="signupPassword" placeholder="Enter your password">
+                </div>
+
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" id="signupConfirmPassword" placeholder="Confirm your password">
+                </div>
+
+                <div class="form-group">
+                    <label>Select Your Role</label>
+                    <div class="role-options">
+                        <label class="role-option">
+                            <input type="radio" name="signupRole" value="dean">
+                            <div class="role-info">
+                                <p>Dean</p>
+                                <p>Manage college research proposals</p>
+                            </div>
+                        </label>
+
+                        <label class="role-option">
+                            <input type="radio" name="signupRole" value="coordinator">
+                            <div class="role-info">
+                                <p>Research Coordinator</p>
+                                <p>Coordinate research proposals</p>
+                            </div>
+                        </label>
+
+                        <label class="role-option">
+                            <input type="radio" name="signupRole" value="faculty">
+                            <div class="role-info">
+                                <p>Faculty Researcher</p>
+                                <p>Submit and manage proposals</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary btn-full" onclick="signup()">
+                    <i class="fas fa-user-plus"></i>
+                    Sign Up
+                </button>
+
+                <div class="link-text">
+                    <a href="homepage.html">Already have an account? Login here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/utils.js"></script>
+    <script>
+        function signup() {
+            const fullName = document.getElementById('signupFullName').value;
+            const email = document.getElementById('signupEmail').value;
+            const password = document.getElementById('signupPassword').value;
+            const confirmPassword = document.getElementById('signupConfirmPassword').value;
+            const role = document.querySelector('input[name="signupRole"]:checked')?.value;
+
+            if (!fullName || !email || !password || !confirmPassword || !role) {
+                alert('Please fill in all fields and select a role');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                alert('Passwords do not match');
+                return;
+            }
+
+            if (password.length < 6) {
+                alert('Password must be at least 6 characters');
+                return;
+            }
+
+            // Save user data (in real app, this would be sent to server)
+            const userData = {
+                fullName: fullName,
+                email: email,
+                role: role
+            };
+
+            saveToLocalStorage('userData_' + email, userData);
+            saveToLocalStorage('currentUser', { email, role });
+
+            alert('Account created successfully!');
+            
+            // Redirect to appropriate dashboard
+            if (role === 'faculty') {
+                window.location.href = 'faculty.html';
+            } else if (role === 'coordinator') {
+                window.location.href = 'coordinator.html';
+            } else if (role === 'dean') {
+                window.location.href = 'dean.html';
+            }
+        }
+    </script>
+</body>
+</html>
