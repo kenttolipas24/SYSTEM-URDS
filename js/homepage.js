@@ -61,6 +61,10 @@
                     window.location.href = 'coordinator.html';
                 } else if (role === 'dean') {
                     window.location.href = 'dean.html';
+                } else if (role === 'urds-staff') {
+                    window.location.href = 'urds-staff.html';
+                } else if (role === 'evaluator') {
+                    window.location.href = 'evaluator.html';
                 }
             }, 1000);
         }
@@ -108,6 +112,10 @@
                     window.location.href = 'coordinator.html';
                 } else if (role === 'dean') {
                     window.location.href = 'dean.html';
+                } else if (role === 'urds-staff') {
+                    window.location.href = 'urds-staff.html';
+                } else if (role === 'evaluator') {
+                    window.location.href = 'evaluator.html';
                 }
             }, 1000);
         }
@@ -122,6 +130,10 @@ if (currentUser) {
         window.location.href = 'coordinator.html';
     } else if (user.role === 'dean') {
         window.location.href = 'dean.html';
+    } else if (role === 'urds-staff') {
+        window.location.href = 'urds-staff.html';
+    } else if (role === 'evaluator') {
+        window.location.href = 'evaluator.html';
     }
 }
 
@@ -142,6 +154,10 @@ function checkAuth() {
             window.location.href = 'coordinator.html';
         } else if (user.role === 'dean') {
             window.location.href = 'dean.html';
+        } else if (role === 'urds-staff') {
+            window.location.href = 'urds-staff.html';
+        } else if (role === 'evaluator') {
+            window.location.href = 'evaluator.html';
         }
     }
 }
