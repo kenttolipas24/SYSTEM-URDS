@@ -1,0 +1,49 @@
+<div class="login-card">
+    <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="loginEmail" placeholder="Enter your email">
+    </div>
+
+    <div class="form-group">
+        <label>Password</label>
+        <input type="password" id="loginPassword" placeholder="Enter your password">
+    </div>
+
+    <div class="form-group">
+        <label>Select Your Role</label>
+        <div class="role-options">
+            <label class="role-option">
+                <input type="radio" name="role" value="dean">
+                <div class="role-info">
+                    <p>Dean</p>
+                    <p>Manage college research proposals</p>
+                </div>
+            </label>
+
+            <label class="role-option">
+                <input type="radio" name="role" value="coordinator">
+                <div class="role-info">
+                    <p>Research Coordinator</p>
+                    <p>Coordinate research proposals</p>
+                </div>
+            </label>
+
+            <label class="role-option">
+                <input type="radio" name="role" value="faculty">
+                <div class="role-info">
+                    <p>Faculty Researcher</p>
+                    <p>Submit and manage proposals</p>
+                </div>
+            </label>
+        </div>
+    </div>
+
+    <button class="btn btn-primary btn-full" onclick="login()">
+        <i class="fas fa-user"></i>
+        Login
+    </button>
+
+    <div class="link-text">
+        <a href="signup.html">Don't have an account? Sign up here</a>
+    </div>
+</div>

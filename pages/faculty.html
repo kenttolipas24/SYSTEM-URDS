@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faculty Dashboard - URDS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/faculty.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div>
+                <h1>Dr. Alice Johnson</h1>
+                <p>Faculty Researcher Dashboard</p>
+            </div>
+            <button class="logout-btn" onclick="logout()">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Stats Grid -->
+        <div class="stats-grid">
+            <div class="stat-card blue">
+                <div class="stat-info">
+                    <p>Total Submissions</p>
+                    <h2 id="totalSubmissions">3</h2>
+                </div>
+                <i class="fas fa-file-alt stat-icon blue"></i>
+            </div>
+            <div class="stat-card green">
+                <div class="stat-info">
+                    <p>Approved</p>
+                    <h2 id="approvedCount">1</h2>
+                </div>
+                <i class="fas fa-check-circle stat-icon green"></i>
+            </div>
+            <div class="stat-card yellow">
+                <div class="stat-info">
+                    <p>Pending</p>
+                    <h2 id="pendingCount">1</h2>
+                </div>
+                <i class="fas fa-clock stat-icon yellow"></i>
+            </div>
+            <div class="stat-card orange">
+                <div class="stat-info">
+                    <p>Revision Needed</p>
+                    <h2 id="revisionCount">1</h2>
+                </div>
+                <i class="fas fa-exclamation-circle stat-icon orange"></i>
+            </div>
+        </div>
+
+        <!-- Tabs -->
+        <div class="tabs-container">
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab('faculty', 'proposals')">
+                    <i class="fas fa-file-alt"></i>
+                    My Proposals
+                </button>
+                <button class="tab" onclick="switchTab('faculty', 'revisions')">
+                    <i class="fas fa-exclamation-circle"></i>
+                    Revisions
+                </button>
+                <button class="tab" onclick="showSubmitForm()">
+                    <i class="fas fa-plus"></i>
+                    Submit New
+                </button>
+            </div>
+
+            <div class="tab-content">
+                <div id="faculty-proposals" class="tab-panel active">
+                    <div class="proposals-list" id="facultyProposalsList"></div>
+                </div>
+
+                <div id="faculty-revisions" class="tab-panel">
+                    <div class="proposals-list" id="facultyRevisionsList"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Submit Form Modal -->
+    <div id="submitFormModal" class="modal">
+        <div class="modal-content" style="max-width: 800px;">
+            <div class="modal-header">
+                <h2>Submit New Research Proposal</h2>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Proposal Title</label>
+                    <input type="text" id="proposalTitle" placeholder="Enter proposal title">
+                </div>
+
+                <div class="form-group">
+                    <label>Abstract</label>
+                    <textarea id="proposalAbstract" rows="6" placeholder="Enter proposal abstract"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Upload Document (PDF/DOCX)</label>
+                    <div class="upload-area" onclick="document.getElementById('fileInput').click()">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Click to upload or drag and drop</p>
+                        <p>PDF or DOCX (max 10MB)</p>
+                        <input type="file" id="fileInput" style="display: none;" accept=".pdf,.docx">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" onclick="hideSubmitForm()">Cancel</button>
+                <button class="btn btn-success" onclick="submitProposal()">
+                    <i class="fas fa-paper-plane"></i>
+                    Submit Proposal
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/utils.js"></script>
+    <script src="../js/dashboard-faculty.js"></script>
+</body>
+</html>
