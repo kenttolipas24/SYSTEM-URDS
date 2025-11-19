@@ -5,7 +5,7 @@ let currentRejectProposal = null;
 function initDeanDashboard() {
     currentUser = getFromLocalStorage('currentUser');
     
-    if (!currentUser || currentUser.role !== 'dean') {
+    if (!currentUser || currentUser.role !== 'College Dean') {
         window.location.href = 'homepage.html';
         return;
     }

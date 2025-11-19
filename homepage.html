@@ -6,1402 +6,227 @@
     <title>URDS Research Portal</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f9fafb;
-            color: #111827;
-        }
-
-        /* Navigation */
-        .navbar {
-            background-color: white;
-            border-bottom: 1px solid #e5e7eb;
-            padding: 1rem 1.5rem;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-        }
-
-        .navbar-content {
-            max-width: 1280px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .navbar h1 {
-            font-size: 1.5rem;
-            color: #111827;
-        }
-
-        .navbar p {
-            font-size: 0.875rem;
-            color: #2563eb;
-        }
-
-        .logout-btn {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            min-height: 100vh;
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            color: #6b7280;
-            background: none;
-            border: none;
-            cursor: pointer;
-            font-size: 1rem;
-            padding: 0.5rem 1rem;
-            border-radius: 0.375rem;
-            transition: all 0.2s;
-        }
-
-        .logout-btn:hover {
-            color: #111827;
-            background-color: #f3f4f6;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 2rem 1.5rem;
-        }
-
-        /* Stats Grid */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
-        }
-
-        .stat-card {
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        .stat-card.yellow {
-            background-color: #fef3c7;
-        }
-
-        .stat-card.green {
-            background-color: #d1fae5;
-        }
-
-        .stat-card.orange {
-            background-color: #fed7aa;
-        }
-
-        .stat-card.purple {
-            background-color: #e9d5ff;
-        }
-
-        .stat-card.blue {
-            background-color: #dbeafe;
-        }
-
-        .stat-card.red {
-            background-color: #fee2e2;
-        }
-
-        .stat-info p {
-            color: #6b7280;
-            font-size: 0.875rem;
-            margin-bottom: 0.25rem;
-        }
-
-        .stat-info h2 {
-            font-size: 2.25rem;
-            font-weight: bold;
-            color: #111827;
-        }
-
-        .stat-icon {
-            font-size: 3rem;
-        }
-
-        .stat-icon.yellow {
-            color: #f59e0b;
-        }
-
-        .stat-icon.green {
-            color: #10b981;
-        }
-
-        .stat-icon.orange {
-            color: #f97316;
-        }
-
-        .stat-icon.purple {
-            color: #a855f7;
-        }
-
-        .stat-icon.blue {
-            color: #3b82f6;
-        }
-
-        .stat-icon.red {
-            color: #ef4444;
-        }
-
-        /* Tabs */
-        .tabs-container {
-            background-color: white;
-            border-radius: 0.5rem;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-        }
-
-        .tabs {
-            display: flex;
-            border-bottom: 1px solid #e5e7eb;
-        }
-
-        .tab {
-            padding: 0.75rem 1.5rem;
-            font-weight: 500;
-            color: #6b7280;
-            background: none;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            border-bottom: 2px solid transparent;
-            transition: all 0.2s;
-        }
-
-        .tab:hover {
-            color: #2563eb;
-        }
-
-        .tab.active {
-            color: #2563eb;
-            border-bottom-color: #2563eb;
-        }
-
-        .tab-content {
-            padding: 1.5rem;
-        }
-
-        .tab-panel {
-            display: none;
-        }
-
-        .tab-panel.active {
-            display: block;
-        }
-
-        /* Search */
-        .search-box {
-            position: relative;
-            margin-bottom: 1.5rem;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 0.625rem 1rem 0.625rem 2.5rem;
-            border: 1px solid #d1d5db;
-            border-radius: 0.375rem;
-            font-size: 0.875rem;
-            outline: none;
-            transition: all 0.2s;
-        }
-
-        .search-box input:focus {
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        .search-box i {
-            position: absolute;
-            left: 0.75rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #9ca3af;
-        }
-
-        /* Proposals */
-        .proposals-list {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-        }
-
-        .proposal-card {
-            border: 1px solid #e5e7eb;
-            border-radius: 0.5rem;
-            padding: 1.5rem;
-            transition: all 0.2s;
-        }
-
-        .proposal-card:hover {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-
-        .proposal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 1rem;
-        }
-
-        .proposal-info h3 {
-            font-size: 1.125rem;
-            font-weight: bold;
-            color: #111827;
-            margin-bottom: 0.5rem;
-        }
-
-        .proposal-info p {
-            font-size: 0.875rem;
-            color: #6b7280;
-        }
-
-        /* Status Badges */
-        .badge {
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 500;
-        }
-
-        .badge.pending {
-            background-color: #fef3c7;
-            color: #92400e;
-        }
-
-        .badge.approved {
-            background-color: #d1fae5;
-            color: #065f46;
-        }
-
-        .badge.revision {
-            background-color: #fed7aa;
-            color: #9a3412;
-        }
-
-        .badge.endorsed {
-            background-color: #d1fae5;
-            color: #065f46;
-        }
-
-        .badge.submitted {
-            background-color: #dbeafe;
-            color: #1e40af;
-        }
-
-        .badge.rejected {
-            background-color: #fee2e2;
-            color: #991b1b;
-        }
-
-        /* Feedback Box */
-        .feedback-box {
-            background-color: #dbeafe;
-            border: 1px solid #93c5fd;
-            border-radius: 0.375rem;
-            padding: 1rem;
-            margin-top: 1rem;
-        }
-
-        .feedback-box.orange {
-            background-color: #fed7aa;
-            border-color: #fdba74;
-        }
-
-        .feedback-box p {
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: #1e40af;
-            margin-bottom: 0.5rem;
-        }
-
-        .feedback-box.orange p {
-            color: #9a3412;
-        }
-
-        .feedback-box ul {
-            list-style-position: inside;
-            font-size: 0.875rem;
-            color: #1e3a8a;
-        }
-
-        .feedback-box.orange ul {
-            color: #7c2d12;
-        }
-
-        .feedback-box ul li {
-            margin-bottom: 0.25rem;
-        }
-
-        /* Buttons */
-        .btn {
-            padding: 0.625rem 1.5rem;
-            border-radius: 0.375rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-            border: none;
-            font-size: 0.875rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
             justify-content: center;
+            padding: 20px;
         }
-
-        .btn-primary {
-            background-color: #2563eb;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: #1d4ed8;
-        }
-
-        .btn-success {
-            background-color: #16a34a;
-            color: white;
-        }
-
-        .btn-success:hover {
-            background-color: #15803d;
-        }
-
-        .btn-full {
+        .auth-container {
+            background: white;
             width: 100%;
+            max-width: 420px;
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+            overflow: hidden;
+            animation: fadeIn 0.6s ease-out;
         }
-
-        /* Homepage Styles */
-        .homepage-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-            gap: 2rem;
-        }
-
-        .section-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-
-        .section-header h2 {
-            font-size: 1.25rem;
-            font-weight: bold;
-        }
-
-        .section-header .line {
-            height: 0.25rem;
-            flex: 1;
-            background-color: #3b82f6;
-            margin-left: 0.5rem;
-        }
-
-        .announcement-card {
-            border: 1px solid #e5e7eb;
-            border-radius: 0.5rem;
-            padding: 1rem;
-            margin-bottom: 1rem;
-        }
-
-        .announcement-card.red {
-            background-color: #fef2f2;
-            border-color: #fecaca;
-        }
-
-        .announcement-card.yellow {
-            background-color: #fefce8;
-            border-color: #fef08a;
-        }
-
-        .announcement-card.blue {
-            background-color: #eff6ff;
-            border-color: #bfdbfe;
-        }
-
-        .announcement-card h3 {
-            font-weight: bold;
-            margin-bottom: 0.5rem;
-        }
-
-        .announcement-card .date {
-            font-size: 0.875rem;
-            color: #2563eb;
-            margin-bottom: 0.5rem;
-        }
-
-        .announcement-card p {
-            font-size: 0.875rem;
-            color: #374151;
-        }
-
-        /* Login Form */
-        .login-card {
-            background-color: white;
-            border-radius: 0.5rem;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-            padding: 1.5rem;
-        }
-
-        .form-group {
-            margin-bottom: 1rem;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: #374151;
-            margin-bottom: 0.25rem;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 0.5rem 0.75rem;
-            border: 1px solid #d1d5db;
-            border-radius: 0.375rem;
-            font-size: 0.875rem;
-            outline: none;
-            transition: all 0.2s;
-        }
-
-        .form-group input:focus {
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        .role-options {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .role-option {
-            display: flex;
-            align-items: center;
-            padding: 0.75rem;
-            border: 1px solid #d1d5db;
-            border-radius: 0.375rem;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .role-option:hover {
-            background-color: #f9fafb;
-        }
-
-        .role-option input[type="radio"] {
-            margin-right: 0.75rem;
-            cursor: pointer;
-        }
-
-        .role-option .role-info p:first-child {
-            font-weight: 500;
-            color: #111827;
-        }
-
-        .role-option .role-info p:last-child {
-            font-size: 0.875rem;
-            color: #6b7280;
-        }
-
-        .link-text {
+        .auth-header {
             text-align: center;
-            margin-top: 1rem;
+            padding: 2rem 1rem 1rem;
+            background: #2563eb;
+            color: white;
         }
-
-        .link-text a {
-            font-size: 0.875rem;
-            color: #2563eb;
-            text-decoration: none;
+        .auth-header h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
         }
-
-        .link-text a:hover {
-            text-decoration: underline;
-        }
-
-        /* Info Box */
-        .info-box {
-            border: 1px solid #e5e7eb;
-            border-radius: 0.5rem;
-            padding: 1rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .info-box.blue {
-            background-color: #eff6ff;
-            border-color: #bfdbfe;
-        }
-
-        .info-box.green {
-            background-color: #f0fdf4;
-            border-color: #bbf7d0;
-        }
-
-        .info-box h3 {
-            font-weight: bold;
-            color: #1e40af;
-            margin-bottom: 0.5rem;
-        }
-
-        .info-box.green h3 {
-            color: #166534;
-        }
-
-        .info-box p {
-            font-size: 0.875rem;
-            color: #1e3a8a;
-        }
-
-        .info-box.green p {
-            color: #14532d;
-        }
-
-        /* Table */
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        thead {
-            background-color: #f9fafb;
-        }
-
-        th {
-            padding: 0.75rem 1.5rem;
-            text-align: left;
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: #6b7280;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        td {
-            padding: 1rem 1.5rem;
-            border-top: 1px solid #e5e7eb;
-            font-size: 0.875rem;
-        }
-
-        td:first-child {
-            font-weight: 500;
-            color: #111827;
-        }
-
-        td {
-            color: #6b7280;
-        }
-
-        /* Submit Form */
-        .submit-form {
-            background-color: white;
-            border-radius: 0.5rem;
-            box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+        .auth-body {
             padding: 2rem;
         }
-
-        .submit-form h2 {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 1.5rem;
+        .form-group {
+            margin-bottom: 1.2rem;
         }
-
-        .form-group textarea {
-            width: 100%;
-            padding: 0.5rem 0.75rem;
-            border: 1px solid #d1d5db;
-            border-radius: 0.375rem;
-            font-size: 0.875rem;
-            outline: none;
-            font-family: inherit;
-            resize: vertical;
-            transition: all 0.2s;
-        }
-
-        .form-group textarea:focus {
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
-
-        .upload-area {
-            border: 2px dashed #d1d5db;
-            border-radius: 0.5rem;
-            padding: 3rem;
-            text-align: center;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-
-        .upload-area:hover {
-            border-color: #3b82f6;
-        }
-
-        .upload-area i {
-            font-size: 3rem;
-            color: #9ca3af;
-            margin-bottom: 1rem;
-        }
-
-        .upload-area p:first-of-type {
-            color: #6b7280;
-            margin-bottom: 0.25rem;
-        }
-
-        .upload-area p:last-of-type {
-            font-size: 0.875rem;
-            color: #9ca3af;
-        }
-
-        .btn-group {
-            display: flex;
-            gap: 1rem;
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 1px solid #d1d5db;
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
             color: #374151;
         }
-
-        .btn-outline:hover {
-            background-color: #f9fafb;
+        input, select {
+            width: 100%;
+            padding: 0.9rem 1rem;
+            border: 1.5px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: 0.3s;
         }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .homepage-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .tabs {
-                overflow-x: auto;
-            }
-
-            .proposal-header {
-                flex-direction: column;
-                gap: 1rem;
-            }
+        input:focus, select:focus {
+            outline: none;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 4px rgba(37,99,235,0.2);
         }
+        .btn {
+            width: 100%;
+            padding: 1rem;
+            background: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .btn:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+        .link-text {
+            text-align: center;
+            margin-top: 1.5rem;
+            font-size: 0.95rem;
+        }
+        .link-text a {
+            color: #2563eb;
+            text-decoration: none;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .link-text a:hover { text-decoration: underline; }
 
-        /* Utility */
-        .hidden {
-            display: none !important;
+        /* Form Switching */
+        .auth-form { display: none; }
+        .auth-form.active { display: block; animation: slideIn 0.5s ease; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
-    <!-- Homepage -->
-    <div id="homepage">
-        <nav class="navbar">
-            <div class="navbar-content">
-                <div>
-                    <h1>URDS Research Portal</h1>
-                    <p>University Research Development System</p>
-                </div>
-            </div>
-        </nav>
 
-        <div class="container">
-            <div class="homepage-grid">
-                <!-- Announcements -->
-                <div>
-                    <div class="section-header">
-                        <h2>Announcements</h2>
-                        <div class="line"></div>
-                    </div>
-
-                    <div class="announcement-card red">
-                        <h3>Call for Research Proposals - 2025</h3>
-                        <p class="date">📅 October 15, 2025</p>
-                        <p>The URDS is now accepting research proposals for the 2025 academic year. Deadline for submission is November 30, 2025.</p>
-                    </div>
-
-                    <div class="announcement-card yellow">
-                        <h3>Technical Working Group Meeting</h3>
-                        <p class="date">📅 October 20, 2025</p>
-                        <p>All College Deans and Research Coordinators are invited to attend the TWG meeting at 2:00 PM in the Main Conference Room.</p>
-                    </div>
-
-                    <div class="announcement-card blue">
-                        <h3>Updated Proposal Guidelines</h3>
-                        <p class="date">📅 October 10, 2025</p>
-                        <p>New proposal submission guidelines have been released. Please review the updated requirements before submitting your proposals.</p>
-                    </div>
-                </div>
-
-                <!-- Login Form -->
-                <div>
-                    <div class="section-header">
-                        <h2>Access Portal</h2>
-                        <div class="line"></div>
-                    </div>
-
-                    <div class="login-card">
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" id="loginEmail" placeholder="Enter your email">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Password</label>
-                            <input type="password" id="loginPassword" placeholder="Enter your password">
-                        </div>
-
-                        <div class="form-group">
-                            <label>Select Your Role</label>
-                            <div class="role-options">
-                                <label class="role-option">
-                                    <input type="radio" name="role" value="dean">
-                                    <div class="role-info">
-                                        <p>Dean</p>
-                                        <p>Manage college research proposals</p>
-                                    </div>
-                                </label>
-
-                                <label class="role-option">
-                                    <input type="radio" name="role" value="coordinator">
-                                    <div class="role-info">
-                                        <p>Research Coordinator</p>
-                                        <p>Coordinate research proposals</p>
-                                    </div>
-                                </label>
-
-                                <label class="role-option">
-                                    <input type="radio" name="role" value="faculty">
-                                    <div class="role-info">
-                                        <p>Faculty Researcher</p>
-                                        <p>Submit and manage proposals</p>
-                                    </div>
-                                </label>
-                            </div>
-                        </div>
-
-                        <button class="btn btn-primary btn-full" onclick="login()">
-                            <i class="fas fa-user"></i>
-                            Login
-                        </button>
-
-                        <div class="link-text">
-                            <a href="#" onclick="toggleSignup()">Don't have an account? Sign up here</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <div class="auth-container">
+        <div class="auth-header">
+            <h2>URDS Research Portal</h2>
         </div>
-    </div>
 
-    <!-- Faculty Dashboard -->
-    <div id="facultyDashboard" class="hidden">
-        <nav class="navbar">
-            <div class="navbar-content">
-                <div>
-                    <h1>Dr. Alice Johnson</h1>
-                    <p>Faculty Researcher Dashboard</p>
-                </div>
-                <button class="logout-btn" onclick="logout()">
-                    <i class="fas fa-sign-out-alt"></i>
-                    Logout
-                </button>
-            </div>
-        </nav>
+        <div class="auth-body">
 
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-card blue">
-                    <div class="stat-info">
-                        <p>Total Submissions</p>
-                        <h2>3</h2>
-                    </div>
-                    <i class="fas fa-file-alt stat-icon blue"></i>
-                </div>
-                <div class="stat-card green">
-                    <div class="stat-info">
-                        <p>Approved</p>
-                        <h2>1</h2>
-                    </div>
-                    <i class="fas fa-check-circle stat-icon green"></i>
-                </div>
-                <div class="stat-card yellow">
-                    <div class="stat-info">
-                        <p>Pending</p>
-                        <h2>1</h2>
-                    </div>
-                    <i class="fas fa-clock stat-icon yellow"></i>
-                </div>
-                <div class="stat-card orange">
-                    <div class="stat-info">
-                        <p>Revision Needed</p>
-                        <h2>1</h2>
-                    </div>
-                    <i class="fas fa-exclamation-circle stat-icon orange"></i>
-                </div>
-            </div>
-
-            <div class="tabs-container">
-                <div class="tabs">
-                    <button class="tab active" onclick="switchTab('faculty', 'proposals')">
-                        <i class="fas fa-file-alt"></i>
-                        My Proposals
-                    </button>
-                    <button class="tab" onclick="switchTab('faculty', 'revisions')">
-                        <i class="fas fa-exclamation-circle"></i>
-                        Revisions
-                    </button>
-                    <button class="tab" onclick="showSubmitForm()">
-                        <i class="fas fa-plus"></i>
-                        Submit New
-                    </button>
-                </div>
-
-                <div class="tab-content">
-                    <div id="faculty-proposals" class="tab-panel active">
-                        <div class="proposals-list" id="facultyProposalsList"></div>
-                    </div>
-
-                    <div id="faculty-revisions" class="tab-panel">
-                        <div class="proposals-list" id="facultyRevisionsList"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Submit Form -->
-    <div id="submitForm" class="hidden">
-        <nav class="navbar">
-            <div class="navbar-content">
-                <div>
-                    <h1>Dr. Alice Johnson</h1>
-                    <p>Faculty Researcher Dashboard</p>
-                </div>
-                <button class="logout-btn" onclick="logout()">
-                    <i class="fas fa-sign-out-alt"></i>
-                    Logout
-                </button>
-            </div>
-        </nav>
-
-        <div class="container">
-            <div class="submit-form">
-                <h2>Submit New Research Proposal</h2>
-
+            <!-- LOGIN FORM (SHOWN FIRST) -->
+            <div id="loginForm" class="auth-form active">
                 <div class="form-group">
-                    <label>Proposal Title</label>
-                    <input type="text" id="proposalTitle" placeholder="Enter proposal title">
+                    <label>Email</label>
+                    <input type="email" id="loginEmail" placeholder="Enter your email" required>
                 </div>
-
                 <div class="form-group">
-                    <label>Abstract</label>
-                    <textarea id="proposalAbstract" rows="6" placeholder="Enter proposal abstract"></textarea>
+                    <label>Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
                 </div>
-
                 <div class="form-group">
-                    <label>Upload Document (PDF/DOCX)</label>
-                    <div class="upload-area">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                        <p>Click to upload or drag and drop</p>
-                        <p>PDF or DOCX (max 10MB)</p>
-                    </div>
+                    <label>Role</label>
+                    <select id="loginRoleSelect" required>
+                        <option value="" disabled selected>-- Choose your role --</option>
+                        <option value="dean">Dean</option>
+                        <option value="coordinator">Research Coordinator</option>
+                        <option value="faculty">Faculty Researcher</option>
+                    </select>
                 </div>
-
-                <div class="btn-group">
-                    <button class="btn btn-success" style="flex: 1" onclick="submitProposal()">
-                        <i class="fas fa-paper-plane"></i>
-                        Submit Proposal
-                    </button>
-                    <button class="btn btn-outline" onclick="hideSubmitForm()">
-                        Cancel
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Coordinator Dashboard -->
-    <div id="coordinatorDashboard" class="hidden">
-        <nav class="navbar">
-            <div class="navbar-content">
-                <div>
-                    <h1>Research Coordinator</h1>
-                    <p>Engineering Department</p>
-                </div>
-                <button class="logout-btn" onclick="logout()">
-                    <i class="fas fa-sign-out-alt"></i>
-                    Logout
+                <button class="btn" onclick="login()">
+                    <i class="fas fa-sign-in-alt"></i> Login
                 </button>
-            </div>
-        </nav>
-
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-card yellow">
-                    <div class="stat-info">
-                        <p>Pending Review</p>
-                        <h2>0</h2>
-                    </div>
-                    <i class="fas fa-clock stat-icon yellow"></i>
-                </div>
-                <div class="stat-card green">
-                    <div class="stat-info">
-                        <p>Endorsed</p>
-                        <h2>1</h2>
-                    </div>
-                    <i class="fas fa-check-circle stat-icon green"></i>
-                </div>
-                <div class="stat-card orange">
-                    <div class="stat-info">
-                        <p>Revision Needed</p>
-                        <h2>0</h2>
-                    </div>
-                    <i class="fas fa-exclamation-circle stat-icon orange"></i>
-                </div>
-                <div class="stat-card purple">
-                    <div class="stat-info">
-                        <p>Faculty Members</p>
-                        <h2>15</h2>
-                    </div>
-                    <i class="fas fa-users stat-icon purple"></i>
+                <div class="link-text">
+                    Don't have an account? <a onclick="showSignup()">Sign up here</a>
                 </div>
             </div>
 
-            <div class="tabs-container">
-                <div class="tabs">
-                    <button class="tab active" onclick="switchTab('coordinator', 'submissions')">
-                        <i class="fas fa-file-alt"></i>
-                        Submissions
-                    </button>
-                    <button class="tab" onclick="switchTab('coordinator', 'evaluation')">
-                        <i class="fas fa-search"></i>
-                        Evaluation
-                    </button>
-                    <button class="tab" onclick="switchTab('coordinator', 'urds')">
-                        <i class="fas fa-check-circle"></i>
-                        URDS Submission
-                    </button>
-                    <button class="tab" onclick="switchTab('coordinator', 'faculty')">
-                        <i class="fas fa-users"></i>
-                        Faculty
-                    </button>
+            <!-- SIGNUP FORM (HIDDEN UNTIL CLICKED) -->
+            <div id="signupForm" class="auth-form">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" id="signupFullName" placeholder="Enter your full name">
                 </div>
-
-                <div class="tab-content">
-                    <div id="coordinator-submissions" class="tab-panel active">
-                        <div class="search-box">
-                            <i class="fas fa-search"></i>
-                            <input type="text" placeholder="Search submissions...">
-                        </div>
-                        <div class="proposals-list" id="coordinatorSubmissionsList"></div>
-                    </div>
-
-                    <div id="coordinator-evaluation" class="tab-panel">
-                        <div class="info-box blue">
-                            <h3>Technical Working Group (TWG) Evaluation</h3>
-                            <p>Review and rate research proposals. Ratings: 4-5 stars (Approved), 2-3 stars (Revision Needed), 1 star (Rejected)</p>
-                        </div>
-                        <div class="proposals-list" id="coordinatorEvaluationList"></div>
-                    </div>
-
-                    <div id="coordinator-urds" class="tab-panel">
-                        <div class="info-box green">
-                            <h3>URDS Submission - Endorsed Proposals</h3>
-                            <p>Submit endorsed proposals to URDS. Each proposal requires exactly 5 copies.</p>
-                        </div>
-                        <div class="proposals-list" id="coordinatorUrdsList"></div>
-                    </div>
-
-                    <div id="coordinator-faculty" class="tab-panel">
-                        <table id="facultyTable">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Submissions</th>
-                                </tr>
-                            </thead>
-                            <tbody></tbody>
-                        </table>
-                    </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="signupEmail" placeholder="Enter your email">
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Dean Dashboard -->
-    <div id="deanDashboard" class="hidden">
-        <nav class="navbar">
-            <div class="navbar-content">
-                <div>
-                    <h1>Dean of Engineering</h1>
-                    <p>Engineering Department</p>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="signupPassword" placeholder="Enter your password">
                 </div>
-                <button class="logout-btn" onclick="logout()">
-                    <i class="fas fa-sign-out-alt"></i>
-                    Logout
+                <div class="form-group">
+                    <label>Confirm Password</label>
+                    <input type="password" id="signupConfirmPassword" placeholder="Confirm password">
+                </div>
+                <div class="form-group">
+                    <label>Role</label>
+                    <select id="signupRoleSelect">
+                        <option value="" disabled selected>-- Choose your role --</option>
+                        <option value="faculty">Faculty Researcher</option>
+                        <option value="coordinator">Research Coordinator</option>
+                        <option value="dean">Dean</option>
+                    </select>
+                </div>
+                <button class="btn" onclick="signup()">
+                    <i class="fas fa-user-plus"></i> Create Account
                 </button>
-            </div>
-        </nav>
-
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-card yellow">
-                    <div class="stat-info">
-                        <p>Pending Endorsement</p>
-                        <h2>0</h2>
-                    </div>
-                    <i class="fas fa-clock stat-icon yellow"></i>
-                </div>
-                <div class="stat-card green">
-                    <div class="stat-info">
-                        <p>Endorsed</p>
-                        <h2>1</h2>
-                    </div>
-                    <i class="fas fa-check-circle stat-icon green"></i>
-                </div>
-                <div class="stat-card red">
-                    <div class="stat-info">
-                        <p>Rejected</p>
-                        <h2>0</h2>
-                    </div>
-                    <i class="fas fa-times-circle stat-icon red"></i>
-                </div>
-                <div class="stat-card purple">
-                    <div class="stat-info">
-                        <p>Total Proposals</p>
-                        <h2>4</h2>
-                    </div>
-                    <i class="fas fa-file-alt stat-icon purple"></i>
+                <div class="link-text">
+                    Already have an account? <a onclick="showLogin()">Login here</a>
                 </div>
             </div>
 
-            <div class="tabs-container">
-                <div class="tabs">
-                    <button class="tab active" onclick="switchTab('dean', 'endorsements')">
-                        <i class="fas fa-check-circle"></i>
-                        Endorsements
-                    </button>
-                    <button class="tab" onclick="switchTab('dean', 'history')">
-                        <i class="fas fa-history"></i>
-                        History
-                    </button>
-                </div>
-
-                <div class="tab-content">
-                    <div id="dean-endorsements" class="tab-panel active">
-                        <div class="info-box blue">
-                            <h3>Proposal Endorsement</h3>
-                            <p>Review and endorse research proposals. Each proposal requires 5 copies to be submitted to URDS.</p>
-                        </div>
-
-                        <div class="search-box">
-                            <i class="fas fa-search"></i>
-                            <input type="text" placeholder="Search proposals...">
-                        </div>
-                        <div class="proposals-list" id="deanEndorsementsList"></div>
-                    </div>
-
-                    <div id="dean-history" class="tab-panel">
-                        <div class="proposals-list" id="deanHistoryList"></div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
 
     <script>
-        // Mock Data
-        const proposals = [
-            {
-                id: 1,
-                title: 'AI-Powered Water Quality Monitoring',
-                author: 'Dr. Alice Johnson',
-                email: 'faculty1@university.edu',
-                date: '2025-10-15',
-                status: 'approved',
-                copies: 5,
-                submittedToURDS: true,
-                feedback: 'Excellent research proposal'
-            },
-            {
-                id: 2,
-                title: 'Smart City Infrastructure',
-                author: 'Dr. Alice Johnson',
-                email: 'faculty1@university.edu',
-                date: '2025-10-10',
-                status: 'pending',
-                copies: 0,
-                submittedToURDS: false
-            },
-            {
-                id: 3,
-                title: 'IoT Sensor Networks',
-                author: 'Dr. Alice Johnson',
-                email: 'faculty1@university.edu',
-                date: '2025-09-20',
-                status: 'revision',
-                copies: 0,
-                submittedToURDS: false,
-                feedback: 'TWG Feedback & Suggestions'
-            },
-            {
-                id: 4,
-                title: 'Sustainable Energy Solutions',
-                author: 'Prof. Bob Smith',
-                email: 'faculty2@university.edu',
-                date: '2025-09-20',
-                status: 'pending',
-                copies: 5,
-                submittedToURDS: true
-            },
-            {
-                id: 5,
-                title: 'Advanced Materials Research',
-                author: 'Dr. Carol White',
-                email: 'faculty3@university.edu',
-                date: '2025-08-10',
-                status: 'endorsed',
-                copies: 5,
-                endorsedDate: '2025-08-10'
-            }
-        ];
+        function showSignup() {
+            document.getElementById('loginForm').classList.remove('active');
+            document.getElementById('signupForm').classList.add('active');
+        }
+        function showLogin() {
+            document.getElementById('signupForm').classList.remove('active');
+            document.getElementById('loginForm').classList.add('active');
+        }
 
-        const faculty = [
-            { id: 1, name: 'Faculty Member 1', email: 'faculty1@university.edu', submissions: 3 },
-            { id: 2, name: 'Faculty Member 2', email: 'faculty2@university.edu', submissions: 1 },
-            { id: 3, name: 'Faculty Member 3', email: 'faculty3@university.edu', submissions: 5 },
-            { id: 4, name: 'Faculty Member 4', email: 'faculty4@university.edu', submissions: 2 },
-            { id: 5, name: 'Faculty Member 5', email: 'faculty5@university.edu', submissions: 2 }
-        ];
-
-        let currentUser = null;
-
-        // Login
         function login() {
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-            const role = document.querySelector('input[name="role"]:checked')?.value;
+            const email = document.querySelector('#loginEmail').value.trim();
+            const password = document.querySelector('#loginPassword').value;
+            const role = document.querySelector('#loginRoleSelect').value;
 
-            if (!email || !password || !role) {
-                alert('Please fill in all fields and select a role');
-                return;
-            }
+            if (!email || !password || !role) return alert("Please fill all fields");
 
-            currentUser = { email, role };
-            showDashboard(role);
+            localStorage.setItem('currentUser', JSON.stringify({ email, role }));
+            setTimeout(() => {
+                if (role === 'dean') location.href = 'dean.html';
+                else if (role === 'coordinator') location.href = 'coordinator.html';
+                else if (role === 'faculty') location.href = 'faculty.html';
+            }, 800);
         }
 
-        // Logout
-        function logout() {
-            currentUser = null;
-            document.getElementById('homepage').classList.remove('hidden');
-            document.getElementById('facultyDashboard').classList.add('hidden');
-            document.getElementById('coordinatorDashboard').classList.add('hidden');
-            document.getElementById('deanDashboard').classList.add('hidden');
-            document.getElementById('submitForm').classList.add('hidden');
+        function signup() {
+            const name = document.querySelector('#signupFullName').value.trim();
+            const email = document.querySelector('#signupEmail').value.trim();
+            const pass = document.querySelector('#signupPassword').value;
+            const confirm = document.querySelector('#signupConfirmPassword').value;
+            const role = document.querySelector('#signupRoleSelect').value;
+
+            if (!name || !email || !pass || !confirm || !role) return alert("All fields required");
+            if (pass !== confirm) return alert("Passwords do not match");
+            if (pass.length < 6) return alert("Password too short");
+
+            localStorage.setItem('currentUser', JSON.stringify({ email, role }));
+            alert("Account created successfully!");
+            setTimeout(() => location.href = role + '.html', 800);
         }
 
-        // Show Dashboard
-        function showDashboard(role) {
-            document.getElementById('homepage').classList.add('hidden');
-            
-            if (role === 'faculty') {
-                document.getElementById('facultyDashboard').classList.remove('hidden');
-                loadFacultyProposals();
-            } else if (role === 'coordinator') {
-                document.getElementById('coordinatorDashboard').classList.remove('hidden');
-                loadCoordinatorData();
-            } else if (role === 'dean') {
-                document.getElementById('deanDashboard').classList.remove('hidden');
-                loadDeanData();
-            }
-        }
-
-        // Switch Tabs
-        function switchTab(dashboard, tabName) {
-            const tabs = document.querySelectorAll(`#${dashboard}Dashboard .tab`);
-            const panels = document.querySelectorAll(`#${dashboard}Dashboard .tab-panel`);
-            
-            tabs.forEach(tab => tab.classList.remove('active'));
-            panels.forEach(panel => panel.classList.remove('active'));
-            
-            event.target.closest('.tab').classList.add('active');
-            document.getElementById(`${dashboard}-${tabName}`).classList.add('active');
-        }
-
-        // Get Status Badge
-        function getStatusBadge(status) {
-            const badges = {
-                pending: '<span class="badge pending">Pending</span>',
-                approved: '<span class="badge approved">Approved</span>',
-                revision: '<span class="badge revision">Revision Needed</span>',
-                endorsed: '<span class="badge endorsed">Endorsed</span>',
-                submitted: '<span class="badge submitted">Submitted to URDS</span>',
-                rejected: '<span class="badge rejected">Rejected</span>'
-            };
-            return badges[status] || badges.pending;
-        }
-
-        // Faculty Functions
-        function loadFacultyProposals() {
-            const userProposals = proposals.filter(p => p.email === currentUser.email);
-            
-            const proposalsList = document.getElementById('facultyProposalsList');
-            proposalsList.innerHTML = userProposals.map(p => `
-                <div class="proposal-card">
-                    <div class="proposal-header">
-                        <div class="proposal-info">
-                            <h3>${p.title}</h3>
-                            <p>${p.date}</p>
-                        </div>
-                        ${getStatusBadge(p.status)}
-                    </div>
-                    ${p.feedback ? `
-                        <div class="feedback-box ${p.status === 'revision' ? 'orange' : ''}">
-                            <p>${p.status === 'approved' ? 'Feedback: Excellent research proposal' : 'TWG Feedback & Suggestions'}</p>
-                            ${p.status === 'revision' ? `
-                                <ul>
-                                    <li>Strengthen the methodology section with more rigorous approach</li>
-                                    <li>Add recent literature from 2024-2025</li>
-                                    <li>Include more detailed timeline for implementation</li>
-                                    <li>Clarify the budget allocation</li>
-                                </ul>
-                            ` : ''}
-                        </div>
-                    ` : ''}
-                </div>
-            `).join('');
-
-            const revisionsList = document.getElementById('facultyRevisionsList');
-            revisionsList.innerHTML = userProposals.filter(p => p.status === 'revision').map(p => `
-                <div class="proposal-card">
-                    <div class="proposal-header">
-                        <div class="proposal-info">
-                            <h3>${p.title}</h3>
-                            <p>Submitted: ${p.date}</p>
-                        </div>
-                        ${getStatusBadge(p.status)}
-                    </div>
-                    <div class="feedback-box orange">
-                        <p>TWG Feedback & Suggestions</p>
-                        <ul>
-                            <li>Strengthen the methodology section with more rigorous approach</li>
-                            <li>Add recent literature from 2024-2025</li>
-                            <li>Include more detailed timeline for implementation</li>
-                            <li>Clarify the budget allocation</li>
-                        </ul>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function showSubmitForm() {
-            document.getElementById('facultyDashboard').classList.add('hidden');
-            document.getElementById('submitForm').classList.remove('hidden');
-        }
-
-        function hideSubmitForm() {
-            document.getElementById('submitForm').classList.add('hidden');
-            document.getElementById('facultyDashboard').classList.remove('hidden');
-        }
-
-        function submitProposal() {
-            alert('Proposal submitted successfully!');
-            hideSubmitForm();
-        }
-
-        // Coordinator Functions
-        function loadCoordinatorData() {
-            const submissionsList = document.getElementById('coordinatorSubmissionsList');
-            submissionsList.innerHTML = proposals.map(p => `
-                <div class="proposal-card">
-                    <div class="proposal-header">
-                        <div class="proposal-info">
-                            <h3>${p.title}</h3>
-                            <p>${p.author}</p>
-                            <p>${p.date}</p>
-                        </div>
-                        ${getStatusBadge(p.submittedToURDS ? 'submitted' : p.status)}
-                    </div>
-                </div>
-            `).join('');
-
-            const evaluationList = document.getElementById('coordinatorEvaluationList');
-            evaluationList.innerHTML = proposals.filter(p => !p.endorsedDate).map(p => `
-                <div class="proposal-card">
-                    <div class="proposal-header">
-                        <div class="proposal-info">
-                            <h3>${p.title}</h3>
-                            <p>${p.author}</p>
-                            <p>${p.date}</p>
-                        </div>
-                        ${getStatusBadge('pending')}
-                    </div>
-                    <button class="btn btn-primary btn-full">Evaluate Proposal</button>
-                </div>
-            `).join('');
-
-            const urdsList = document.getElementById('coordinatorUrdsList');
-            urdsList.innerHTML = proposals.filter(p => p.status === 'endorsed').map(p => `
-                <div class="proposal-card">
-                    <h3>${p.title}</h3>
-                    <p>${p.author}</p>
-                    <p>Endorsed: ${p.endorsedDate}</p>
-                    <button class="btn btn-success btn-full" style="margin-top: 1rem">Submit to URDS</button>
-                </div>
-            `).join('');
-
-            const facultyTable = document.querySelector('#facultyTable tbody');
-            facultyTable.innerHTML = faculty.map(f => `
-                <tr>
-                    <td>${f.name}</td>
-                    <td>${f.email}</td>
-                    <td>${f.submissions}</td>
-                </tr>
-            `).join('');
-        }
-
-        // Dean Functions
-        function loadDeanData() {
-            const endorsementsList = document.getElementById('deanEndorsementsList');
-            endorsementsList.innerHTML = proposals.filter(p => p.status === 'approved' && !p.endorsedDate).map(p => `
-                <div class="proposal-card">
-                    <div class="proposal-header">
-                        <div class="proposal-info">
-                            <h3>${p.title}</h3>
-                            <p>${p.author}</p>
-                            <p>${p.date} • Copies: ${p.copies}</p>
-                        </div>
-                        ${getStatusBadge('submitted')}
-                    </div>
-                    <button class="btn btn-primary btn-full">Review & Endorse</button>
-                </div>
-            `).join('');
-
-            const historyList = document.getElementById('deanHistoryList');
-            historyList.innerHTML = proposals.filter(p => p.endorsedDate).map(p => `
-                <div class="proposal-card">
-                    <div class="proposal-header">
-                        <div class="proposal-info">
-                            <h3>${p.title}</h3>
-                            <p>${p.author}</p>
-                            <p>Endorsed: ${p.endorsedDate} • Copies: ${p.copies}</p>
-                        </div>
-                        ${getStatusBadge('endorsed')}
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        function toggleSignup() {
-            alert('Signup functionality would be implemented here');
+        // Auto redirect if already logged in
+        if (localStorage.getItem('currentUser')) {
+            const user = JSON.parse(localStorage.getItem('currentUser'));
+            location.href = user.role + '.html';
         }
     </script>
 </body>

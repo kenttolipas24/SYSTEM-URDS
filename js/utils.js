@@ -100,5 +100,5 @@ function getFromLocalStorage(key) {
  // Dean Logout Function
 function logout() {
     localStorage.removeItem('currentUser');
-    window.location.href = '../homepage.html'; // adjust if your folder differs
+    window.location.href = '../pages/homepage.html'; 
 }

@@ -3,7 +3,7 @@ let currentUser = null;
 function initFacultyDashboard() {
     currentUser = getFromLocalStorage('currentUser');
     
-    if (!currentUser || currentUser.role !== 'faculty') {
+    if (!currentUser || currentUser.role !== 'Faculty Researcher') {
         window.location.href = 'homepage.html';
         return;
     }

@@ -5,7 +5,7 @@ let selectedRating = 0;
 function initCoordinatorDashboard() {
     currentUser = getFromLocalStorage('currentUser');
     
-    if (!currentUser || currentUser.role !== 'coordinator') {
+    if (!currentUser || currentUser.role !== 'Research Coordinator') {
         window.location.href = 'homepage.html';
         return;
     }
