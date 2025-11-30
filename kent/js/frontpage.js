@@ -1,12 +1,10 @@
 // Load the patient table HTML content into the placeholder
-fetch('componets/login.html')
+fetch('components/login.html')
   .then(res => res.text())
   .then(data => {
-    document.getElementById('access portal-placeholder').innerHTML = data;
-    
-    // Initialize table after loading
-    initializePatientTable();
-  })
+    document.getElementById('access_portal-placeholder').innerHTML = data;
+    attachFormListeners(); // re-attach JS after inject
+  });
 
 // Event Listeners for Form Toggle
 function showSignUp() {
