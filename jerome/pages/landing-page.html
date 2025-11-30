@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URDS-Landing Page</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon"><img src="../assets/UEP-logo.jpg" alt="UEP Logo"></span>
+                <span class="logo-text">University of Eastern Philippines</span>
+            </div>
+            <nav class="nav">
+                
+            </nav>
+            <button class="btn-login" onclick="location.href='signup-page.html'">Sign Up</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1 class="hero-title">UNIVERSITY RESEARCH<br>AND DEVELOPMENT SYSTEM</h1>
+                <div class="hero-buttons">
+                    <button class="btn btn-secondary">Learn More</button>
+                </div>
+            </div>
+            <div class="login-form-container">
+                <p class="access-portal">Access Portal</p>
+                <form class="login-form">
+                    <h3>Sign In</h3>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div> 
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                    <button onclick="login()" class="btn btn-primary btn-login-form">Sign In</button>
+                    <p class="login-link">Don't have an account? <a href="signup-page.html">Sign Up</a></p>
+                </form>
+            </div>
+            <!-- <div class="hero-illustration">
+                <img src="../assets/landing-pic.png" alt="">
+            </div> -->
+        </div>
+    </section>
+
+    <script>
+        function login() {
+            const adminEmail = "admin";
+            const adminPassword = "12345";
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            if (email === adminEmail && password === adminPassword) {
+            // Redirect to Admin Dashboard
+            window.location.href = "admin-dashboard.html";
+            } else {
+            document.getElementById("error").textContent = "Invalid email or password.";
+            }
+        }
+    </script>
+</body>
+</html>
