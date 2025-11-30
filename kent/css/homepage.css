@@ -15,14 +15,15 @@
 .watermark {
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 65%;
     transform: translate(-50%, -50%);
-    opacity: 0.03;
-    font-size: 20rem;
-    font-weight: bold;
-    color: #1e4d8b;
-    pointer-events: none;
+    opacity: 0.05;                
+    pointer-events: none;         
     z-index: 0;
+    width: 80vw;                  
+    max-width: 900px;             
+    height: auto;                 
+    user-select: none;            
 }
 
 .left-section {
