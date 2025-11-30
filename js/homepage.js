@@ -66,11 +66,16 @@ if (currentUser) {
         window.location.href = 'coordinator.html';
     } else if (user.role === 'dean') {
         window.location.href = 'dean.html';
-    } else if (role === 'urds-staff') {
+    } else if (user.role === 'urds-staff') {
         window.location.href = 'urds-staff.html';
-    } else if (role === 'evaluator') {
+    } else if (user.role === 'evaluator') {
         window.location.href = 'evaluator.html';
+<<<<<<< HEAD
     }
+=======
+    }   
+}
+>>>>>>> 070212126e427d4ccadf3046c4dcb3267e0b4afb
 
 
     const welcomeText = qs('#welcomeText');
@@ -95,9 +100,9 @@ function checkAuth() {
             window.location.href = 'coordinator.html';
         } else if (user.role === 'dean') {
             window.location.href = 'dean.html';
-        } else if (role === 'urds-staff') {
+        } else if (user.role === 'urds-staff') {
             window.location.href = 'urds-staff.html';
-        } else if (role === 'evaluator') {
+        } else if (user.role === 'evaluator') {
             window.location.href = 'evaluator.html';
         }
     }

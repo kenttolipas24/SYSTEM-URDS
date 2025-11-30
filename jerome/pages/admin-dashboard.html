@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URDS Admin Dashboard</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/admin-dashboard.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <span class="logo-icon"><img src="../assets/UEP-logo.jpg" alt="UEP Logo"></span>
+                <span class="logo-text">URDS Admin Dashboard</span>
+            </div>
+            <nav class="nav">
+                <a href="#dashboard">Dashboard</a>
+                <a href="#proposals">Proposals</a>
+                <a href="#reports">Reports</a>
+            </nav>
+            <button onclick="logout()" class="btn-logout">Logout</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="admin-main">
+        <div class="admin-container">
+            <!-- Sidebar Navigation -->
+            <aside class="admin-sidebar">
+                <div class="sidebar-menu">
+                    <a href="#" class="menu-item active" data-section="dashboard">
+                        <span class="menu-icon"></span>
+                        <span class="menu-text">Dashboard</span>
+                    </a>
+                    <a href="#" class="menu-item" data-section="call-for-proposal">
+                        <span class="menu-icon"></span>
+                        <span class="menu-text">Call for Proposal</span>
+                    </a>
+                    <a href="#" class="menu-item" data-section="proposals">
+                        <span class="menu-icon"></span>
+                        <span class="menu-text">View Proposals</span>
+                    </a>
+                    <a href="#" class="menu-item" data-section="settings">
+                        <span class="menu-icon"></span>
+                        <span class="menu-text">Settings</span>
+                    </a>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <section class="admin-content">
+                <!-- Dashboard Section -->
+                <div id="dashboard" class="content-section active">
+                    <div class="section-header">
+                        <h1>Welcome, Admin</h1>
+                        <p>Manage the University Research and Development System</p>
+                    </div>
+
+                    <div class="dashboard-cards">
+                        <div class="stat-card">
+                            <div class="stat-icon"></div>
+                            <div class="stat-content">
+                                <h3>Active Calls</h3>
+                                <p class="stat-number">3</p>
+                                <small>Call for Proposals</small>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"></div>
+                            <div class="stat-content">
+                                <h3>Proposals Received</h3>
+                                <p class="stat-number">45</p>
+                                <small>Under Review</small>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"></div>
+                            <div class="stat-content">
+                                <h3>Approved Proposals</h3>
+                                <p class="stat-number">12</p>
+                                <small>This Quarter</small>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon"></div>
+                            <div class="stat-content">
+                                <h3>Active Users</h3>
+                                <p class="stat-number">127</p>
+                                <small>System Users</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Call for Proposal Section -->
+                <div id="call-for-proposal" class="content-section">
+                    <div class="section-header">
+                        <h1>Create Call for Research Proposal</h1>
+                        <p>Send a formal letter to College Deans requesting research proposals</p>
+                    </div>
+
+                    <div class="form-card">
+                        <form class="proposal-letter-form">
+                            <!-- Letter Header -->
+                            <div class="form-section">
+                                <h3>Letter Information</h3>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="callTitle">Call Title *</label>
+                                        <input type="text" id="callTitle" name="callTitle" placeholder="e.g., FY2024 Research Proposal Call" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="academicYear">Academic Year *</label>
+                                        <input type="text" id="academicYear" name="academicYear" placeholder="e.g., 2024-2025" required>
+                                    </div>
+                                </div>
+
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="deadlineDate">Submission Deadline *</label>
+                                        <input type="date" id="deadlineDate" name="deadlineDate" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="budget">Total Budget Allocation (PHP) *</label>
+                                        <input type="number" id="budget" name="budget" placeholder="0.00" step="0.01" required>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Recipients -->
+                            <div class="form-section">
+                                <h3>Recipients</h3>
+                                <div class="form-group">
+                                    <label for="recipients">Select College Deans to Send To *</label>
+                                    <div class="recipients-list">
+                                        <label class="checkbox-item">
+                                            <input type="checkbox" name="recipients" value="coe"> College of Engineering (COE)
+                                        </label>
+                                        <label class="checkbox-item">
+                                            <input type="checkbox" name="recipients" value="cas"> College of Arts and Sciences (CAS)
+                                        </label>
+                                        <label class="checkbox-item">
+                                            <input type="checkbox" name="recipients" value="cms"> College of Management and Social Sciences (CMSS)
+                                        </label>
+                                        <label class="checkbox-item">
+                                            <input type="checkbox" name="recipients" value="ced"> College of Education (CED)
+                                        </label>
+                                        <label class="checkbox-item">
+                                            <input type="checkbox" name="recipients" value="cict"> College of Information and Communications Technology (CICT)
+                                        </label>
+                                        <label class="checkbox-item">
+                                            <input type="checkbox" name="recipients" value="all"> Select All
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Letter Content -->
+                            <div class="form-section">
+                                <h3>Letter Content</h3>
+                                
+                                <div class="form-group">
+                                    <label for="letterBody">Letter Body *</label>
+                                    <textarea id="letterBody" name="letterBody" rows="10" placeholder="Write your call for research proposal letter here..." required></textarea>
+                                    <div class="char-count"><span id="charCount">0</span>/5000</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label>Template Preview</label>
+                                    <button type="button" class="btn btn-secondary" id="previewBtn">Preview Letter</button>
+                                </div>
+                            </div>
+
+                            <!-- Additional Information -->
+                            <div class="form-section">
+                                <h3>Additional Information</h3>
+                                
+                                <div class="form-group">
+                                    <label for="guidelines">Research Guidelines/Requirements (Optional)</label>
+                                    <textarea id="guidelines" name="guidelines" rows="5" placeholder="Include any specific guidelines, criteria, or requirements for the proposals..."></textarea>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="attachments">Attachments (Optional)</label>
+                                    <input type="file" id="attachments" name="attachments" multiple accept=".pdf,.doc,.docx">
+                                    <small>You can attach supporting documents (Max 5MB per file)</small>
+                                </div>
+                            </div>
+
+                            <!-- Action Buttons -->
+                            <div class="form-actions">
+                                <button type="button" class="btn btn-secondary" id="saveDraftBtn">Save as Draft</button>
+                                <button type="button" class="btn btn-secondary" id="previewLetterBtn">Preview</button>
+                                <button type="submit" class="btn btn-primary" id="sendBtn">Send to Deans</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Proposals Section -->
+                <div id="proposals" class="content-section">
+                    <div class="section-header">
+                        <h1>View Proposals</h1>
+                        <p>Manage and review submitted research proposals</p>
+                    </div>
+                    
+                    <div class="proposals-list">
+                        <p style="text-align: center; color: #999; padding: 40px;">Proposals will be displayed here</p>
+                    </div>
+                </div>
+
+                <!-- Settings Section -->
+                <div id="settings" class="content-section">
+                    <div class="section-header">
+                        <h1>Settings</h1>
+                        <p>Manage your admin settings and preferences</p>
+                    </div>
+                    
+                    <div class="settings-content">
+                        <p style="text-align: center; color: #999; padding: 40px;">Settings options will be displayed here</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Preview Modal -->
+    <div id="previewModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Letter Preview</h2>
+                <button class="modal-close" id="closePreview">&times;</button>
+            </div>
+            <div class="modal-body" id="previewContent">
+                <!-- Preview content will be inserted here -->
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="closePreviewBtn">Close</button>
+                <button type="button" class="btn btn-primary" id="confirmSendBtn">Send Letter</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/admin-dashboard.js"></script>
+</body>
+</html>

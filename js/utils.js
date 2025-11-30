@@ -9,7 +9,10 @@ const proposals = [
         status: 'approved',
         copies: 5,
         submittedToURDS: true,
-        feedback: 'Excellent research proposal'
+        feedback: 'Excellent research proposal',
+        college: 'Engineering',
+        commodity: 'Water Resources & Environmental Technology',
+        reviewReady: true
     },
     {
         id: 2,
@@ -19,7 +22,10 @@ const proposals = [
         date: '2025-10-10',
         status: 'pending',
         copies: 0,
-        submittedToURDS: false
+        submittedToURDS: false,
+        college: 'Engineering',
+        commodity: 'Information Technology & Communications',
+        reviewReady: false
     },
     {
         id: 3,
@@ -30,7 +36,10 @@ const proposals = [
         status: 'revision',
         copies: 0,
         submittedToURDS: false,
-        feedback: 'TWG Feedback & Suggestions'
+        feedback: 'TWG Feedback & Suggestions',
+        college: 'Engineering',
+        commodity: 'Information Technology & Communications',
+        reviewReady: false
     },
     {
         id: 4,
@@ -40,7 +49,10 @@ const proposals = [
         date: '2025-09-20',
         status: 'pending',
         copies: 5,
-        submittedToURDS: true
+        submittedToURDS: true,
+        college: 'Science',
+        commodity: 'Energy & Environment',
+        reviewReady: true
     },
     {
         id: 5,
@@ -50,7 +62,10 @@ const proposals = [
         date: '2025-08-10',
         status: 'endorsed',
         copies: 5,
-        endorsedDate: '2025-08-10'
+        endorsedDate: '2025-08-10',
+        college: 'Science',
+        commodity: 'Materials Science & Nanotechnology',
+        reviewReady: true
     }
 ];
 
