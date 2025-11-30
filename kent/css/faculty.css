@@ -1,0 +1,228 @@
+/* Faculty Dashboard specific styles */
+
+/* Stats Grid */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.stat-card.blue { background-color: #dbeafe; }
+.stat-card.green { background-color: #d1fae5; }
+.stat-card.yellow { background-color: #fef3c7; }
+.stat-card.orange { background-color: #fed7aa; }
+
+.stat-info p {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin-bottom: 0.25rem;
+}
+
+.stat-info h2 {
+    font-size: 2.25rem;
+    font-weight: bold;
+    color: #111827;
+}
+
+.stat-icon {
+    font-size: 3rem;
+}
+
+.stat-icon.blue { color: #3b82f6; }
+.stat-icon.green { color: #10b981; }
+.stat-icon.yellow { color: #f59e0b; }
+.stat-icon.orange { color: #f97316; }
+
+/* Tabs */
+.tabs-container {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.tabs {
+    display: flex;
+    border-bottom: 1px solid #e5e7eb;
+    overflow-x: auto;
+}
+
+.tab {
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    color: #6b7280;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s;
+    white-space: nowrap;
+}
+
+.tab:hover {
+    color: #2563eb;
+}
+
+.tab.active {
+    color: #2563eb;
+    border-bottom-color: #2563eb;
+}
+
+.tab-content {
+    padding: 1.5rem;
+}
+
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.active {
+    display: block;
+}
+
+/* Proposals List */
+.proposals-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.proposal-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    transition: all 0.2s;
+}
+
+.proposal-card:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.proposal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1rem;
+}
+
+.proposal-info h3 {
+    font-size: 1.125rem;
+    font-weight: bold;
+    color: #111827;
+    margin-bottom: 0.5rem;
+}
+
+.proposal-info p {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+/* Status Badges */
+.badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.badge.pending { background-color: #fef3c7; color: #92400e; }
+.badge.approved { background-color: #d1fae5; color: #065f46; }
+.badge.revision { background-color: #fed7aa; color: #9a3412; }
+
+/* Feedback Box */
+.feedback-box {
+    background-color: #dbeafe;
+    border: 1px solid #93c5fd;
+    border-radius: 0.375rem;
+    padding: 1rem;
+    margin-top: 1rem;
+}
+
+.feedback-box.orange {
+    background-color: #fed7aa;
+    border-color: #fdba74;
+}
+
+.feedback-box p {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #1e40af;
+    margin-bottom: 0.5rem;
+}
+
+.feedback-box.orange p {
+    color: #9a3412;
+}
+
+.feedback-box ul {
+    list-style-position: inside;
+    font-size: 0.875rem;
+    color: #1e3a8a;
+}
+
+.feedback-box.orange ul {
+    color: #7c2d12;
+}
+
+.feedback-box ul li {
+    margin-bottom: 0.25rem;
+}
+
+/* Upload Area (for submit form modal) */
+.upload-area {
+    border: 2px dashed #d1d5db;
+    border-radius: 0.5rem;
+    padding: 3rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.upload-area:hover {
+    border-color: #3b82f6;
+    background-color: #eff6ff;
+}
+
+.upload-area i {
+    font-size: 3rem;
+    color: #9ca3af;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.upload-area p:first-of-type {
+    color: #6b7280;
+    margin-bottom: 0.25rem;
+}
+
+.upload-area p:last-of-type {
+    font-size: 0.875rem;
+    color: #9ca3af;
+}
+
+/* Larger modal for submit form */
+.modal-content.large {
+    max-width: 800px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    .proposal-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
