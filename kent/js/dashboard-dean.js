@@ -2,18 +2,31 @@ let currentUser = null;
 let currentEndorseProposal = null;
 let currentRejectProposal = null;
 
-function initDeanDashboard() {
-    currentUser = getFromLocalStorage('currentUser');
+(() => {
+    const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
     
-    if (!currentUser || currentUser.role !== 'College Dean') {
-        window.location.href = 'homepage.html';
-        return;
+    if (!user || user.role !== 'dean') {
+      alert('Access denied. College Deans only.');
+      window.location.href = '../frontpage.html';
+      return;
     }
-    
-    loadDeanStats();
-    loadEndorsements();
-    loadHistory();
-}
+
+    console.log('Dean access granted:', user.email);
+    document.getElementById('welcome-message')?.innerHTML = 
+      `<strong>Welcome back, ${user.displayRole}!</strong><br>${user.email}`;
+
+    // Call your dashboard functions
+    loadDeanStats?.();
+    loadEndorsements?.();
+    loadHistory?.();
+  })();
+
+  function logout() {
+    if (confirm('Logout?')) {
+      localStorage.removeItem('currentUser');
+      window.location.href = '../frontpage.html';
+    }
+  }
 
 function loadDeanStats() {
     const pendingEndorsement = proposals.filter(p => p.status === 'approved' && !p.endorsedDate).length;

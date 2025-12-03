@@ -103,8 +103,6 @@ function logout() {
     localStorage.removeItem('currentUser');
     
     // Redirect to login page (works from any dashboard inside /pages/)
-    window.location.href = 'homepage.html';
+    window.location.href = '../frontpage.html';
     
-    // Optional: Show a quick message (disappears after redirect)
-    alert('You have been logged out successfully.');
 }
