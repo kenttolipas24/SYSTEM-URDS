@@ -1,0 +1,104 @@
+<!-- Reports Page -->
+<div id="reports" class="page">
+    <div class="content">
+
+        <!-- Header -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+            <div>
+                <h2 class="page-title">Reports & Analytics</h2>
+                <p class="page-subtitle">Comprehensive overview of research performance.</p>
+            </div>
+
+            <select style="padding: 10px 20px; border: 1px solid #e0e0e0; border-radius: 6px; font-size: 14px;">
+                <option>Fiscal Year 2025</option>
+                <option>Fiscal Year 2024</option>
+                <option>Fiscal Year 2023</option>
+            </select>
+        </div>
+
+        <!-- Reports Grid -->
+        <div class="section-grid">
+
+            <!-- Bar Chart -->
+            <div class="section-card">
+                <h3 style="margin-bottom: 20px;">Proposals by Department</h3>
+
+                <div class="chart-container" style="height: 320px;">
+
+                    <div class="bar" style="height: 180px;">
+                        <div class="bar-label">Biology</div>
+                    </div>
+
+                    <div class="bar" style="height: 120px;">
+                        <div class="bar-label">Chemistry</div>
+                    </div>
+
+                    <div class="bar" style="height: 80px;">
+                        <div class="bar-label">Physics</div>
+                    </div>
+
+                    <div class="bar" style="height: 160px;">
+                        <div class="bar-label">Math</div>
+                    </div>
+
+                    <div class="bar" style="height: 260px;">
+                        <div class="bar-label">Comp Sci</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Donut Chart -->
+            <div class="section-card">
+                <h3 style="margin-bottom: 20px;">Research Status Distribution</h3>
+
+                <svg class="donut-chart" viewBox="0 0 200 200">
+                    <circle 
+                        cx="100" cy="100" r="80"
+                        class="donut-segment"
+                        stroke="#2196f3"
+                        stroke-dasharray="377 503"
+                        stroke-dashoffset="0">
+                    </circle>
+
+                    <circle 
+                        cx="100" cy="100" r="80"
+                        class="donut-segment"
+                        stroke="#4caf50"
+                        stroke-dasharray="75 503"
+                        stroke-dashoffset="-377">
+                    </circle>
+
+                    <circle 
+                        cx="100" cy="100" r="80"
+                        class="donut-segment"
+                        stroke="#ff9800"
+                        stroke-dasharray="51 503"
+                        stroke-dashoffset="-452">
+                    </circle>
+                </svg>
+
+                <!-- Legend -->
+                <div class="chart-legend">
+
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #2196f3;"></div>
+                        <span>Completed</span>
+                    </div>
+
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #4caf50;"></div>
+                        <span>Ongoing</span>
+                    </div>
+
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #ff9800;"></div>
+                        <span>Terminated</span>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

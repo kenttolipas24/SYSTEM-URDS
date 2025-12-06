@@ -1,64 +1,5 @@
-// Load the patient table HTML content into the placeholder
-fetch('components/login.html')
-  .then(res => res.text())
-  .then(data => {
-    document.getElementById('access_portal-placeholder').innerHTML = data;
-    attachFormListeners(); // re-attach JS after inject
-  });
-
-// Event Listeners for Form Toggle
-function showSignUp() {
-    const signInForm = document.getElementById('signInForm');
-    const signUpForm = document.getElementById('signUpForm');
-    
-    signInForm.classList.add('hidden');
-    signUpForm.classList.remove('hidden');
-    signUpForm.classList.add('form-transition');
-}
-
-function showSignIn() {
-    const signInForm = document.getElementById('signInForm');
-    const signUpForm = document.getElementById('signUpForm');
-    
-    signUpForm.classList.add('hidden');
-    signInForm.classList.remove('hidden');
-    signInForm.classList.add('form-transition');
-}
-
-function handleSignIn(event) {
-    event.preventDefault();
-    const form = event.target;
-    const email = form.querySelector('input[type="email"]').value;
-    const password = form.querySelector('input[type="password"]').value;
-            
-    // Simulate authentication
-    console.log('Sign In:', { email, password });
-    
-            
-    return false;
-}
-
-function handleSignUp(event) {
-    event.preventDefault();
-    const form = event.target;
-    const inputs = form.querySelectorAll('input');
-    const select = form.querySelector('select');
-            
-    const passwords = form.querySelectorAll('input[type="password"]');
-    if (passwords[0].value !== passwords[1].value) {
-        alert('Passwords do not match!');
-        return false;
-    }
-            
-    // Simulate registration
-    console.log('Sign Up successful');
-    
-    showSignIn();
-            
-    return false;
-}
-
-// Login & Registration 
+// homepage.js — Clean, Modern Login & Registration System
+// Works with your new injected login.html + role-based redirect
 
 (() => {
   'use strict';
@@ -67,13 +8,14 @@ function handleSignUp(event) {
   // Role Mapping: "Exact text from <option>" → target dashboard page
   // ==================================================================
   const roleRedirectMap = {
-    'faculty':      'pages/faculty.html',
-    'coordinator':  'pages/coordinator.html',
-    'dean':         'pages/dean.html',
-    'director':     'pages/director.html',
-    'staff':        'pages/urds-staff.html',
-    'cluster':      'pages/cluster.html',
-    'researcher':   'pages/evaluator.html'
+    'Faculty Researcher': 'faculty.html',
+    'Research Coordinator': 'coordinator.html',
+    'College Dean': 'dean.html',
+    'URDS Director': 'director.html',
+    'URDS Staff': 'staff.html',
+    'Cluster Coordinator': 'cluster.html',
+    'Senior Faculty': 'senior.html',
+    'TWG Evaluator': 'evaluator.html'
   };
 
   // ==================================================================
@@ -120,37 +62,39 @@ function handleSignUp(event) {
   // ==================================================================
   // Handle Login
   // ==================================================================
-window.handleSignIn = (e) => {
-  e.preventDefault();
+  window.handleSignIn = (e) => {
+    e.preventDefault();
 
-  const email = qs('#signInForm input[type="email"]')?.value.trim();
-  const password = qs('#signInForm input[type="password"]')?.value;
-  const select = qs('#signInForm select');
-  const roleValue = select?.value;  // ← This is "faculty", "dean", etc.
+    const email = qs('#signInForm input[type="email"]').value.trim();
+    const password = qs('#signInForm input[type="password"]').value;
+    const roleSelect = qs('#signInForm select');
+    const displayRole = roleSelect?.options[roleSelect.selectedIndex]?.text || '';
+    const roleValue = roleSelect?.value || '';
 
-  if (!email || !password || !roleValue) {
-    alert('Please fill all fields and select a role.');
-    return;
-  }
+    if (!email || !password || !roleValue) {
+      alert('Please fill in all fields and select a role.');
+      return false;
+    }
 
-  // Save session using the short value
-  const session = {
-    email,
-    role: roleValue,           // short code
-    displayRole: select.selectedOptions[0].textContent.trim(), // optional: for display
-    loggedInAt: Date.now()
+    // Save session (demo only)
+    const userSession = {
+      email,
+      role: roleValue,
+      displayRole, // human-readable role (used for redirect)
+      loggedInAt: new Date().toISOString()
+    };
+
+    localStorage.setItem('currentUser', JSON.stringify(userSession));
+
+    const targetPage = roleRedirectMap[displayRole];
+    if (targetPage) {
+      setTimeout(() => window.location.href = targetPage, 600);
+    } else {
+      alert(`No dashboard configured for role: "${displayRole}"`);
+    }
+
+    return false;
   };
-
-  localStorage.setItem('currentUser', JSON.stringify(session));
-
-  // Redirect using the short value
-  const target = roleRedirectMap[roleValue];
-  if (target) {
-    setTimeout(() => window.location.href = target, 500);
-  } else {
-    alert('Role not supported: ' + roleValue);
-  }
-};
 
   // ==================================================================
   // Handle Registration
