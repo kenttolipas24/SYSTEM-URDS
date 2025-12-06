@@ -1,245 +1,269 @@
-
-
-// homepage.js — full, robust login/register/tab handling
-
-(function () {
-  'use strict';
-
-  // Map exact role option text -> page to redirect to
-  const roleRedirectMap = {
-    'Faculty Researcher': 'faculty.html',
-    'Research Coordinator': 'coordinator.html',
-    'College Dean': 'dean.html',
-    'URDS Director': 'director.html',       // placeholder examples
-    'URDS Staff': 'staff.html',
-    'Cluster Coordinator': 'cluster.html',
-    'Senior Faculty': 'senior.html',
-    'TWG Evaluator': 'evaluator.html'
-  };
-
-  // Utilities
-  function qs(selector) { return document.querySelector(selector); }
-  function qsa(selector) { return Array.from(document.querySelectorAll(selector)); }
-
-  // Switch tab (safe: receives event and tab string)
-  function switchTab(event, tabName) 
-  {
-    event && event.preventDefault();
-
-    qsa('.tab-pane').forEach(p => p.classList.remove('active'));
-    qsa('.tab-button').forEach(b => b.classList.remove('tab-active'));
-
-    const pane = document.getElementById(`${tabName}-tab`);
-    if (pane) pane.classList.add('active');
-
-    // If event exists (from click), mark clicked button active.
-    if (event && event.currentTarget) {
-      event.currentTarget.classList.add('tab-active');
-    } else {
-      // fallback: find by data-tab
-      const btn = document.querySelector(`.tab-button[data-tab="${tabName}"]`);
-      if (btn) btn.classList.add('tab-active');
-
-                // Redirect to appropriate dashboard
-                if (role === 'faculty') 
-                    window.location.href = 'faculty.html';
-                } else if (role === 'coordinator') {
-                    window.location.href = 'coordinator.html';
-                } else if (role === 'dean') {
-                    window.location.href = 'dean.html';
-                } else if (role === 'urds-staff') {
-                    window.location.href = 'urds-staff.html';
-                } else if (role === 'evaluator') {
-                    window.location.href = 'evaluator.html';
-                }
-            }, 1000);
-        }
-      }
-    }
-// Check if user is already logged in
-const currentUser = localStorage.getItem('currentUser');
-if (currentUser) {
-    const user = JSON.parse(currentUser);
-    if (user.role === 'faculty') {
-        window.location.href = 'faculty.html';
-    } else if (user.role === 'coordinator') {
-        window.location.href = 'coordinator.html';
-    } else if (user.role === 'dean') {
-        window.location.href = 'dean.html';
-    } else if (user.role === 'urds-staff') {
-        window.location.href = 'urds-staff.html';
-    } else if (user.role === 'evaluator') {
-        window.location.href = 'evaluator.html';
-<<<<<<< HEAD
-    }
-=======
-    }   
-}
->>>>>>> 070212126e427d4ccadf3046c4dcb3267e0b4afb
-
-
-    const welcomeText = qs('#welcomeText');
-    if (welcomeText) {
-      welcomeText.textContent = tabName === 'login'
-        ? 'Sign in to access your account'
-        : 'Create a new account to get started';
-
-function logout() {
-    localStorage.removeItem('currentUser');
-    window.location.href = 'homepage.html';
-}
-
-// Check if user is already logged in
-function checkAuth() {
-    const user = getFromLocalStorage('currentUser');
-    if (user) {
-        // Redirect if already logged in
-        if (user.role === 'faculty') {
-            window.location.href = 'faculty.html';
-        } else if (user.role === 'coordinator') {
-            window.location.href = 'coordinator.html';
-        } else if (user.role === 'dean') {
-            window.location.href = 'dean.html';
-        } else if (user.role === 'urds-staff') {
-            window.location.href = 'urds-staff.html';
-        } else if (user.role === 'evaluator') {
-            window.location.href = 'evaluator.html';
-        }
-    }
-  }
-
-  // Login handler — used by form submit event
-  function handleLogin(evt) {
-    try {
-      evt && evt.preventDefault();
-
-      const email = (qs('#login-email') || {}).value || '';
-      const password = (qs('#login-password') || {}).value || '';
-      const role = (qs('#login-role') || {}).value || '';
-
-      console.log('[DEBUG] handleLogin payload:', { email, role });
-
-      if (!email || !password || !role) {
-        alert('Please fill in all fields and select a role.');
-        return;
-      }
-
-      // Button UI (use event.submitter if available)
-      let submitBtn = null;
-      if (evt && 'submitter' in evt && evt.submitter) submitBtn = evt.submitter;
-      if (!submitBtn) submitBtn = qs('#loginForm button[type="submit"]');
-
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.dataset.orig = submitBtn.innerHTML;
-        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Signing in...';
-      }
-
-      // Simulate API / authentication delay
-      setTimeout(() => {
-        // Save minimal session info locally (demo only)
-        localStorage.setItem('currentUser', JSON.stringify({ email, role }));
-
-        const target = roleRedirectMap[role];
-        if (target) {
-          console.log('[DEBUG] Redirecting to:', target);
-          window.location.href = target;
-        } else {
-          // If no mapping: informative message (prevents silent failure)
-          if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = submitBtn.dataset.orig || 'Sign In';
-          }
-          alert(`Signed in as "${role}" but no dashboard is configured for that role.\nCheck role string or add mapping in homepage.js`);
-          console.warn('[WARN] No redirect mapping for role:', role);
-        }
-      }, 800); // short delay for UX
-    } catch (err) {
-      console.error('[ERROR] handleLogin:', err);
-      alert('An unexpected error occurred. Check console for details.');
-    }
-  }
-
-  // Register handler (keeps simple local storage demo behavior)
-  function handleRegister(evt) {
-    try {
-      evt && evt.preventDefault();
-
-      const password = (qs('#password') || {}).value || '';
-      const confirm = (qs('#confirmPassword') || {}).value || '';
-      if (password !== confirm) {
-        alert('Passwords do not match!');
-        return;
-      }
-
-      const payload = {
-        firstName: (qs('#firstName') || {}).value || '',
-        lastName: (qs('#lastName') || {}).value || '',
-        contactNumber: (qs('#contactNumber') || {}).value || '',
-        email: (qs('#email') || {}).value || '',
-        department: (qs('#department') || {}).value || '',
-        role: (qs('#register-role') || {}).value || ''
-      };
-
-      console.log('[DEBUG] handleRegister payload:', payload);
-
-      // Save user locally (demo)
-      if (!payload.email) {
-        alert('Please provide an email.');
-        return;
-      }
-      localStorage.setItem('user_' + payload.email, JSON.stringify(payload));
-      alert('Account created (local demo). You can now sign in.');
-
-      // switch to login tab
-      const loginBtn = document.querySelector('.tab-button[data-tab="login"]');
-      if (loginBtn) loginBtn.click();
-
-    } catch (err) {
-      console.error('[ERROR] handleRegister:', err);
-      alert('An unexpected error occurred. Check console for details.');
-    }
-  }
-
-  // Attach event listeners safely on DOM ready
-  document.addEventListener('DOMContentLoaded', () => {
-    // Wire tab buttons (overrides inline onclick to pass event safely)
-    qsa('.tab-button').forEach(btn => {
-      // If already has click handler inline, we still attach to be sure it uses event.
-      btn.addEventListener('click', (e) => {
-        const tab = btn.dataset.tab;
-        if (tab) switchTab(e, tab);
-      });
-    });
-
-    // Attach form handlers (prefer JS-bound handlers over inline attributes)
-    const loginForm = qs('#loginForm');
-    if (loginForm) {
-      // remove any inline onsubmit to avoid conflicts (defensive)
-      loginForm.onsubmit = null;
-      loginForm.addEventListener('submit', handleLogin);
-    } else {
-      console.warn('[WARN] #loginForm not found.');
-    }
-
-    const registerForm = qs('#registerForm');
-    if (registerForm) {
-      registerForm.onsubmit = null;
-      registerForm.addEventListener('submit', handleRegister);
-    } else {
-      console.warn('[WARN] #registerForm not found.');
-    }
-
-    // Quick sanity logs
-    console.log('[INFO] homepage.js initialized. Ready.');
+// Load the patient table HTML content into the placeholder
+fetch('components/login.html')
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById('access_portal-placeholder').innerHTML = data;
+    attachFormListeners(); // re-attach JS after inject
   });
 
-  // Expose functions for debugging in console (optional)
-  window._URDS = {
-    switchTab,
-    handleLogin,
-    handleRegister,
-    roleRedirectMap
+// Event Listeners for Form Toggle
+function showSignUp() {
+    const signInForm = document.getElementById('signInForm');
+    const signUpForm = document.getElementById('signUpForm');
+    
+    signInForm.classList.add('hidden');
+    signUpForm.classList.remove('hidden');
+    signUpForm.classList.add('form-transition');
+}
+
+function showSignIn() {
+    const signInForm = document.getElementById('signInForm');
+    const signUpForm = document.getElementById('signUpForm');
+    
+    signUpForm.classList.add('hidden');
+    signInForm.classList.remove('hidden');
+    signInForm.classList.add('form-transition');
+}
+
+function handleSignIn(event) {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.querySelector('input[type="email"]').value;
+    const password = form.querySelector('input[type="password"]').value;
+            
+    // Simulate authentication
+    console.log('Sign In:', { email, password });
+    
+            
+    return false;
+}
+
+function handleSignUp(event) {
+    event.preventDefault();
+    const form = event.target;
+    const inputs = form.querySelectorAll('input');
+    const select = form.querySelector('select');
+            
+    const passwords = form.querySelectorAll('input[type="password"]');
+    if (passwords[0].value !== passwords[1].value) {
+        alert('Passwords do not match!');
+        return false;
+    }
+            
+    // Simulate registration
+    console.log('Sign Up successful');
+    
+    showSignIn();
+            
+    return false;
+}
+
+// Login & Registration 
+
+(() => {
+  'use strict';
+
+  // ==================================================================
+  // Role Mapping: "Exact text from <option>" → target dashboard page
+  // ==================================================================
+  const roleRedirectMap = {
+    'faculty':      'pages/faculty.html',
+    'coordinator':  'pages/coordinator.html',
+    'dean':         'pages/dean.html',
+    'director':     'pages/director.html',
+    'staff':        'pages/urds-staff.html',
+    'cluster':      'pages/cluster.html',
+    'researcher':   'pages/evaluator.html'
   };
 
-}
+  // ==================================================================
+  // Utility Helpers
+  // ==================================================================
+  const qs = (sel) => document.querySelector(sel);
+  const qsa = (sel) => document.querySelectorAll(sel);
+
+  // Safe localStorage get + parse
+  const getUser = () => {
+    try {
+      const data = localStorage.getItem('currentUser');
+      return data ? JSON.parse(data) : null;
+    } catch (e) {
+      console.error('Failed to parse currentUser:', e);
+      return null;
+    }
+  };
+
+  // ==================================================================
+  // Check if user is already logged in → redirect immediately
+  // ==================================================================
+  function checkAuth() {
+    const user = getUser();
+    if (user?.displayRole && roleRedirectMap[user.displayRole]) {
+      console.log('[AUTH] Already logged in as:', user.displayRole);
+      window.location.href = roleRedirectMap[user.displayRole];
+    }
+  }
+
+  // ==================================================================
+  // Toggle between Sign In and Sign Up forms
+  // ==================================================================
+  window.showSignUp = () => {
+    qs('#signInForm')?.classList.add('hidden');
+    qs('#signUpForm')?.classList.remove('hidden');
+  };
+
+  window.showSignIn = () => {
+    qs('#signUpForm')?.classList.add('hidden');
+    qs('#signInForm')?.classList.remove('hidden');
+  };
+
+  // ==================================================================
+  // Handle Login
+  // ==================================================================
+window.handleSignIn = (e) => {
+  e.preventDefault();
+
+  const email = qs('#signInForm input[type="email"]')?.value.trim();
+  const password = qs('#signInForm input[type="password"]')?.value;
+  const select = qs('#signInForm select');
+  const roleValue = select?.value;  // ← This is "faculty", "dean", etc.
+
+  if (!email || !password || !roleValue) {
+    alert('Please fill all fields and select a role.');
+    return;
+  }
+
+  // Save session using the short value
+  const session = {
+    email,
+    role: roleValue,           // short code
+    displayRole: select.selectedOptions[0].textContent.trim(), // optional: for display
+    loggedInAt: Date.now()
+  };
+
+  localStorage.setItem('currentUser', JSON.stringify(session));
+
+  // Redirect using the short value
+  const target = roleRedirectMap[roleValue];
+  if (target) {
+    setTimeout(() => window.location.href = target, 500);
+  } else {
+    alert('Role not supported: ' + roleValue);
+  }
+};
+
+  // ==================================================================
+  // Handle Registration
+  // ==================================================================
+  window.handleSignUp = (e) => {
+    e.preventDefault();
+
+    const form = e.target;
+    const firstName = form.querySelector('input[placeholder="Enter your first name"]').value.trim();
+    const lastName = form.querySelector('input[placeholder="Enter your last name"]').value.trim();
+    const email = form.querySelector('input[type="email"]').value.trim();
+    const department = form.querySelector('input[placeholder="Enter your institution"]').value.trim();
+    const roleSelect = form.querySelector('select');
+    const displayRole = roleSelect?.options[roleSelect.selectedIndex]?.text || '';
+    const roleValue = roleSelect?.value || '';
+    const password = form.querySelector('input[type="password"]').value;
+    const confirmPassword = form.querySelectorAll('input[type="password"]')[1].value;
+    const terms = form.querySelector('#terms').checked;
+
+    if (!firstName || !lastName || !email || !roleValue || !terms) {
+      alert('Please fill all required fields and accept terms.');
+      return false;
+    }
+
+    if (password !== confirmPassword) {
+      alert('Passwords do not match!');
+      return false;
+    }
+
+    if (password.length < 8) {
+      alert('Password must be at least 8 characters.');
+      return false;
+    }
+
+    // Save registered user (for demo)
+    const newUser = {
+      firstName, lastName, email, department,
+      role: roleValue,
+      displayRole,
+      createdAt: new Date().toISOString()
+    };
+
+    localStorage.setItem('registered_' + email, JSON.stringify(newUser));
+    alert('Account created successfully! You can now sign in.');
+
+    // Auto-switch to login
+    showSignIn();
+    // Pre-fill email
+    qs('#signInForm input[type="email"]').value = email;
+
+    return false;
+  };
+
+  // ==================================================================
+  // Logout (you can call this from any dashboard)
+  // ==================================================================
+  window.logout = () => {
+    localStorage.removeItem('currentUser');
+    window.location.href = 'homepage.html';
+  };
+
+  // ==================================================================
+  // Initialize when DOM + injected content is ready
+  // ==================================================================
+  function initAuthSystem() {
+    checkAuth(); // Redirect if already logged in
+
+    // Re-attach event listeners to injected forms
+    const signInForm = qs('#signInForm form');
+    const signUpForm = qs('#signUpForm form');
+
+    if (signInForm) {
+      signInForm.removeEventListener('submit', handleSignIn); // prevent duplicate
+      signInForm.addEventListener('submit', handleSignIn);
+    }
+
+    if (signUpForm) {
+      signUpForm.removeEventListener('submit', handleSignUp);
+      signUpForm.addEventListener('submit', handleSignUp);
+    }
+
+    console.log('[URDS] Auth system initialized.');
+  }
+
+  // ==================================================================
+  // Load login component and initialize
+  // ==================================================================
+  fetch('components/login.html')
+    .then(res => {
+      if (!res.ok) throw new Error('login.html not found');
+      return res.text();
+    })
+    .then(html => {
+      const placeholder = document.getElementById('access_portal-placeholder');
+      if (placeholder) {
+        placeholder.innerHTML = html;
+        initAuthSystem();
+      }
+    })
+    .catch(err => {
+      console.error('Failed to load login component:', err);
+      document.getElementById('access_portal-placeholder').innerHTML =
+        '<p style="color:red; text-align:center;">Error loading login form.</p>';
+    });
+
+  // ==================================================================
+  // Expose for debugging
+  // ==================================================================
+  window._URDS = {
+    checkAuth,
+    logout,
+    roleRedirectMap,
+    getUser
+  };
+
+})();

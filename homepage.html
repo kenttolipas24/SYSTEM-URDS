@@ -3,231 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URDS Research Portal</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        .auth-container {
-            background: white;
-            width: 100%;
-            max-width: 420px;
-            border-radius: 16px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
-            overflow: hidden;
-            animation: fadeIn 0.6s ease-out;
-        }
-        .auth-header {
-            text-align: center;
-            padding: 2rem 1rem 1rem;
-            background: #2563eb;
-            color: white;
-        }
-        .auth-header h2 {
-            font-size: 1.8rem;
-            font-weight: 600;
-        }
-        .auth-body {
-            padding: 2rem;
-        }
-        .form-group {
-            margin-bottom: 1.2rem;
-        }
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 500;
-            color: #374151;
-        }
-        input, select {
-            width: 100%;
-            padding: 0.9rem 1rem;
-            border: 1.5px solid #e2e8f0;
-            border-radius: 10px;
-            font-size: 1rem;
-            transition: 0.3s;
-        }
-        input:focus, select:focus {
-            outline: none;
-            border-color: #2563eb;
-            box-shadow: 0 0 0 4px rgba(37,99,235,0.2);
-        }
-        .btn {
-            width: 100%;
-            padding: 1rem;
-            background: #2563eb;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 1rem;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .btn:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
-        }
-        .link-text {
-            text-align: center;
-            margin-top: 1.5rem;
-            font-size: 0.95rem;
-        }
-        .link-text a {
-            color: #2563eb;
-            text-decoration: none;
-            font-weight: 600;
-            cursor: pointer;
-        }
-        .link-text a:hover { text-decoration: underline; }
-
-        /* Form Switching */
-        .auth-form { display: none; }
-        .auth-form.active { display: block; animation: slideIn 0.5s ease; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: scale(0.9); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
+    <title>University Research and Development System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" type="image/png" href="../URDS2/assets/pictures/UEP_logo-transparent.png"> <!-- Favicon -->
+    <link rel="stylesheet" href="css/base.css">     <!-- Link to base CSS -->
+    <link rel="stylesheet" href="css/navbar.css">   <!-- Link to navbar CSS -->
+    <link rel="stylesheet" href="css/homepage.css"> <!-- Link to homepage CSS -->
+    <link rel="stylesheet" href="css/login.css">    <!-- Link to login CSS -->
 </head>
 <body>
+<!-- main content -->
+    <!-- Navbar -->
+    <div id="navbar-placeholder"></div>
 
-    <div class="auth-container">
-        <div class="auth-header">
-            <h2>URDS Research Portal</h2>
+    <div class="main-container">
+        <div class="watermark"><img src="../URDS2/assets/pictures/UEP_logo-transparent.png"></div>
+        
+        <div class="left-section">
+            <h1 class="title">UNIVERSITY RESEARCH AND DEVELOPMENT SYSTEM</h1>
+            
+            <div class="features">
+                <div class="feature-item">
+                    <div class="check-icon">✓</div>
+                    <div class="feature-content">
+                        <h3>Easy Registration</h3>
+                        <p>Quick and simple account creation process</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="check-icon">✓</div>
+                    <div class="feature-content">
+                        <h3>Secure Access</h3>
+                        <p>Your data is protected with industry standards</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="check-icon">✓</div>
+                    <div class="feature-content">
+                        <h3>Multiple Roles</h3>
+                        <p>Choose from different user roles and responsibilities</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="auth-body">
-
-            <!-- LOGIN FORM (SHOWN FIRST) -->
-            <div id="loginForm" class="auth-form active">
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" id="loginEmail" placeholder="Enter your email" required>
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" id="loginPassword" placeholder="Enter your password" required>
-                </div>
-                <div class="form-group">
-                    <label>Role</label>
-                    <select id="loginRoleSelect" required>
-                        <option value="" disabled selected>-- Choose your role --</option>
-                        <option value="dean">Dean</option>
-                        <option value="coordinator">Research Coordinator</option>
-                        <option value="faculty">Faculty Researcher</option>
-                    </select>
-                </div>
-                <button class="btn" onclick="login()">
-                    <i class="fas fa-sign-in-alt"></i> Login
-                </button>
-                <div class="link-text">
-                    Don't have an account? <a onclick="showSignup()">Sign up here</a>
-                </div>
-            </div>
-
-            <!-- SIGNUP FORM (HIDDEN UNTIL CLICKED) -->
-            <div id="signupForm" class="auth-form">
-                <div class="form-group">
-                    <label>Full Name</label>
-                    <input type="text" id="signupFullName" placeholder="Enter your full name">
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" id="signupEmail" placeholder="Enter your email">
-                </div>
-                <div class="form-group">
-                    <label>Password</label>
-                    <input type="password" id="signupPassword" placeholder="Enter your password">
-                </div>
-                <div class="form-group">
-                    <label>Confirm Password</label>
-                    <input type="password" id="signupConfirmPassword" placeholder="Confirm password">
-                </div>
-                <div class="form-group">
-                    <label>Role</label>
-                    <select id="signupRoleSelect">
-                        <option value="" disabled selected>-- Choose your role --</option>
-                        <option value="faculty">Faculty Researcher</option>
-                        <option value="coordinator">Research Coordinator</option>
-                        <option value="dean">Dean</option>
-                    </select>
-                </div>
-                <button class="btn" onclick="signup()">
-                    <i class="fas fa-user-plus"></i> Create Account
-                </button>
-                <div class="link-text">
-                    Already have an account? <a onclick="showLogin()">Login here</a>
-                </div>
-            </div>
-
+        <div class="right-section">
+            <div id="access_portal-placeholder"></div>
         </div>
     </div>
 
-    <script>
-        function showSignup() {
-            document.getElementById('loginForm').classList.remove('active');
-            document.getElementById('signupForm').classList.add('active');
-        }
-        function showLogin() {
-            document.getElementById('signupForm').classList.remove('active');
-            document.getElementById('loginForm').classList.add('active');
-        }
-
-        function login() {
-            const email = document.querySelector('#loginEmail').value.trim();
-            const password = document.querySelector('#loginPassword').value;
-            const role = document.querySelector('#loginRoleSelect').value;
-
-            if (!email || !password || !role) return alert("Please fill all fields");
-
-            localStorage.setItem('currentUser', JSON.stringify({ email, role }));
-            setTimeout(() => {
-                if (role === 'dean') location.href = 'dean.html';
-                else if (role === 'coordinator') location.href = 'coordinator.html';
-                else if (role === 'faculty') location.href = 'faculty.html';
-            }, 800);
-        }
-
-        function signup() {
-            const name = document.querySelector('#signupFullName').value.trim();
-            const email = document.querySelector('#signupEmail').value.trim();
-            const pass = document.querySelector('#signupPassword').value;
-            const confirm = document.querySelector('#signupConfirmPassword').value;
-            const role = document.querySelector('#signupRoleSelect').value;
-
-            if (!name || !email || !pass || !confirm || !role) return alert("All fields required");
-            if (pass !== confirm) return alert("Passwords do not match");
-            if (pass.length < 6) return alert("Password too short");
-
-            localStorage.setItem('currentUser', JSON.stringify({ email, role }));
-            alert("Account created successfully!");
-            setTimeout(() => location.href = role + '.html', 800);
-        }
-
-        // Auto redirect if already logged in
-        if (localStorage.getItem('currentUser')) {
-            const user = JSON.parse(localStorage.getItem('currentUser'));
-            location.href = user.role + '.html';
-        }
-    </script>
+    <script src="js/navbar.js"></script> <!-- Link to navbar JS -->
+    <script src="js/homepage.js"></script> <!-- Link to homepage JS -->
 </body>
 </html>
