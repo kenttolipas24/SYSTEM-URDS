@@ -1,0 +1,165 @@
+/* homepage styles */
+
+.main-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 2rem 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    gap: 3rem;
+    position: relative;
+    min-height: calc(100vh - 82px);
+}
+
+.watermark {
+    position: absolute;
+    top: 50%;
+    left: 65%;
+    transform: translate(-50%, -50%);
+    opacity: 0.05;                
+    pointer-events: none;         
+    z-index: 0;
+    width: 80vw;                  
+    max-width: 900px;             
+    height: auto;                 
+    user-select: none;            
+}
+
+.left-section {
+    flex: 1;
+    z-index: 1;
+}
+
+.title {
+    color: #1a8ccc;
+    font-size: 3.2rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    animation: fadeInLeft 0.8s ease-out;
+}
+
+.features {
+    margin-top: 2rem;
+    animation: fadeInLeft 1s ease-out 0.3s backwards;
+}
+
+.feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.check-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #17a2b8 0%, #1ab5cc 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.feature-content h3 {
+    color: #333;
+    font-size: 1.15rem;
+    margin-bottom: 0.2rem;
+}
+
+.feature-content p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* keyframes for animations */
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.form-transition {
+    animation: fadeIn 0.4s ease-out;
+}
+
+@media (max-width: 1024px) {
+    .main-container {
+        flex-direction: column;
+        padding: 2rem;
+    }
+
+    .left-section {
+        text-align: center;
+    }
+
+    .title {
+        font-size: 3rem;
+    }
+
+    .right-section {
+        flex: 0 0 auto;
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .feature-item {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 1rem;
+    }
+
+    .university-name {
+        font-size: 1rem;
+    }
+
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .auth-card {
+        padding: 2rem;
+    }
+
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
