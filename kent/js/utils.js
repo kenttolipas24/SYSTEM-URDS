@@ -94,15 +94,3 @@ function getFromLocalStorage(key) {
     const data = localStorage.getItem(key);
     return data ? JSON.parse(data) : null;
 }
-
-// Logout Functions
-
- // Dean Logout Function
-function logout() {
-    // Remove user session
-    localStorage.removeItem('currentUser');
-    
-    // Redirect to login page (works from any dashboard inside /pages/)
-    window.location.href = '../frontpage.html';
-    
-}

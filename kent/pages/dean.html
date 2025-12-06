@@ -3,147 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dean Dashboard - URDS</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Only base and dean CSS -->
+    <title>URDS - Dean Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" type="image/png" href="../assets/pictures/UEP_logo-transparent.png"> <!-- Favicon -->
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/dean.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-content">
-            <div>
-                <h1>Dean of Engineering</h1>
-                <p>Engineering Department</p>
-            </div>
-            <button class="logout-btn" onclick="logout()">
-                <i class="fas fa-sign-out-alt"></i>
-                Logout
-            </button>
-        </div>
-    </nav>
-
     <div class="container">
-        <!-- Stats Grid -->
-        <div class="stats-grid">
-            <div class="stat-card yellow">
-                <div class="stat-info">
-                    <p>Pending Endorsement</p>
-                    <h2 id="pendingEndorsement">1</h2>
-                </div>
-                <i class="fas fa-clock stat-icon yellow"></i>
-            </div>
-            <div class="stat-card green">
-                <div class="stat-info">
-                    <p>Endorsed</p>
-                    <h2 id="endorsedTotal">1</h2>
-                </div>
-                <i class="fas fa-check-circle stat-icon green"></i>
-            </div>
-            <div class="stat-card red">
-                <div class="stat-info">
-                    <p>Rejected</p>
-                    <h2 id="rejectedTotal">0</h2>
-                </div>
-                <i class="fas fa-times-circle stat-icon red"></i>
-            </div>
-            <div class="stat-card purple">
-                <div class="stat-info">
-                    <p>Total Proposals</p>
-                    <h2 id="totalProposals">5</h2>
-                </div>
-                <i class="fas fa-file-alt stat-icon purple"></i>
-            </div>
-        </div>
+        <!-- Sidebar -->
+        <div id="sidebar-placeholder"></div>
+        
 
-        <!-- Tabs -->
-        <div class="tabs-container">
-            <div class="tabs">
-                <button class="tab active" onclick="switchTab('dean', 'endorsements')">
-                    <i class="fas fa-check-circle"></i>
-                    Endorsements
-                </button>
-                <button class="tab" onclick="switchTab('dean', 'history')">
-                    <i class="fas fa-history"></i>
-                    History
-                </button>
-            </div>
+        <!-- Main Content -->
+        <div class="main-content">
+            <div id="deanNav-placeholder"></div>
 
-            <div class="tab-content">
-                <!-- Endorsements Tab -->
-                <div id="dean-endorsements" class="tab-panel active">
-                    <div class="info-box blue">
-                        <h3>Proposal Endorsement</h3>
-                        <p>Review and endorse research proposals. Each proposal requires 5 copies to be submitted to URDS.</p>
+            <!-- Dashboard Page -->
+            <div id="dash_con-placeholder"></div>
+
+
+            <!-- Proposals Page -->
+            <div id="proposals" class="page">
+                <div class="content">
+                    <h2 class="page-title">Research Proposals</h2>
+                    <p class="page-subtitle">View and manage research submissions.</p>
+
+                    <div class="action-btns">
+                        <div class="search-box" style="flex: 1;">
+                            <input type="text" placeholder="Search proposals..." style="width: 100%;">
+                        </div>
+                        <button class="btn">🔍 Filter</button>
+                        <button class="btn">⬇ Export</button>
                     </div>
 
-                    <div class="search-box">
-                        <i class="fas fa-search"></i>
-                        <input type="text" id="searchEndorsements" placeholder="Search proposals..." onkeyup="filterEndorsements()">
+                    <div class="section-card">
+                        <table class="proposals-table">
+                            <thead>
+                                <tr>
+                                    <th>Proposal Details</th>
+                                    <th>Researcher</th>
+                                    <th>Submission Date</th>
+                                    <th>Budget</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="proposal-title">Biodiversity Assessment of Mt. Apo Natural Park</div>
+                                        <div class="proposal-id">RP-2025-001</div>
+                                    </td>
+                                    <td>
+                                        <div class="researcher-name">Prof. Elena Gilbert</div>
+                                        <div class="researcher-dept">Biology Dept</div>
+                                    </td>
+                                    <td>Dec 02, 2025</td>
+                                    <td>₱ 150,000.00</td>
+                                    <td><span class="status-badge pending">Pending TWG</span></td>
+                                    <td><button class="view-all-btn">View Details</button></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="proposal-title">AI-Driven Traffic Management System</div>
+                                        <div class="proposal-id">RP-2025-002</div>
+                                    </td>
+                                    <td>
+                                        <div class="researcher-name">Engr. Damon Salvatore</div>
+                                        <div class="researcher-dept">Engineering</div>
+                                    </td>
+                                    <td>Nov 28, 2025</td>
+                                    <td>₱ 250,000.00</td>
+                                    <td><span class="status-badge revision">For Revision</span></td>
+                                    <td><button class="view-all-btn">View Details</button></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="proposal-title">Sustainable Agriculture Practices in Rice Production</div>
+                                        <div class="proposal-id">RP-2025-003</div>
+                                    </td>
+                                    <td>
+                                        <div class="researcher-name">Dr. Caroline Forbes</div>
+                                        <div class="researcher-dept">Agriculture</div>
+                                    </td>
+                                    <td>Nov 25, 2025</td>
+                                    <td>₱ 180,000.00</td>
+                                    <td><span class="status-badge endorsed">Endorsed</span></td>
+                                    <td><button class="view-all-btn">View Details</button></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="proposal-title">Mental Health Impact of Hybrid Learning</div>
+                                        <div class="proposal-id">RP-2025-004</div>
+                                    </td>
+                                    <td>
+                                        <div class="researcher-name">Prof. Alaric Saltzman</div>
+                                        <div class="researcher-dept">Psychology</div>
+                                    </td>
+                                    <td>Nov 20, 2025</td>
+                                    <td>₱ 50,000.00</td>
+                                    <td><span class="status-badge review">In-House Review</span></td>
+                                    <td><button class="view-all-btn">View Details</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="proposals-list" id="deanEndorsementsList"></div>
                 </div>
+            </div>
 
-                <!-- History Tab -->
-                <div id="dean-history" class="tab-panel">
-                    <div class="proposals-list" id="deanHistoryList"></div>
+            <!-- Faculty Page -->
+            <div id="faculty" class="page">
+                <div class="content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                        <div>
+                            <h2 class="page-title">Faculty Management</h2>
+                            <p class="page-subtitle">Manage list of faculty researchers eligible for proposals.</p>
+                        </div>
+                        <button class="btn-primary btn">+ Add Faculty</button>
+                    </div>
+
+                    <div class="section-card">
+                        <h3 style="margin-bottom: 20px;">Faculty Directory</h3>
+                        <div class="search-box" style="margin-bottom: 20px;">
+                            <input type="text" placeholder="Search faculty..." style="width: 100%;">
+                        </div>
+                        <table class="faculty-table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Rank</th>
+                                    <th>Department</th>
+                                    <th>Research Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Prof. Elena Gilbert</td>
+                                    <td>Associate Professor III</td>
+                                    <td>Biology</td>
+                                    <td><span class="status-badge" style="background: #e3f2fd; color: #1976d2;">Active</span></td>
+                                    <td>
+                                        <div class="faculty-actions">
+                                            <button class="icon-btn">✏️</button>
+                                            <button class="icon-btn delete">🗑️</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Dr. Alaric Saltzman</td>
+                                    <td>Professor I</td>
+                                    <td>History</td>
+                                    <td><span class="status-badge" style="background: #e3f2fd; color: #1976d2;">Active</span></td>
+                                    <td>
+                                        <div class="faculty-actions">
+                                            <button class="icon-btn">✏️</button>
+                                            <button class="icon-btn delete">🗑️</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Mr. Jeremy Gilbert</td>
+                                    <td>Instructor I</td>
+                                    <td>Arts</td>
+                                    <td><span class="status-badge" style="background: #fff3e0; color: #f57c00;">On Leave</span></td>
+                                    <td>
+                                        <div class="faculty-actions">
+                                            <button class="icon-btn">✏️</button>
+                                            <button class="icon-btn delete">🗑️</button>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reports Page -->
+            <div id="reports" class="page">
+                <div class="content">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px;">
+                        <div>
+                            <h2 class="page-title">Reports & Analytics</h2>
+                            <p class="page-subtitle">Comprehensive overview of research performance.</p>
+                        </div>
+                        <select style="padding: 10px 20px; border: 1px solid #e0e0e0; border-radius: 6px; font-size: 14px;">
+                            <option>Fiscal Year 2025</option>
+                            <option>Fiscal Year 2024</option>
+                            <option>Fiscal Year 2023</option>
+                        </select>
+                    </div>
+
+                    <div class="section-grid">
+                        <div class="section-card">
+                            <h3 style="margin-bottom: 20px;">Proposals by Department</h3>
+                            <div class="chart-container" style="height: 320px;">
+                                <div class="bar" style="height: 180px;">
+                                    <div class="bar-label">Biology</div>
+                                </div>
+                                <div class="bar" style="height: 120px;">
+                                    <div class="bar-label">Chemistry</div>
+                                </div>
+                                <div class="bar" style="height: 80px;">
+                                    <div class="bar-label">Physics</div>
+                                </div>
+                                <div class="bar" style="height: 160px;">
+                                    <div class="bar-label">Math</div>
+                                </div>
+                                <div class="bar" style="height: 260px;">
+                                    <div class="bar-label">Comp Sci</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section-card">
+                            <h3 style="margin-bottom: 20px;">Research Status Distribution</h3>
+                            <svg class="donut-chart" viewBox="0 0 200 200">
+                                <circle cx="100" cy="100" r="80" class="donut-segment" stroke="#2196f3" stroke-dasharray="377 503" stroke-dashoffset="0"></circle>
+                                <circle cx="100" cy="100" r="80" class="donut-segment" stroke="#4caf50" stroke-dasharray="75 503" stroke-dashoffset="-377"></circle>
+                                <circle cx="100" cy="100" r="80" class="donut-segment" stroke="#ff9800" stroke-dasharray="51 503" stroke-dashoffset="-452"></circle>
+                            </svg>
+                            <div class="chart-legend">
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background: #2196f3;"></div>
+                                    <span>Completed</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background: #4caf50;"></div>
+                                    <span>Ongoing</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background: #ff9800;"></div>
+                                    <span>Terminated</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Endorse Modal -->
-    <div id="endorseModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Endorse Proposal</h2>
-            </div>
-            <div class="modal-body">
-                <p>Are you sure you want to endorse this proposal?</p>
-                <p><strong id="endorseProposalTitle"></strong></p>
-                <p id="endorseProposalAuthor"></p>
-                
-                <div class="form-group" style="margin-top: 1.5rem;">
-                    <label>Endorsement Notes (Optional)</label>
-                    <textarea id="endorseNotes" rows="3" placeholder="Add any notes..."></textarea>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-outline" onclick="closeEndorseModal()">Cancel</button>
-                <button class="btn btn-success" onclick="confirmEndorsement()">
-                    <i class="fas fa-check"></i>
-                    Endorse
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Reject Modal -->
-    <div id="rejectModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Reject Proposal</h2>
-            </div>
-            <div class="modal-body">
-                <p>Are you sure you want to reject this proposal?</p>
-                <p><strong id="rejectProposalTitle"></strong></p>
-                
-                <div class="form-group" style="margin-top: 1.5rem;">
-                    <label>Reason for Rejection (Required)</label>
-                    <textarea id="rejectReason" rows="4" placeholder="Please provide reason..." required></textarea>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-outline" onclick="closeRejectModal()">Cancel</button>
-                <button class="btn" style="background-color: #ef4444; color: white;" onclick="confirmRejection()">
-                    <i class="fas fa-times"></i>
-                    Reject
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <script src="../js/utils.js"></script>
     <script src="../js/dashboard-dean.js"></script>
+    <script src="../js/components-js/dean/dash-con.js"></script>
+    <script src="../js/components-js/dean/sidebar.js"></script>
+    <script src="../js/components-js/dean/deanNav.js"></script>
 </body>
 </html>
