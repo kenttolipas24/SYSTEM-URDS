@@ -1,3 +1,4 @@
+/* ========== Reset / baseline ========== */
 * {
     margin: 0;
     padding: 0;
@@ -7,14 +8,39 @@
 
 body {
     background: #fafafa;
+    overflow: hidden;
+    /* hide scroll briefly during initial load animation */
 }
 
-.container {
-    display: flex;
-    height: 100vh;
+/* ========== Animations ========== */
+@keyframes fadeInApp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
-/* Sidebar */
+@keyframes slideInSidebar {
+    from {
+        transform: translateX(-250px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeInApp 0.8s ease-out forwards;
+}
+
 .sidebar {
     width: 240px;
     background: white;
@@ -22,8 +48,27 @@ body {
     display: flex;
     flex-direction: column;
     height: 100vh;
+
+    /* slide-in effect for sidebar */
+    transform: translateX(-250px);
+    opacity: 0;
+    animation: slideInSidebar 0.8s ease-out forwards;
+    animation-delay: 0.2s;
 }
 
+/* optional: highlight class for emphasis */
+.highlight {
+    font-weight: bold;
+    color: #2196f3;
+}
+
+/* ========== Layout & Components ========== */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar / logo / nav */
 .logo {
     padding: 20px;
     display: flex;
@@ -102,14 +147,14 @@ body {
     background: #fee;
 }
 
-/* Main Content */
+/* Main content area */
 .main-content {
     flex: 1;
     overflow-y: auto;
+    /* scrollable content area */
     background: #fafafa;
 }
 
-/* Header */
 .header {
     background: white;
     padding: 20px 40px;
@@ -168,10 +213,10 @@ body {
 
 .user-details p {
     font-size: 12px;
-    color: #7f8c8d;
+    color: #7f8c255;
 }
 
-/* Content */
+/* Content and pages */
 .content {
     padding: 40px;
 }
@@ -203,7 +248,7 @@ body {
     background: white;
     padding: 24px;
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     position: relative;
 }
 
@@ -218,10 +263,25 @@ body {
     font-size: 24px;
 }
 
-.stat-icon.blue { background: #e3f2fd; color: #2196f3; }
-.stat-icon.orange { background: #fff3e0; color: #ff9800; }
-.stat-icon.red { background: #ffebee; color: #f44336; }
-.stat-icon.green { background: #e8f5e9; color: #4caf50; }
+.stat-icon.blue {
+    background: #e3f2fd;
+    color: #2196f3;
+}
+
+.stat-icon.orange {
+    background: #fff3e0;
+    color: #ff9800;
+}
+
+.stat-icon.red {
+    background: #ffebee;
+    color: #f44336;
+}
+
+.stat-icon.green {
+    background: #e8f5e9;
+    color: #4caf50;
+}
 
 .stat-label {
     color: #7f8c8d;
@@ -241,7 +301,7 @@ body {
     color: #7f8c8d;
 }
 
-/* Section Grid */
+/* Section Grid (tables / charts) */
 .section-grid {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -252,7 +312,7 @@ body {
     background: white;
     padding: 24px;
     border-radius: 12px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
 .section-header {
@@ -285,7 +345,7 @@ body {
     background: #f5f5f5;
 }
 
-/* Tables */
+/* Tables styles */
 .proposals-table,
 .faculty-table {
     width: 100%;
@@ -332,7 +392,7 @@ body {
     color: #7f8c8d;
 }
 
-/* Status tags */
+/* Status badges */
 .status-badge {
     padding: 6px 12px;
     border-radius: 20px;
@@ -361,7 +421,7 @@ body {
     color: #7b1fa2;
 }
 
-/* Simple bar chart */
+/* Chart containers & bar chart */
 .chart-container {
     height: 280px;
     display: flex;
@@ -392,7 +452,7 @@ body {
     white-space: nowrap;
 }
 
-/* Action buttons */
+/* Buttons */
 .action-btns {
     display: flex;
     gap: 12px;
@@ -427,7 +487,7 @@ body {
     background: #1976d2;
 }
 
-/* Users table actions */
+/* Table action icons for users */
 .faculty-actions {
     display: flex;
     gap: 12px;
@@ -488,7 +548,7 @@ body {
     border-radius: 50%;
 }
 
-/* Pages */
+/* Page display control */
 .page {
     display: none;
 }
@@ -497,7 +557,7 @@ body {
     display: block;
 }
 
-/* Scrollbars (optional) */
+/* Scrollbars (optional styling) */
 .nav::-webkit-scrollbar,
 .main-content::-webkit-scrollbar {
     width: 6px;

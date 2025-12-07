@@ -1,501 +1,428 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>URDS - Admin Dashboard</title>
 
     <!-- Icons -->
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
 
-    <!-- Favicon (adjust path if needed) -->
-    <link rel="icon" type="image/png" href="../assets/pictures/UEP_logo-transparent.png">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/pictures/UEP_logo-transparent.png" />
 
     <!-- Styles -->
-    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="admin.css" />
 </head>
+
 <body>
-<div class="container">
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <div class="logo">
-            <div class="logo-icon">
-                <img src="../assets/pictures/UEP_logo-transparent.png" alt="UEP Logo">
-            </div>
-            <div class="logo-text">
-                <h3>URDS Portal</h3>
-                <p>Admin / Coordinator</p>
-            </div>
-        </div>
-
-        <div class="nav">
-            <div class="nav-item active" data-target="page-dashboard">
-                <i class="fas fa-home nav-icon"></i>
-                <span>Dashboard</span>
-            </div>
-
-            <div class="nav-item" data-target="page-projects">
-                <i class="fas fa-file-alt nav-icon"></i>
-                <span>Research Projects</span>
-            </div>
-
-            <div class="nav-item" data-target="page-users">
-                <i class="fas fa-users-cog nav-icon"></i>
-                <span>Users & Roles</span>
-            </div>
-
-            <div class="nav-item" data-target="page-reports">
-                <i class="fas fa-chart-line nav-icon"></i>
-                <span>Reports & Analytics</span>
-            </div>
-
-            <div class="nav-item" data-target="page-settings">
-                <i class="fas fa-cogs nav-icon"></i>
-                <span>System Settings</span>
-            </div>
-        </div>
-
-        <div class="sidebar-footer">
-            <div class="logout" id="admin-logout-btn">
-                <i class="fas fa-sign-out-alt"></i>
-                <span>Logout</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="main-content">
-        <!-- Header -->
-        <div class="header">
-            <div>
-                <h1>Admin Dashboard</h1>
-                <p class="page-subtitle">
-                    Central control panel for URDS research management.
-                </p>
-            </div>
-
-            <div class="header-right">
-                <div class="search-box">
-                    <input type="text" id="admin-global-search"
-                           placeholder="Search projects, users, departments...">
+    <div class="container fade-in">
+        <div class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="assets/pictures/UEP_logo-transparent.png" alt="UEP Logo" />
                 </div>
+                <div class="logo-text">
+                    <h3>URDS Portal</h3>
+                    <p>Admin / Coordinator</p>
+                </div>
+            </div>
 
-                <div class="user-info">
-                    <div class="user-details">
-                        <h4 id="admin-display-name">URDS Admin</h4>
-                        <p id="admin-display-role">Coordinator</p>
-                    </div>
-                    <div class="user-avatar" id="admin-avatar">UA</div>
+            <div class="nav">
+                <div class="nav-item active" data-target="page-dashboard">
+                    <i class="fas fa-home nav-icon"></i>
+                    <span>Dashboard</span>
+                </div>
+                <div class="nav-item" data-target="page-projects">
+                    <i class="fas fa-file-alt nav-icon"></i>
+                    <span>Research Projects</span>
+                </div>
+                <div class="nav-item" data-target="page-users">
+                    <i class="fas fa-users-cog nav-icon"></i>
+                    <span>Users & Roles</span>
+                </div>
+                <div class="nav-item" data-target="page-reports">
+                    <i class="fas fa-chart-line nav-icon"></i>
+                    <span>Reports & Analytics</span>
+                </div>
+                <div class="nav-item" data-target="page-settings">
+                    <i class="fas fa-cogs nav-icon"></i>
+                    <span>System Settings</span>
+                </div>
+            </div>
+
+            <div class="sidebar-footer" onclick="PagesLogout">
+                <div class="logout" id="admin-logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
                 </div>
             </div>
         </div>
 
-        <!-- PAGES -->
-
-        <!-- Dashboard -->
-        <div id="page-dashboard" class="page active">
-            <div class="content">
-                <div class="page-title">
-                    <h2>Overview</h2>
-                </div>
-                <p class="page-subtitle">
-                    High-level summary of research activities, approvals, and user engagement across the institution.
-                </p>
-
-                <div class="stats-grid">
-                    <div class="stat-card">
-                        <div class="stat-icon blue">
-                            <i class="fas fa-file-alt"></i>
-                        </div>
-                        <div class="stat-label">Total Research Proposals</div>
-                        <div class="stat-value" id="admin-total-proposals">128</div>
-                        <div class="stat-change">Across all colleges</div>
-                    </div>
-
-                    <div class="stat-card">
-                        <div class="stat-icon orange">
-                            <i class="fas fa-hourglass-half"></i>
-                        </div>
-                        <div class="stat-label">Pending Reviews</div>
-                        <div class="stat-value" id="admin-pending-reviews">37</div>
-                        <div class="stat-change">Awaiting dean/URDS decision</div>
-                    </div>
-
-                    <div class="stat-card">
-                        <div class="stat-icon green">
-                            <i class="fas fa-check-circle"></i>
-                        </div>
-                        <div class="stat-label">Approved & Endorsed</div>
-                        <div class="stat-value" id="admin-approved-projects">76</div>
-                        <div class="stat-change">Ready for implementation</div>
-                    </div>
-
-                    <div class="stat-card">
-                        <div class="stat-icon red">
-                            <i class="fas fa-user-friends"></i>
-                        </div>
-                        <div class="stat-label">Active Users</div>
-                        <div class="stat-value" id="admin-active-users">211</div>
-                        <div class="stat-change">Researchers, deans, reviewers, URDS staff</div>
-                    </div>
+        <div class="main-content">
+            <div class="header">
+                <div>
+                    <h1>Admin Dashboard</h1>
+                    <p class="page-subtitle">
+                        Central control panel for <span class="highlight">URDS</span> research management.
+                    </p>
                 </div>
 
-                <div class="section-grid">
-                    <div class="section-card">
-                        <div class="section-header">
-                            <h3>Recent Proposals (System-wide)</h3>
-                            <button class="view-all-btn">
-                                <i class="fas fa-list"></i>
-                                View all proposals
-                            </button>
+                <div class="header-right">
+                    <div class="search-box">
+                        <input type="text" id="admin-global-search"
+                            placeholder="Search projects, users, departments…" />
+                    </div>
+                    <div class="user-info">
+                        <div class="user-details">
+                            <h4 id="admin-display-name">URDS Admin</h4>
+                            <p id="admin-display-role">Coordinator</p>
+                        </div>
+                        <div class="user-avatar" id="admin-avatar">UA</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Pages -->
+
+            <!-- Dashboard Page -->
+            <div id="page-dashboard" class="page active">
+                <div class="content">
+                    <div class="page-title">
+                        <h2>Overview</h2>
+                    </div>
+                    <p class="page-subtitle">
+                        High-level summary of research activities, approvals, and user engagement.
+                    </p>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon blue">
+                                <i class="fas fa-file-alt"></i>
+                            </div>
+                            <div class="stat-label">Total Research Proposals</div>
+                            <div class="stat-value" id="admin-total-proposals">128</div>
+                            <div class="stat-change">Across all colleges</div>
                         </div>
 
-                        <table class="proposals-table">
-                            <thead>
+                        <div class="stat-card">
+                            <div class="stat-icon orange">
+                                <i class="fas fa-hourglass-half"></i>
+                            </div>
+                            <div class="stat-label">Pending Reviews</div>
+                            <div class="stat-value" id="admin-pending-reviews">37</div>
+                            <div class="stat-change">Awaiting dean/URDS decision</div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon green">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <div class="stat-label">Approved & Endorsed</div>
+                            <div class="stat-value" id="admin-approved-projects">76</div>
+                            <div class="stat-change">Ready for implementation</div>
+                        </div>
+
+                        <div class="stat-card">
+                            <div class="stat-icon red">
+                                <i class="fas fa-user-friends"></i>
+                            </div>
+                            <div class="stat-label">Active Users</div>
+                            <div class="stat-value" id="admin-active-users">211</div>
+                            <div class="stat-change">Researchers, deans, reviewers, URDS staff</div>
+                        </div>
+                    </div>
+
+                    <div class="section-grid">
+                        <div class="section-card">
+                            <div class="section-header">
+                                <h3>Recent Proposals (System-wide)</h3>
+                                <button class="view-all-btn">
+                                    <i class="fas fa-list"></i>
+                                    View all proposals
+                                </button>
+                            </div>
+
+                            <table class="proposals-table">
+                                <thead>
+                                    <tr>
+                                        <th>Proposal</th>
+                                        <th>Proponent</th>
+                                        <th>Department</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="admin-recent-proposals">
+                                    <tr>
+                                        <td>
+                                            <div class="proposal-title">Digital Literacy Program for Rural Communities
+                                            </div>
+                                            <div class="proposal-id">RP-2025-014</div>
+                                        </td>
+                                        <td>
+                                            <div class="researcher-name">Prof. Maria Santos</div>
+                                            <div class="researcher-dept">College of Education</div>
+                                        </td>
+                                        <td>Education</td>
+                                        <td><span class="status-badge review">For URDS Review</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="proposal-title">Smart Farming Solutions for Local Farmers</div>
+                                            <div class="proposal-id">RP-2025-009</div>
+                                        </td>
+                                        <td>
+                                            <div class="researcher-name">Engr. Mark Reyes</div>
+                                            <div class="researcher-dept">College of Engineering</div>
+                                        </td>
+                                        <td>Engineering</td>
+                                        <td><span class="status-badge endorsed">Endorsed</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="proposal-title">Health-Seeking Behavior of Students
+                                                Post-Pandemic</div>
+                                            <div class="proposal-id">RP-2025-011</div>
+                                        </td>
+                                        <td>
+                                            <div class="researcher-name">Dr. Liza Cruz</div>
+                                            <div class="researcher-dept">College of Arts & Sciences</div>
+                                        </td>
+                                        <td>CAS</td>
+                                        <td><span class="status-badge pending">Pending Department Review</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class="section-card">
+                            <div class="section-header">
+                                <h3>Proposals by Status</h3>
+                            </div>
+                            <div class="chart-container">
+                                <div class="bar" style="height: 65%;">
+                                    <span class="bar-label">Pending</span>
+                                </div>
+                                <div class="bar" style="height: 85%;">
+                                    <span class="bar-label">Approved</span>
+                                </div>
+                                <div class="bar" style="height: 35%;">
+                                    <span class="bar-label">Rejected</span>
+                                </div>
+                                <div class="bar" style="height: 55%;">
+                                    <span class="bar-label">For Revision</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Projects Page -->
+            <div id="page-projects" class="page">
+                <div class="content">
+                    <div class="page-title">
+                        <h2>Research Projects</h2>
+                    </div>
+                    <p class="page-subtitle">View and manage all research proposals across colleges and departments.</p>
+                    <div class="action-btns">
+                        <button class="btn btn-primary"><i class="fas fa-plus"></i> New Project (Manual Entry)</button>
+                        <button class="btn"><i class="fas fa-filter"></i> Filter</button>
+                        <button class="btn"><i class="fas fa-download"></i> Export List</button>
+                    </div>
+                    <table class="proposals-table">
+                        <thead>
                             <tr>
-                                <th>Proposal</th>
+                                <th>Title</th>
                                 <th>Proponent</th>
                                 <th>Department</th>
                                 <th>Status</th>
+                                <th>Stage</th>
                             </tr>
-                            </thead>
-                            <tbody id="admin-recent-proposals">
+                        </thead>
+                        <tbody id="admin-projects-table-body">
                             <tr>
                                 <td>
-                                    <div class="proposal-title">Digital Literacy Program for Rural Communities</div>
-                                    <div class="proposal-id">RP-2025-014</div>
+                                    <div class="proposal-title">Online Medical Consultation System</div>
+                                    <div class="proposal-id">RP-2025-001</div>
                                 </td>
                                 <td>
-                                    <div class="researcher-name">Prof. Maria Santos</div>
-                                    <div class="researcher-dept">College of Education</div>
+                                    <div class="researcher-name">IT Capstone Group</div>
+                                    <div class="researcher-dept">College of Information Technology</div>
                                 </td>
-                                <td>Education</td>
+                                <td>CIT</td>
                                 <td><span class="status-badge review">For URDS Review</span></td>
+                                <td>URDS Review</td>
                             </tr>
                             <tr>
                                 <td>
-                                    <div class="proposal-title">Smart Farming Solutions for Local Farmers</div>
-                                    <div class="proposal-id">RP-2025-009</div>
+                                    <div class="proposal-title">Community-Based Waste Management Initiative</div>
+                                    <div class="proposal-id">RP-2025-002</div>
                                 </td>
                                 <td>
-                                    <div class="researcher-name">Engr. Mark Reyes</div>
-                                    <div class="researcher-dept">College of Engineering</div>
+                                    <div class="researcher-name">BS EnvSci Batch 2025</div>
+                                    <div class="researcher-dept">College of Science</div>
                                 </td>
-                                <td>Engineering</td>
+                                <td>Science</td>
                                 <td><span class="status-badge endorsed">Endorsed</span></td>
+                                <td>Completed Review</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Users Page -->
+            <div id="page-users" class="page">
+                <div class="content">
+                    <div class="page-title">
+                        <h2>Users & Roles</h2>
+                    </div>
+                    <p class="page-subtitle">Manage access for deans, faculty, researchers, reviewers, and URDS staff.
+                    </p>
+                    <div class="action-btns">
+                        <button class="btn btn-primary"><i class="fas fa-user-plus"></i> Add User</button>
+                        <button class="btn"><i class="fas fa-sync-alt"></i> Sync Accounts</button>
+                    </div>
+                    <table class="faculty-table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Role</th>
+                                <th>Department</th>
+                                <th>Status</th>
+                                <th style="text-align:center;">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="admin-users-table-body">
+                            <tr>
+                                <td>URDS Coordinator</td>
+                                <td>Admin</td>
+                                <td>URDS</td>
+                                <td><span class="status-badge endorsed">Active</span></td>
+                                <td>
+                                    <div class="faculty-actions">
+                                        <button class="icon-btn" title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button class="icon-btn delete" title="Deactivate"><i
+                                                class="fas fa-user-slash"></i></button>
+                                    </div>
+                                </td>
                             </tr>
                             <tr>
+                                <td>Dean of Engineering</td>
+                                <td>Dean</td>
+                                <td>Engineering</td>
+                                <td><span class="status-badge endorsed">Active</span></td>
                                 <td>
-                                    <div class="proposal-title">Health-Seeking Behavior of Students Post-Pandemic</div>
-                                    <div class="proposal-id">RP-2025-011</div>
+                                    <div class="faculty-actions">
+                                        <button class="icon-btn" title="Edit"><i class="fas fa-edit"></i></button>
+                                        <button class="icon-btn delete" title="Deactivate"><i
+                                                class="fas fa-user-slash"></i></button>
+                                    </div>
                                 </td>
-                                <td>
-                                    <div class="researcher-name">Dr. Liza Cruz</div>
-                                    <div class="researcher-dept">College of Arts & Sciences</div>
-                                </td>
-                                <td>CAS</td>
-                                <td><span class="status-badge pending">Pending Department Review</span></td>
                             </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="section-card">
-                        <div class="section-header">
-                            <h3>Proposals by Status</h3>
-                        </div>
-                        <div class="chart-container">
-                            <div class="bar" style="height: 65%;">
-                                <span class="bar-label">Pending</span>
-                            </div>
-                            <div class="bar" style="height: 85%;">
-                                <span class="bar-label">Approved</span>
-                            </div>
-                            <div class="bar" style="height: 35%;">
-                                <span class="bar-label">Rejected</span>
-                            </div>
-                            <div class="bar" style="height: 55%;">
-                                <span class="bar-label">For Revision</span>
-                            </div>
-                        </div>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
             </div>
-        </div>
 
-        <!-- Projects -->
-        <div id="page-projects" class="page">
-            <div class="content">
-                <div class="page-title">
-                    <h2>Research Projects</h2>
-                </div>
-                <p class="page-subtitle">
-                    View and manage all research proposals across colleges and departments.
-                </p>
+            <!-- Reports Page -->
+            <div id="page-reports" class="page">
+                <div class="content">
+                    <div class="page-title">
+                        <h2>Reports & Analytics</h2>
+                    </div>
+                    <p class="page-subtitle">Generate institutional research statistics and export reports.</p>
+                    <div class="action-btns">
+                        <button class="btn btn-primary"><i class="fas fa-file-export"></i> Generate Annual
+                            Report</button>
+                        <button class="btn"><i class="fas fa-chart-pie"></i> College Breakdown</button>
+                        <button class="btn"><i class="fas fa-download"></i> Export CSV</button>
+                    </div>
 
-                <div class="action-btns">
-                    <button class="btn btn-primary">
-                        <i class="fas fa-plus"></i>
-                        New Project (Manual Entry)
-                    </button>
-                    <button class="btn">
-                        <i class="fas fa-filter"></i>
-                        Filter
-                    </button>
-                    <button class="btn">
-                        <i class="fas fa-download"></i>
-                        Export List
-                    </button>
-                </div>
-
-                <table class="proposals-table">
-                    <thead>
-                    <tr>
-                        <th>Title</th>
-                        <th>Proponent</th>
-                        <th>Department</th>
-                        <th>Status</th>
-                        <th>Stage</th>
-                    </tr>
-                    </thead>
-                    <tbody id="admin-projects-table-body">
-                    <tr>
-                        <td>
-                            <div class="proposal-title">Online Medical Consultation System</div>
-                            <div class="proposal-id">RP-2025-001</div>
-                        </td>
-                        <td>
-                            <div class="researcher-name">IT Capstone Group</div>
-                            <div class="researcher-dept">College of Information Technology</div>
-                        </td>
-                        <td>CIT</td>
-                        <td><span class="status-badge review">For URDS Review</span></td>
-                        <td>URDS Review</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="proposal-title">Community-Based Waste Management Initiative</div>
-                            <div class="proposal-id">RP-2025-002</div>
-                        </td>
-                        <td>
-                            <div class="researcher-name">BS EnvSci Batch 2025</div>
-                            <div class="researcher-dept">College of Science</div>
-                        </td>
-                        <td>Science</td>
-                        <td><span class="status-badge endorsed">Endorsed</span></td>
-                        <td>Completed Review</td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Users -->
-        <div id="page-users" class="page">
-            <div class="content">
-                <div class="page-title">
-                    <h2>Users & Roles</h2>
-                </div>
-                <p class="page-subtitle">
-                    Manage access for deans, faculty, researchers, reviewers, and URDS staff.
-                </p>
-
-                <div class="action-btns">
-                    <button class="btn btn-primary">
-                        <i class="fas fa-user-plus"></i>
-                        Add User
-                    </button>
-                    <button class="btn">
-                        <i class="fas fa-sync-alt"></i>
-                        Sync Accounts
-                    </button>
-                </div>
-
-                <table class="faculty-table">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Role</th>
-                        <th>Department</th>
-                        <th>Status</th>
-                        <th style="text-align:center;">Actions</th>
-                    </tr>
-                    </thead>
-                    <tbody id="admin-users-table-body">
-                    <tr>
-                        <td>URDS Coordinator</td>
-                        <td>Admin</td>
-                        <td>URDS</td>
-                        <td><span class="status-badge endorsed">Active</span></td>
-                        <td>
-                            <div class="faculty-actions">
-                                <button class="icon-btn" title="Edit">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <button class="icon-btn delete" title="Deactivate">
-                                    <i class="fas fa-user-slash"></i>
-                                </button>
+                    <!-- Example charts / data sections -->
+                    <div class="section-grid">
+                        <div class="section-card">
+                            <div class="section-header">
+                                <h3>Proposals by College</h3>
                             </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Dean of Engineering</td>
-                        <td>Dean</td>
-                        <td>Engineering</td>
-                        <td><span class="status-badge endorsed">Active</span></td>
-                        <td>
-                            <div class="faculty-actions">
-                                <button class="icon-btn" title="Edit">
-                                    <i class="fas fa-edit"></i>
-                                </button>
-                                <button class="icon-btn delete" title="Deactivate">
-                                    <i class="fas fa-user-slash"></i>
-                                </button>
+                            <div class="chart-container">
+                                <div class="bar" style="height: 70%;"><span class="bar-label">CIT</span></div>
+                                <div class="bar" style="height: 55%;"><span class="bar-label">COE</span></div>
+                                <div a class="bar" style="height: 60%;"><span class="bar-label">CAS</span></div>
+                                <div class="bar" style="height: 45%;"><span class="bar-label">Education</span></div>
                             </div>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Reports -->
-        <div id="page-reports" class="page">
-            <div class="content">
-                <div class="page-title">
-                    <h2>Reports & Analytics</h2>
-                </div>
-                <p class="page-subtitle">
-                    Generate institutional research statistics and export reports for URDS and administration.
-                </p>
-
-                <div class="action-btns">
-                    <button class="btn btn-primary">
-                        <i class="fas fa-file-export"></i>
-                        Generate Annual Report
-                    </button>
-                    <button class="btn">
-                        <i class="fas fa-chart-pie"></i>
-                        College Breakdown
-                    </button>
-                    <button class="btn">
-                        <i class="fas fa-download"></i>
-                        Export CSV
-                    </button>
-                </div>
-
-                <div class="section-grid">
-                    <div class="section-card">
-                        <div class="section-header">
-                            <h3>Proposals by College</h3>
                         </div>
-                        <div class="chart-container">
-                            <div class="bar" style="height: 70%;">
-                                <span class="bar-label">CIT</span>
+
+                        <div class="section-card">
+                            <div class="section-header">
+                                <h3>Funding Distribution</h3>
                             </div>
-                            <div class="bar" style="height: 55%;">
-                                <span class="bar-label">COE</span>
+                            <div class="donut-chart">
+                                <svg viewBox="0 0 36 36">
+                                    <circle class="donut-segment" cx="18" cy="18" r="15.915" stroke="#2196f3"
+                                        stroke-dasharray="40 60" stroke-dashoffset="25"></circle>
+                                    <circle class="donut-segment" cx="18" cy="18" r="15.915" stroke="#4caf50"
+                                        stroke-dasharray="30 70" stroke-dashoffset="65"></circle>
+                                    <circle class="donut-segment" cx="18" cy="18" r="15.915" stroke="#ff9800"
+                                        stroke-dasharray="20 80" stroke-dashoffset="95"></circle>
+                                </svg>
                             </div>
-                            <div class="bar" style="height: 60%;">
-                                <span class="bar-label">CAS</span>
-                            </div>
-                            <div class="bar" style="height: 45%;">
-                                <span class="bar-label">Education</span>
+                            <div class="chart-legend">
+                                <div class="legend-item"><span class="legend-color"
+                                        style="background:#2196f3;"></span>Internal Grants</div>
+                                <div class="legend-item"><span class="legend-color"
+                                        style="background:#4caf50;"></span>External Grants</div>
+                                <div class="legend-item"><span class="legend-color"
+                                        style="background:#ff9800;"></span>Unfunded Projects</div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="section-card">
-                        <div class="section-header">
-                            <h3>Funding Distribution</h3>
-                        </div>
-                        <div class="donut-chart">
-                            <svg viewBox="0 0 36 36">
-                                <circle class="donut-segment" cx="18" cy="18" r="15.915"
-                                        stroke="#2196f3" stroke-dasharray="40 60" stroke-dashoffset="25"></circle>
-                                <circle class="donut-segment" cx="18" cy="18" r="15.915"
-                                        stroke="#4caf50" stroke-dasharray="30 70" stroke-dashoffset="65"></circle>
-                                <circle class="donut-segment" cx="18" cy="18" r="15.915"
-                                        stroke="#ff9800" stroke-dasharray="20 80" stroke-dashoffset="95"></circle>
-                            </svg>
-                        </div>
-                        <div class="chart-legend">
-                            <div class="legend-item">
-                                <span class="legend-color" style="background:#2196f3;"></span>
-                                <span>Internal Grants</span>
-                            </div>
-                            <div class="legend-item">
-                                <span class="legend-color" style="background:#4caf50;"></span>
-                                <span>External Grants</span>
-                            </div>
-                            <div class="legend-item">
-                                <span class="legend-color" style="background:#ff9800;"></span>
-                                <span>Unfunded Projects</span>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Settings -->
-        <div id="page-settings" class="page">
-            <div class="content">
-                <div class="page-title">
-                    <h2>System Settings</h2>
-                </div>
-                <p class="page-subtitle">
-                    Configure departments, research categories, funding types, and workflow rules for URDS.
-                </p>
+            <!-- Settings Page -->
+            <div id="page-settings" class="page">
+                <div class="content">
+                    <div class="page-title">
+                        <h2>System Settings</h2>
+                    </div>
+                    <p class="page-subtitle">Configure departments, categories, funding types, workflows, etc.</p>
 
-                <div class="section-grid">
-                    <div class="section-card">
-                        <div class="section-header">
-                            <h3>Reference Data</h3>
+                    <div class="section-grid">
+                        <div class="section-card">
+                            <div class="section-header">
+                                <h3>Reference Data</h3>
+                            </div>
+                            <div class="action-btns">
+                                <button class="btn"><i class="fas fa-building"></i> Manage Departments</button>
+                                <button class="btn"><i class="fas fa-tags"></i> Research Categories</button>
+                                <button class="btn"><i class="fas fa-coins"></i> Funding Sources</button>
+                            </div>
                         </div>
-                        <div class="action-btns">
-                            <button class="btn">
-                                <i class="fas fa-building"></i>
-                                Manage Departments
-                            </button>
-                            <button class="btn">
-                                <i class="fas fa-tags"></i>
-                                Research Categories
-                            </button>
-                            <button class="btn">
-                                <i class="fas fa-coins"></i>
-                                Funding Sources
-                            </button>
+
+                        <div class="section-card">
+                            <div class="section-header">
+                                <h3>Workflow & Access</h3>
+                            </div>
+                            <div class="action-btns">
+                                <button class="btn"><i class="fas fa-project-diagram"></i> Review Workflow</button>
+                                <button class="btn"><i class="fas fa-envelope"></i> Email Templates</button>
+                                <button class="btn"><i class="fas fa-user-shield"></i> Role Permissions</button>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="section-card">
-                        <div class="section-header">
-                            <h3>Workflow & Access</h3>
-                        </div>
-                        <div class="action-btns">
-                            <button class="btn">
-                                <i class="fas fa-project-diagram"></i>
-                                Review Workflow
-                            </button>
-                            <button class="btn">
-                                <i class="fas fa-envelope"></i>
-                                Email Templates
-                            </button>
-                            <button class="btn">
-                                <i class="fas fa-user-shield"></i>
-                                Role Permissions
-                            </button>
-                        </div>
-                    </div>
                 </div>
             </div>
+
         </div>
+    </div>
 
-    </div><!-- /main-content -->
-</div><!-- /container -->
-
-<script src="admin.js"></script>
+    <script src="admin.js"></script>
+    <script src="../js/utils.js"></script>
 </body>
+
 </html>
