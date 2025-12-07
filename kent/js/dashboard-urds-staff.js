@@ -1,7 +1,7 @@
 // Load components
 function loadComponents() {
     // Load sidebar
-    fetch('components/staff-dashboard/sidebar.html')
+    fetch('../components/staff-dashboard/sidebar.html')
         .then(res => res.text())
         .then(data => {
             document.getElementById('sidebar-placeholder').innerHTML = data;
@@ -9,7 +9,7 @@ function loadComponents() {
         .catch(err => console.error('Error loading sidebar:', err));
 
     // Load header
-    fetch('components/staff-dashboard/header.html')
+    fetch('../components/staff-dashboard/header.html')
         .then(res => res.text())
         .then(data => {
             document.getElementById('header-placeholder').innerHTML = data;
@@ -19,7 +19,7 @@ function loadComponents() {
         .catch(err => console.error('Error loading header:', err));
 
     // Load dashboard content
-    fetch('components/staff-dashboard/sidebar-content/dashboard-content.html')
+    fetch('../components/staff-dashboard/sidebar-content/dashboard-content.html')
         .then(res => res.text())
         .then(data => {
             document.getElementById('dashboard-content-placeholder').innerHTML = data;
@@ -96,7 +96,7 @@ function showPage(page) {
 
 // Load dashboard page
 function loadDashboard() {
-    fetch('components/staff-dashboard/sidebar-content/dashboard-content.html')
+    fetch('../components/staff-dashboard/sidebar-content/dashboard-content.html')
         .then(res => res.text())
         .then(data => {
             document.getElementById('dashboard-content-placeholder').innerHTML = data;
@@ -107,7 +107,7 @@ function loadDashboard() {
 
 // Load proposal intake page
 function loadProposalIntake() {
-    fetch('components/staff-dashboard/sidebar-contentproposal-intake.html')
+    fetch('../components/staff-dashboard/sidebar-content/proposal-intake.html')
         .then(res => res.text())
         .then(html => {
             document.getElementById('dashboard-content-placeholder').innerHTML = html;
@@ -118,7 +118,7 @@ function loadProposalIntake() {
 
 // Load in-house schedule page
 function loadInHouseSchedule() {
-    fetch('components/staff-dashboard/sidebar-content/in-house-schedule.html')
+    fetch('../components/staff-dashboard/sidebar-content/in-house-schedule.html')
         .then(res => res.text())
         .then(html => {
             document.getElementById('dashboard-content-placeholder').innerHTML = html;
@@ -213,7 +213,7 @@ function manageSession(id) {
 }
 // Load evaluator pool page
 function loadEvaluatorPool() {
-    fetch('components/staff-dashboard/sidebar-content/evaluator-pool.html')
+    fetch('../components/staff-dashboard/sidebar-content/evaluator-pool.html')
         .then(res => res.text())
         .then(html => {
             document.getElementById('dashboard-content-placeholder').innerHTML = html;
