@@ -12,7 +12,7 @@
     'Research Coordinator': 'coordinator.html',
     'College Dean': 'dean.html',
     'URDS Director': 'director.html',
-    'URDS Staff': 'staff.html',
+    'URDS Staff': 'urds-staff.html',
     'Cluster Coordinator': 'cluster.html',
     'Senior Faculty': 'senior.html',
     'TWG Evaluator': 'evaluator.html'

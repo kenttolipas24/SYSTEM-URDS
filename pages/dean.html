@@ -3,147 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dean Dashboard - URDS</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Only base and dean CSS -->
+    <title>URDS - Dean Dashboard</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" type="image/png" href="../assets/pictures/UEP_logo-transparent.png"> <!-- Favicon -->
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/dean.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-content">
-            <div>
-                <h1>Dean of Engineering</h1>
-                <p>Engineering Department</p>
-            </div>
-            <button class="logout-btn" onclick="logout()">
-                <i class="fas fa-sign-out-alt"></i>
-                Logout
-            </button>
-        </div>
-    </nav>
-
     <div class="container">
-        <!-- Stats Grid -->
-        <div class="stats-grid">
-            <div class="stat-card yellow">
-                <div class="stat-info">
-                    <p>Pending Endorsement</p>
-                    <h2 id="pendingEndorsement">1</h2>
-                </div>
-                <i class="fas fa-clock stat-icon yellow"></i>
-            </div>
-            <div class="stat-card green">
-                <div class="stat-info">
-                    <p>Endorsed</p>
-                    <h2 id="endorsedTotal">1</h2>
-                </div>
-                <i class="fas fa-check-circle stat-icon green"></i>
-            </div>
-            <div class="stat-card red">
-                <div class="stat-info">
-                    <p>Rejected</p>
-                    <h2 id="rejectedTotal">0</h2>
-                </div>
-                <i class="fas fa-times-circle stat-icon red"></i>
-            </div>
-            <div class="stat-card purple">
-                <div class="stat-info">
-                    <p>Total Proposals</p>
-                    <h2 id="totalProposals">5</h2>
-                </div>
-                <i class="fas fa-file-alt stat-icon purple"></i>
-            </div>
-        </div>
+        <!-- Sidebar -->
+        <div id="sidebar-placeholder"></div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div id="deanNav-placeholder"></div>
 
-        <!-- Tabs -->
-        <div class="tabs-container">
-            <div class="tabs">
-                <button class="tab active" onclick="switchTab('dean', 'endorsements')">
-                    <i class="fas fa-check-circle"></i>
-                    Endorsements
-                </button>
-                <button class="tab" onclick="switchTab('dean', 'history')">
-                    <i class="fas fa-history"></i>
-                    History
-                </button>
-            </div>
-
-            <div class="tab-content">
-                <!-- Endorsements Tab -->
-                <div id="dean-endorsements" class="tab-panel active">
-                    <div class="info-box blue">
-                        <h3>Proposal Endorsement</h3>
-                        <p>Review and endorse research proposals. Each proposal requires 5 copies to be submitted to URDS.</p>
-                    </div>
-
-                    <div class="search-box">
-                        <i class="fas fa-search"></i>
-                        <input type="text" id="searchEndorsements" placeholder="Search proposals..." onkeyup="filterEndorsements()">
-                    </div>
-                    <div class="proposals-list" id="deanEndorsementsList"></div>
-                </div>
-
-                <!-- History Tab -->
-                <div id="dean-history" class="tab-panel">
-                    <div class="proposals-list" id="deanHistoryList"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Endorse Modal -->
-    <div id="endorseModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Endorse Proposal</h2>
-            </div>
-            <div class="modal-body">
-                <p>Are you sure you want to endorse this proposal?</p>
-                <p><strong id="endorseProposalTitle"></strong></p>
-                <p id="endorseProposalAuthor"></p>
-                
-                <div class="form-group" style="margin-top: 1.5rem;">
-                    <label>Endorsement Notes (Optional)</label>
-                    <textarea id="endorseNotes" rows="3" placeholder="Add any notes..."></textarea>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-outline" onclick="closeEndorseModal()">Cancel</button>
-                <button class="btn btn-success" onclick="confirmEndorsement()">
-                    <i class="fas fa-check"></i>
-                    Endorse
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Reject Modal -->
-    <div id="rejectModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Reject Proposal</h2>
-            </div>
-            <div class="modal-body">
-                <p>Are you sure you want to reject this proposal?</p>
-                <p><strong id="rejectProposalTitle"></strong></p>
-                
-                <div class="form-group" style="margin-top: 1.5rem;">
-                    <label>Reason for Rejection (Required)</label>
-                    <textarea id="rejectReason" rows="4" placeholder="Please provide reason..." required></textarea>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-outline" onclick="closeRejectModal()">Cancel</button>
-                <button class="btn" style="background-color: #ef4444; color: white;" onclick="confirmRejection()">
-                    <i class="fas fa-times"></i>
-                    Reject
-                </button>
-            </div>
+            <!-- PAGES -->
+            <div id="dash_con-placeholder"></div>   <!-- Dashboard Page -->
+            <div id="endo_con-placeholder"></div>   <!-- Proposals Page -->
+            <div id="fclty_con-placeholder"></div>  <!-- Faculty Page -->
+            <div id="rep_con-placeholder"></div>    <!-- Reports Page -->
         </div>
     </div>
 
     <script src="../js/utils.js"></script>
     <script src="../js/dashboard-dean.js"></script>
+    <script src="../js/components/dean/sidebar.js"></script>
+    <script src="../js/components/dean/deanNav.js"></script>
+    <script src="../js/components/dean/dash-con.js"></script>
+    <script src="../js/components/dean/endo-con.js"></script>
+    <script src="../js/components/dean/fclty-con.js"></script>
+    <script src="../js/components/dean/rep-con.js"></script>
 </body>
 </html>
