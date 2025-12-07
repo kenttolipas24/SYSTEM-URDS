@@ -1,7 +1,7 @@
 <!-- Sidebar -->
 <div class="sidebar">
     <div class="logo">
-        <div class="logo-icon"><img src="assets/pictures/UEP_logo-transparent.png" alt="UEP Logo"></div>
+        <div class="logo-icon"><img src="../assets/pictures/UEP_logo-transparent.png" alt="UEP Logo"></div>
         <div class="logo-text">
             <h3>URDS</h3>
             <div class="logo-subtitle">Staff</div>
@@ -10,22 +10,46 @@
 
     <div class="nav">
         <div class="nav-item active" onclick="showPage('dashboard')">
-            <img src="assets/icon/dashboard icon.svg" alt="Dashboard" class="nav-icon">
+            <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <rect x="3" y="3" width="9" height="9" rx="1.5"/>
+                <rect x="15" y="3" width="6" height="6" rx="1.5"/>
+                <rect x="3" y="15" width="6" height="6" rx="1.5"/>
+                <rect x="12" y="12" width="9" height="9" rx="1.5"/>
+            </svg>
             Dashboard
         </div>
 
         <div class="nav-item" onclick="showPage('proposal-intake')">
-            <img src="assets/icon/proposal intake icon.svg" alt="Proposal Intake" class="nav-icon">
+            <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="8" y1="13" x2="16" y2="13"/>
+                <line x1="8" y1="17" x2="16" y2="17"/>
+                <line x1="8" y1="9" x2="11" y2="9"/>
+            </svg>
             Proposal Intake
         </div>
 
         <div class="nav-item" onclick="showPage('in-house-schedule')">
-            <img src="assets/icon/in-house schedule icon.svg" alt="In-House Schedule" class="nav-icon">
+            <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+                <rect x="7" y="14" width="2" height="2" rx="0.5" fill="white"/>
+                <rect x="11" y="14" width="2" height="2" rx="0.5" fill="white"/>
+                <rect x="15" y="14" width="2" height="2" rx="0.5" fill="white"/>
+            </svg>
             In-House Schedule
         </div>
 
         <div class="nav-item" onclick="showPage('evaluator-pool')">
-            <img src="assets/icon/evaluator pool icon.svg" alt="Evaluator Pool" class="nav-icon">
+            <svg class="nav-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <circle cx="9" cy="7" r="3"/>
+                <circle cx="15" cy="7" r="3"/>
+                <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
+                <path d="M15 15a4 4 0 0 1 4 4v2"/>
+            </svg>
             Evaluator Pool
         </div>
     </div>

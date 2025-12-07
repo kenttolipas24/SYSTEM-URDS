@@ -71,7 +71,7 @@ function handleSignUp(event) {
     'coordinator':  'pages/coordinator.html',
     'dean':         'pages/dean.html',
     'director':     '../bowmeal/admin.html',
-    'staff':        '../glen/URDS staff/index.html',
+    'staff':        'pages/urds-staff.html',
     'cluster':      'pages/cluster.html',
     'researcher':   'pages/evaluator.html'
   };
