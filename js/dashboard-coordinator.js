@@ -185,3 +185,140 @@ function submitToURDS(proposalId) {
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', initCoordinatorDashboard);
+
+// Component Loader for Coordinator
+function loadComponents() {
+    // Load sidebar
+    fetch('../components/coordinator-dashboard/sidebar.html')
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById('sidebar-placeholder').innerHTML = data;
+        })
+        .catch(err => console.error('Error loading sidebar:', err));
+
+    // Load header
+    fetch('../components/coordinator-dashboard/header.html')
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById('header-placeholder').innerHTML = data;
+            initializeSearch();
+        })
+        .catch(err => console.error('Error loading header:', err));
+
+    // Load dashboard content (default page)
+    loadDashboard(); 
+}
+
+// Load dashboard page
+function loadDashboard() {
+    fetch('../components/coordinator-dashboard/sidebar-content/dashboard-content.html')
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById('dashboard-content-placeholder').innerHTML = data;
+            initializeDashboard(); 
+        })
+        .catch(err => console.error('Error loading dashboard:', err));
+}
+
+// Initialize dashboard - UPDATED to match new content structure
+function initializeDashboard() {
+    // No need for separate metric updates in this view, as the screenshot doesn't show them.
+    loadIncomingProposals();
+}
+
+function getProposalStatusBadge(status) {
+    if (status === 'For Endorsement') return '<span class="status-badge endorsement">For Endorsement</span>';
+    if (status === 'Pending TWG') return '<span class="status-badge pending-twg">Pending TWG</span>';
+    return '<span class="status-badge endorsement">New Submission</span>';
+}
+
+function loadIncomingProposals() {
+    const listContainer = document.getElementById('coordinator-proposal-list');
+    if (!listContainer) return;
+
+    // Mock data based on the screenshot (replace with your actual data source)
+    const incomingProposals = [
+        { id: 1, title: 'AI-Driven Traffic Management System', author: 'Engr. Damon Salvatore', dept: 'Engineering', date: 'Nov 28, 2025', status: 'For Endorsement' },
+        { id: 2, title: 'Biodiversity Assessment of Mt. Apo', author: 'by Prof. Elena Gilbert', dept: 'Biology', date: 'Dec 02, 2025', status: 'Pending TWG' },
+    ];
+
+    listContainer.innerHTML = incomingProposals.map(p => `
+        <div class="proposal-card">
+            <div class="proposal-meta">
+                <span class="meta-badge">${p.dept}</span>
+                <span class="meta-date">${p.date}</span>
+                <div style="margin-left: auto;">${getProposalStatusBadge(p.status)}</div>
+            </div>
+            <div class="proposal-title-info">${p.title}</div>
+            <p class="proposal-author">by ${p.author}</p>
+            
+            <div class="proposal-actions">
+                <button class="btn-return" onclick="handleProposalAction(${p.id}, 'return')">
+                    Return
+                </button>
+                <button class="btn-endorse" onclick="handleProposalAction(${p.id}, 'endorse')">
+                    Endorse →
+                </button>
+            </div>
+        </div>
+    `).join('');
+}
+
+// Placeholder for handling proposal actions (Return/Endorse)
+function handleProposalAction(id, action) {
+    alert(`${action.toUpperCase()} action requested for proposal ID: ${id}`);
+    // Implement your database/state logic here
+}
+
+// Placeholder for handling quick actions
+function handleQuickAction(actionType) {
+    alert(`Quick Action: ${actionType.replace('-', ' ').toUpperCase()} initiated.`);
+}
+
+// --- Navigation Switcher (Adaptation of Staff's showPage) ---
+function showPage(page) {
+    // Remove active class from all nav items
+    const navItems = document.querySelectorAll('.sidebar .menu-item');
+    navItems.forEach(item => item.classList.remove('active'));
+
+    const clickedItem = event.currentTarget || document.querySelector(`.sidebar .menu-item[onclick*="'${page}'"]`);
+    if (clickedItem) {
+        clickedItem.classList.add('active');
+    }
+
+    // Handle page switching
+    switch(page) {
+        case 'dashboard':
+            loadDashboard();
+            break;
+        case 'incoming-proposals':
+            // If Incoming Proposals is a separate detailed view, load that component here
+            loadDashboard(); // Using dashboard as a placeholder for the main list view
+            break;
+        case 'researchers':
+            loadResearchersPage();
+            break;
+        case 'settings':
+            loadSettingsPage();
+            break;
+        default:
+            loadDashboard();
+    }
+}
+
+// Placeholder functions for other sidebar pages
+function loadResearchersPage() {
+    document.getElementById('dashboard-content-placeholder').innerHTML = 
+        '<div class="dashboard-layout-split"><div class="main-list-panel"><h2>Researchers</h2><p>This page will show the list of researchers in the department.</p></div></div>';
+}
+
+function loadSettingsPage() {
+    document.getElementById('dashboard-content-placeholder').innerHTML = 
+        '<div class="dashboard-layout-split"><div class="main-list-panel"><h2>Settings</h2><p>Settings functionality coming soon...</p></div></div>';
+}
+
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    loadComponents();
+});
