@@ -3,211 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>URDS Staff Dashboard - URDS</title>
+    <title>URDS Staff Portal - URDS</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="assets/pictures/UEP_logo-transparent.png">
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/urds-staff.css">
 </head>
 <body>
-    <nav class="navbar">
-        <div class="navbar-content">
-            <div>
-                <h1>URDS Staff</h1>
-                <p>Research Proposal Organization & Arrangement</p>
-            </div>
-            <button class="logout-btn" onclick="logout()">
-                <i class="fas fa-sign-out-alt"></i>
-                Logout
-            </button>
-        </div>
-    </nav>
-
     <div class="container">
-        <!-- Stats Grid -->
-        <div class="stats-grid">
-            <div class="stat-card blue">
-                <div class="stat-info">
-                    <p>Total Submissions</p>
-                    <h2 id="totalSubmissions">0</h2>
-                </div>
-                <i class="fas fa-file-alt stat-icon blue"></i>
-            </div>
-            <div class="stat-card green">
-                <div class="stat-info">
-                    <p>Organized by Commodity</p>
-                    <h2 id="commodityCount">0</h2>
-                </div>
-                <i class="fas fa-tag stat-icon green"></i>
-            </div>
-            <div class="stat-card purple">
-                <div class="stat-info">
-                    <p>Colleges/Units</p>
-                    <h2 id="collegeCount">0</h2>
-                </div>
-                <i class="fas fa-building stat-icon purple"></i>
-            </div>
-            <div class="stat-card orange">
-                <div class="stat-info">
-                    <p>In-House Review Ready</p>
-                    <h2 id="reviewReadyCount">0</h2>
-                </div>
-                <i class="fas fa-check-circle stat-icon orange"></i>
-            </div>
-        </div>
+        <!-- Sidebar -->
+        <div id="sidebar-placeholder"></div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Header -->
+            <div id="header-placeholder"></div>
 
-        <!-- Tabs -->
-        <div class="tabs-container">
-            <div class="tabs">
-                <button class="tab active" onclick="switchTab('urds-staff', 'all-proposals')">
-                    <i class="fas fa-file-alt"></i>
-                    All Proposals
-                </button>
-                <button class="tab" onclick="switchTab('urds-staff', 'by-college')">
-                    <i class="fas fa-building"></i>
-                    By College/Unit
-                </button>
-                <button class="tab" onclick="switchTab('urds-staff', 'by-commodity')">
-                    <i class="fas fa-tag"></i>
-                    By Commodity
-                </button>
-                <button class="tab" onclick="switchTab('urds-staff', 'in-house-review')">
-                    <i class="fas fa-search"></i>
-                    In-House Review
-                </button>
-            </div>
-
-            <div class="tab-content">
-                <!-- All Proposals Tab -->
-                <div id="urds-staff-all-proposals" class="tab-panel active">
-                    <div class="search-box">
-                        <i class="fas fa-search"></i>
-                        <input type="text" id="searchAllProposals" placeholder="Search proposals..." onkeyup="filterAllProposals()">
-                    </div>
-                    <div class="proposals-list" id="allProposalsList"></div>
-                </div>
-
-                <!-- By College/Unit Tab -->
-                <div id="urds-staff-by-college" class="tab-panel">
-                    <div class="info-box blue">
-                        <h3>Proposals Organized by College/Unit</h3>
-                        <p>Research proposals are arranged by college or unit for easy identification and management.</p>
-                    </div>
-                    <div id="collegeContainer" class="organization-container"></div>
-                </div>
-
-                <!-- By Commodity Tab -->
-                <div id="urds-staff-by-commodity" class="tab-panel">
-                    <div class="info-box green">
-                        <h3>Proposals Organized by Commodity/Category</h3>
-                        <p>Research proposals are categorized by commodity type for systematic arrangement.</p>
-                    </div>
-                    <div id="commodityContainer" class="organization-container"></div>
-                </div>
-
-                <!-- In-House Review Tab -->
-                <div id="urds-staff-in-house-review" class="tab-panel">
-                    <div class="info-box orange">
-                        <h3>In-House Review Preparation</h3>
-                        <p>Proposals that have been organized and are ready for IN-HOUSE REVIEW evaluations.</p>
-                    </div>
-                    <div class="search-box">
-                        <i class="fas fa-search"></i>
-                        <input type="text" id="searchReview" placeholder="Search review proposals..." onkeyup="filterReviewProposals()">
-                    </div>
-                    <div class="proposals-list" id="reviewProposalsList"></div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Proposal Details Modal -->
-    <div id="proposalDetailsModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2 id="detailsTitle">Proposal Details</h2>
-            </div>
-            <div class="modal-body">
-                <div class="detail-section">
-                    <h4>Title</h4>
-                    <p id="detailTitle"></p>
-                </div>
-                <div class="detail-section">
-                    <h4>Author</h4>
-                    <p id="detailAuthor"></p>
-                </div>
-                <div class="detail-section">
-                    <h4>College/Unit</h4>
-                    <p id="detailCollege"></p>
-                </div>
-                <div class="detail-section">
-                    <h4>Commodity/Category</h4>
-                    <p id="detailCommodity"></p>
-                </div>
-                <div class="detail-section">
-                    <h4>Submitted Date</h4>
-                    <p id="detailDate"></p>
-                </div>
-                <div class="detail-section">
-                    <h4>Status</h4>
-                    <p id="detailStatus"></p>
-                </div>
-
-                <div class="form-group" style="margin-top: 1.5rem;">
-                    <label for="organizationNotes">Organization Notes</label>
-                    <textarea id="organizationNotes" rows="4" placeholder="Add notes about proposal organization and arrangement..."></textarea>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-outline" onclick="closeProposalDetailsModal()">Close</button>
-                <button class="btn btn-primary" onclick="saveOrganizationNotes()">Save Notes</button>
-                <button class="btn btn-success" onclick="markForInHouseReview()" id="markReviewBtn">Mark for In-House Review</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Organization Stats Modal -->
-    <div id="organizationStatsModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>Organization Summary</h2>
-            </div>
-            <div class="modal-body">
-                <div class="stats-summary">
-                    <div class="summary-item">
-                        <h4>Total Proposals Received</h4>
-                        <p id="summaryTotal">0</p>
-                    </div>
-                    <div class="summary-item">
-                        <h4>Colleges/Units Involved</h4>
-                        <p id="summaryColleges">0</p>
-                    </div>
-                    <div class="summary-item">
-                        <h4>Commodities/Categories</h4>
-                        <p id="summaryCommodities">0</p>
-                    </div>
-                    <div class="summary-item">
-                        <h4>Ready for In-House Review</h4>
-                        <p id="summaryReady">0</p>
-                    </div>
-                </div>
-
-                <div class="table-container" style="margin-top: 2rem;">
-                    <h4>College/Unit Distribution</h4>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>College/Unit</th>
-                                <th>Count</th>
-                                <th>Percentage</th>
-                            </tr>
-                        </thead>
-                        <tbody id="collegeDistributionTable"></tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-outline" onclick="closeOrganizationStatsModal()">Close</button>
-            </div>
+            <!-- Dashboard Content -->
+            <div id="dashboard-content-placeholder"></div>
         </div>
     </div>
 
