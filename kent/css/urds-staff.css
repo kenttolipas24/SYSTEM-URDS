@@ -69,7 +69,7 @@
 .nav-icon {
     width: 20px;
     height: 20px;
-    flex-shrink: 0;
+    stroke-width: 1.9;
 }
 
 .sidebar-footer {
