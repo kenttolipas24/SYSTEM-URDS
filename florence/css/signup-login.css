@@ -1,0 +1,101 @@
+/* Container for the module */
+.signup-container,
+.login-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+/* Center box */
+.signup-box,
+.login-box {
+    width: 380px;
+    background: #ffffff;
+    padding: 30px 35px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.08);
+    animation: fadeIn .3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Headings */
+.signup-box h2,
+.login-box h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 22px;
+    font-weight: 600;
+    color: #222;
+}
+
+/* Input group */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+    color: #333;
+}
+
+.input-group input,
+.input-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid #d1d1d1;
+    outline: none;
+    font-size: 14px;
+    transition: border .2s ease;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+    border-color: #007bff;
+}
+
+/* Buttons */
+.signup-btn,
+.login-btn {
+    width: 100%;
+    padding: 11px;
+    border: none;
+    background: #007bff;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background .2s ease;
+}
+
+.signup-btn:hover,
+.login-btn:hover {
+    background: #005fcc;
+}
+
+/* Toggle text */
+.toggle-text {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.toggle-link {
+    color: #007bff;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.toggle-link:hover {
+    text-decoration: underline;
+}
