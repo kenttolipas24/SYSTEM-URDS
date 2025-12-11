@@ -18,6 +18,7 @@
 
 <body>
     <div class="container fade-in">
+        <!-- Sidebar -->
         <div class="sidebar">
             <div class="logo">
                 <div class="logo-icon">
@@ -52,7 +53,7 @@
                 </div>
             </div>
 
-            <div class="sidebar-footer" onclick="PagesLogout">
+            <div class="sidebar-footer">
                 <div class="logout" id="admin-logout-btn">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span>
@@ -60,6 +61,7 @@
             </div>
         </div>
 
+        <!-- Main content -->
         <div class="main-content">
             <div class="header">
                 <div>
@@ -84,7 +86,7 @@
                 </div>
             </div>
 
-            <!-- Pages -->
+            <!-- PAGES -->
 
             <!-- Dashboard Page -->
             <div id="page-dashboard" class="page active">
@@ -181,8 +183,9 @@
                                     </tr>
                                     <tr>
                                         <td>
-                                            <div class="proposal-title">Health-Seeking Behavior of Students
-                                                Post-Pandemic</div>
+                                            <div class="proposal-title">
+                                                Health-Seeking Behavior of Students Post-Pandemic
+                                            </div>
                                             <div class="proposal-id">RP-2025-011</div>
                                         </td>
                                         <td>
@@ -225,11 +228,19 @@
                     <div class="page-title">
                         <h2>Research Projects</h2>
                     </div>
-                    <p class="page-subtitle">View and manage all research proposals across colleges and departments.</p>
+                    <p class="page-subtitle">
+                        View and manage all research proposals across colleges and departments.
+                    </p>
                     <div class="action-btns">
-                        <button class="btn btn-primary"><i class="fas fa-plus"></i> New Project (Manual Entry)</button>
-                        <button class="btn"><i class="fas fa-filter"></i> Filter</button>
-                        <button class="btn"><i class="fas fa-download"></i> Export List</button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-plus"></i> New Project (Manual Entry)
+                        </button>
+                        <button class="btn">
+                            <i class="fas fa-filter"></i> Filter
+                        </button>
+                        <button class="btn">
+                            <i class="fas fa-download"></i> Export List
+                        </button>
                     </div>
                     <table class="proposals-table">
                         <thead>
@@ -279,11 +290,16 @@
                     <div class="page-title">
                         <h2>Users & Roles</h2>
                     </div>
-                    <p class="page-subtitle">Manage access for deans, faculty, researchers, reviewers, and URDS staff.
+                    <p class="page-subtitle">
+                        Manage access for deans, faculty, researchers, reviewers, and URDS staff.
                     </p>
                     <div class="action-btns">
-                        <button class="btn btn-primary"><i class="fas fa-user-plus"></i> Add User</button>
-                        <button class="btn"><i class="fas fa-sync-alt"></i> Sync Accounts</button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-user-plus"></i> Add User
+                        </button>
+                        <button class="btn">
+                            <i class="fas fa-sync-alt"></i> Sync Accounts
+                        </button>
                     </div>
                     <table class="faculty-table">
                         <thead>
@@ -303,9 +319,12 @@
                                 <td><span class="status-badge endorsed">Active</span></td>
                                 <td>
                                     <div class="faculty-actions">
-                                        <button class="icon-btn" title="Edit"><i class="fas fa-edit"></i></button>
-                                        <button class="icon-btn delete" title="Deactivate"><i
-                                                class="fas fa-user-slash"></i></button>
+                                        <button class="icon-btn" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="icon-btn delete" title="Deactivate">
+                                            <i class="fas fa-user-slash"></i>
+                                        </button>
                                     </div>
                                 </td>
                             </tr>
@@ -316,9 +335,12 @@
                                 <td><span class="status-badge endorsed">Active</span></td>
                                 <td>
                                     <div class="faculty-actions">
-                                        <button class="icon-btn" title="Edit"><i class="fas fa-edit"></i></button>
-                                        <button class="icon-btn delete" title="Deactivate"><i
-                                                class="fas fa-user-slash"></i></button>
+                                        <button class="icon-btn" title="Edit">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="icon-btn delete" title="Deactivate">
+                                            <i class="fas fa-user-slash"></i>
+                                        </button>
                                     </div>
                                 </td>
                             </tr>
@@ -333,25 +355,39 @@
                     <div class="page-title">
                         <h2>Reports & Analytics</h2>
                     </div>
-                    <p class="page-subtitle">Generate institutional research statistics and export reports.</p>
+                    <p class="page-subtitle">
+                        Generate institutional research statistics and export reports.
+                    </p>
                     <div class="action-btns">
-                        <button class="btn btn-primary"><i class="fas fa-file-export"></i> Generate Annual
-                            Report</button>
-                        <button class="btn"><i class="fas fa-chart-pie"></i> College Breakdown</button>
-                        <button class="btn"><i class="fas fa-download"></i> Export CSV</button>
+                        <button class="btn btn-primary">
+                            <i class="fas fa-file-export"></i> Generate Annual Report
+                        </button>
+                        <button class="btn">
+                            <i class="fas fa-chart-pie"></i> College Breakdown
+                        </button>
+                        <button class="btn">
+                            <i class="fas fa-download"></i> Export CSV
+                        </button>
                     </div>
 
-                    <!-- Example charts / data sections -->
                     <div class="section-grid">
                         <div class="section-card">
                             <div class="section-header">
                                 <h3>Proposals by College</h3>
                             </div>
                             <div class="chart-container">
-                                <div class="bar" style="height: 70%;"><span class="bar-label">CIT</span></div>
-                                <div class="bar" style="height: 55%;"><span class="bar-label">COE</span></div>
-                                <div a class="bar" style="height: 60%;"><span class="bar-label">CAS</span></div>
-                                <div class="bar" style="height: 45%;"><span class="bar-label">Education</span></div>
+                                <div class="bar" style="height: 70%;">
+                                    <span class="bar-label">CIT</span>
+                                </div>
+                                <div class="bar" style="height: 55%;">
+                                    <span class="bar-label">COE</span>
+                                </div>
+                                <div class="bar" style="height: 60%;">
+                                    <span class="bar-label">CAS</span>
+                                </div>
+                                <div class="bar" style="height: 45%;">
+                                    <span class="bar-label">Education</span>
+                                </div>
                             </div>
                         </div>
 
@@ -370,12 +406,18 @@
                                 </svg>
                             </div>
                             <div class="chart-legend">
-                                <div class="legend-item"><span class="legend-color"
-                                        style="background:#2196f3;"></span>Internal Grants</div>
-                                <div class="legend-item"><span class="legend-color"
-                                        style="background:#4caf50;"></span>External Grants</div>
-                                <div class="legend-item"><span class="legend-color"
-                                        style="background:#ff9800;"></span>Unfunded Projects</div>
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background:#2196f3;"></span>
+                                    <span>Internal Grants</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background:#4caf50;"></span>
+                                    <span>External Grants</span>
+                                </div>
+                                <div class="legend-item">
+                                    <span class="legend-color" style="background:#ff9800;"></span>
+                                    <span>Unfunded Projects</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -389,7 +431,9 @@
                     <div class="page-title">
                         <h2>System Settings</h2>
                     </div>
-                    <p class="page-subtitle">Configure departments, categories, funding types, workflows, etc.</p>
+                    <p class="page-subtitle">
+                        Configure departments, categories, funding types, workflows, etc.
+                    </p>
 
                     <div class="section-grid">
                         <div class="section-card">
@@ -397,9 +441,15 @@
                                 <h3>Reference Data</h3>
                             </div>
                             <div class="action-btns">
-                                <button class="btn"><i class="fas fa-building"></i> Manage Departments</button>
-                                <button class="btn"><i class="fas fa-tags"></i> Research Categories</button>
-                                <button class="btn"><i class="fas fa-coins"></i> Funding Sources</button>
+                                <button class="btn">
+                                    <i class="fas fa-building"></i> Manage Departments
+                                </button>
+                                <button class="btn">
+                                    <i class="fas fa-tags"></i> Research Categories
+                                </button>
+                                <button class="btn">
+                                    <i class="fas fa-coins"></i> Funding Sources
+                                </button>
                             </div>
                         </div>
 
@@ -408,9 +458,15 @@
                                 <h3>Workflow & Access</h3>
                             </div>
                             <div class="action-btns">
-                                <button class="btn"><i class="fas fa-project-diagram"></i> Review Workflow</button>
-                                <button class="btn"><i class="fas fa-envelope"></i> Email Templates</button>
-                                <button class="btn"><i class="fas fa-user-shield"></i> Role Permissions</button>
+                                <button class="btn">
+                                    <i class="fas fa-project-diagram"></i> Review Workflow
+                                </button>
+                                <button class="btn">
+                                    <i class="fas fa-envelope"></i> Email Templates
+                                </button>
+                                <button class="btn">
+                                    <i class="fas fa-user-shield"></i> Role Permissions
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -418,8 +474,8 @@
                 </div>
             </div>
 
-        </div>
-    </div>
+        </div><!-- /main-content -->
+    </div><!-- /container -->
 
     <script src="admin.js"></script>
     <script src="../js/utils.js"></script>

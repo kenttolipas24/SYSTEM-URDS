@@ -144,7 +144,7 @@ body {
 }
 
 .logout:hover {
-    background: #fee;
+    background: rgb(141, 21, 21);
 }
 
 /* Main content area */
@@ -213,7 +213,7 @@ body {
 
 .user-details p {
     font-size: 12px;
-    color: #7f8c255;
+    color: #f8c255;
 }
 
 /* Content and pages */
@@ -565,6 +565,6 @@ body {
 
 .nav::-webkit-scrollbar-thumb,
 .main-content::-webkit-scrollbar-thumb {
-    background: #cfd8dc;
+    background: #7bbad5;
     border-radius: 3px;
 }

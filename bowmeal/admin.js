@@ -12,7 +12,8 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 function initAdminUserInfo() {
-  const user = JSON.parse(localStorage.getItem('currentUser') || 'null');
+  const user = JSON.parse(localStorage.getItem('adminUser') || 'null');
+
 
   const displayName = user?.name || 'URDS Admin';
   const displayRole = user?.displayRole || 'Coordinator';
@@ -32,6 +33,7 @@ function initAdminUserInfo() {
       .join('')
       .toUpperCase()
       .slice(0, 2) || 'AD';
+
     avatarElem.textContent = initials;
   }
 }
@@ -40,9 +42,7 @@ function initAdminNavigation() {
   const navItems = document.querySelectorAll('.nav-item[data-target]');
   const pages = document.querySelectorAll('.page');
 
-  if (!navItems.length || !pages.length) {
-    return;
-  }
+  if (!navItems.length || !pages.length) return;
 
   navItems.forEach(item => {
     item.addEventListener('click', () => {
@@ -67,9 +67,8 @@ function initAdminLogout() {
   if (!btn) return;
 
   btn.addEventListener('click', () => {
-  {
-        localStorage.removeItem('currentUser');
-        window.location.href = '../homepage.html';
-    }
+  localStorage.removeItem('adminUser');
+window.location.href = '../homepage.html';
+
   });
 }
