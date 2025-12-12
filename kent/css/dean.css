@@ -8,6 +8,15 @@
     flex: 1;
     overflow-y: auto;
     background: #fafafa;
+    margin-left: 240px;
+    width: calc(100% - 260px);
+    transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Added: expands when sidebar is collapsed */
+.main-content.expanded {
+    margin-left: 80px;
+    width: calc(100% - 80px);
 }
 
 .content {

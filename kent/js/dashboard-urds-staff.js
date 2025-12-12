@@ -82,16 +82,23 @@ function loadSettings() {
         '<div class="dashboard-content"><h2>Settings</h2><p>Settings functionality coming soon...</p></div>';
 }
 
-// Logout function
-function PagesLogout() {
-    localStorage.removeItem('userSession');
-    sessionStorage.clear();
-    
-    // Redirect to homepage or login page
-    window.location.href = '../../kent/frontpage.html';
-}
-
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
     loadComponents();
 });
+
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.querySelector('.main-content');
+    const navbar = document.querySelector('.navbar');  // Fixed: target .navbar, not header
+    
+    sidebar.classList.toggle('collapsed');
+    mainContent.classList.toggle('expanded');
+    
+    // Directly control navbar left position for 100% reliability
+    if (sidebar.classList.contains('collapsed')) {
+        navbar.style.left = '80px';
+    } else {
+        navbar.style.left = '240px';
+    }
+}

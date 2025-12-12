@@ -1,9 +1,29 @@
+/* urds-staff.css */
 .container {
     display: flex;
     height: 100vh;
 }
 
-/* Responsive */
+/* Main Content */
+.main-content {
+    flex: 1;
+    overflow-y: auto;
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    margin-left: 240px;
+    width: calc(100% - 240px);
+    transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding-top: 100px;
+}
+
+/* Expands when sidebar collapses */
+.main-content.expanded {
+    margin-left: 80px;
+    width: calc(100% - 80px);
+}
+
+/* Your existing responsive styles */
 @media (max-width: 1200px) {
     .metrics-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -42,7 +62,6 @@
     }
 }
 
-/* Responsive override for intake */
 @media (max-width: 992px) {
     .intake-grid {
         grid-template-columns: 1fr;

@@ -1,6 +1,6 @@
 <!-- Sidebar -->
-<div class="sidebar">
-    <div class="logo">
+<div class="sidebar" id="sidebar">
+    <div class="logo" onclick="toggleSidebar()">
         <div class="logo-icon"><img src="../assets/pictures/UEP_logo-transparent.png" alt="UEP Logo"></div>
         <div class="logo-text">
             <h3>URDS</h3>
@@ -16,7 +16,7 @@
                 <rect x="3" y="15" width="6" height="6" rx="1.5"/>
                 <rect x="12" y="12" width="9" height="9" rx="1.5"/>
             </svg>
-            Dashboard
+            <span>Dashboard</span>
         </div>
 
         <div class="nav-item" onclick="showPage('proposal-intake')">
@@ -27,7 +27,7 @@
                 <line x1="8" y1="17" x2="16" y2="17"/>
                 <line x1="8" y1="9" x2="11" y2="9"/>
             </svg>
-            Proposal Intake
+            <span>Proposal Intake</span>
         </div>
 
         <div class="nav-item" onclick="showPage('in-house-schedule')">
@@ -40,7 +40,7 @@
                 <rect x="11" y="14" width="2" height="2" rx="0.5" fill="white"/>
                 <rect x="15" y="14" width="2" height="2" rx="0.5" fill="white"/>
             </svg>
-            In-House Schedule
+            <span>In-House Schedule</span>
         </div>
 
         <div class="nav-item" onclick="showPage('evaluator-pool')">
@@ -50,7 +50,7 @@
                 <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
                 <path d="M15 15a4 4 0 0 1 4 4v2"/>
             </svg>
-            Evaluator Pool
+            <span>Evaluator Pool</span>
         </div>
     </div>
 
@@ -64,7 +64,7 @@
                     d="M15 12a3 3 0 11-6 0 3 3 0 016 0z">
                 </path>
             </svg>
-            Settings
+            <span>Settings</span>
         </div>
 
         <div class="logout" onclick="PagesLogout()">
@@ -73,8 +73,7 @@
                     d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1">
                 </path>
             </svg>
-            Logout
+            <span>Logout</span>
         </div>
     </div>
 </div>
-

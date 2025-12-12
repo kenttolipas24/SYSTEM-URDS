@@ -1,118 +1,162 @@
-/* Header */
 .header {
-    background: white;
-    padding: 20px 40px;
-    border-bottom: 1px solid #e0e0e0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-shrink: 0;
-    position: fixed;
-    top: 0;
-    left: 240px; /* align with sidebar width */
-    right: 0;
-    z-index: 1000;
+    display: none !important;
 }
 
-.header-left h1 {
-    font-size: 24px;
-    color: #2c3e50;
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 240px;                     /* Default: matches expanded sidebar */
+    right: 0;
+    height: 70px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid #e5e7eb;
+    padding: 0 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);  /* Smooth shift */
+}
+
+.navbar-title {
+    font-size: 19px;
+    font-weight: 600;
+    color: #111827;
     margin: 0;
 }
 
-.header-center {
-    flex: 1;
+.navbar-right {
     display: flex;
-    justify-content: center;
+    align-items: center;
+    gap: 24px;
 }
 
-.header-center .search-box {
+/* Search Box */
+.search-box {
     position: relative;
-    width: 100%;
-    max-width: 400px;
+    display: flex;
+    align-items: center;
 }
 
-.header-center .search-box i {
+.search-icon {
     position: absolute;
-    left: 16px;
+    left: 12px;
     top: 50%;
     transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    color: #9ca3af;
+    pointer-events: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.search-input {
+    padding: 9px 16px 9px 38px;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 14px;
+    width: 260px;
+    outline: none;
+    background: #fafafa;
+    font-family: inherit;
+    transition: all 0.2s ease;
+}
+
+.search-input::placeholder {
     color: #9ca3af;
 }
 
-.header-center .search-box input {
-    width: 100%;
-    padding: 10px 16px 10px 44px;
-    border: 1px solid #e0e0e0;
-    border-radius: 6px;
-    font-size: 14px;
-    outline: none;
-    transition: all 0.3s;
+.search-input:focus {
+    border-color: #6366f1;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
 
-.header-center .search-box input:focus {
-    border-color: #2196f3;
-    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
-}
-
-.header-right {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.notification-icon {
-    width: 40px;
-    height: 40px;
+/* Notification Button */
+.notification-btn {
+    position: relative;
+    width: 36px;
+    height: 36px;
+    background: transparent;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.notification-btn:hover {
+    background: #f3f4f6;
+}
+
+.notification-btn svg {
+    width: 20px;
+    height: 20px;
+    stroke: #6b7280;
+    stroke-width: 2;
+    fill: none;
+}
+
+.notification-badge {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 8px;
+    height: 8px;
+    background: #ef4444;
+    border: 2px solid white;
     border-radius: 50%;
-    transition: all 0.3s;
-    color: #5a6c7d;
 }
 
-.notification-icon:hover {
-    background: #f0f4f8;
-}
-
-.notification-icon i {
-    font-size: 20px;
-}
-
-.user-info {
+/* User Profile */
+.user-profile {
     display: flex;
     align-items: center;
     gap: 12px;
+    padding: 6px 12px 6px 6px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s ease;
 }
 
-.user-details {
+.user-profile:hover {
+    background: #f3f4f6;
+}
+
+.user-info {
     text-align: right;
 }
 
 .user-name {
     font-size: 14px;
-    color: #2c3e50;
-    font-weight: 500;
-    margin: 0;
+    font-weight: 600;
+    color: #111827;
+    margin-bottom: 2px;
+    line-height: 1.2;
 }
 
 .user-role {
     font-size: 12px;
-    color: #7f8c8d;
-    margin: 0;
+    color: #6b7280;
+    line-height: 1.2;
 }
 
 .user-avatar {
     width: 40px;
     height: 40px;
-    background: #2196f3;
+    background: #4f46e5;
+    color: white;
+    font-weight: 600;
+    font-size: 14px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-weight: bold;
-    font-size: 14px;
+    flex-shrink: 0;
 }
