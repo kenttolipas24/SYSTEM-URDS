@@ -1,26 +1,26 @@
 .header {
-    background: white;
-    padding: 20px 40px;
-    border-bottom: 1px solid #e0e0e0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    display: none !important;
 }
 
 .navbar {
+    position: fixed;                 /* Changed to fixed for reliable shifting */
+    top: 0;
+    left: 240px;                     /* Default expanded */
+    right: 0;
+    height: 70px;
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid #e5e7eb;
-    padding: 7px 40px;
+    padding: 0 40px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    position: sticky;
-    top: 0;
     z-index: 100;
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Rest of your styles unchanged */
 .navbar-title {
     font-size: 19px;
     font-weight: 600;
@@ -44,6 +44,8 @@
 .search-icon {
     position: absolute;
     left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
     width: 18px;
     height: 18px;
     color: #9ca3af;
@@ -70,7 +72,7 @@
 }
 
 .search-input:focus {
-    border-color: #d1d5db;
+    border-color: #6366f1;
     background: white;
     box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
