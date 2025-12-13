@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     const mainContent = document.querySelector('.main-content');
-    const navbar = document.querySelector('.navbar');  // Fixed: target .navbar, not header
+    const navbar = document.querySelector('.navbar');  // Correctly targets navbar
     
     sidebar.classList.toggle('collapsed');
     mainContent.classList.toggle('expanded');

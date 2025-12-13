@@ -13,8 +13,9 @@
     flex-direction: column;
     margin-left: 240px;
     width: calc(100% - 240px);
+    margin-top: 70px;                     /* ← Push content below fixed navbar */
+    padding: 32px 40px 40px;               /* Your original padding */
     transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    padding-top: 100px;
 }
 
 /* Expands when sidebar collapses */
@@ -23,7 +24,7 @@
     width: calc(100% - 80px);
 }
 
-/* Your existing responsive styles */
+/* Keep your existing responsive styles unchanged */
 @media (max-width: 1200px) {
     .metrics-grid {
         grid-template-columns: repeat(2, 1fr);

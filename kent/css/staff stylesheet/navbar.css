@@ -3,11 +3,11 @@
 }
 
 .navbar {
-    position: fixed;
+    position: fixed;                 /* Fixed to stay visible on scroll */
     top: 0;
-    left: 240px;                     /* Default: matches expanded sidebar */
+    left: 240px;                     /* Default: expanded sidebar */
     right: 0;
-    height: 70px;
+    height: 70px;                    /* Consistent height */
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
@@ -17,7 +17,7 @@
     align-items: center;
     justify-content: space-between;
     z-index: 1000;
-    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);  /* Smooth shift */
+    transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navbar-title {
