@@ -1,0 +1,74 @@
+/* urds-staff.css */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    overflow-y: auto;
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    margin-left: 240px;
+    width: calc(100% - 240px);
+    margin-top: 70px;                     /* ← Push content below fixed navbar */
+    padding: 32px 40px 40px;               /* Your original padding */
+    transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Expands when sidebar collapses */
+.main-content.expanded {
+    margin-left: 80px;
+    width: calc(100% - 80px);
+}
+
+/* Keep your existing responsive styles unchanged */
+@media (max-width: 1200px) {
+    .metrics-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .metrics-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .header {
+        flex-direction: column;
+        gap: 16px;
+        padding: 16px;
+    }
+    
+    .header-center {
+        width: 100%;
+    }
+    
+    .dashboard-content {
+        padding: 20px;
+    }
+    
+    .submission-item,
+    .review-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .btn-assign-code,
+    .btn-details {
+        width: 100%;
+    }
+}
+
+@media (max-width: 992px) {
+    .intake-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 480px) {
+    .modal-dialog { max-width: 95%; }
+}
