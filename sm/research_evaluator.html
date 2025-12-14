@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URDS Evaluator - Research Evaluation Portal</title>
+    <link rel="stylesheet" href="/sm/css/research_evaluator.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon"><img src="/assets/pictures/UEP_logo-transparent.png" alt="UEP_logo-transparent"></div>
+                    <div class="logo-text">
+                        <div class="logo-brand">URDS</div>
+                        <div class="logo-subtitle">Evaluator</div>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item" data-page="dashboard">
+                    <i class="fas fa-th-large"></i>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="nav-item" data-page="pending-reviews">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>Pending Reviews</span>
+                </a>
+                <a href="#" class="nav-item" data-page="completed">
+                    <i class="fas fa-check-circle"></i>
+                    <span>Completed</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <a href="#" class="nav-item">
+                    <i class="fas fa-cog"></i>
+                    <span>Settings</span>
+                </a>
+                <a href="/kent/pages/homepage.html" class="nav-item logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Logout</span>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-header">
+                <h1 id="page-title">Evaluator Dashboard</h1>
+                <div class="header-right">
+                    <!-- Made search box functional with clear button -->
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" placeholder="Search..." id="searchInput">
+                        <button class="search-clear" id="searchClear" aria-label="Clear search">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <!-- Added notification dropdown container -->
+                    <div class="notification-container">
+                        <button class="notification-btn" id="notificationBtn" aria-label="Notifications">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge" id="notificationCount">3</span>
+                        </button>
+                        <div class="notification-dropdown" id="notificationDropdown">
+                            <div class="notification-dropdown-header">
+                                <h3>Notifications</h3>
+                                <button class="notification-clear-all" id="clearAllNotifications">Clear All</button>
+                            </div>
+                            <div class="notification-list" id="notificationList">
+                                <!-- Notifications will be populated by JavaScript -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="user-profile">
+                        <div class="user-info">
+                            <div class="user-name">Dr. Meredith Grey</div>
+                            <div class="user-role">External Expert</div>
+                        </div>
+                        <div class="user-avatar">DG</div>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Page Content -->
+            <div class="content-wrapper">
+                <!-- Dashboard Page -->
+                <div id="dashboard-page" class="page-content active">
+                    <div class="page-header">
+                        <h2>Evaluator Portal</h2>
+                        <p class="page-subtitle">Review proposals, grade ongoing research, and decide on continuation.</p>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <!-- Left Column: Pending Evaluations -->
+                        <div class="dashboard-section">
+                            <h3 class="section-title">Pending Evaluations</h3>
+                            <p class="section-subtitle">Proposals and studies assigned to you</p>
+
+                            <!-- Proposal Card 1: New Proposal -->
+                            <div class="research-card">
+                                <div class="card-header">
+                                    <span class="badge badge-new">New Proposal</span>
+                                    <button class="btn btn-primary btn-lg">Start Evaluation</button>
+                                </div>
+                                <div class="card-content">
+                                    <h4 class="research-title">AI-Driven Traffic Management</h4>
+                                    <p class="research-meta">Engineering Department</p>
+                                    <div class="progress-item">
+                                        <label>Technical Merit</label>
+                                        <div class="progress-bar">
+                                            <div class="progress-fill"></div>
+                                            <span class="progress-value">85/100</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Proposal Card 2: Ongoing Research -->
+                            <div class="research-card">
+                                <div class="card-header">
+                                    <span class="badge badge-ongoing">Ongoing Research</span>
+                                </div>
+                                <div class="card-content">
+                                    <h4 class="research-title">Mangrove Restoration Project</h4>
+                                    <p class="research-meta">Environmental Science</p>
+                                    <div class="card-actions">
+                                        <button class="btn btn-secondary btn-outline">View Progress</button>
+                                    </div>
+                                    <div class="action-buttons">
+                                        <button class="btn btn-success">
+                                            <i class="fas fa-thumbs-up"></i> Recommend Continuation
+                                        </button>
+                                        <button class="btn btn-danger">
+                                            <i class="fas fa-thumbs-down"></i> Recommend Termination
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Right Column: Evaluation History -->
+                        <div class="dashboard-section">
+                            <h3 class="section-title">Evaluation History</h3>
+                            <p class="section-subtitle">Past reviews and ratings</p>
+
+                            <div class="evaluation-item">
+                                <div class="eval-info">
+                                    <h5 class="eval-title">Ethnobotanical Study...</h5>
+                                    <p class="eval-meta">Completed Research • Oct 2025</p>
+                                </div>
+                                <div class="eval-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span class="rating-value">92.5</span>
+                                </div>
+                            </div>
+
+                            <div class="evaluation-item">
+                                <div class="eval-info">
+                                    <h5 class="eval-title">Urban Heat Island Analysis</h5>
+                                    <p class="eval-meta">Completed Research • Aug 2025</p>
+                                </div>
+                                <div class="eval-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span class="rating-value">88.0</span>
+                                </div>
+                            </div>
+
+                            <div class="evaluation-item">
+                                <div class="eval-info">
+                                    <h5 class="eval-title">Hybrid Rice Variety Testing</h5>
+                                    <p class="eval-meta">Completed Research • Jul 2025</p>
+                                </div>
+                                <div class="eval-rating">
+                                    <i class="fas fa-star"></i>
+                                    <span class="rating-value">85.5</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pending Reviews Page -->
+                <div id="pending-reviews-page" class="page-content">
+                    <div class="page-header">
+                        <h2>Pending Reviews</h2>
+                        <p class="page-subtitle">Evaluate research proposals assigned to you.</p>
+                    </div>
+
+                    <div class="evaluation-form-container">
+                        <div class="research-card large">
+                            <div class="card-header">
+                                <div>
+                                    <span class="badge badge-new">New Assignment</span>
+                                    <h4 class="research-title">AI-Driven Traffic Management System</h4>
+                                    <p class="research-meta">Engineering Department • RP-2025-002</p>
+                                </div>
+                                <button class="btn btn-secondary btn-outline">Download Full PDF</button>
+                            </div>
+
+                            <div class="evaluation-form">
+                                <!-- Evaluation Criteria -->
+                                <div class="criteria-section">
+                                    <div class="criteria-item">
+                                        <div class="criteria-header">
+                                            <label class="criteria-label">Technical Merit (40%)</label>
+                                            <span class="criteria-value" id="technical-value">85</span>
+                                        </div>
+                                        <input title="technical-merit" type="range" class="slider" min="0" max="100" value="85" id="technical-merit">
+                                    </div>
+
+                                    <div class="criteria-item">
+                                        <div class="criteria-header">
+                                            <label class="criteria-label">Relevance to Agenda (30%)</label>
+                                            <span class="criteria-value" id="relevance-value">90</span>
+                                        </div>
+                                        <input title="relevance-agenda" type="range" class="slider" min="0" max="100" value="90" id="relevance-agenda">
+                                    </div>
+
+                                    <div class="criteria-item">
+                                        <div class="criteria-header">
+                                            <label class="criteria-label">Budget Feasibility (30%)</label>
+                                            <span class="criteria-value" id="budget-value">75</span>
+                                        </div>
+                                        <input title="budget-feasibility" type="range" class="slider" min="0" max="100" value="75" id="budget-feasibility">
+                                    </div>
+                                </div>
+
+                                <!-- Comments Section -->
+                                <div class="comments-section">
+                                    <label for="qualitative-comments" class="comments-label">Qualitative Comments</label>
+                                    <textarea id="qualitative-comments" class="comments-textarea" placeholder="Enter your detailed feedback..."></textarea>
+                                </div>
+
+                                <!-- Action Buttons -->
+                                <div class="form-actions">
+                                    <button class="btn btn-secondary">Save Draft</button>
+                                    <button class="btn btn-primary">Submit Evaluation</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Completed Page -->
+                <div id="completed-page" class="page-content">
+                    <div class="page-header">
+                        <h2>Completed Research Evaluations</h2>
+                        <p class="page-subtitle">Review final manuscripts and outputs.</p>
+                    </div>
+
+                    <!-- Pending Final Evaluation Section -->
+                    <div class="section-card">
+                        <h3 class="section-title">Pending Final Evaluation</h3>
+                        <p class="section-subtitle">Completed studies awaiting your final rating.</p>
+
+                        <div class="research-card">
+                            <div class="card-header">
+                                <span class="badge badge-manuscript">Manuscript Submitted</span>
+                                <button class="btn btn-primary btn-lg">Rate Research</button>
+                            </div>
+                            <div class="card-content">
+                                <h4 class="research-title">Ethnobotanical Study of Medicinal Plants</h4>
+                                <p class="research-meta">Biology Dept • Prof. Elena Gilbert</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Evaluation History Section -->
+                    <div class="section-card">
+                        <h3 class="section-title">Evaluation History</h3>
+
+                        <div class="evaluation-item">
+                            <div class="eval-info">
+                                <h5 class="eval-title">Urban Heat Island Effect Analysis</h5>
+                                <p class="eval-meta">Evaluated on Oct 15, 2025</p>
+                            </div>
+                            <div class="eval-rating">
+                                <i class="fas fa-star"></i>
+                                <span class="rating-value">95.0</span>
+                            </div>
+                        </div>
+
+                        <div class="evaluation-item">
+                            <div class="eval-info">
+                                <h5 class="eval-title">Hybrid Rice Variety Testing</h5>
+                                <p class="eval-meta">Evaluated on Sep 30, 2025</p>
+                            </div>
+                            <div class="eval-rating">
+                                <i class="fas fa-star"></i>
+                                <span class="rating-value">88.5</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Added sidebar overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <script src="/sm/js/research_evaluator.js"></script>
+</body>
+</html>

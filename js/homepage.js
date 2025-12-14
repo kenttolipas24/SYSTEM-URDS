@@ -69,9 +69,9 @@ function handleSignUp(event) {
   const roleRedirectMap = {
     'faculty':      'pages/faculty.html',
     'coordinator':  'pages/coordinator.html',
-    'dean':         'pages/dean.html',
+    'dean':         '../kent/pages/dean.html',
     'director':     'pages/director.html',
-    'staff':        'pages/urds-staff.html',
+    'staff':        '../kent/pages/urds-staff.html',
     'cluster':      'pages/cluster.html',
     'researcher':   'pages/evaluator.html'
   };

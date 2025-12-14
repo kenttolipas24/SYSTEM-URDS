@@ -3,3 +3,11 @@ fetch('../components/dean-dashboard/sidebar-content/dash-content.html')
   .then(data => {
     document.getElementById('dash_con-placeholder').innerHTML = data;
   });
+
+function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const mainContent = document.querySelector('.main-content');
+    
+    sidebar.classList.toggle('collapsed');
+    mainContent.classList.toggle('expanded');
+}

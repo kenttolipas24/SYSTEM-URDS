@@ -1,0 +1,186 @@
+/* Evaluators */
+.session-side {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 14px;
+}
+
+.evaluator-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: flex-end;
+}
+
+.label {
+    color: #6b7280;
+    font-size: 13px;
+    margin: 0;
+}
+
+.evaluator-list {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+.evaluator-pill {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    background: #e5e7eb;
+    color: #111827;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+.evaluator-add {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px dashed #9ca3af;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.session-card:hover {
+    border-color: #cfe3ff;
+    box-shadow: 0 2px 10px rgba(33, 150, 243, 0.1);
+}
+
+
+/* Evaluator Pool */
+.evaluator-page .evaluator-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
+
+.evaluator-headings {
+    margin: 0;
+}
+
+.evaluator-page .portal-title {
+    font-size: 36px;
+    font-weight: bold;
+    color: #2c3e50;
+    margin: 0 0 8px 0;
+}
+
+.evaluator-page .portal-subtitle {
+    font-size: 16px;
+    color: #7f8c8d;
+    margin: 0;
+}
+.evaluator-page .btn-icon { display: inline-flex; align-items: center; gap: 10px; padding: 10px 16px; border-radius: 8px; }
+.evaluator-page .btn-icon i { font-size: 18px; }
+
+.evaluator-search { margin: 16px 0; }
+.search-box.large { max-width: 520px; width: 100%; }
+.search-box.large input { padding: 12px 16px 12px 44px; border-radius: 10px; }
+
+.evaluator-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+.evaluator-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+.evaluator-header { display: flex; align-items: center; gap: 14px; }
+.avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #fff;
+}
+.avatar.red { background: #ef4444; }
+.avatar.pink { background: #ec4899; }
+.avatar.orange { background: #f97316; }
+
+.evaluator-title { font-size: 16px; font-weight: 700; color: #111827; margin: 0; }
+.affiliation { font-size: 14px; color: #6b7280; margin: 6px 0; }
+
+.badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border: 1px solid #111827;
+    border-radius: 999px;
+    font-size: 12px;
+    color: #111827;
+    background: #fff;
+}
+.badge.internal { border-color: #111827; color: #111827; }
+.badge.external { border-color: #111827; color: #111827; }
+
+.tag-list { display: flex; gap: 8px; flex-wrap: wrap; margin: 8px 0 14px; }
+.tag-pill { font-size: 12px; color: #374151; background: #eef2f7; border-radius: 999px; padding: 6px 10px; }
+
+.card-footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #e5e7eb; padding-top: 12px; }
+.load-label { color: #374151; font-size: 14px; }
+
+.footer-actions { display: inline-flex; align-items: center; gap: 10px; }
+.footer-actions i { color: #6b7280; }
+.footer-actions .assign-link { color: #3b82f6; font-size: 14px; cursor: pointer; }
+
+@media (max-width: 1200px) { .evaluator-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) { .evaluator-grid { grid-template-columns: 1fr; } }
+
+
+/* Generic search box positioning to place icon inside input */
+.search-box { 
+    position: relative; 
+}
+
+.search-box i {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+}
+
+.search-box input { 
+    width: 100%; 
+}
+
+/* Evaluator Pool search styling */
+.evaluator-search { 
+    margin: 16px 0; 
+}
+
+.search-box.large { 
+    max-width: 520px; 
+    width: 100%; 
+}
+
+.search-box.large input { 
+    padding: 12px 16px 12px 44px; 
+    border-radius: 10px; 
+}
+
+.evaluator-search .search-box input {
+    padding: 12px 16px 12px 44px;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    outline: none;
+    transition: all 0.3s;
+}
+
+.evaluator-search .search-box input:focus {
+    border-color: #2196f3;
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.1);
+}
