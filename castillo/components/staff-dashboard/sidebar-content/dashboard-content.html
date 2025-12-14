@@ -1,0 +1,93 @@
+<!-- Dashboard Content -->
+<div class="dashboard-content">
+    <!-- Title Section -->
+    <div class="title-section">
+        <h1 class="portal-title">URDS Staff Portal</h1>
+        <p class="portal-subtitle">Documentation, Organization, and In-House Review Support.</p>
+    </div>
+
+    <!-- Key Metrics Section -->
+    <div class="metrics-grid">
+        <div class="metric-card">
+            <div class="metric-icon">
+                <i class="fas fa-layer-group"></i>
+            </div>
+            <div class="metric-info">
+                <div class="metric-value" id="unsorted-count">14</div>
+                <div class="metric-label">Unsorted Proposals</div>
+            </div>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-icon">
+                <i class="fas fa-folder-open"></i>
+            </div>
+            <div class="metric-info">
+                <div class="metric-value" id="ready-count">5</div>
+                <div class="metric-label">Ready for Review</div>
+            </div>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-icon">
+                <i class="fas fa-calendar-alt"></i>
+            </div>
+            <div class="metric-info">
+                <div class="metric-value" id="sessions-count">3</div>
+                <div class="metric-label">Upcoming Sessions</div>
+            </div>
+        </div>
+
+        <div class="metric-card">
+            <div class="metric-icon">
+                <i class="fas fa-file-download"></i>
+            </div>
+            <div class="metric-info">
+                <div class="metric-value" id="archived-count">42</div>
+                <div class="metric-label">Total Archived</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Incoming Submissions Section -->
+    <div class="content-section">
+        <div class="section-header">
+            <h2>Incoming Submissions</h2>
+            <p>Organize and assign codes to new proposals.</p>
+        </div>
+        <div class="submissions-list" id="incoming-submissions">
+            <div class="submission-item">
+                <div class="submission-info">
+                    <h3>Effectiveness of Blended Learning</h3>
+                    <p>College of Education</p>
+                </div>
+                <button class="btn-assign-code" onclick="assignCode('submission-1')">Assign Code</button>
+            </div>
+            <div class="submission-item">
+                <div class="submission-info">
+                    <h3>IoT Based Security System</h3>
+                    <p>College of Engineering</p>
+                </div>
+                <button class="btn-assign-code" onclick="assignCode('submission-2')">Assign Code</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Review Preparation Section -->
+    <div class="content-section">
+        <div class="section-header">
+            <h2>Review Preparation</h2>
+            <p>Prepare documents for evaluators.</p>
+        </div>
+        <div class="review-list" id="review-preparation">
+            <div class="review-item highlighted">
+                <div class="review-info">
+                    <h3>Natural Sciences Cluster</h3>
+                    <p>Missing 2 copies of Proposal RP-2025-001</p>
+                </div>
+                <button class="btn-details" onclick="showDetails('review-1')">Details</button>
+            </div>
+        </div>
+    </div>
+</div>
+

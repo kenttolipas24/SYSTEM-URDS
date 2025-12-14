@@ -1,0 +1,128 @@
+/* Sidebar */
+.sidebar {
+    width: 240px;
+    background: white;
+    border-right: 1px solid #e0e0e0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+}
+
+.sidebar.collapsed {
+    width: 80px;
+}
+
+.sidebar.collapsed .logo-text,
+.sidebar.collapsed .nav-item span,
+.sidebar.collapsed .logout span {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+.sidebar.collapsed .logo,
+.sidebar.collapsed .nav-item,
+.sidebar.collapsed .logout {
+    justify-content: center;
+}
+
+.sidebar.collapsed .logo {
+    padding: 20px 0;
+}
+
+.sidebar.collapsed .nav-item,
+.sidebar.collapsed .logout {
+    padding: 12px 0; /* Tighter vertical padding for compact icons */
+}
+
+.logo {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer; /* Make clickable */
+}
+
+.logo-icon img {
+    height: 55px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo-text h3 {
+    font-size: 18px;
+    color: #2c3e50;
+    margin: 0;
+}
+
+.logo-subtitle {
+    font-size: 14px;
+    color: #5a6c7d;
+    margin-top: 2px;
+    line-height: 1.2;
+}
+
+.nav {
+    flex: 1;
+    padding: 8px 0; /* Reduced for tighter icon grouping */
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.nav-item {
+    padding: 12px 20px; /* Consistent, slightly tighter */
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #5a6c7d;
+    transition: all 0.3s;
+}
+
+.nav-item:hover {
+    background: #f0f4f8;
+}
+
+.nav-item.active {
+    background: #e3f2fd;
+    color: #2196f3;
+    border-right: 3px solid #2196f3;
+}
+
+.nav-icon {
+    width: 20px;
+    height: 20px;
+    stroke-width: 1.9;
+    flex-shrink: 0;
+}
+
+.sidebar-footer {
+    padding: 8px 20px; /* Reduced for less bottom gap */
+    border-top: 1px solid #e0e0e0;
+}
+
+.sidebar-footer .nav-item {
+    padding: 12px 20px;
+    margin-bottom: 0;
+}
+
+.logout {
+    color: #e74c3c;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    padding: 12px 20px;
+    border-radius: 6px;
+    transition: all 0.3s;
+}
+
+.logout:hover {
+    background: #fee;
+}

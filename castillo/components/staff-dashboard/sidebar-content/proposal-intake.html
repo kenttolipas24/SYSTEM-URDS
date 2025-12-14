@@ -1,0 +1,90 @@
+<!-- Proposal Intake Content -->
+<div class="dashboard-content">
+    <div class="title-section">
+        <h1 class="portal-title">Proposal Intake</h1>
+        <p class="portal-subtitle">Receive, log, and encode new research proposals.</p>
+    </div>
+
+    <div class="intake-grid">
+        <!-- Left: Log New Submission -->
+        <div class="content-section">
+            <div class="section-header">
+                <h2>Log New Submission</h2>
+                <p>Manually enter details for physical submissions or uncoded proposals.</p>
+            </div>
+            <form id="intake-form" class="intake-form" onsubmit="return false;">
+                <div class="form-group">
+                    <label for="intake-college-select" class="form-label">College Origin</label>
+                    <select id="intake-college-select" class="form-control">
+                        <option value="" selected>Select College</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="intake-title-input" class="form-label">Research Title</label>
+                    <input type="text" id="intake-title-input" class="form-control" placeholder="Enter full title">
+                </div>
+
+                <div class="form-group">
+                    <label for="intake-lead-input" class="form-label">Lead Researcher</label>
+                    <input type="text" id="intake-lead-input" class="form-control" placeholder="Name of proponent">
+                </div>
+
+                <div class="form-group">
+                    <label for="intake-date-input" class="form-label">Date Received</label>
+                    <input type="date" id="intake-date-input" class="form-control" placeholder="dd/mm/yyyy">
+                </div>
+
+                <div class="form-actions">
+                    <button id="btn-generate-log" class="btn-primary" type="button">Generate Control Code & Log</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Right: Recent Logs -->
+        <div class="content-section">
+            <div class="section-header">
+                <h2>Recent Logs</h2>
+                <p>Recently encoded proposals.</p>
+            </div>
+            <div id="recent-logs" class="recent-logs"></div>
+        </div>
+    </div>
+    <!-- Edit Modal -->
+    <div id="edit-modal-overlay" class="modal-overlay hidden">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <h3>Edit Proposal Log</h3>
+                <button class="modal-close" id="edit-modal-close" aria-label="Close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="edit-form" class="intake-form" onsubmit="return false;">
+                    <div class="form-group">
+                        <label class="form-label" for="edit-code">Control Code</label>
+                        <input id="edit-code" class="form-control" type="text" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="edit-college-select">College Origin</label>
+                        <select id="edit-college-select" class="form-control"></select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="edit-title-input">Research Title</label>
+                        <input id="edit-title-input" class="form-control" type="text" placeholder="Enter full title">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="edit-lead-input">Lead Researcher</label>
+                        <input id="edit-lead-input" class="form-control" type="text" placeholder="Name of proponent">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="edit-date-input">Date Received</label>
+                        <input id="edit-date-input" class="form-control" type="date">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="btn-cancel-edit" type="button">Cancel</button>
+                <button class="btn-primary" id="btn-save-edit" type="button">Save Changes</button>
+            </div>
+        </div>
+    </div>
+</div>
