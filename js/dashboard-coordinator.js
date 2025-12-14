@@ -291,14 +291,14 @@ function openAddFacultyModal() {
 function filterResearchers() {
     const searchTerm = document.getElementById('researchers-search-input').value.toLowerCase();
     const allData = getFacultyResearchersData();
-    
+
     if (!searchTerm) {
         renderResearchersGrid(allData);
         return;
     }
 
-    const filtered = allData.filter(f => 
-        f.name.toLowerCase().includes(searchTerm) || 
+    const filtered = allData.filter(f =>
+        f.name.toLowerCase().includes(searchTerm) ||
         f.department.toLowerCase().includes(searchTerm) ||
         f.expertise.some(e => e.toLowerCase().includes(searchTerm))
     );
