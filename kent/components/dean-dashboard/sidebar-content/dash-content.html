@@ -2,37 +2,46 @@
     <div class="content">
         <h2 class="page-title">Welcome, Dean</h2>
         <p class="page-subtitle">Here is an overview of the college research proposals and activities.</p>
-
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-icon blue">📄</div>
+                <svg class="stat-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="12" y1="18" x2="12" y2="12"></line>
+                    <line x1="9" y1="15" x2="15" y2="15"></line>
+                </svg>
                 <div class="stat-label">Total Proposals</div>
                 <div class="stat-value">124</div>
                 <div class="stat-change">+12% from last semester</div>
             </div>
-
             <div class="stat-card">
-                <div class="stat-icon orange">⏳</div>
+                <svg class="stat-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                </svg>
                 <div class="stat-label">Pending Review</div>
                 <div class="stat-value">18</div>
                 <div class="stat-change">Awaiting TWG evaluation</div>
             </div>
-
             <div class="stat-card">
-                <div class="stat-icon red">↩️</div>
+                <svg class="stat-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 14l-4-4 4-4"></path>
+                    <path d="M15 14l4-4-4-4"></path>
+                </svg>
                 <div class="stat-label">For Revision</div>
                 <div class="stat-value">7</div>
                 <div class="stat-change">Returned to researchers</div>
             </div>
-
             <div class="stat-card">
-                <div class="stat-icon green">✓</div>
+                <svg class="stat-icon-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                    <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                </svg>
                 <div class="stat-label">Endorsed to URDS</div>
                 <div class="stat-value">42</div>
                 <div class="stat-change">Approved for funding</div>
             </div>
         </div>
-
         <div class="section-grid">
             <div class="section-card">
                 <div class="section-header">
@@ -42,7 +51,6 @@
                     </div>
                     <button class="view-all-btn" onclick="showPage('proposals')">View All →</button>
                 </div>
-
                 <table class="proposals-table">
                     <thead>
                         <tr>
@@ -65,7 +73,6 @@
                             <td>Dec 02, 2025</td>
                             <td><span class="status-badge pending">Pending TWG</span></td>
                         </tr>
-
                         <tr>
                             <td>
                                 <div class="proposal-title">AI-Driven Traffic Management System for Urban Areas</div>
@@ -81,28 +88,26 @@
                     </tbody>
                 </table>
             </div>
-
             <div class="section-card">
                 <div class="section-header">
                     <h3>Research Analytics</h3>
+                    <p style="font-size: 14px; color: #7f8c8d; margin-top: 8px; margin-bottom: 24px;">Proposals by Department</p>
                 </div>
-                <p style="font-size: 14px; color: #7f8c8d; margin-bottom: 20px;">Proposals by Department</p>
-
                 <div class="chart-container">
-                    <div class="bar" style="height: 180px;">
-                        <div class="bar-label">Bio</div>
+                    <div class="bar bio" style="height: 240px;">
+                        <div class="bar-label">CBA</div>
                     </div>
-                    <div class="bar" style="height: 140px;">
-                        <div class="bar-label">Eng</div>
+                    <div class="bar eng" style="height: 200px;">
+                        <div class="bar-label">Engineering</div>
                     </div>
-                    <div class="bar" style="height: 100px;">
-                        <div class="bar-label">Psych</div>
+                    <div class="bar psych" style="height: 100px;">
+                        <div class="bar-label">COED</div>
                     </div>
-                    <div class="bar" style="height: 160px;">
-                        <div class="bar-label">IT</div>
+                    <div class="bar it" style="height: 160px;">
+                        <div class="bar-label">CS</div>
                     </div>
-                    <div class="bar" style="height: 240px;">
-                        <div class="bar-label">Educ</div>
+                    <div class="bar educ" style="height: 180px;">
+                        <div class="bar-label">Agriculture</div>
                     </div>
                 </div>
             </div>
