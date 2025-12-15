@@ -1,81 +1,31 @@
-// Initialize proposals page functionality
+// ===============================
+// PROPOSALS PAGE – FIXED VERSION
+// ===============================
+
 function initializeProposalsPage() {
+
     const searchInput = document.getElementById('searchInput');
     const tableBody = document.getElementById('proposalsTableBody');
     const emptyState = document.getElementById('emptyState');
+    const proposalsTable = document.querySelector('.proposals-table');
     const filterDropdown = document.getElementById('filterDropdown');
     const filterBtn = document.getElementById('filterBtn');
+    const exportBtn = document.getElementById('exportBtn');
 
     if (!searchInput || !tableBody || !emptyState) {
-        console.error('Required elements not found');
+        console.error('Proposals page elements not found.');
         return;
     }
 
-    // Dropdown menu handling
-    document.querySelectorAll('.menu-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            e.stopPropagation();
-            const dropdown = this.nextElementSibling;
-            
-            // Close all other dropdowns
-            document.querySelectorAll('.dropdown-menu').forEach(menu => {
-                if (menu !== dropdown) menu.classList.remove('active');
-            });
-            
-            dropdown.classList.toggle('active');
-        });
-    });
-
-    // Close dropdowns when clicking outside
-    document.addEventListener('click', function() {
-        document.querySelectorAll('.dropdown-menu').forEach(menu => {
-            menu.classList.remove('active');
-        });
-    });
-
-    // Dropdown actions
-    document.querySelectorAll('.view-details').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const row = this.closest('tr');
-            const proposalId = row.querySelector('.proposal-id').textContent;
-            const title = row.querySelector('.proposal-title').textContent;
-            alert(`View Details:\n${proposalId} - ${title}\n\nThis would open a detailed view page.`);
-        });
-    });
-
-    document.querySelectorAll('.edit-proposal').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const row = this.closest('tr');
-            const proposalId = row.querySelector('.proposal-id').textContent;
-            alert(`Edit Proposal: ${proposalId}\n\nThis would open an edit form.`);
-        });
-    });
-
-    document.querySelectorAll('.download-proposal').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const row = this.closest('tr');
-            const proposalId = row.querySelector('.proposal-id').textContent;
-            alert(`Downloading PDF for ${proposalId}...`);
-        });
-    });
-
-    document.querySelectorAll('.delete-proposal').forEach(btn => {
-        btn.addEventListener('click', function() {
-            const row = this.closest('tr');
-            const proposalId = row.querySelector('.proposal-id').textContent;
-            if (confirm(`Are you sure you want to delete ${proposalId}?`)) {
-                alert(`${proposalId} would be deleted from the database.`);
-            }
-        });
-    });
-
-    // Search functionality
-    searchInput.addEventListener('input', function() {
+    /* ===============================
+       SEARCH FUNCTIONALITY
+    =============================== */
+    searchInput.addEventListener('input', function () {
         const searchTerm = this.value.toLowerCase().trim();
-        const rows = tableBody.getElementsByTagName('tr');
+        const rows = tableBody.querySelectorAll('tr');
         let visibleCount = 0;
 
-        Array.from(rows).forEach(row => {
+        rows.forEach(row => {
             const text = row.textContent.toLowerCase();
             if (text.includes(searchTerm)) {
                 row.style.display = '';
@@ -85,142 +35,173 @@ function initializeProposalsPage() {
             }
         });
 
-        if (visibleCount === 0 && searchTerm !== '') {
-            emptyState.style.display = 'block';
-            document.querySelector('.proposals-table').style.display = 'none';
-        } else {
-            emptyState.style.display = 'none';
-            document.querySelector('.proposals-table').style.display = 'table';
-        }
+        emptyState.style.display = visibleCount === 0 && searchTerm ? 'block' : 'none';
+        proposalsTable.style.display = visibleCount === 0 && searchTerm ? 'none' : 'table';
     });
 
-    // Filter dropdown
-    filterBtn.addEventListener('click', function(e) {
-        e.stopPropagation();
-        filterDropdown.classList.toggle('active');
-    });
+    /* ===============================
+       EVENT DELEGATION (DROPDOWNS)
+    =============================== */
+    document.addEventListener('click', function (e) {
 
-    // Close dropdown when clicking outside
-    document.addEventListener('click', function(e) {
-        if (!filterDropdown.contains(e.target) && e.target !== filterBtn) {
-            filterDropdown.classList.remove('active');
-        }
-    });
+        /* ---------- 3 DOT MENU ---------- */
+        const menuBtn = e.target.closest('.menu-btn');
+        if (menuBtn) {
+            e.stopPropagation();
+            const dropdown = menuBtn.nextElementSibling;
 
-    // Filter options
-    document.querySelectorAll('.filter-dropdown-item').forEach(item => {
-        item.addEventListener('click', function() {
-            const status = this.getAttribute('data-status').toLowerCase();
-            
-            // Update active state
-            document.querySelectorAll('.filter-dropdown-item').forEach(opt => {
-                opt.classList.remove('active');
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                if (menu !== dropdown) menu.classList.remove('active');
             });
-            this.classList.add('active');
-            
-            // Filter rows
-            const rows = tableBody.getElementsByTagName('tr');
+
+            dropdown.classList.toggle('active');
+            return;
+        }
+
+        /* ---------- FILTER BUTTON ---------- */
+        if (filterBtn && filterBtn.contains(e.target)) {
+            e.stopPropagation();
+            filterDropdown.classList.toggle('active');
+            return;
+        }
+
+        /* ---------- FILTER OPTION ---------- */
+        const filterItem = e.target.closest('.filter-dropdown-item');
+        if (filterItem) {
+            e.stopPropagation();
+
+            const status = filterItem.dataset.status.toLowerCase();
+            const rows = tableBody.querySelectorAll('tr');
             let visibleCount = 0;
 
-            Array.from(rows).forEach(row => {
-                if (status === '') {
+            document.querySelectorAll('.filter-dropdown-item')
+                .forEach(item => item.classList.remove('active'));
+            filterItem.classList.add('active');
+
+            rows.forEach(row => {
+                const rowStatus = row.querySelector('.status-badge')
+                    .textContent.toLowerCase();
+
+                if (!status || rowStatus.includes(status)) {
                     row.style.display = '';
                     visibleCount++;
                 } else {
-                    const rowStatus = row.querySelector('.status-badge').textContent.toLowerCase();
-                    if (rowStatus.includes(status)) {
-                        row.style.display = '';
-                        visibleCount++;
-                    } else {
-                        row.style.display = 'none';
-                    }
+                    row.style.display = 'none';
                 }
             });
 
-            if (visibleCount === 0) {
-                emptyState.style.display = 'block';
-                document.querySelector('.proposals-table').style.display = 'none';
-            } else {
-                emptyState.style.display = 'none';
-                document.querySelector('.proposals-table').style.display = 'table';
-            }
+            emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+            proposalsTable.style.display = visibleCount === 0 ? 'none' : 'table';
 
-            // Close dropdown
             filterDropdown.classList.remove('active');
-        });
+            return;
+        }
+
+        /* ---------- VIEW DETAILS ---------- */
+        const viewBtn = e.target.closest('.view-details');
+        if (viewBtn) {
+            const row = viewBtn.closest('tr');
+            alert(`View Details:\n${row.querySelector('.proposal-id').textContent}`);
+            return;
+        }
+
+        /* ---------- EDIT PROPOSAL ---------- */
+        const editBtn = e.target.closest('.edit-proposal');
+        if (editBtn) {
+            const row = editBtn.closest('tr');
+            alert(`Edit Proposal:\n${row.querySelector('.proposal-id').textContent}`);
+            return;
+        }
+
+        /* ---------- DOWNLOAD PDF ---------- */
+        const downloadBtn = e.target.closest('.download-proposal');
+        if (downloadBtn) {
+            const row = downloadBtn.closest('tr');
+            alert(`Downloading PDF for ${row.querySelector('.proposal-id').textContent}`);
+            return;
+        }
+
+        /* ---------- DELETE PROPOSAL ---------- */
+        const deleteBtn = e.target.closest('.delete-proposal');
+        if (deleteBtn) {
+            const row = deleteBtn.closest('tr');
+            const id = row.querySelector('.proposal-id').textContent;
+
+            if (confirm(`Are you sure you want to delete ${id}?`)) {
+                alert(`${id} would be deleted.`);
+            }
+            return;
+        }
+
+        /* ---------- CLOSE ALL DROPDOWNS ---------- */
+        document.querySelectorAll('.dropdown-menu')
+            .forEach(menu => menu.classList.remove('active'));
+
+        filterDropdown.classList.remove('active');
     });
 
-    // Export functionality
-    document.getElementById('exportBtn').addEventListener('click', function() {
-        const rows = tableBody.getElementsByTagName('tr');
-        const proposals = [];
-        
-        Array.from(rows).forEach(row => {
+    /* ===============================
+       EXPORT FUNCTIONALITY
+    =============================== */
+    exportBtn.addEventListener('click', function () {
+
+        const rows = tableBody.querySelectorAll('tr');
+        const data = [];
+
+        rows.forEach(row => {
             if (row.style.display !== 'none') {
-                const cells = row.getElementsByTagName('td');
-                if (cells.length >= 6) {
-                    proposals.push({
-                        'Proposal Title': cells[0].querySelector('.proposal-title')?.textContent || '',
-                        'Proposal ID': cells[0].querySelector('.proposal-id')?.textContent || '',
-                        'Researcher': cells[1].querySelector('.researcher-name')?.textContent || '',
-                        'Department': cells[1].querySelector('.researcher-dept')?.textContent || '',
-                        'Submission Date': cells[2].textContent.trim(),
-                        'Budget': cells[3].textContent.trim(),
-                        'Status': cells[4].textContent.trim()
-                    });
-                }
+                data.push({
+                    Title: row.querySelector('.proposal-title').textContent,
+                    ID: row.querySelector('.proposal-id').textContent,
+                    Researcher: row.querySelector('.researcher-name').textContent,
+                    Department: row.querySelector('.researcher-dept').textContent,
+                    Date: row.children[2].textContent.trim(),
+                    Budget: row.children[3].textContent.trim(),
+                    Status: row.querySelector('.status-badge').textContent.trim()
+                });
             }
         });
 
-        if (proposals.length === 0) {
+        if (!data.length) {
             alert('No proposals to export!');
             return;
         }
 
-        const headers = Object.keys(proposals[0]);
+        const headers = Object.keys(data[0]);
         const csv = [
             headers.join(','),
-            ...proposals.map(row => 
-                headers.map(header => `"${row[header]}"`).join(',')
-            )
+            ...data.map(row => headers.map(h => `"${row[h]}"`).join(','))
         ].join('\n');
 
         const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-        const url = window.URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `research_proposals_${new Date().toISOString().split('T')[0]}.csv`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        window.URL.revokeObjectURL(url);
+        const link = document.createElement('a');
+        link.href = URL.createObjectURL(blob);
+        link.download = `research_proposals_${new Date().toISOString().split('T')[0]}.csv`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
 
-        const originalText = this.innerHTML;
-        this.innerHTML = `
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 18px; height: 18px;">
-                <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            Exported!
-        `;
-        this.style.background = '#e8f5e9';
-        this.style.color = '#388e3c';
-        this.style.borderColor = '#388e3c';
+        const original = exportBtn.innerHTML;
+        exportBtn.innerHTML = '✔ Exported';
+        exportBtn.style.background = '#e8f5e9';
+        exportBtn.style.color = '#388e3c';
 
         setTimeout(() => {
-            this.innerHTML = originalText;
-            this.style.background = '';
-            this.style.color = '';
-            this.style.borderColor = '';
+            exportBtn.innerHTML = original;
+            exportBtn.style.background = '';
+            exportBtn.style.color = '';
         }, 2000);
     });
 
-    console.log('Proposals page initialized successfully');
+    console.log('✅ Proposals page initialized (fixed)');
 }
 
-// For fetch-loaded content:
+/* ===============================
+   INITIALIZE AFTER FETCH LOAD
+=============================== */
 fetch('../components/dean-dashboard/sidebar-content/endo-content.html')
     .then(res => res.text())
-    .then(data => {
-        document.getElementById('endo_con-placeholder').innerHTML = data;
+    .then(html => {
+        document.getElementById('endo_con-placeholder').innerHTML = html;
         initializeProposalsPage();
     });
