@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faculty Workload Computation System</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="../css/report.css">
-    <link rel="stylesheet" href="../css/base.css">
+    <title>University Research and Development System</title>
+    <link rel="stylesheet" href="reports.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container">
@@ -14,7 +13,7 @@
         <header class="header">
             <div class="logo">
                 <i class="fas fa-graduation-cap"></i>
-                <h1>UEP Faculty Workload System</h1>
+                <h1>University Research and Development System</h1>
             </div>
             <nav class="nav">
                 <button class="nav-btn active" onclick="showSection('dashboard')">
@@ -144,9 +143,9 @@
                                 <label for="department">Department</label>
                                 <select id="department" required>
                                     <option value="">Select Department</option>
-                                    <option value="Computer Science">Computer Science</option>
+                                    <option value="Information Technology">Information Technology</option>
                                     <option value="Mathematics">Mathematics</option>
-                                    <option value="Physics">Physics</option>
+                                    <option value="Environmental Science">Environmental Science</option>
                                     <option value="Chemistry">Chemistry</option>
                                     <option value="Biology">Biology</option>
                                 </select>
@@ -185,9 +184,9 @@
                         <input type="text" id="facultySearch" placeholder="Search faculty..." onkeyup="searchFaculty()">
                         <select id="departmentFilter" onchange="filterFaculty()">
                             <option value="">All Departments</option>
-                            <option value="Computer Science">Computer Science</option>
+                            <option value="Information Technology">Information Technology</option>
                             <option value="Mathematics">Mathematics</option>
-                            <option value="Physics">Physics</option>
+                            <option value="Environmental Science">Environmental Science</option>
                             <option value="Chemistry">Chemistry</option>
                             <option value="Biology">Biology</option>
                         </select>
@@ -244,7 +243,7 @@
                                     <option value="">Select Semester</option>
                                     <option value="1st Semester">1st Semester</option>
                                     <option value="2nd Semester">2nd Semester</option>
-                                    <option value="Summer">Summer</option>
+                                    <option value="Summer Class">Summer Class</option>
                                 </select>
                             </div>
                         </div>
@@ -384,9 +383,9 @@
                         <label for="reportDepartment">Department</label>
                         <select id="reportDepartment">
                             <option value="">All Departments</option>
-                            <option value="Computer Science">Computer Science</option>
+                            <option value="Information Technology">Information Technology</option>
                             <option value="Mathematics">Mathematics</option>
-                            <option value="Physics">Physics</option>
+                            <option value="Environmental Science">Environmental Science</option>
                             <option value="Chemistry">Chemistry</option>
                             <option value="Biology">Biology</option>
                         </select>
@@ -419,6 +418,6 @@
         </main>
     </div>
 
-    <script src="report.js"></script>
+    <script src="reports.js"></script>
 </body>
 </html>
