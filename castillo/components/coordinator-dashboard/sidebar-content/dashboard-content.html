@@ -1,0 +1,46 @@
+<div class="dashboard-layout-split">
+    
+    <div class="main-list-panel">
+        <h1 class="portal-title">Coordinator Portal</h1>
+        <p class="portal-subtitle">Oversee college research activities and endorsements.</p>
+
+        <div class="incoming-proposals-section">
+            <div class="section-header">
+                <div>
+                    <h3 class="section-title">Incoming Proposals</h3>
+                    <p class="section-subtitle">Proposals waiting for your action</p>
+                </div>
+                <button class="filter-btn">
+                    <i class="fas fa-filter"></i> Filter
+                </button>
+            </div>
+            
+            <div class="proposal-list" id="coordinator-proposal-list">
+                </div>
+        </div>
+    </div>
+
+    <div class="utility-panel">
+        
+        <div class="utility-box">
+            <h3>Quick Actions</h3>
+            <button class="action-btn" onclick="handleQuickAction('batch-endorsement')">
+                <i class="fas fa-arrow-circle-up"></i> Batch Endorsement
+            </button>
+            <button class="action-btn" onclick="handleQuickAction('return-multiple')">
+                <i class="fas fa-undo-alt"></i> Return Multiple
+            </button>
+            <button class="action-btn" onclick="handleQuickAction('find-reviewers')">
+                <i class="fas fa-search"></i> Find Reviewers
+            </button>
+        </div>
+
+        <div class="utility-box">
+            <h3>Monitoring Alerts</h3>
+            <div class="alert-item">
+                <strong>Submission Deadline Warning</strong>
+                3 researchers have overdue progress reports.
+            </div>
+        </div>
+    </div>
+</div>
