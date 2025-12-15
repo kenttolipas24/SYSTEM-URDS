@@ -1,0 +1,64 @@
+<!-- Purchase Request Content -->
+<div class="dashboard-content purchase-page">
+    <!-- Page Header -->
+    <div class="purchase-top">
+        <div class="purchase-headings">
+            <h1 class="portal-title">New Purchase Request</h1>
+            <p class="portal-subtitle">Request materials and supplies for your research.</p>
+        </div>
+    </div>
+
+    <!-- Request Form Card -->
+    <div class="content-section purchase-form-card">
+        <div class="section-header">
+            <h2>Request Details</h2>
+            <p>Please provide accurate details for faster processing.</p>
+        </div>
+        
+        <form id="purchase-form" class="purchase-form">
+            <div class="form-group">
+                <label for="project-select" class="form-label">Select Project</label>
+                <div class="select-wrapper">
+                    <select id="project-select" class="form-control">
+                        <option value="" selected>Select active research</option>
+                        <option value="1">Biodiversity Assessment of Mt. Apo Natural Park</option>
+                        <option value="2">AI-Driven Traffic Management System</option>
+                        <option value="3">Sustainable Agriculture Practices in Rice Production</option>
+                    </select>
+                    <i class="fas fa-chevron-down select-arrow"></i>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="item-name" class="form-label">Item Name / Description</label>
+                <input type="text" id="item-name" class="form-control" placeholder="e.g. Laboratory Glassware Set">
+            </div>
+
+            <div class="form-group">
+                <label for="quantity" class="form-label">Quantity</label>
+                <input type="number" id="quantity" class="form-control" placeholder="Enter quantity" min="1">
+            </div>
+
+            <div class="form-group">
+                <label for="estimated-cost" class="form-label">Estimated Cost (Total)</label>
+                <div class="input-with-label">
+                    <input type="number" id="estimated-cost" class="form-control" placeholder="0.00" step="0.01" min="0">
+                    <span class="currency-label">PHP</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="justification" class="form-label">Justification</label>
+                <textarea id="justification" class="form-control textarea-control" rows="5" placeholder="Explain why this item is necessary for the research..."></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-primary btn-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span>Submit Request</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+

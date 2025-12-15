@@ -1,131 +1,200 @@
-let currentUser = null;
+// Current page state
+let currentPage = 'dashboard';
 
-function initFacultyDashboard() {
-    currentUser = getFromLocalStorage('currentUser');
-    
-    if (!currentUser || currentUser.role !== 'Faculty Researcher') {
-        window.location.href = 'homepage.html';
-        return;
+// Load components
+function loadComponents() {
+    // Load sidebar
+    fetch('../components/faculty-researcher-dashboard/researcher-sidebar.html')
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById('sidebar-placeholder').innerHTML = data;
+            // Attach navigation handlers after sidebar loads
+            attachNavigationHandlers();
+        })
+        .catch(err => console.error('Error loading sidebar:', err));
+
+    // Load header
+    fetch('../components/faculty-researcher-dashboard/researcher-header.html')
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById('header-placeholder').innerHTML = data;
+            // Initialize search after header loads
+            initializeSearch();
+        })
+        .catch(err => console.error('Error loading header:', err));
+
+    // Load initial page (proposals)
+    showPage('dashboard');
+}
+
+// Attach navigation handlers to sidebar items
+function attachNavigationHandlers() {
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+        item.addEventListener('click', function() {
+            const page = this.getAttribute('data-page');
+            if (page) {
+                showPage(page);
+            }
+        });
+    });
+
+    // Attach logout handler
+    const logoutBtn = document.getElementById('logout-btn');
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', PagesLogout);
     }
-    
-    loadFacultyStats();
-    loadFacultyProposals();
-    loadFacultyRevisions();
 }
 
-function loadFacultyStats() {
-    const userProposals = proposals.filter(p => p.email === currentUser.email);
-    const approvedCount = userProposals.filter(p => p.status === 'approved').length;
-    const pendingCount = userProposals.filter(p => p.status === 'pending').length;
-    const revisionCount = userProposals.filter(p => p.status === 'revision').length;
-    
-    document.getElementById('totalSubmissions').textContent = userProposals.length;
-    document.getElementById('approvedCount').textContent = approvedCount;
-    document.getElementById('pendingCount').textContent = pendingCount;
-    document.getElementById('revisionCount').textContent = revisionCount;
-}
-
-function loadFacultyProposals() {
-    const userProposals = proposals.filter(p => p.email === currentUser.email);
-    const proposalsList = document.getElementById('facultyProposalsList');
-    
-    if (userProposals.length === 0) {
-        proposalsList.innerHTML = '<p style="text-align: center; color: #6b7280; padding: 2rem;">No proposals submitted yet.</p>';
-        return;
+// Initialize search functionality
+function initializeSearch() {
+    const headerSearch = document.getElementById('header-search');
+    if (headerSearch) {
+        headerSearch.addEventListener('input', function(e) {
+            // Add search functionality here
+            console.log('Searching:', e.target.value);
+        });
     }
-    
-    proposalsList.innerHTML = userProposals.map(p => `
-        <div class="proposal-card">
-            <div class="proposal-header">
-                <div class="proposal-info">
-                    <h3>${p.title}</h3>
-                    <p>${p.date}</p>
-                </div>
-                ${getStatusBadge(p.status)}
-            </div>
-            ${p.feedback ? `
-                <div class="feedback-box ${p.status === 'revision' ? 'orange' : ''}">
-                    <p>${p.status === 'approved' ? 'Feedback: ' + p.feedback : 'TWG Feedback & Suggestions'}</p>
-                    ${p.status === 'revision' ? `
-                        <ul>
-                            <li>Strengthen the methodology section with more rigorous approach</li>
-                            <li>Add recent literature from 2024-2025</li>
-                            <li>Include more detailed timeline for implementation</li>
-                            <li>Clarify the budget allocation</li>
-                        </ul>
-                    ` : ''}
-                </div>
-            ` : ''}
-        </div>
-    `).join('');
 }
 
-function loadFacultyRevisions() {
-    const userProposals = proposals.filter(p => p.email === currentUser.email && p.status === 'revision');
-    const revisionsList = document.getElementById('facultyRevisionsList');
-    
-    if (userProposals.length === 0) {
-        revisionsList.innerHTML = '<p style="text-align: center; color: #6b7280; padding: 2rem;">No revisions needed.</p>';
-        return;
+// Initialize proposals page
+function initializeProposals() {
+    const proposalsSearch = document.getElementById('proposals-search');
+    if (proposalsSearch) {
+        proposalsSearch.addEventListener('input', function(e) {
+            // Add proposals search functionality here
+            filterProposals(e.target.value);
+        });
     }
-    
-    revisionsList.innerHTML = userProposals.map(p => `
-        <div class="proposal-card">
-            <div class="proposal-header">
-                <div class="proposal-info">
-                    <h3>${p.title}</h3>
-                    <p>Submitted: ${p.date}</p>
-                </div>
-                ${getStatusBadge(p.status)}
-            </div>
-            <div class="feedback-box orange">
-                <p>TWG Feedback & Suggestions</p>
-                <ul>
-                    <li>Strengthen the methodology section with more rigorous approach</li>
-                    <li>Add recent literature from 2024-2025</li>
-                    <li>Include more detailed timeline for implementation</li>
-                    <li>Clarify the budget allocation</li>
-                </ul>
-            </div>
-        </div>
-    `).join('');
-}
 
-function showSubmitForm() {
-    document.getElementById('submitFormModal').classList.add('active');
-}
-
-function hideSubmitForm() {
-    document.getElementById('submitFormModal').classList.remove('active');
-    document.getElementById('proposalTitle').value = '';
-    document.getElementById('proposalAbstract').value = '';
-}
-
-function submitProposal() {
-    const title = document.getElementById('proposalTitle').value;
-    const abstract = document.getElementById('proposalAbstract').value;
-    
-    if (!title || !abstract) {
-        alert('Please fill in all required fields');
-        return;
+    const submitBtn = document.getElementById('btn-submit-proposal');
+    if (submitBtn) {
+        submitBtn.addEventListener('click', function() {
+            // Navigate to submit proposal page
+            console.log('Navigate to submit proposal');
+        });
     }
+}
+
+// Filter proposals based on search
+function filterProposals(searchTerm) {
+    const table = document.querySelector('.proposals-table');
+    if (!table) return;
+
+    const rows = table.querySelectorAll('tbody tr');
+    const term = searchTerm.toLowerCase();
+
+    rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        if (text.includes(term)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
+
+// Show page function (for navigation)
+function showPage(page) {
+    currentPage = page;
     
-    const newProposal = {
-        id: proposals.length + 1,
-        title: title,
-        author: 'Dr. Alice Johnson',
-        email: currentUser.email,
-        date: new Date().toISOString().split('T')[0],
-        status: 'pending',
-        copies: 0,
-        submittedToURDS: false
+    // Update active nav item
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+        item.classList.remove('active');
+        const dataPage = item.getAttribute('data-page');
+        if (dataPage === page) {
+            item.classList.add('active');
+        }
+    });
+
+    // Map page names to component files
+    const pageComponents = {
+        'dashboard': '../components/faculty-researcher-dashboard/dashboard-content.html',
+        'proposals': '../components/faculty-researcher-dashboard/research-proposals-content.html',
+        'calls': '../components/faculty-researcher-dashboard/call-for-proposals-content.html',
+        'purchase': '../components/faculty-researcher-dashboard/purchase-request-content.html'
     };
-    
-    proposals.push(newProposal);
-    alert('Proposal submitted successfully!');
-    hideSubmitForm();
-    initFacultyDashboard();
+
+    const componentPath = pageComponents[page];
+    if (!componentPath) {
+        console.error('Unknown page:', page);
+        return;
+    }
+
+    // Load the appropriate component
+    fetch(componentPath)
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById('content-placeholder').innerHTML = data;
+            
+            // Initialize page-specific functionality
+            switch(page) {
+                case 'dashboard':
+                    initializeDashboard();
+                    break;
+                case 'proposals':
+                    initializeProposals();
+                    break;
+                case 'calls':
+                    initializeCalls();
+                    break;
+                case 'purchase':
+                    initializePurchase();
+                    break;
+            }
+        })
+        .catch(err => console.error(`Error loading ${page} content:`, err));
 }
 
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', initFacultyDashboard);
+// Logout function
+function PagesLogout() {
+    if (confirm('Are you sure you want to logout?')) {
+        // Add logout logic here
+        console.log('Logging out...');
+        // window.location.href = '../index.php';
+    }
+}
+
+// Initialize dashboard page
+function initializeDashboard() {
+    const newProposalBtn = document.querySelector('.dashboard-content .btn-primary');
+    if (newProposalBtn) {
+        newProposalBtn.addEventListener('click', function() {
+            showPage('purchase');
+        });
+    }
+}
+
+// Initialize calls page
+function initializeCalls() {
+    const submitButtons = document.querySelectorAll('.calls-page .btn-primary');
+    submitButtons.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Navigate to submit proposal form
+            console.log('Navigate to submit proposal form');
+            // You can add modal or navigation logic here
+        });
+    });
+}
+
+// Initialize purchase page
+function initializePurchase() {
+    const purchaseForm = document.getElementById('purchase-form');
+    if (purchaseForm) {
+        purchaseForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Handle form submission
+            alert('Purchase request submitted successfully!');
+            // Reset form or show success message
+        });
+    }
+}
+
+// Load components when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadComponents);
+} else {
+    loadComponents();
+}
+
