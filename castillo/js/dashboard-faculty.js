@@ -113,7 +113,7 @@ function showPage(page) {
         'dashboard': '../components/faculty-researcher-dashboard/dashboard-content.html',
         'proposals': '../components/faculty-researcher-dashboard/research-proposals-content.html',
         'calls': '../components/faculty-researcher-dashboard/call-for-proposals-content.html',
-        'purchase': '../components/faculty-researcher-dashboard/purchase-request-content.html'
+        'purchase': '../components/faculty-researcher-dashboard/create-proposal.html'
     };
 
     const componentPath = pageComponents[page];

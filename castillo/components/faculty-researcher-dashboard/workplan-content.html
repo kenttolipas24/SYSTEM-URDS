@@ -1,0 +1,134 @@
+<div class="dashboard-content workplan-page">
+    
+    <div class="page-header">
+        <div class="header-left">
+            <h1 class="page-title">Work Plan</h1>
+            <p class="page-subtitle">UEP-URDS-FM-004: Work Plan & Schedule of Activities</p>
+        </div>
+    </div>
+
+    <div class="form-card">
+        <form id="workplan-form">
+
+            <div class="form-section">
+                <div class="section-header">
+                    <span class="section-number"><i class="fas fa-info"></i></span>
+                    <h3 class="section-title">Project Details</h3>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label for="project-title" class="form-label">Program / Project / Study Title</label>
+                        <input type="text" id="project-title" class="form-control" placeholder="e.g. Development of an Enhanced Faculty Workload Computation System">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="study-leader" class="form-label">Program / Project Study Leader</label>
+                        <input type="text" id="study-leader" class="form-control" placeholder="Name of Leader">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="college-campus" class="form-label">College / Unit / Campus</label>
+                        <input type="text" id="college-campus" class="form-control" placeholder="e.g. College of Science">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="year-cover" class="form-label">Year Covered</label>
+                        <select id="year-cover" class="form-control">
+                            <option>Year 1</option>
+                            <option>Year 2</option>
+                            <option>Year 3</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <div class="form-section">
+                <div class="section-header">
+                    <span class="section-number"><i class="fas fa-list-ol"></i></span>
+                    <h3 class="section-title">Schedule of Activities</h3>
+                    <span class="header-note">List activities and check the corresponding quarter(s) of implementation.</span>
+                </div>
+
+                <div class="activities-table-header">
+                    <div class="col-activity">Activity Description</div>
+                    <div class="col-quarter">Q1</div>
+                    <div class="col-quarter">Q2</div>
+                    <div class="col-quarter">Q3</div>
+                    <div class="col-quarter">Q4</div>
+                    <div class="col-action"></div>
+                </div>
+
+                <div id="activities-container">
+                    
+                    <div class="activity-row">
+                        <div class="input-wrapper">
+                            <input type="text" class="form-control activity-input" placeholder="1. Conduct consultation with the client...">
+                        </div>
+                        <div class="quarter-check">
+                            <input type="checkbox" id="r1q1" class="custom-checkbox">
+                            <label for="r1q1"></label>
+                        </div>
+                        <div class="quarter-check">
+                            <input type="checkbox" id="r1q2" class="custom-checkbox">
+                            <label for="r1q2"></label>
+                        </div>
+                        <div class="quarter-check">
+                            <input type="checkbox" id="r1q3" class="custom-checkbox">
+                            <label for="r1q3"></label>
+                        </div>
+                        <div class="quarter-check">
+                            <input type="checkbox" id="r1q4" class="custom-checkbox">
+                            <label for="r1q4"></label>
+                        </div>
+                        <div class="row-action">
+                            <button type="button" class="btn-remove" title="Remove Row"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+
+                    <div class="activity-row">
+                        <div class="input-wrapper">
+                            <input type="text" class="form-control activity-input" placeholder="2. Presentation and approval of the research study...">
+                        </div>
+                        <div class="quarter-check">
+                            <input type="checkbox" id="r2q1" class="custom-checkbox">
+                            <label for="r2q1"></label>
+                        </div>
+                        <div class="quarter-check">
+                            <input type="checkbox" id="r2q2" class="custom-checkbox">
+                            <label for="r2q2"></label>
+                        </div>
+                        <div class="quarter-check">
+                            <input type="checkbox" id="r2q3" class="custom-checkbox">
+                            <label for="r2q3"></label>
+                        </div>
+                        <div class="quarter-check">
+                            <input type="checkbox" id="r2q4" class="custom-checkbox">
+                            <label for="r2q4"></label>
+                        </div>
+                        <div class="row-action">
+                            <button type="button" class="btn-remove" title="Remove Row"><i class="fas fa-trash-alt"></i></button>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="add-row-section">
+                    <button type="button" class="btn-add-row">
+                        <i class="fas fa-plus"></i> Add New Activity
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-footer">
+                <button type="button" class="btn-secondary">Cancel</button>
+                <button type="submit" class="btn-primary">
+                    <i class="fas fa-save"></i> Save Work Plan
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
