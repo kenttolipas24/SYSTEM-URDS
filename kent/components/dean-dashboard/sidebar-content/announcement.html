@@ -1,0 +1,131 @@
+<div class="header">
+            <h1>Announcements</h1>
+            <p>Receive announcements from URDS Director and forward to research coordinators and faculty</p>
+        </div>
+
+        <div class="announcement-count">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path>
+            </svg>
+            <span>4 new announcements</span>
+        </div>
+
+        <!-- Announcement 1 -->
+        <div class="announcement-card">
+            <div class="announcement-header">
+                <span class="tag important">Important</span>
+                <span class="tag funding">Funding</span>
+            </div>
+            <h2 class="announcement-title">Q1 Research Funding Deadline Extended</h2>
+            <div class="announcement-meta">
+                <span>From: URDS Director</span>
+                <span>•</span>
+                <span>Jan 15, 2025</span>
+            </div>
+            <div class="announcement-body">
+                The deadline for Q1 research funding proposals has been extended to March 15, 2025. All faculty researchers are encouraged to submit their proposals through the URDS portal.
+            </div>
+            <button class="forward-btn" onclick="openModal('Q1 Research Funding Deadline Extended')">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                </svg>
+                Forward Announcement
+            </button>
+        </div>
+
+        <!-- Announcement 2 -->
+        <div class="announcement-card">
+            <div class="announcement-header">
+                <span class="tag policy">Policy Update</span>
+                <span class="tag compliance">Compliance</span>
+            </div>
+            <h2 class="announcement-title">New Ethics Review Guidelines</h2>
+            <div class="announcement-meta">
+                <span>From: URDS Director</span>
+                <span>•</span>
+                <span>Jan 10, 2025</span>
+            </div>
+            <div class="announcement-body">
+                Updated ethics review guidelines are now in effect for all human subjects research. Please review the new requirements before submitting your next proposal.
+            </div>
+            <button class="forward-btn" onclick="openModal('New Ethics Review Guidelines')">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                </svg>
+                Forward Announcement
+            </button>
+        </div>
+
+        <!-- Announcement 3 -->
+        <div class="announcement-card">
+            <div class="announcement-header">
+                <span class="tag event">Event</span>
+            </div>
+            <h2 class="announcement-title">Research Symposium - Call for Abstracts</h2>
+            <div class="announcement-meta">
+                <span>From: URDS Director</span>
+                <span>•</span>
+                <span>Jan 8, 2025</span>
+            </div>
+            <div class="announcement-body">
+                The annual university research symposium will be held on April 20, 2025. Submit your abstracts by March 1st for consideration.
+            </div>
+            <button class="forward-btn" onclick="openModal('Research Symposium - Call for Abstracts')">
+                <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                </svg>
+                Forward Announcement
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Forward Modal -->
+<div class="modal" id="forwardModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Forward Announcement</h2>
+            <button class="close-btn" onclick="closeModal()">×</button>
+        </div>
+        <p class="modal-subtitle">Select recipients to forward this announcement to</p>
+
+    <div class="recipients-label">Recipients</div>
+    <div class="checkbox-group">
+        <label class="checkbox-item">
+            <input type="checkbox" id="coordinators">
+            <svg class="checkbox-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+            <span class="checkbox-label">Research Coordinators</span>
+        </label>
+
+        <label class="checkbox-item">
+            <input type="checkbox" id="faculty">
+            <svg class="checkbox-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+            </svg>
+            <span class="checkbox-label">Faculty Researchers</span>
+        </label>
+
+        <label class="checkbox-item">
+            <input type="checkbox" id="heads">
+            <svg class="checkbox-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+            </svg>
+            <span class="checkbox-label">Department Heads</span>
+        </label>
+    </div>
+
+    <div class="message-label">Additional Message <span class="optional-text">(Optional)</span></div>
+    <textarea placeholder="Add a message to include with the forwarded announcement..."></textarea>
+
+    <div class="modal-footer">
+        <button class="btn btn-cancel" onclick="closeModal()">Cancel</button>
+        <button class="btn btn-forward" onclick="forwardAnnouncement()">
+            <svg width="16" height="16" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+            </svg>
+            Forward
+        </button>
+    </div>
+</div>
