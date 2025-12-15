@@ -1,0 +1,149 @@
+<div class="dashboard-content budget-page">
+    
+    <div class="page-header">
+        <div class="header-left">
+            <h1 class="page-title">Financial Components</h1>
+        </div>
+    </div>
+
+    <div class="form-card">
+        <form id="budget-summary-form">
+
+            <div class="form-section">
+                <div class="section-header">
+                    <span class="section-number"><i class="fas fa-info-circle"></i></span>
+                    <h3 class="section-title">Project Information</h3>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label class="form-label">Program/Project/Study Title</label>
+                        <input type="text" class="form-control" placeholder="e.g. Development of an Enhanced Faculty Workload...">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Program/Project Study Leader</label>
+                        <input type="text" class="form-control" placeholder="Full Name">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Duration</label>
+                        <input type="text" class="form-control" placeholder="e.g. 12 months">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">College/Unit/Campus</label>
+                        <input type="text" class="form-control" placeholder="e.g. College of Science">
+                    </div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <div class="form-section">
+                <div class="section-header">
+                    <span class="section-number"><i class="fas fa-coins"></i></span>
+                    <h3 class="section-title">Budget Summary</h3>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="summary-table">
+                        <thead>
+                            <tr>
+                                <th class="col-item">Item</th>
+                                <th class="col-money">Year 1 (₱)</th>
+                                <th class="col-money">Year 2 (₱)</th>
+                                <th class="col-money">TOTAL (₱)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="section-row">
+                                <td colspan="4"><strong>I. Personal Services</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="indent-item">Honorarium</td>
+                                <td><input type="number" class="form-control money-input" placeholder="0.00"></td>
+                                <td><input type="number" class="form-control money-input" placeholder="0.00"></td>
+                                <td><input type="text" class="form-control money-input total-field" readonly placeholder="0.00"></td>
+                            </tr>
+                            <tr class="subtotal-row">
+                                <td class="indent-item"><strong>Sub-Total (PS)</strong></td>
+                                <td><input type="text" class="form-control money-input subtotal-field" readonly placeholder="0.00"></td>
+                                <td><input type="text" class="form-control money-input subtotal-field" readonly placeholder="0.00"></td>
+                                <td><input type="text" class="form-control money-input subtotal-field" readonly placeholder="0.00"></td>
+                            </tr>
+
+                            <tr class="section-row">
+                                <td colspan="4"><strong>II. MOOE</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="indent-item">Travel</td>
+                                <td><input type="number" class="form-control money-input" placeholder="0.00"></td>
+                                <td><input type="number" class="form-control money-input" placeholder="0.00"></td>
+                                <td><input type="text" class="form-control money-input total-field" readonly placeholder="0.00"></td>
+                            </tr>
+                            <tr>
+                                <td class="indent-item">Supplies and Materials</td>
+                                <td><input type="number" class="form-control money-input" placeholder="0.00"></td>
+                                <td><input type="number" class="form-control money-input" placeholder="0.00"></td>
+                                <td><input type="text" class="form-control money-input total-field" readonly placeholder="0.00"></td>
+                            </tr>
+                            <tr>
+                                <td class="indent-item">Communications</td>
+                                <td><input type="number" class="form-control money-input" placeholder="0.00"></td>
+                                <td><input type="number" class="form-control money-input" placeholder="0.00"></td>
+                                <td><input type="text" class="form-control money-input total-field" readonly placeholder="0.00"></td>
+                            </tr>
+                            <tr>
+                                <td class="indent-item">Other MOOE</td>
+                                <td><input type="number" class="form-control money-input" placeholder="0.00"></td>
+                                <td><input type="number" class="form-control money-input" placeholder="0.00"></td>
+                                <td><input type="text" class="form-control money-input total-field" readonly placeholder="0.00"></td>
+                            </tr>
+                            <tr>
+                                <td class="indent-item">Contingencies (10% of MOOE)</td>
+                                <td><input type="number" class="form-control money-input" placeholder="0.00"></td>
+                                <td><input type="number" class="form-control money-input" placeholder="0.00"></td>
+                                <td><input type="text" class="form-control money-input total-field" readonly placeholder="0.00"></td>
+                            </tr>
+                            <tr class="subtotal-row">
+                                <td class="indent-item"><strong>Sub-Total (MOOE)</strong></td>
+                                <td><input type="text" class="form-control money-input subtotal-field" readonly placeholder="0.00"></td>
+                                <td><input type="text" class="form-control money-input subtotal-field" readonly placeholder="0.00"></td>
+                                <td><input type="text" class="form-control money-input subtotal-field" readonly placeholder="0.00"></td>
+                            </tr>
+
+                            <tr class="section-row">
+                                <td colspan="4"><strong>III. Equipment Outlay</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="indent-item">Equipment Total</td>
+                                <td><input type="number" class="form-control money-input" placeholder="0.00"></td>
+                                <td><input type="number" class="form-control money-input" placeholder="0.00"></td>
+                                <td><input type="text" class="form-control money-input total-field" readonly placeholder="0.00"></td>
+                            </tr>
+                            <tr class="subtotal-row">
+                                <td class="indent-item"><strong>Sub-Total (Equipment)</strong></td>
+                                <td><input type="text" class="form-control money-input subtotal-field" readonly placeholder="0.00"></td>
+                                <td><input type="text" class="form-control money-input subtotal-field" readonly placeholder="0.00"></td>
+                                <td><input type="text" class="form-control money-input subtotal-field" readonly placeholder="0.00"></td>
+                            </tr>
+
+                            <tr class="grand-total-row">
+                                <td>GRAND TOTAL</td>
+                                <td><input type="text" class="form-control money-input grand-total" readonly placeholder="₱ 0.00"></td>
+                                <td><input type="text" class="form-control money-input grand-total" readonly placeholder="₱ 0.00"></td>
+                                <td><input type="text" class="form-control money-input grand-total" readonly placeholder="₱ 0.00"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="form-footer">
+                <button type="button" class="btn-secondary">Cancel</button>
+                <button type="submit" class="btn-primary">
+                    <i class="fas fa-save"></i> Save Budget Summary
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>

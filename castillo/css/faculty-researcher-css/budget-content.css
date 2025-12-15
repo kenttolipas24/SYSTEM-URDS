@@ -1,0 +1,269 @@
+/* ===============================
+BUDGET SUMMARY PAGE STYLES (SPACIOUS VERSION)
+   =============================== */
+
+/* Base Layout */
+.dashboard-content.budget-page {
+    padding: 40px 60px; /* Wider page padding */
+    background-color: #f3f4f8;
+    min-height: 100vh;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #333;
+}
+
+/* Page Header */
+.page-header {
+    margin-bottom: 35px;
+}
+.page-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 8px 0;
+}
+.page-subtitle {
+    font-size: 15px;
+    color: #64748b;
+    margin: 0;
+}
+
+/* Main Form Card */
+.form-card {
+    background: #ffffff;
+    max-width: 1200px; /* Slightly wider max-width */
+    margin: 0 auto 60px auto;
+    border-radius: 16px; /* Softer corners */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04); /* Softer, larger shadow */
+    padding: 50px; /* More internal space */
+    border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+/* Section Styling */
+.form-section {
+    margin-bottom: 40px; /* Space between sections */
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 30px;
+}
+.section-number {
+    background-color: #eff6ff;
+    color: #2563eb;
+    font-size: 18px;
+    width: 42px; /* Larger icon circle */
+    height: 42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+}
+.section-divider {
+    border: 0;
+    height: 1px;
+    background: #e2e8f0;
+    margin: 50px 0; /* Large divider gap */
+}
+
+/* Basic Info Grid */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px; /* Increased gap between inputs */
+}
+.full-width {
+    grid-column: 1 / -1;
+}
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* More space between label and input */
+}
+.form-label {
+    font-size: 13px;
+    color: #475569;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+.form-control {
+    width: 100%;
+    padding: 14px 18px; /* Taller inputs */
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 15px; /* Larger text */
+    color: #334155;
+    background-color: #fff;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+.form-control:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1); /* Larger focus glow */
+}
+
+/* ===============================
+   SPACIOUS TABLE STYLES
+   =============================== */
+.table-responsive {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0; /* Border around the table container */
+}
+.summary-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.summary-table th {
+    background-color: #f8fafc;
+    color: #475569;
+    font-weight: 700;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 20px 24px; /* More header padding */
+    border-bottom: 2px solid #e2e8f0;
+    text-align: left;
+}
+.summary-table td {
+    padding: 18px 24px; /* SIGNIFICANTLY INCREASED CELL PADDING */
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: middle;
+}
+
+/* Column Widths */
+.col-item { width: 40%; }
+.col-money { width: 20%; }
+
+/* Table Rows Visuals */
+.section-row td {
+    background-color: #f1f5f9;
+    color: #1e293b;
+    font-weight: 800;
+    font-size: 15px;
+    padding: 16px 24px;
+    border-top: 2px solid #fff; /* Visual separation */
+}
+.indent-item {
+    padding-left: 45px !important; /* Deeper indentation */
+    font-size: 15px;
+    color: #334155;
+    font-weight: 500;
+}
+.subtotal-row td {
+    background-color: #fdfdfd;
+    border-top: 2px solid #e2e8f0; /* Stronger separation for subtotals */
+    font-weight: 700;
+    color: #1e293b;
+}
+
+/* Grand Total Row */
+.grand-total-row td {
+    background-color: #1e293b;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    padding: 25px 24px; /* Very tall row for emphasis */
+}
+
+/* Money Inputs inside table */
+.money-input {
+    text-align: right;
+    font-family: 'Courier New', monospace;
+    font-weight: 600;
+    padding: 12px 16px; /* Taller input inside table */
+    border: 1px solid #e2e8f0;
+    background: #fff;
+}
+.money-input:focus {
+    background: #fff;
+    border-color: #3b82f6;
+}
+
+/* Readonly Fields Styling */
+.total-field, .subtotal-field {
+    background-color: #f8fafc;
+    color: #475569;
+    border: 1px dashed #cbd5e1; /* Dashed border to indicate it's auto-filled */
+    cursor: default;
+}
+.grand-total {
+    background-color: rgba(255,255,255,0.1); /* Semi-transparent on dark bg */
+    color: #4ade80;
+    border: 1px solid rgba(255,255,255,0.2);
+    font-size: 18px;
+    padding: 12px;
+}
+.grand-total::placeholder {
+    color: #4ade80;
+}
+
+/* Footer Buttons */
+.form-footer {
+    margin-top: 60px; /* Big gap before buttons */
+    padding-top: 30px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+    border-top: 1px solid #f1f5f9;
+}
+.btn-primary {
+    background-color: #2563eb;
+    color: white;
+    padding: 14px 32px; /* Larger button */
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.2s;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+}
+.btn-primary:hover {
+    background-color: #1d4ed8;
+    transform: translateY(-1px);
+}
+.btn-secondary {
+    background-color: white;
+    color: #64748b;
+    padding: 14px 28px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    font-weight: 500;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.btn-secondary:hover {
+    color: #1e293b;
+    background-color: #f8fafc;
+    border-color: #94a3b8;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+    .dashboard-content.budget-page {
+        padding: 30px;
+    }
+    .form-card {
+        padding: 30px;
+    }
+    .form-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+    }
+    .summary-table {
+        min-width: 700px; /* Ensure table doesn't squish */
+    }
+}
