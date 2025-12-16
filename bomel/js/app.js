@@ -3,19 +3,52 @@ document.addEventListener("DOMContentLoaded", () => {
     loadPage("dashboard");
 });
 
+// function loadPage(page, el) {
+//     fetch(`pages/${page}.html`)
+//         .then(res => res.text())
+//         .then(html => {
+//             document.getElementById("page-content").innerHTML = html;
+//             document.getElementById("page-style").href = `css/${page}.css`;
+//             document.getElementById("pageTitle").textContent =
+//                 page.charAt(0).toUpperCase() + page.slice(1);
+//         });
+
+//     document.querySelectorAll(".nav-item")
+//         .forEach(i => i.classList.remove("active"));
+//     if (el) el.classList.add("active");
+// }
+
 function loadPage(page, el) {
     fetch(`pages/${page}.html`)
-        .then(res => res.text())
+        .then(res => {
+            if (!res.ok) throw new Error("Page not found");
+            return res.text();
+        })
         .then(html => {
             document.getElementById("page-content").innerHTML = html;
+            
+            // Link the specific CSS
             document.getElementById("page-style").href = `css/${page}.css`;
+            
+            // Update Title
             document.getElementById("pageTitle").textContent =
                 page.charAt(0).toUpperCase() + page.slice(1);
+
+            // SPECIAL LOGIC: Initialize scripts if on the announcements page
+            if (page === 'announcements') {
+                initAnnouncementLogic();
+            }
+        })
+        .catch(err => {
+            console.error(err);
         });
 
-    document.querySelectorAll(".nav-item")
-        .forEach(i => i.classList.remove("active"));
-    if (el) el.classList.add("active");
+    // Update Sidebar Active State
+    if (el) {
+        document.querySelectorAll(".nav-item")
+            .forEach(i => i.classList.remove("active"));
+        el.classList.add("active");
+    }
 }
 
 function initUser() {

@@ -94,6 +94,7 @@ body {
     justify-content: space-between;
     position: sticky;
     top: 0;
+    z-index: 100;
 }
 
 .user-avatar {
@@ -532,4 +533,33 @@ body {
     background: var(--bg-surface);
     border-color: var(--border-soft);
     color: var(--text-main);
+}
+
+/* Toast Notification Style */
+.notification-toast {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #2e7d32; /* Professional Green */
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    font-size: 0.95rem;
+    z-index: 1000;
+    
+    /* Animation Properties */
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.notification-toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Optional: Error style if you need it later */
+.notification-toast.error {
+    background-color: #c62828;
 }

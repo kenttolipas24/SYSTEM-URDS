@@ -1,0 +1,53 @@
+<div class="announcements-page">
+    
+    <div class="dashboard-card" style="margin-bottom: 2rem;">
+        <div class="card-header">
+            <h3><i class="fas fa-pen-nib"></i> Post New Call for Proposals</h3>
+        </div>
+        <div class="form-content" style="padding: 20px;">
+            <form id="announceForm">
+                <div class="form-group">
+                    <label>Title / Subject</label>
+                    <input type="text" id="annTitle" placeholder="e.g., Call for DOST Grant Proposals 2025" required>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group half">
+                        <label>Target Audience</label>
+                        <select id="annTarget">
+                            <option value="All Deans">All College Deans</option>
+                            <option value="Researcher Heads">Research Heads</option>
+                            <option value="Public">Public / All Users</option>
+                        </select>
+                    </div>
+                    <div class="form-group half">
+                        <label>Priority Level</label>
+                        <select id="annPriority">
+                            <option value="Normal">Normal</option>
+                            <option value="High">High Priority</option>
+                            <option value="Urgent">Urgent</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Message / Details</label>
+                    <textarea id="annMessage" rows="4" placeholder="Enter the details regarding the opening..." required></textarea>
+                </div>
+
+                <div class="form-actions" style="margin-top: 15px; text-align: right;">
+                    <button type="submit" class="btn-primary">Post Announcement</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="dashboard-card">
+        <div class="card-header">
+            <h3>Announcement History</h3>
+        </div>
+        <ul class="list" id="announcementListDisplay">
+            <li style="color: #888; text-align: center; padding: 20px;">Loading...</li>
+        </ul>
+    </div>
+</div>
