@@ -1,0 +1,174 @@
+<div class="dashboard-content proposal-page">
+    
+    <div class="page-header">
+        <div class="header-left">
+            <h1 class="page-title">Create Proposal</h1>
+        </div>
+    </div>
+
+    <div class="form-card">
+        <form id="proposal-form">
+
+            <div class="form-section">
+                <div class="section-header">
+                    <span class="section-number">01</span>
+                    <h3 class="section-title">Basic Information</h3>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label for="proposal-title" class="form-label">Research Title</label>
+                        <input type="text" id="proposal-title" class="form-control" placeholder="Enter the complete title of the research">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nature-research" class="form-label">Nature of Research</label>
+                        <div class="select-wrapper">
+                            <select id="nature-research" class="form-control">
+                                <option value="" selected disabled>Select nature</option>
+                                <option value="program">Program</option>
+                                <option value="project">Project</option>
+                                <option value="study">Study</option>
+                            </select>
+                            <i class="fas fa-chevron-down select-arrow"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="leader" class="form-label">Leader / Main Proponent</label>
+                        <input type="text" id="leader" class="form-control" placeholder="Full Name">
+                    </div>
+
+                    <div class="form-group full-width">
+                        <label for="personnel" class="form-label">Other Personnel Involved</label>
+                        <input type="text" id="personnel" class="form-control" placeholder="List other members separated by commas">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="location" class="form-label">Project Location/s</label>
+                        <input type="text" id="location" class="form-control" placeholder="e.g. UEP Main Campus">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="duration" class="form-label">Duration</label>
+                        <input type="text" id="duration" class="form-control" placeholder="e.g. 1 Year">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="budget" class="form-label">Budget for the Year</label>
+                        <div class="input-with-icon">
+                            <span class="currency-symbol">₱</span>
+                            <input type="number" id="budget" class="form-control" placeholder="0.00" step="0.01">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <div class="form-section">
+                <div class="section-header">
+                    <span class="section-number">02</span>
+                    <h3 class="section-title">Technical Information</h3>
+                </div>
+
+                <div class="form-group">
+                    <label for="rationale" class="form-label">Rationale / Significance of Research</label>
+                    <textarea id="rationale" class="form-control textarea-control" rows="5" placeholder="Explain the significance of the study..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="objectives" class="form-label">Objectives</label>
+                    <textarea id="objectives" class="form-control textarea-control" rows="5" placeholder="List the general and specific objectives..."></textarea>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <div class="form-section">
+                <div class="section-header">
+                    <span class="section-number">03</span>
+                    <h3 class="section-title">Review of Literature</h3>
+                </div>
+
+                <div class="form-group">
+                    <label for="literature" class="form-label">Review of Literature</label>
+                    <textarea id="literature" class="form-control textarea-control" rows="6" placeholder="Cite relevant studies and literature..."></textarea>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <div class="form-section">
+                <div class="section-header">
+                    <span class="section-number">04</span>
+                    <div>
+                        <h3 class="section-title">Detailed Methodology</h3>
+                        <span class="header-note">Including questionnaires for social science research</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="methodology" class="form-label">Methodology Description</label>
+                    <textarea id="methodology" class="form-control textarea-control" rows="8" placeholder="Describe the research design, data gathering procedures, and instruments..."></textarea>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <div class="form-section">
+                <div class="section-header">
+                    <span class="section-number">05</span>
+                    <h3 class="section-title">Work Plan</h3>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-content">
+                        <div class="module-icon">
+                            <i class="fas fa-calendar-alt"></i>
+                        </div>
+                        <div class="module-info">
+                            <h4>Manage Work Plan</h4>
+                            <p>Create a timeline of activities, milestones, and deliverables.</p>
+                        </div>
+                    </div>
+                    <button type="button" id="btn-create-workplan" class="btn-module-action">
+                        <i class="fas fa-plus-circle"></i> Create Work Plan
+                    </button>
+                </div>
+            </div>
+
+            <hr class="section-divider">
+
+            <div class="form-section">
+                <div class="section-header">
+                    <span class="section-number">06</span>
+                    <h3 class="section-title">Detailed Budgetary Requirement</h3>
+                </div>
+
+                <div class="module-card">
+                    <div class="module-content">
+                        <div class="module-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <div class="module-info">
+                            <h4>Manage Budget Details</h4>
+                            <p>Itemize expenses, supplies, and other financial requirements.</p>
+                        </div>
+                    </div>
+                    <button type="button" id="btn-create-budget" class="btn-module-action">
+                        <i class="fas fa-plus-circle"></i> Create Budget
+                    </button>
+                </div>
+            </div>
+
+            <div class="form-footer">
+                <button type="button" class="btn-secondary">Cancel</button>
+                <button type="submit" class="btn-primary">
+                    <i class="fas fa-check"></i> Submit Proposal
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
