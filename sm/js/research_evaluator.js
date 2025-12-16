@@ -62,8 +62,6 @@ const valueDisplays = {
 
 const sidebar = document.getElementById("sidebar")
 const sidebarToggle = document.getElementById("sidebarToggle")
-const mobileMenuToggle = document.getElementById("mobileMenuToggle")
-const sidebarOverlay = document.getElementById("sidebarOverlay")
 
 const searchInput = document.getElementById("searchInput")
 const searchClear = document.getElementById("searchClear")
@@ -136,11 +134,6 @@ function setActivePage(pageName) {
 
   // Update page title
   pageTitle.textContent = pageTitles[pageName] || "Dashboard"
-
-  // Close sidebar on mobile if open
-  if (window.innerWidth <= 640 && sidebar.classList.contains("active")) {
-    sidebar.classList.remove("active")
-  }
 
   // Scroll to top
   document.querySelector(".content-wrapper").scrollTop = 0
@@ -389,25 +382,6 @@ function initializeSidebar() {
   if (sidebarToggle) {
     sidebarToggle.addEventListener("click", toggleSidebar)
   }
-
-  // Mobile menu toggle
-  if (mobileMenuToggle) {
-    mobileMenuToggle.addEventListener("click", toggleMobileSidebar)
-  }
-
-  // Sidebar overlay
-  if (sidebarOverlay) {
-    sidebarOverlay.addEventListener("click", closeMobileSidebar)
-  }
-
-  // Close mobile sidebar on navigation
-  navItems.forEach((item) => {
-    item.addEventListener("click", () => {
-      if (window.innerWidth <= 640) {
-        closeMobileSidebar()
-      }
-    })
-  })
 }
 
 /**
@@ -417,26 +391,6 @@ function toggleSidebar() {
   state.sidebarCollapsed = !state.sidebarCollapsed
   if (sidebar) {
     sidebar.classList.toggle("collapsed")
-  }
-}
-
-/**
- * Toggle mobile sidebar
- */
-function toggleMobileSidebar() {
-  if (sidebar && sidebarOverlay) {
-    sidebar.classList.toggle("active")
-    sidebarOverlay.classList.toggle("active")
-  }
-}
-
-/**
- * Close mobile sidebar
- */
-function closeMobileSidebar() {
-  if (sidebar && sidebarOverlay) {
-    sidebar.classList.remove("active")
-    sidebarOverlay.classList.remove("active")
   }
 }
 
@@ -692,18 +646,6 @@ function formatDate(dateString) {
   })
 }
 
-// ========== Mobile Menu Handler ==========
-document.addEventListener("DOMContentLoaded", () => {
-  // Handle mobile navigation toggle if hamburger menu is added
-  const handleMobileResize = () => {
-    if (window.innerWidth > 640 && sidebar) {
-      sidebar.classList.remove("active")
-    }
-  }
-
-  window.addEventListener("resize", handleMobileResize)
-})
-
 /**
  * Show notification message
  * @param {string} message - The message to display
@@ -728,7 +670,7 @@ function showNotification(message, type = "info") {
                 color: white;
                 font-weight: 600;
                 z-index: 9999;
-                animation: slideIn 0.3s ease-in-out;
+                animation: none;
                 box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
             }
 
@@ -748,17 +690,6 @@ function showNotification(message, type = "info") {
                 background-color: #06b6d4;
             }
 
-            @keyframes slideIn {
-                from {
-                    transform: translateX(400px);
-                    opacity: 0;
-                }
-                to {
-                    transform: translateX(0);
-                    opacity: 1;
-                }
-            }
-
             @media (max-width: 640px) {
                 .notification {
                     bottom: 1rem;
@@ -774,9 +705,9 @@ function showNotification(message, type = "info") {
 
   // Auto-remove after 3 seconds
   setTimeout(() => {
-    notification.style.animation = "slideOut 0.3s ease-in-out forwards"
-    setTimeout(() => notification.remove(), 300)
-  }, 3000)
+  notification.remove()
+}, 3000)
+
 }
 
 console.log("[URDS] Evaluator UI initialized successfully")
