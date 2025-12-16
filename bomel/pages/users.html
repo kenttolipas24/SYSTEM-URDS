@@ -1,0 +1,119 @@
+<div class="users-page">
+
+    <!-- PAGE TITLE -->
+    <div class="page-title">
+        <h2>Users & Roles</h2>
+        <p class="page-subtitle">
+            Manage system users, roles, and access privileges across URDS.
+        </p>
+    </div>
+
+    <!-- ACTION BAR -->
+    <div class="users-actions">
+        <button class="btn-primary">
+            <i class="fas fa-user-plus"></i> Add User
+        </button>
+
+        <select class="filter">
+            <option>All Roles</option>
+            <option>URDS Admin</option>
+            <option>Dean</option>
+            <option>Researcher</option>
+            <option>Reviewer</option>
+        </select>
+
+        <select class="filter">
+            <option>All Campuses</option>
+            <option>UEP Main (Laong)</option>
+            <option>UEP Catubig</option>
+        </select>
+    </div>
+
+    <!-- USERS TABLE -->
+    <div class="users-table-wrapper">
+        <table class="users-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Role</th>
+                    <th>Campus</th>
+                    <th>College / Unit</th>
+                    <th>Status</th>
+                    <th style="text-align:center;">Actions</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>
+                        <strong>URDS Coordinator</strong>
+                        <div class="sub-text">urds.admin@uep.edu.ph</div>
+                    </td>
+                    <td>
+                        <span class="role-badge admin">URDS Admin</span>
+                    </td>
+                    <td>UEP Main (Laong)</td>
+                    <td>URDS Office</td>
+                    <td>
+                        <span class="account-status active">Active</span>
+                    </td>
+                    <td class="actions">
+                        <button class="icon-btn" title="View Profile">
+                            <i class="fas fa-user"></i>
+                        </button>
+                        <button class="icon-btn" title="Change Role">
+                            <i class="fas fa-user-tag"></i>
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <strong>Dean of Engineering</strong>
+                        <div class="sub-text">dean.eng@uep.edu.ph</div>
+                    </td>
+                    <td>
+                        <span class="role-badge dean">Dean</span>
+                    </td>
+                    <td>UEP Catubig</td>
+                    <td>College of Engineering</td>
+                    <td>
+                        <span class="account-status active">Active</span>
+                    </td>
+                    <td class="actions">
+                        <button class="icon-btn" title="View Profile">
+                            <i class="fas fa-user"></i>
+                        </button>
+                        <button class="icon-btn" title="Deactivate">
+                            <i class="fas fa-user-slash"></i>
+                        </button>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        <strong>Prof. Maria Santos</strong>
+                        <div class="sub-text">maria.santos@uep.edu.ph</div>
+                    </td>
+                    <td>
+                        <span class="role-badge researcher">Researcher</span>
+                    </td>
+                    <td>UEP Main (Laong)</td>
+                    <td>College of Education</td>
+                    <td>
+                        <span class="account-status disabled">Disabled</span>
+                    </td>
+                    <td class="actions">
+                        <button class="icon-btn" title="View Profile">
+                            <i class="fas fa-user"></i>
+                        </button>
+                        <button class="icon-btn" title="Activate">
+                            <i class="fas fa-user-check"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

@@ -1,0 +1,415 @@
+/* =========================
+   DASHBOARD BASE
+========================= */
+.dashboard {
+    padding: 36px 44px 44px;
+    background: transparent;
+}
+
+/* =========================
+   PAGE TITLE
+   (CLEAR BUT GENTLE)
+========================= */
+.page-title {
+    margin-bottom: 30px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid #e6e3dc;
+}
+
+.page-title h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1f2a44;
+    /* deep calm navy */
+}
+
+.page-subtitle {
+    font-size: 15px;
+    color: #5f6b7a;
+}
+
+/* =========================
+   STATS GRID
+========================= */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+    margin-bottom: 42px;
+}
+
+.stat-card {
+    background: #fdfdfb;
+    /* warm off-white */
+    padding: 26px;
+    border-radius: 16px;
+    border: 1px solid #e4e1db;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+.stat-icon {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    font-size: 18px;
+    background: #ece7dc;
+    /* soft gold-gray */
+    color: #1f2a44;
+}
+
+.stat-label {
+    font-size: 14px;
+    color: #6b7280;
+}
+
+.stat-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1f2937;
+    margin-top: 4px;
+}
+
+.stat-note {
+    font-size: 13px;
+    color: #7a8595;
+}
+
+/* =========================
+   DASHBOARD GRID
+========================= */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 26px;
+}
+
+.dashboard-column {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+
+/* =========================
+   DASHBOARD CARDS
+========================= */
+.dashboard-card {
+    background: #fdfdfb;
+    border-radius: 16px;
+    border: 1px solid #e4e1db;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+
+/* HEADER — STRONG SEPARATION, LOW BRIGHTNESS */
+.card-header {
+    padding: 16px 20px;
+    background: #f1efe9;
+    /* parchment tone */
+    border-bottom: 1px solid #e4e1db;
+}
+
+.card-header h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #1f2a44;
+}
+
+/* CARD BODY */
+.dashboard-card> :not(.card-header) {
+    padding: 20px;
+}
+
+/* VIEW ALL BUTTON */
+.view-all-btn {
+    background: transparent;
+    border: 1px solid #cfcac1;
+    color: #1f2a44;
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.view-all-btn:hover {
+    background: #eae6db;
+}
+
+/* =========================
+   TABLE (RECENT PROPOSALS)
+========================= */
+.proposals-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.proposals-table th {
+    font-size: 13px;
+    color: #4b5563;
+    background: #f6f5f1;
+    padding: 14px;
+    border-bottom: 1px solid #e4e1db;
+}
+
+.proposals-table td {
+    padding: 16px 14px;
+    border-bottom: 1px solid #edeae4;
+}
+
+.proposal-title {
+    font-weight: 600;
+    color: #1f2937;
+}
+
+.proposal-id {
+    font-size: 12px;
+    color: #7a8595;
+}
+
+/* =========================
+   STATUS BADGES
+   (TEXT > COLOR)
+========================= */
+.status-badge {
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid #d6d3cd;
+}
+
+.review {
+    background: #f6f7fb;
+    color: #1f2a44;
+}
+
+.endorsed {
+    background: #f1f7f3;
+    color: #1e3a2a;
+}
+
+/* =========================
+   STATUS CHART
+   (SOFT PASTELS)
+========================= */
+.status-chart {
+    display: flex;
+    align-items: flex-end;
+    height: 210px;
+    gap: 18px;
+    padding-top: 12px;
+}
+
+.status-bar {
+    flex: 1;
+    border-radius: 12px;
+    background: #e5e7eb;
+}
+
+.status-bar.pending {
+    background: #d8dee9;
+}
+
+.status-bar.approved {
+    background: #d4e7dc;
+}
+
+.status-bar.rejected {
+    background: #ecd3d3;
+}
+
+.status-bar.revision {
+    background: #e4ddee;
+}
+
+.status-bar span {
+    display: block;
+    margin-top: 8px;
+    text-align: center;
+    font-size: 13px;
+    color: #4b5563;
+}
+
+/* =========================
+   LISTS
+========================= */
+.list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.list li {
+    padding: 14px 0;
+    border-bottom: 1px solid #edeae4;
+}
+
+.list li:last-child {
+    border-bottom: none;
+}
+
+.list li strong {
+    font-size: 15px;
+    color: #1f2937;
+}
+
+.list li span {
+    font-size: 13px;
+    color: #6b7280;
+}
+
+/* =========================
+   NOTIFICATIONS
+========================= */
+.notifications li {
+    padding-left: 16px;
+    border-left: 4px solid #b8b2a7;
+    /* muted gold-gray */
+}
+
+/* =========================
+   SCHEDULE
+========================= */
+.schedule-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.schedule-list li {
+    display: flex;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 1px solid #edeae4;
+}
+
+.schedule-list li:last-child {
+    border-bottom: none;
+}
+
+.schedule-list .date {
+    font-weight: 700;
+    color: #1f2a44;
+    min-width: 70px;
+}
+
+.schedule-list .event {
+    font-size: 14px;
+    color: #334155;
+}
+
+/* =========================
+   DARK MODE (GLOBAL)
+========================= */
+
+:root[data-theme="dark"] {
+    --bg-main: #1c1f26;
+    --bg-surface: #232733;
+    --bg-card: #2b3040;
+
+    --border-soft: #3a3f50;
+
+    --text-main: #e5e7eb;
+    --text-muted: #9ca3af;
+    --text-heading: #f3f4f6;
+
+    --accent: #8b93ff;
+    /* muted UEP blue */
+}
+
+/* BACKGROUND */
+[data-theme="dark"] body {
+    background: var(--bg-main);
+}
+
+/* PAGE AREAS */
+[data-theme="dark"] .dashboard,
+[data-theme="dark"] .projects-page,
+[data-theme="dark"] .users-page,
+[data-theme="dark"] .reports-page,
+[data-theme="dark"] .settings-page {
+    background: transparent;
+}
+
+/* CARDS */
+[data-theme="dark"] .dashboard-card,
+[data-theme="dark"] .report-card,
+[data-theme="dark"] .settings-card,
+[data-theme="dark"] .projects-table-wrapper,
+[data-theme="dark"] .users-table-wrapper {
+    background: var(--bg-card);
+    border-color: var(--border-soft);
+}
+
+/* HEADERS */
+[data-theme="dark"] .page-title h2,
+[data-theme="dark"] .card-header h3 {
+    color: var(--text-heading);
+}
+
+[data-theme="dark"] .page-subtitle {
+    color: var(--text-muted);
+}
+
+[data-theme="dark"] .card-header {
+    background: var(--bg-surface);
+    border-bottom-color: var(--border-soft);
+}
+
+/* TEXT */
+[data-theme="dark"] body,
+[data-theme="dark"] td,
+[data-theme="dark"] th,
+[data-theme="dark"] span,
+[data-theme="dark"] p {
+    color: var(--text-main);
+}
+
+/* TABLES */
+[data-theme="dark"] table th {
+    background: var(--bg-surface);
+}
+
+[data-theme="dark"] table td {
+    background: var(--bg-card);
+}
+
+/* LISTS */
+[data-theme="dark"] .list li,
+[data-theme="dark"] .distribution-list li,
+[data-theme="dark"] .notes-list li {
+    border-bottom-color: var(--border-soft);
+}
+
+/* BUTTONS */
+[data-theme="dark"] .btn-primary,
+[data-theme="dark"] .btn-secondary,
+[data-theme="dark"] .icon-btn {
+    background: var(--bg-surface);
+    border-color: var(--border-soft);
+    color: var(--text-main);
+}
+
+[data-theme="dark"] .icon-btn:hover {
+    background: #343a4d;
+}
+
+/* BADGES */
+[data-theme="dark"] .status-badge,
+[data-theme="dark"] .role-badge,
+[data-theme="dark"] .account-status {
+    background: #343a4d;
+    border-color: var(--border-soft);
+    color: var(--text-main);
+}
+
+/* INPUTS */
+[data-theme="dark"] select,
+[data-theme="dark"] input {
+    background: var(--bg-surface);
+    border-color: var(--border-soft);
+    color: var(--text-main);
+}

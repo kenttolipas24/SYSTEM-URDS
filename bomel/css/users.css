@@ -1,0 +1,295 @@
+/* =========================
+   USERS PAGE BASE
+========================= */
+.users-page {
+    padding: 32px 40px 40px;
+}
+
+/* PAGE TITLE */
+.page-title {
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+    border-bottom: 2px solid #e3e0da;
+}
+
+.page-title h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1f2a44;
+}
+
+.page-subtitle {
+    font-size: 15px;
+    color: #5f6b7a;
+}
+
+/* =========================
+   ACTION BAR
+========================= */
+.users-actions {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+}
+
+.btn-primary {
+    background: #ece7dc;
+    color: #1f2a44;
+    border: 1px solid #d6d3cd;
+    padding: 10px 18px;
+    border-radius: 999px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.filter {
+    padding: 10px 14px;
+    border-radius: 999px;
+    border: 1px solid #d6d3cd;
+    background: #fdfdfb;
+    font-size: 14px;
+    color: #1f2937;
+}
+
+/* =========================
+   TABLE WRAPPER
+========================= */
+.users-table-wrapper {
+    background: #fdfdfb;
+    border-radius: 18px;
+    border: 1px solid #e4e1db;
+    overflow: hidden;
+}
+
+/* =========================
+   TABLE
+========================= */
+.users-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 10px;
+}
+
+.users-table thead tr {
+    background: #f6f5f1;
+}
+
+.users-table th {
+    font-size: 13px;
+    color: #4b5563;
+    padding: 14px;
+    text-align: left;
+    border-bottom: 1px solid #e4e1db;
+}
+
+.users-table td {
+    padding: 14px;
+    font-size: 14px;
+    color: #1f2937;
+    background: #fdfdfb;
+}
+
+/* FIELD SEPARATION */
+.users-table td:not(:last-child) {
+    border-right: 1px solid #edeae4;
+}
+
+/* ROW RADIUS */
+.users-table tbody tr td:first-child {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+}
+
+.users-table tbody tr td:last-child {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+}
+
+/* SUB TEXT */
+.sub-text {
+    font-size: 12px;
+    color: #7a8595;
+    margin-top: 4px;
+}
+
+/* =========================
+   ROLE BADGES
+========================= */
+.role-badge {
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid #d6d3cd;
+}
+
+.role-badge.admin {
+    background: #f1f5ff;
+    color: #1f2a44;
+}
+
+.role-badge.dean {
+    background: #f6f7fb;
+    color: #374151;
+}
+
+.role-badge.researcher {
+    background: #f1f7f3;
+    color: #1e3a2a;
+}
+
+/* =========================
+   ACCOUNT STATUS
+========================= */
+.account-status {
+    padding: 7px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    border: 1px solid #d6d3cd;
+}
+
+.account-status.active {
+    background: #f1f7f3;
+    color: #1e3a2a;
+}
+
+.account-status.disabled {
+    background: #f8f4f4;
+    color: #7f1d1d;
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+.actions {
+    text-align: center;
+}
+
+.icon-btn {
+    background: #ffffff;
+    border: 1px solid #d6d3cd;
+    border-radius: 8px;
+    padding: 6px 10px;
+    margin: 0 3px;
+    cursor: pointer;
+    color: #1f2a44;
+}
+
+.icon-btn:hover {
+    background: #eae6db;
+}
+
+/* =========================
+   DARK MODE (GLOBAL)
+========================= */
+
+:root[data-theme="dark"] {
+    --bg-main: #1c1f26;
+    --bg-surface: #232733;
+    --bg-card: #2b3040;
+
+    --border-soft: #3a3f50;
+
+    --text-main: #e5e7eb;
+    --text-muted: #9ca3af;
+    --text-heading: #f3f4f6;
+
+    --accent: #8b93ff;
+    /* muted UEP blue */
+}
+
+/* BACKGROUND */
+[data-theme="dark"] body {
+    background: var(--bg-main);
+}
+
+/* PAGE AREAS */
+[data-theme="dark"] .dashboard,
+[data-theme="dark"] .projects-page,
+[data-theme="dark"] .users-page,
+[data-theme="dark"] .reports-page,
+[data-theme="dark"] .settings-page {
+    background: transparent;
+}
+
+/* CARDS */
+[data-theme="dark"] .dashboard-card,
+[data-theme="dark"] .report-card,
+[data-theme="dark"] .settings-card,
+[data-theme="dark"] .projects-table-wrapper,
+[data-theme="dark"] .users-table-wrapper {
+    background: var(--bg-card);
+    border-color: var(--border-soft);
+}
+
+/* HEADERS */
+[data-theme="dark"] .page-title h2,
+[data-theme="dark"] .card-header h3 {
+    color: var(--text-heading);
+}
+
+[data-theme="dark"] .page-subtitle {
+    color: var(--text-muted);
+}
+
+[data-theme="dark"] .card-header {
+    background: var(--bg-surface);
+    border-bottom-color: var(--border-soft);
+}
+
+/* TEXT */
+[data-theme="dark"] body,
+[data-theme="dark"] td,
+[data-theme="dark"] th,
+[data-theme="dark"] span,
+[data-theme="dark"] p {
+    color: var(--text-main);
+}
+
+/* TABLES */
+[data-theme="dark"] table th {
+    background: var(--bg-surface);
+}
+
+[data-theme="dark"] table td {
+    background: var(--bg-card);
+}
+
+/* LISTS */
+[data-theme="dark"] .list li,
+[data-theme="dark"] .distribution-list li,
+[data-theme="dark"] .notes-list li {
+    border-bottom-color: var(--border-soft);
+}
+
+/* BUTTONS */
+[data-theme="dark"] .btn-primary,
+[data-theme="dark"] .btn-secondary,
+[data-theme="dark"] .icon-btn {
+    background: var(--bg-surface);
+    border-color: var(--border-soft);
+    color: var(--text-main);
+}
+
+[data-theme="dark"] .icon-btn:hover {
+    background: #343a4d;
+}
+
+/* BADGES */
+[data-theme="dark"] .status-badge,
+[data-theme="dark"] .role-badge,
+[data-theme="dark"] .account-status {
+    background: #343a4d;
+    border-color: var(--border-soft);
+    color: var(--text-main);
+}
+
+/* INPUTS */
+[data-theme="dark"] select,
+[data-theme="dark"] input {
+    background: var(--bg-surface);
+    border-color: var(--border-soft);
+    color: var(--text-main);
+}

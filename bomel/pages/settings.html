@@ -1,0 +1,150 @@
+<div class="settings-page">
+
+    <!-- PAGE TITLE -->
+    <div class="page-title">
+        <h2>System Settings</h2>
+        <p class="page-subtitle">
+            Configure institutional data, workflows, and access controls for URDS.
+        </p>
+    </div>
+
+    <!-- SETTINGS GRID -->
+    <div class="settings-grid">
+
+        <!-- LEFT COLUMN -->
+        <div class="settings-column">
+
+            <!-- REFERENCE DATA -->
+            <div class="settings-card">
+                <div class="card-header">
+                    <h3>Reference Data Management</h3>
+                </div>
+
+                <div class="settings-list">
+                    <button class="settings-item">
+                        <i class="fas fa-university"></i>
+                        <span>Manage Campuses</span>
+                    </button>
+
+                    <button class="settings-item">
+                        <i class="fas fa-building"></i>
+                        <span>Colleges & Units</span>
+                    </button>
+
+                    <button class="settings-item">
+                        <i class="fas fa-tags"></i>
+                        <span>Research Categories</span>
+                    </button>
+
+                    <button class="settings-item">
+                        <i class="fas fa-coins"></i>
+                        <span>Funding Sources</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ACADEMIC YEAR -->
+            <div class="settings-card">
+                <div class="card-header">
+                    <h3>Academic Year Configuration</h3>
+                </div>
+
+                <div class="settings-content">
+                    <label>Current Academic Year</label>
+                    <select class="setting-select">
+                        <option>2024 – 2025</option>
+                        <option>2023 – 2024</option>
+                        <option>2022 – 2023</option>
+                    </select>
+
+                    <p class="hint">
+                        This setting affects reports, analytics, and proposal grouping.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN -->
+        <div class="settings-column">
+
+            <!-- WORKFLOW -->
+            <div class="settings-card">
+                <div class="card-header">
+                    <h3>Research Review Workflow</h3>
+                </div>
+
+                <ol class="workflow-steps">
+                    <li>Submission by Researcher</li>
+                    <li>College Review</li>
+                    <li>URDS Technical Review</li>
+                    <li>Ethics / Panel Review</li>
+                    <li>Final Approval</li>
+                </ol>
+
+                <button class="btn-secondary full-width">
+                    <i class="fas fa-project-diagram"></i> Configure Workflow
+                </button>
+            </div>
+
+            <!-- ROLES & PERMISSIONS -->
+            <div class="settings-card">
+                <div class="card-header">
+                    <h3>Roles & Permissions</h3>
+                </div>
+
+                <ul class="permission-list">
+                    <li>
+                        <strong>URDS Admin</strong>
+                        <span>Full system access</span>
+                    </li>
+                    <li>
+                        <strong>Dean</strong>
+                        <span>College-level review & approval</span>
+                    </li>
+                    <li>
+                        <strong>Researcher</strong>
+                        <span>Submission & tracking</span>
+                    </li>
+                    <li>
+                        <strong>Reviewer</strong>
+                        <span>Evaluation & feedback</span>
+                    </li>
+                </ul>
+
+                <button class="btn-secondary full-width">
+                    <i class="fas fa-user-shield"></i> Edit Permissions
+                </button>
+            </div>
+            <div class="toggle-item">
+                <span>Dark Mode</span>
+                <input type="checkbox" id="darkModeToggle">
+            </div>
+
+
+            <!-- SYSTEM CONTROL -->
+            <div class="settings-card">
+                <div class="card-header">
+                    <h3>System Control</h3>
+                </div>
+
+                <div class="toggle-item">
+                    <span>Enable System Announcements</span>
+                    <input type="checkbox" checked>
+                </div>
+
+                <div class="toggle-item">
+                    <span>Maintenance Mode</span>
+                    <input type="checkbox">
+                </div>
+
+                <p class="hint">
+                    Maintenance mode temporarily disables submissions.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
