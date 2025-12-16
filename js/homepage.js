@@ -70,7 +70,7 @@ function handleSignUp(event) {
     'faculty':      'pages/faculty.html',
     'coordinator':  'pages/coordinator.html',
     'dean':         '../kent/pages/dean.html',
-    'director':     'pages/director.html',
+    'director':     '../bowmeal/admin.html',
     'staff':        '../kent/pages/urds-staff.html',
     'cluster':      'pages/cluster.html',
     'researcher':   'pages/evaluator.html'

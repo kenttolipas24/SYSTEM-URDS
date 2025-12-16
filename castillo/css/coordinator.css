@@ -1,0 +1,792 @@
+/* --- Base Layout Adjustment for Component Architecture --- */
+.container {
+    display: flex;
+    min-height: 150vh;
+    background-color: #f4f6f8;
+}
+
+.main-content {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- Sidebar Styles (Retained/Refined from previous Dean attempt to match structure) --- */
+.sidebar {
+    width: 250px;
+    background-color: white;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 0;
+    position: sticky;
+    top: 0;
+    min-height: 100vh;
+}
+
+.sidebar-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0 1.5rem 1.5rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.sidebar-header .profile-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #f0f0f0; 
+}
+
+.sidebar-header .app-info {
+    line-height: 1.2;
+}
+.sidebar-header .app-title {
+    font-size: 1.125rem;
+    font-weight: bold;
+    color: #1f2937;
+}
+.sidebar-header .app-subtitle {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.sidebar-menu {
+    flex-grow: 1;
+}
+
+.sidebar-footer {
+    padding-top: 0.5rem;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1.5rem;
+    color: #4b5563;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background-color 0.2s, color 0.2s;
+    border-left: 4px solid transparent;
+}
+
+.menu-item:hover {
+    background-color: #f3f4f6;
+}
+
+.menu-item.active {
+    background-color: #eef2ff;
+    color: #4f46e5; 
+    border-left-color: #4f46e5;
+}
+
+.menu-item i {
+    font-size: 1.1rem;
+}
+
+.menu-item.logout {
+    color: #ef4444; 
+    margin-top: 1rem;
+}
+
+/* --- Top Header/Navbar Styles (Used by header.html component) --- */
+.top-navbar {
+    background-color: white;
+    padding: 0.75rem 2rem;
+    border-bottom: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.search-bar {
+    position: relative;
+    flex-grow: 1;
+    max-width: 300px;
+    margin: 0 2rem;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 0.5rem 1rem 0.5rem 2.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    outline: none;
+    transition: all 0.2s;
+    background-color: white;
+}
+
+.search-bar i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+}
+
+.user-profile-box {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.user-info {
+    text-align: right;
+    line-height: 1.2;
+}
+
+.user-name {
+    font-weight: 600;
+    color: #1f2937;
+    font-size: 0.875rem;
+}
+
+.user-role {
+    font-size: 0.75rem;
+    color: #6b7280;
+}
+
+.initials-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #ef4444; 
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.875rem;
+}
+
+/* --- Dashboard Content Layout (Three-Column Split) --- */
+.dashboard-layout-split {
+    display: flex;
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.main-list-panel {
+    flex: 3; /* Takes up most of the space */
+}
+
+.utility-panel {
+    flex: 1;
+    max-width: 300px; /* Max width for the right panel */
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding-top: 6rem;
+}
+
+.portal-title {
+    font-size: 1.75rem;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 0.25rem;
+}
+
+.portal-subtitle {
+    color: #6b7280;
+    margin-bottom: 2rem;
+}
+
+/* --- Incoming Proposals Section --- */
+.incoming-proposals-section {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #1f2937;
+}
+
+.section-subtitle {
+    color: #6b7280;
+    font-size: 0.875rem;
+    margin-bottom: 1rem;
+}
+
+.filter-btn {
+    padding: 0.5rem 1rem;
+    background-color: white;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    color: #4b5563;
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* Proposal Card Styling */
+.proposal-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.proposal-card {
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+}
+
+.proposal-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+}
+
+.meta-badge {
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    background-color: #e0e7ff; /* Department badge background */
+    color: #4f46e5;
+}
+
+.meta-date {
+    font-size: 0.8rem;
+    color: #9ca3af;
+}
+
+.proposal-title-info {
+    font-size: 1.125rem;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 0.25rem;
+}
+
+.proposal-author {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+.proposal-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.status-badge.endorsement { 
+    background-color: #dbeafe; 
+    color: #1e40af; 
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+.status-badge.pending-twg { 
+    background-color: #fef3c7; 
+    color: #92400e; 
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* Action Buttons */
+.btn-return {
+    padding: 0.5rem 1rem;
+    background-color: white;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    color: #ef4444; /* Red border */
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+.btn-return:hover {
+    background-color: #fef2f2;
+}
+
+.btn-endorse {
+    padding: 0.5rem 1rem;
+    background-color: #10b981; /* Green */
+    border: none;
+    border-radius: 0.375rem;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.2s;
+}
+.btn-endorse:hover {
+    background-color: #059669;
+}
+
+/* --- Utility Panel (Quick Actions & Alerts) --- */
+.utility-box {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+}
+
+.utility-box h3 {
+    font-size: 1.125rem;
+    font-weight: bold;
+    color: #1f2937;
+    margin-bottom: 1rem;
+}
+
+.action-btn {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background-color: white;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    color: #4b5563;
+    text-align: left;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.action-btn:hover {
+    background-color: #f9fafb;
+    border-color: #a8a8a8;
+}
+
+/* Monitoring Alerts */
+.alert-item {
+    padding: 1rem;
+    border-radius: 0.375rem;
+    background-color: #fef2f2; /* Light Red */
+    color: #991b1b;
+    border-left: 4px solid #ef4444;
+    font-size: 0.875rem;
+}
+.alert-item strong {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 1024px) {
+    .dashboard-layout-split {
+        flex-direction: column;
+    }
+    .utility-panel {
+        max-width: 100%;
+        order: -1; /* Move utility panel to the top on small screens */
+    }
+    .main-list-panel {
+        padding-top: 0;
+    }
+}
+
+/* --- Incoming Proposals Page Styles (Table View) --- */
+
+.incoming-proposals-container {
+    padding: 2rem;
+    background-color: white; /* Match the background of the main content area */
+    min-height: calc(100vh - 70px); /* Fill the remaining height */
+}
+
+/* Header/Search Bar Layout */
+.proposals-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-top: 1rem;
+}
+
+.search-box {
+    position: relative;
+    flex-grow: 1;
+    max-width: 400px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 0.625rem 1rem 0.625rem 2.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    font-size: 0.875rem;
+    outline: none;
+}
+
+.search-box i {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9ca3af;
+}
+
+.header-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.filter-btn, .export-btn {
+    padding: 0.625rem 1rem;
+    background-color: white;
+    border: 1px solid #d1d5db;
+    border-radius: 0.375rem;
+    color: #4b5563;
+    cursor: pointer;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.2s;
+}
+
+.filter-btn:hover, .export-btn:hover {
+    background-color: #f9fafb;
+}
+
+/* --- Proposals Table Grid Layout --- */
+.proposals-table {
+    display: grid;
+    /* Define 6 columns: Details (2.5x), Researcher (1.5x), Date (1x), Budget (1x), Status (1x), Actions (1x) */
+    grid-template-columns: 2.5fr 1.5fr 1fr 1fr 1fr 1fr;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    font-size: 0.875rem;
+}
+
+.table-header {
+    display: contents; /* Allows children to participate in the grid */
+    background-color: #f9fafb;
+    font-weight: 600;
+    color: #6b7280;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+}
+
+.table-header > div {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* --- Proposal Row Styling --- */
+.proposal-row {
+    display: contents; /* Allows children to participate in the grid */
+}
+
+.proposal-row > div {
+    padding: 1rem;
+    border-bottom: 1px solid #f3f4f6;
+    align-self: center; /* Vertically center content */
+}
+
+.proposal-row:last-of-type > div {
+    border-bottom: none;
+}
+
+/* Proposal Details Column */
+.proposal-details-main {
+    font-weight: 500;
+    color: #1f2937;
+    line-height: 1.4;
+}
+
+.proposal-ref {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    display: block;
+}
+
+/* Researcher Column */
+.researcher-info {
+    line-height: 1.4;
+    color: #4b5563;
+}
+
+.researcher-dept {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    display: block;
+}
+
+/* Submission Date Column */
+.submission-date {
+    color: #4b5563;
+}
+
+/* Budget Column */
+.proposal-budget {
+    color: #1f2937;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+}
+
+/* Status Column */
+.proposal-status-badge {
+    padding: 0.35rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+    text-align: center;
+}
+
+/* Status Badge Colors (Matching Screenshot) */
+.badge-pending-twg { background-color: #fef3c7; color: #92400e; } /* Yellow/Orange */
+.badge-for-revision { background-color: #fee2e2; color: #ef4444; } /* Red */
+.badge-endorsed { background-color: #d1fae5; color: #065f46; } /* Green */
+.badge-in-house { background-color: #e0f2fe; color: #0ea5e9; } /* Blue */
+
+
+/* Actions Column */
+.actions-button {
+    background: none;
+    border: none;
+    color: #4f46e5;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.2s;
+    font-size: 0.875rem;
+}
+.actions-button:hover {
+    color: #3e38c2;
+}
+
+/* Responsive Table (Collapse columns on small screens) */
+@media (max-width: 900px) {
+    .proposals-table {
+        /* Collapse to show 4 main columns on smaller screens */
+        grid-template-columns: 2fr 1fr 1fr 1fr;
+    }
+    
+    .table-header > div:nth-child(4), /* Budget */
+    .table-header > div:nth-child(6), /* Actions */
+    .proposal-row > div:nth-child(4),
+    .proposal-row > div:nth-child(6) {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    .proposals-header-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .search-box {
+        max-width: 100%;
+        margin-bottom: 1rem;
+    }
+    .header-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
+
+/* --- Researchers Page Styles (Card Grid View) --- */
+
+.researchers-container {
+    padding: 2rem;
+    background-color: white; 
+    min-height: calc(100vh - 70px);
+}
+
+/* Header/Search/Button Layout */
+.researchers-header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-top: 1rem;
+    gap: 1rem;
+}
+
+.researchers-header-bar .search-box {
+    flex-grow: 1;
+    max-width: 500px; /* Wider search bar */
+}
+
+.add-faculty-btn {
+    padding: 0.625rem 1.5rem;
+    background-color: #4f46e5;
+    color: white;
+    border: none;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.2s;
+}
+
+.add-faculty-btn:hover {
+    background-color: #4338ca;
+}
+
+/* --- Faculty Grid Layout --- */
+.faculty-grid {
+    display: grid;
+    /* 3 columns on large screens, adjust based on your desired layout */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* --- Researcher Card Styling --- */
+.researcher-card {
+    background-color: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.researcher-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.profile-initials {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+/* Example color themes for initials */
+.initials-pg { background-color: #3b82f6; } /* Blue */
+.initials-es { background-color: #f59e0b; } /* Amber */
+.initials-df { background-color: #10b981; } /* Emerald */
+
+.researcher-info h3 {
+    margin: 0;
+    font-size: 1.125rem;
+    color: #1f2937;
+}
+
+.researcher-info p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: #4b5563;
+}
+
+/* Expertise Badges */
+.expertise-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.expertise-badge {
+    padding: 0.3rem 0.6rem;
+    background-color: #eef2ff;
+    color: #4f46e5;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* Metrics (Active/Completed) */
+.researcher-metrics {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.metric-item {
+    padding: 0.5rem;
+    flex: 1;
+}
+
+.metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.metric-label {
+    font-size: 0.875rem;
+    color: #6b7280;
+}
+
+/* Card Actions */
+.card-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto; /* Push buttons to the bottom */
+}
+
+.btn-contact, .btn-profile {
+    flex: 1;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.btn-contact {
+    background-color: white;
+    color: #4f46e5;
+    border: 1px solid #4f46e5;
+}
+
+.btn-contact:hover {
+    background-color: #f0f4ff;
+}
+
+.btn-profile {
+    background-color: #4f46e5;
+    color: white;
+    border: 1px solid #4f46e5;
+}
+
+.btn-profile:hover {
+    background-color: #4338ca;
+}

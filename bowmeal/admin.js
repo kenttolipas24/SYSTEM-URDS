@@ -72,3 +72,31 @@ window.location.href = '../homepage.html';
 
   });
 }
+
+// Toggle collapsed sidebar when clicking the logo
+(function () {
+    document.addEventListener('DOMContentLoaded', function () {
+        var logo = document.querySelector('.sidebar .logo');
+        var sidebar = document.querySelector('.sidebar');
+        if (!logo || !sidebar) return;
+
+        // restore saved state
+        try {
+            var stored = localStorage.getItem('urds_sidebar_collapsed');
+            if (stored === '1') sidebar.classList.add('collapsed');
+            sidebar.setAttribute('aria-expanded', String(!sidebar.classList.contains('collapsed')));
+        } catch (e) {}
+
+        logo.style.cursor = 'pointer';
+        logo.addEventListener('click', function (e) {
+            sidebar.classList.toggle('collapsed');
+            var collapsed = sidebar.classList.contains('collapsed');
+            // store preference
+            try {
+                localStorage.setItem('urds_sidebar_collapsed', collapsed ? '1' : '0');
+            } catch (err) {}
+            // set aria-expanded for accessibility
+            sidebar.setAttribute('aria-expanded', String(!collapsed));
+        });
+    });
+})();

@@ -1,0 +1,211 @@
+/* =========================
+   PURCHASE REQUEST PAGE
+========================= */
+
+.purchase-section {
+  padding: 32px;
+}
+
+/* =========================
+   PAGE HEADER
+========================= */
+.purchase-header {
+  margin-bottom: 24px;
+}
+
+.purchase-title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.purchase-subtitle {
+  font-size: 15px;
+  color: #6b7280;
+}
+
+/* =========================
+   REQUEST LIST / TABLE
+========================= */
+.purchase-table,
+.table-header,
+.table-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 16px;
+  align-items: center;
+}
+
+.table-header {
+  background: #f9fafb;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.table-header .table-cell {
+  font-size: 12px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+}
+
+.table-row {
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  transition: 0.2s;
+}
+
+.table-row:hover {
+  background: #f9fafb;
+}
+
+.table-cell {
+  font-size: 14px;
+  color: #374151;
+}
+
+/* =========================
+   REQUEST CARDS (ALT VIEW)
+========================= */
+.purchase-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.purchase-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 20px;
+  transition: 0.2s;
+}
+
+.purchase-card:hover {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.purchase-card-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.purchase-meta {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 12px;
+}
+
+/* =========================
+   STATUS BADGES
+========================= */
+.purchase-status {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.purchase-status.pending {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.purchase-status.approved {
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.purchase-status.rejected {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+.purchase-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-approve {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn-approve:hover {
+  background: #059669;
+}
+
+.btn-reject {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.btn-reject:hover {
+  background: #dc2626;
+}
+
+/* =========================
+   REQUEST DETAILS
+========================= */
+.purchase-details {
+  margin-top: 20px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.detail-label {
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.detail-value {
+  font-weight: 500;
+  color: #111827;
+}
+
+/* =========================
+   TOTAL / AMOUNT
+========================= */
+.purchase-total {
+  margin-top: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+  .purchase-table {
+    grid-template-columns: 1fr;
+  }
+
+  .purchase-actions {
+    flex-direction: column;
+  }
+}

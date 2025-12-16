@@ -1,0 +1,321 @@
+/* ===============================
+   DASHBOARD THEME PROPOSAL STYLES
+   =============================== */
+
+/* Page Wrapper */
+.dashboard-content.proposal-page {
+    padding: 30px 40px;
+    background-color: #f3f4f8;
+    min-height: 100vh;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #333;
+}
+
+/* Page Header */
+.page-header {
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.page-title {
+    font-size: 26px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 5px 0;
+}
+
+.page-subtitle {
+    font-size: 14px;
+    color: #64748b;
+    margin: 0;
+}
+
+/* Main Form Card */
+.form-card {
+    background: #ffffff;
+    max-width: 1200px;
+    margin: 0 auto 50px auto;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03); 
+    padding: 40px;
+    border: 1px solid rgba(226, 232, 240, 0.6);
+}
+
+/* Section Header Styling */
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.section-number {
+    background-color: #eff6ff;
+    color: #2563eb;
+    font-weight: 800;
+    font-size: 16px;
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+}
+
+.header-note {
+    display: block;
+    font-size: 13px;
+    color: #94a3b8;
+    font-weight: 400;
+    margin-top: 2px;
+}
+
+.section-divider {
+    border: 0;
+    height: 1px;
+    background: #f1f5f9;
+    margin: 40px 0;
+}
+
+/* Grid Layout */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.full-width {
+    grid-column: 1 / -1;
+}
+
+/* Input Fields */
+.form-label {
+    font-size: 13px;
+    color: #475569;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #334155;
+    background-color: #fff;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.form-control:hover {
+    border-color: #cbd5e1;
+}
+
+.form-control:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-control::placeholder {
+    color: #94a3b8;
+}
+
+/* MODULE CARD STYLES (NEW SECTIONS V & VI) */
+.module-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 10px;
+    padding: 20px 24px;
+    transition: all 0.3s ease;
+}
+
+.module-card:hover {
+    border-color: #3b82f6;
+    background-color: #f0f9ff;
+}
+
+.module-content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.module-icon {
+    width: 48px;
+    height: 48px;
+    background-color: #dbeafe;
+    color: #2563eb;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.module-info h4 {
+    margin: 0 0 4px 0;
+    font-size: 16px;
+    color: #1e293b;
+    font-weight: 600;
+}
+
+.module-info p {
+    margin: 0;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.btn-module-action {
+    background-color: white;
+    color: #2563eb;
+    border: 1px solid #2563eb;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+}
+
+.btn-module-action:hover {
+    background-color: #2563eb;
+    color: white;
+}
+
+/* Custom Select */
+.select-wrapper {
+    position: relative;
+}
+
+.select-wrapper .form-control {
+    appearance: none;
+    padding-right: 40px;
+}
+
+.select-arrow {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #64748b;
+    pointer-events: none;
+    font-size: 12px;
+}
+
+/* Currency Input */
+.input-with-icon {
+    position: relative;
+}
+
+.input-with-icon .form-control {
+    padding-left: 32px;
+}
+
+.currency-symbol {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #64748b;
+    font-weight: 600;
+    pointer-events: none;
+}
+
+/* Textareas */
+.textarea-control {
+    resize: vertical;
+    min-height: 140px;
+    line-height: 1.6;
+}
+
+/* Footer Buttons */
+.form-footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.btn-primary {
+    background-color: #2563eb;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 6px;
+    border: none;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background-color 0.2s;
+    box-shadow: 0 2px 5px rgba(37, 99, 235, 0.2);
+}
+
+.btn-primary:hover {
+    background-color: #1d4ed8;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: #64748b;
+    padding: 12px 24px;
+    border-radius: 6px;
+    border: 1px solid transparent;
+    font-weight: 500;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-secondary:hover {
+    color: #1e293b;
+    background-color: #f1f5f9;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 900px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+    .module-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    .btn-module-action {
+        width: 100%;
+        justify-content: center;
+    }
+    .dashboard-content.proposal-page {
+        padding: 20px;
+    }
+    .form-card {
+        padding: 24px;
+    }
+}

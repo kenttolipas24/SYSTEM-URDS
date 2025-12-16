@@ -1,0 +1,43 @@
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Main Content */
+.main-content {
+    flex: 1;
+    overflow-y: auto;
+    background: #fafafa;
+    margin-left: 240px;
+    width: calc(100% - 240px);  /* Fixed: was 260px */
+    transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 70px;           /* Space for sticky navbar */
+    padding: 0;                 /* Use .content for padding if needed */
+}
+
+/* Expands when sidebar collapses */
+.main-content.expanded {
+    margin-left: 80px;
+    width: calc(100% - 80px);
+}
+
+.content {
+    padding: 40px;
+}
+
+.page-title {
+    margin-bottom: 8px;
+}
+
+.page-subtitle {
+    color: #7f8c8d;
+    margin-bottom: 30px;
+}
+
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}

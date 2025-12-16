@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Researcher Dashboard</title>
+    <title>UEP Research Proposal Management System</title>
     <style>
         * {
             margin: 0;
@@ -12,423 +12,856 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Inter', sans-serif;
-            background: #fafafa;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f9fafb;
+            color: #111827;
+        }
+
+        .header {
+            background: #1e3a8a;
+            color: white;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .header h1 {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .header p {
+            color: #bfdbfe;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+        }
+
+        .tabs {
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .tabs-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0.25rem;
+        }
+
+        .tab-btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            background: none;
+            border-bottom: 2px solid transparent;
+            cursor: pointer;
+            font-weight: 500;
+            color: #6b7280;
+            transition: all 0.3s;
+        }
+
+        .tab-btn:hover {
+            color: #2563eb;
+        }
+
+        .tab-btn.active {
+            color: #2563eb;
+            border-bottom-color: #2563eb;
         }
 
         .container {
-            display: flex;
-            min-height: 100vh;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.5rem;
         }
 
-        /* Sidebar */
-        .sidebar {
-            width: 260px;
+        .card {
             background: white;
-            border-right: 1px solid #e5e7eb;
-            padding: 24px 0;
-            position: fixed;
-            height: 100vh;
-            left: 0;
-            top: 0;
-            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
-        .sidebar.collapsed {
-            width: 80px;
-        }
-
-        .logo-section {
-            padding: 0 24px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-            margin-bottom: 32px;
-            transition: all 0.3s ease;
-        }
-
-        .sidebar.collapsed .logo-section {
-            padding: 0 18px;
-            justify-content: center;
-        }
-
-        .logo {
-            width: 44px;
-            height: 44px;
-            background: #374151;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-            flex-shrink: 0;
-            transition: all 0.3s ease;
-        }
-
-        .sidebar.collapsed .logo {
-            transform: scale(0.95);
-        }
-
-        .logo-text {
-            opacity: 1;
-            transition: opacity 0.2s ease;
-            white-space: nowrap;
-        }
-
-        .sidebar.collapsed .logo-text {
-            opacity: 0;
-            width: 0;
-        }
-
-        .logo-text h2 {
-            font-size: 18px;
-            font-weight: 700;
-            color: #111827;
-            margin-bottom: 2px;
-        }
-
-        .logo-text p {
-            font-size: 13px;
-            color: #6b7280;
-            font-weight: 500;
-        }
-
-        /* Navigation */
-        .nav-menu {
-            padding: 0 12px;
-        }
-
-        .nav-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px 16px;
-            margin-bottom: 4px;
-            border-radius: 8px;
-            color: #6b7280;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-            white-space: nowrap;
-        }
-
-        .sidebar.collapsed .nav-item {
-            justify-content: center;
-            padding: 12px;
-        }
-
-        .nav-item:hover {
-            background: #f3f4f6;
-            color: #111827;
-        }
-
-        .nav-item.active {
-            background: #eef2ff;
-            color: #4f46e5;
-        }
-
-        .nav-item svg {
-            width: 20px;
-            height: 20px;
-            stroke: currentColor;
-            stroke-width: 2;
-            fill: none;
-            stroke-linecap: round;
-            stroke-linejoin: round;
-            flex-shrink: 0;
-        }
-
-        .nav-item span {
-            opacity: 1;
-            transition: opacity 0.2s ease;
-        }
-
-        .sidebar.collapsed .nav-item span {
-            opacity: 0;
-            width: 0;
-        }
-
-        /* Main Content Area */
-        .main-content {
-            margin-left: 260px;
-            width: calc(100% - 260px);
-            transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .sidebar.collapsed ~ .main-content {
-            margin-left: 80px;
-            width: calc(100% - 80px);
-        }
-
-        .navbar {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-bottom: 1px solid #e5e7eb;
-            padding: 7px 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .navbar-title {
-            font-size: 19px;
+        .card h2 {
+            font-size: 1.25rem;
             font-weight: 600;
-            color: #111827;
+            margin-bottom: 1rem;
         }
 
-        .navbar-right {
-            display: flex;
-            align-items: center;
-            gap: 24px;
+        .input-method-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
         }
 
-        .search-box {
-            position: relative;
-            display: flex;
-            align-items: center;
+        .method-card {
+            padding: 1.5rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s;
         }
 
-        .search-icon {
-            position: absolute;
-            left: 12px;
-            width: 18px;
-            height: 18px;
+        .method-card:hover {
+            border-color: #93c5fd;
+        }
+
+        .method-card.active {
+            border-color: #2563eb;
+            background: #eff6ff;
+        }
+
+        .method-card svg {
+            width: 3rem;
+            height: 3rem;
+            margin: 0 auto 0.75rem;
+            color: #2563eb;
+        }
+
+        .method-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .method-card p {
+            font-size: 0.875rem;
+            color: #6b7280;
+        }
+
+        .upload-area {
+            border: 2px dashed #d1d5db;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .upload-area:hover {
+            border-color: #2563eb;
+        }
+
+        .upload-icon {
+            width: 4rem;
+            height: 4rem;
+            margin: 0 auto 1rem;
             color: #9ca3af;
         }
 
-        .search-input {
-            padding: 9px 16px 9px 38px;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            font-size: 14px;
-            width: 260px;
+        .file-input {
+            display: none;
+        }
+
+        .upload-text {
+            color: #2563eb;
+            font-weight: 500;
+        }
+
+        .file-info {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .spinner {
+            width: 1.5rem;
+            height: 1.5rem;
+            border: 2px solid #bfdbfe;
+            border-top-color: #2563eb;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .success-message {
+            margin-top: 0.75rem;
+            padding: 0.75rem;
+            background: #dcfce7;
+            border: 1px solid #86efac;
+            border-radius: 0.5rem;
+            color: #166534;
+            font-size: 0.875rem;
+        }
+
+        .form-section {
+            border-left: 4px solid;
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-section.blue { border-color: #2563eb; }
+        .form-section.green { border-color: #16a34a; }
+        .form-section.purple { border-color: #9333ea; }
+        .form-section.orange { border-color: #ea580c; }
+
+        .form-section h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group.full {
+            grid-column: span 2;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 0.25rem;
+        }
+
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 0.5rem 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            font-size: 0.875rem;
+            transition: all 0.3s;
+        }
+
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
             outline: none;
-            transition: all 0.2s;
-            background: #fafafa;
+            border-color: #2563eb;
+            box-shadow: 0 0 0 2px #bfdbfe;
+        }
+
+        .form-textarea {
+            resize: vertical;
             font-family: inherit;
         }
 
-        .search-input::placeholder {
-            color: #9ca3af;
+        .btn-group {
+            display: flex;
+            gap: 0.75rem;
+            margin-top: 1rem;
         }
 
-        .search-input:focus {
-            border-color: #d1d5db;
-            background: white;
-        }
-
-        .notification-btn {
-            position: relative;
-            width: 36px;
-            height: 36px;
-            border-radius: 8px;
-            background: transparent;
+        .btn {
+            flex: 1;
+            padding: 0.75rem 1.5rem;
             border: none;
+            border-radius: 0.5rem;
+            font-weight: 500;
             cursor: pointer;
+            transition: all 0.3s;
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.2s;
+            gap: 0.5rem;
         }
 
-        .notification-btn:hover {
-            background: #f9fafb;
-        }
-
-        .notification-btn svg {
-            width: 20px;
-            height: 20px;
-            stroke: #6b7280;
-            stroke-width: 2;
-            fill: none;
-        }
-
-        .notification-badge {
-            position: absolute;
-            top: 6px;
-            right: 6px;
-            width: 8px;
-            height: 8px;
-            background: #ef4444;
-            border-radius: 50%;
-            border: 2px solid white;
-        }
-
-        .user-profile {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            cursor: pointer;
-            padding: 6px 12px 6px 6px;
-            border-radius: 10px;
-            transition: all 0.2s;
-        }
-
-        .user-profile:hover {
-            background: #f9fafb;
-        }
-
-        .user-info {
-            text-align: right;
-        }
-
-        .user-name {
-            font-size: 14px;
-            font-weight: 600;
-            color: #111827;
-            margin-bottom: 2px;
-        }
-
-        .user-role {
-            font-size: 12px;
-            color: #6b7280;
-        }
-
-        .user-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: #4f46e5;
+        .btn-primary {
+            background: #2563eb;
             color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+        }
+
+        .btn-secondary {
+            background: #6b7280;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        thead {
+            background: #f9fafb;
+        }
+
+        th {
+            padding: 0.75rem 1.5rem;
+            text-align: left;
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #6b7280;
+            text-transform: uppercase;
+        }
+
+        td {
+            padding: 1rem 1.5rem;
+            border-top: 1px solid #e5e7eb;
+            font-size: 0.875rem;
+        }
+
+        tr:hover {
+            background: #f9fafb;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+        }
+
+        .status-approved {
+            background: #dcfce7;
+            color: #166534;
+        }
+
+        .status-pending {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .btn-link {
+            background: none;
+            border: none;
+            color: #2563eb;
+            cursor: pointer;
+            font-size: 0.875rem;
             display: flex;
             align-items: center;
+            gap: 0.25rem;
+        }
+
+        .btn-link:hover {
+            color: #1d4ed8;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center;
             justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal.show {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 0.5rem;
+            max-width: 64rem;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-header h3 {
+            font-size: 1.25rem;
             font-weight: 600;
-            font-size: 14px;
         }
 
-        .content {
-            padding: 32px 40px;
-        }
-
-        .content p {
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
             color: #6b7280;
-            font-size: 14px;
+        }
+
+        .modal-close:hover {
+            color: #111827;
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .preview-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .preview-header p {
+            font-size: 0.875rem;
+        }
+
+        .preview-header .title {
+            font-weight: bold;
+            font-size: 1.125rem;
+            margin: 0.5rem 0;
+        }
+
+        .preview-divider {
+            border-top: 2px solid black;
+            border-bottom: 2px solid black;
+            padding: 0.5rem 0;
+            text-align: center;
+            font-weight: bold;
+            margin: 1.5rem 0;
+        }
+
+        .preview-title {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+
+        .preview-table {
+            width: 100%;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        .preview-table td {
+            border: 1px solid black;
+            padding: 0.5rem;
+        }
+
+        .preview-table .section-header {
+            background: #f3f4f6;
+            font-weight: 600;
+        }
+
+        .preview-table .label {
+            width: 33.333%;
+            font-weight: 500;
+        }
+
+        .modal-footer {
+            padding: 1.5rem;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .hidden {
+            display: none;
         }
     </style>
 </head>
 <body>
+    <div class="header">
+        <div class="header-content">
+            <h1>University of Eastern Philippines</h1>
+            <p>Research Proposal Management System</p>
+        </div>
+    </div>
+
+    <div class="tabs">
+        <div class="tabs-content">
+            <button class="tab-btn active" id="create-tab-btn">Create Proposal</button>
+            <button class="tab-btn" id="manage-tab-btn">Manage Proposals</button>
+        </div>
+    </div>
+
     <div class="container">
-        <!-- Sidebar -->
-        <div class="sidebar" id="sidebar">
-            <div class="logo-section" onclick="toggleSidebar()">
-                <div class="logo">🎓</div>
-                <div class="logo-text">
-                    <h2>URDS</h2>
-                    <p>Researcher</p>
+        <div id="create-tab">
+            <div class="card">
+                <h2>Choose Input Method</h2>
+                <div class="input-method-grid">
+                    <div class="method-card active" id="form-method-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        <h3>Fill Out Form</h3>
+                        <p>Enter proposal details directly</p>
+                    </div>
+                    <div class="method-card" id="upload-method-card">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+                        </svg>
+                        <h3>Upload Document</h3>
+                        <p>Upload Word or PDF file</p>
+                    </div>
                 </div>
             </div>
 
-            <!-- Navigation Menu -->
-            <div class="nav-menu">
-                <a href="#" class="nav-item active">
-                    <svg viewBox="0 0 24 24">
-                        <rect x="3" y="3" width="9" height="9" rx="1.5"/>
-                        <rect x="15" y="3" width="6" height="6" rx="1.5"/>
-                        <rect x="3" y="15" width="6" height="6" rx="1.5"/>
-                        <rect x="12" y="12" width="9" height="9" rx="1.5"/>
+            <div id="upload-section" class="card hidden">
+                <h2>Upload Proposal Document</h2>
+                <div class="upload-area" id="upload-area">
+                    <svg class="upload-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                     </svg>
-                    <span>Dashboard</span>
-                </a>
+                    <p><span class="upload-text">Click to upload</span> or drag and drop</p>
+                    <p style="font-size: 0.875rem; color: #6b7280; margin-top: 0.5rem;">Word (.doc, .docx) or PDF files</p>
+                    <input type="file" id="fileInput" class="file-input" accept=".doc,.docx,.pdf">
+                </div>
+                <div id="file-info" class="hidden"></div>
+            </div>
 
-                <a href="#" class="nav-item">
-                    <svg viewBox="0 0 24 24">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                        <polyline points="14 2 14 8 20 8"/>
-                        <line x1="8" y1="13" x2="16" y2="13"/>
-                        <line x1="8" y1="17" x2="16" y2="17"/>
-                    </svg>
-                    <span>To Endorse</span>
-                </a>
+            <div id="form-section" class="card">
+                <h2 id="form-title">Research Proposal Details</h2>
+                
+                <div class="form-section blue">
+                    <h3>I. Basic Information</h3>
+                    <div class="form-grid">
+                        <div class="form-group full">
+                            <label class="form-label">Title *</label>
+                            <input type="text" id="title" class="form-input" placeholder="Enter research title">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Nature of Research</label>
+                            <select id="nature" class="form-select">
+                                <option value="program">Program</option>
+                                <option value="project" selected>Project</option>
+                                <option value="study">Study</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Leader/Main Proponent *</label>
+                            <input type="text" id="leader" class="form-input" placeholder="Enter leader name">
+                        </div>
+                        <div class="form-group full">
+                            <label class="form-label">Other Personnel Involved</label>
+                            <input type="text" id="personnel" class="form-input" placeholder="Enter personnel names">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Project Location</label>
+                            <input type="text" id="location" class="form-input" placeholder="Enter location">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Duration</label>
+                            <input type="text" id="duration" class="form-input" placeholder="e.g., 1 Year">
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label">Budget for the Year</label>
+                            <input type="text" id="budget" class="form-input" placeholder="e.g., 16,000.00">
+                        </div>
+                    </div>
+                </div>
 
-                <a href="#" class="nav-item">
-                    <svg viewBox="0 0 24 24">
-                        <circle cx="9" cy="7" r="3"/>
-                        <circle cx="15" cy="7" r="3"/>
-                        <path d="M3 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"/>
-                        <path d="M15 15a4 4 0 0 1 4 4v2"/>
-                    </svg>
-                    <span>Faculty List</span>
-                </a>
+                <div class="form-section green">
+                    <h3>II. Technical Information</h3>
+                    <div class="form-group">
+                        <label class="form-label">Rationale/Significance of Research *</label>
+                        <textarea id="rationale" class="form-textarea" rows="4" placeholder="Describe the rationale"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Objectives *</label>
+                        <textarea id="objectives" class="form-textarea" rows="5" placeholder="List objectives"></textarea>
+                    </div>
+                </div>
 
-                <a href="#" class="nav-item">
-                    <svg viewBox="0 0 24 24">
-                        <line x1="3" y1="21" x2="3" y2="8"/>
-                        <line x1="9" y1="21" x2="9" y2="14"/>
-                        <line x1="15" y1="21" x2="15" y2="4"/>
-                        <line x1="21" y1="21" x2="21" y2="11"/>
-                    </svg>
-                    <span>College Reports</span>
-                </a>
+                <div class="form-section purple">
+                    <h3>III. Review of Literature</h3>
+                    <div class="form-group">
+                        <textarea id="literature" class="form-textarea" rows="5" placeholder="Review of literature"></textarea>
+                    </div>
+                </div>
 
-                <a href="#" class="nav-item">
-                    <svg viewBox="0 0 24 24">
-                        <circle cx="12" cy="12" r="3"/>
-                        <path d="M12 1v6m0 6v6M5.64 5.64l4.24 4.24m4.24 4.24l4.24 4.24M1 12h6m6 0h6M5.64 18.36l4.24-4.24m4.24-4.24l4.24-4.24"/>
-                    </svg>
-                    <span>Settings</span>
-                </a>
+                <div class="form-section orange">
+                    <h3>IV. Detailed Methodology</h3>
+                    <div class="form-group">
+                        <textarea id="methodology" class="form-textarea" rows="6" placeholder="Describe methodology"></textarea>
+                    </div>
+                </div>
+
+                <div class="btn-group">
+                    <button class="btn btn-primary" id="save-btn">Save Proposal</button>
+                    <button class="btn btn-secondary" id="preview-btn">
+                        <svg style="width: 1.25rem; height: 1.25rem;" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                        </svg>
+                        Preview
+                    </button>
+                </div>
             </div>
         </div>
 
-        <!-- Main Content -->
-        <div class="main-content">
-            <nav class="navbar">
-                <h1 class="navbar-title">Researcher Dashboard</h1>
-                
-                <div class="navbar-right">
-                    <!-- Search Box -->
-                    <div class="search-box">
-                        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                            <circle cx="11" cy="11" r="8"/>
-                            <path d="m21 21-4.35-4.35"/>
-                        </svg>
-                        <input type="text" class="search-input" placeholder="Search...">
-                    </div>
-
-                    <!-- Notification Button -->
-                    <button class="notification-btn">
-                        <svg viewBox="0 0 24 24">
-                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-                            <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
-                        </svg>
-                        <span class="notification-badge"></span>
-                    </button>
-
-                    <!-- User Profile -->
-                    <div class="user-profile">
-                        <div class="user-info">
-                            <div class="user-name">Prof. Elena Gilbert</div>
-                            <div class="user-role">Biology</div>
-                        </div>
-                        <div class="user-avatar">PG</div>
-                    </div>
+        <div id="manage-tab" class="hidden">
+            <div class="card">
+                <h2>Saved Research Proposals</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Title</th>
+                                <th>Leader</th>
+                                <th>Date</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="proposals-table"></tbody>
+                    </table>
                 </div>
-            </nav>
+            </div>
+        </div>
+    </div>
 
-            <!-- Page Content -->
-            <div class="content">
-                <h1 style="margin-bottom: 20px; font-size: 32px;">Welcome to Dashboard</h1>
-                <p style="margin-bottom: 20px;">Click the URDS logo in the sidebar to collapse/expand it. The sidebar will show only icons when collapsed.</p>
-                <p style="margin-bottom: 20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut orci nec urna faucibus egestas. Integer id sagittis lacus. Pellentesque consequat sapien sit amet ultricies malesuada.</p>
-                <p style="margin-bottom: 20px;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ut orci nec urna faucibus egestas. Integer id sagittis lacus. Pellentesque consequat sapien sit amet ultricies malesuada.</p>
-                <p style="margin-top: 400px;">End of scroll content.</p>
+    <div id="preview-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Report Preview</h3>
+                <button class="modal-close" id="close-modal">✕</button>
+            </div>
+            <div class="modal-body">
+                <div class="preview-header">
+                    <p>Republic of the Philippines</p>
+                    <p class="title">UNIVERSITY OF EASTERN PHILIPPINES</p>
+                    <p>University Town, Northern Samar, Philippines</p>
+                </div>
+                <div class="preview-divider">UNIVERSITY RESEARCH AND DEVELOPMENT SERVICES</div>
+                <div class="preview-title">CAPSULE RESEARCH PROPOSAL TEMPLATE</div>
+                <table class="preview-table">
+                    <tbody>
+                        <tr><td colspan="2" class="section-header">I. Basic Information</td></tr>
+                        <tr><td class="label">Title</td><td id="preview-title">N/A</td></tr>
+                        <tr><td class="label">Nature of Research</td><td id="preview-nature">N/A</td></tr>
+                        <tr><td class="label">Leader</td><td id="preview-leader">N/A</td></tr>
+                        <tr><td class="label">Personnel</td><td id="preview-personnel">N/A</td></tr>
+                        <tr><td colspan="2" class="section-header">II. Technical Information</td></tr>
+                        <tr><td class="label">Rationale</td><td id="preview-rationale" style="white-space: pre-wrap;">N/A</td></tr>
+                        <tr><td class="label">Objectives</td><td id="preview-objectives" style="white-space: pre-wrap;">N/A</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" id="download-pdf-btn">Download PDF</button>
+                <button class="btn btn-secondary" id="print-btn">Print</button>
             </div>
         </div>
     </div>
 
     <script>
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('collapsed');
+        let savedProposals = [{
+            id: 1,
+            title: 'Development of an Enhanced Faculty Workload Computation System',
+            leader: 'Emmanuel D. Santos',
+            date: '2022-09-12',
+            status: 'approved'
+        }];
+
+        const createTabBtn = document.getElementById('create-tab-btn');
+        const manageTabBtn = document.getElementById('manage-tab-btn');
+        const createTab = document.getElementById('create-tab');
+        const manageTab = document.getElementById('manage-tab');
+        const formMethodCard = document.getElementById('form-method-card');
+        const uploadMethodCard = document.getElementById('upload-method-card');
+        const uploadSection = document.getElementById('upload-section');
+        const uploadArea = document.getElementById('upload-area');
+        const fileInput = document.getElementById('fileInput');
+        const fileInfo = document.getElementById('file-info');
+        const saveBtn = document.getElementById('save-btn');
+        const previewBtn = document.getElementById('preview-btn');
+        const previewModal = document.getElementById('preview-modal');
+        const closeModal = document.getElementById('close-modal');
+        const downloadPdfBtn = document.getElementById('download-pdf-btn');
+        const printBtn = document.getElementById('print-btn');
+
+        createTabBtn.addEventListener('click', function() {
+            createTab.classList.remove('hidden');
+            manageTab.classList.add('hidden');
+            createTabBtn.classList.add('active');
+            manageTabBtn.classList.remove('active');
+        });
+
+        manageTabBtn.addEventListener('click', function() {
+            createTab.classList.add('hidden');
+            manageTab.classList.remove('hidden');
+            createTabBtn.classList.remove('active');
+            manageTabBtn.classList.add('active');
+            renderProposalsTable();
+        });
+
+        formMethodCard.addEventListener('click', function() {
+            formMethodCard.classList.add('active');
+            uploadMethodCard.classList.remove('active');
+            uploadSection.classList.add('hidden');
+        });
+
+        uploadMethodCard.addEventListener('click', function() {
+            uploadMethodCard.classList.add('active');
+            formMethodCard.classList.remove('active');
+            uploadSection.classList.remove('hidden');
+        });
+
+        uploadArea.addEventListener('click', function() {
+            fileInput.click();
+        });
+
+        fileInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            fileInfo.classList.remove('hidden');
+            fileInfo.innerHTML = '<div style="flex:1"><p style="font-weight:500">' + file.name + '</p></div><div class="spinner"></div>';
+
+            setTimeout(function() {
+                const parsedData = {
+                    title: 'Development of an Enhanced Faculty Workload Computation System',
+                    nature: 'project',
+                    leader: 'Emmanuel D. Santos',
+                    personnel: 'Celeste J. Chan, Ronato S. Ballado, Mary Jane Calpa and Danilo Isagan B. Masloc',
+                    location: 'UEP Main Campus',
+                    duration: '1 Year',
+                    budget: '16,000.00',
+                    rationale: 'A Microsoft-based Excel application is currently being used by the UEP System.',
+                    objectives: '1. Assess effectiveness\n2. Develop user-friendly interface\n3. Generate reports',
+                    literature: 'Workload monitoring in hybrid clouds was researched by V. Naik and K. Beaty (2013).',
+                    methodology: 'This study used the Mix Method, combining quantitative and qualitative methods.'
+                };
+
+                fileInfo.innerHTML = '<div style="flex:1"><p style="font-weight:500">' + file.name + '</p></div><div class="success-message">✓ Document parsed successfully!</div>';
+
+                document.getElementById('title').value = parsedData.title;
+                document.getElementById('nature').value = parsedData.nature;
+                document.getElementById('leader').value = parsedData.leader;
+                document.getElementById('personnel').value = parsedData.personnel;
+                document.getElementById('location').value = parsedData.location;
+                document.getElementById('duration').value = parsedData.duration;
+                document.getElementById('budget').value = parsedData.budget;
+                document.getElementById('rationale').value = parsedData.rationale;
+                document.getElementById('objectives').value = parsedData.objectives;
+                document.getElementById('literature').value = parsedData.literature;
+                document.getElementById('methodology').value = parsedData.methodology;
+                document.getElementById('form-title').textContent = 'Review & Edit Extracted Data';
+            }, 1500);
+        });
+
+        saveBtn.addEventListener('click', function() {
+            const title = document.getElementById('title').value;
+            const leader = document.getElementById('leader').value;
+
+            if (!title || !leader) {
+                alert('Please fill in Title and Leader fields');
+                return;
+            }
+
+            const newProposal = {
+                id: savedProposals.length + 1,
+                title: title,
+                leader: leader,
+                date: new Date().toISOString().split('T')[0],
+                status: 'pending'
+            };
+
+            savedProposals.push(newProposal);
+            alert('Research proposal saved successfully!');
+
+            document.getElementById('title').value = '';
+            document.getElementById('nature').value = 'project';
+            document.getElementById('leader').value = '';
+            document.getElementById('personnel').value = '';
+            document.getElementById('location').value = '';
+            document.getElementById('duration').value = '';
+            document.getElementById('budget').value = '';
+            document.getElementById('rationale').value = '';
+            document.getElementById('objectives').value = '';
+            document.getElementById('literature').value = '';
+            document.getElementById('methodology').value = '';
+            fileInput.value = '';
+            fileInfo.classList.add('hidden');
+            document.getElementById('form-title').textContent = 'Research Proposal Details';
+        });
+
+        function showPreviewModal() {
+            const title = document.getElementById('title').value || 'N/A';
+            const nature = document.getElementById('nature').value;
+            const leader = document.getElementById('leader').value || 'N/A';
+            const personnel = document.getElementById('personnel').value || 'N/A';
+            const rationale = document.getElementById('rationale').value || 'N/A';
+            const objectives = document.getElementById('objectives').value || 'N/A';
+
+            document.getElementById('preview-title').textContent = title;
+            document.getElementById('preview-nature').textContent = nature;
+            document.getElementById('preview-leader').textContent = leader;
+            document.getElementById('preview-personnel').textContent = personnel;
+            document.getElementById('preview-rationale').textContent = rationale;
+            document.getElementById('preview-objectives').textContent = objectives;
+
+            previewModal.classList.add('show');
+        }
+
+        previewBtn.addEventListener('click', showPreviewModal);
+
+        closeModal.addEventListener('click', function() {
+            previewModal.classList.remove('show');
+        });
+
+        previewModal.addEventListener('click', function(e) {
+            if (e.target === previewModal) {
+                previewModal.classList.remove('show');
+            }
+        });
+
+        downloadPdfBtn.addEventListener('click', function() {
+            const modalBody = document.querySelector('.modal-body');
+            const title = document.getElementById('title').value || 'Research_Proposal';
+            
+            const htmlContent = '<!DOCTYPE html><html><head><meta charset="UTF-8"><title>' + title + '</title><style>body{font-family:Arial;padding:30px;margin:0}.preview-header{text-align:center;margin-bottom:1.5rem}.preview-header p{font-size:0.875rem;margin:0.25rem 0}.preview-header .title{font-weight:bold;font-size:1.125rem;margin:0.5rem 0}.preview-divider{border-top:2px solid black;border-bottom:2px solid black;padding:0.5rem 0;text-align:center;font-weight:bold;margin:1.5rem 0}.preview-title{text-align:center;font-weight:bold;margin-bottom:1.5rem}.preview-table{width:100%;border:1px solid black;border-collapse:collapse}.preview-table td{border:1px solid black;padding:0.5rem}.preview-table .section-header{background:#f3f4f6;font-weight:600}.preview-table .label{width:33.333%;font-weight:500}</style></head><body>' + modalBody.innerHTML + '</body></html>';
+            
+            const blob = new Blob([htmlContent], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const downloadLink = document.createElement('a');
+            downloadLink.href = url;
+            downloadLink.download = title.replace(/[^a-z0-9]/gi, '_') + '_Report.html';
+            downloadLink.style.display = 'none';
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            document.body.removeChild(downloadLink);
+            setTimeout(function() { URL.revokeObjectURL(url); }, 100);
+            alert('Report downloaded! Open the HTML file and press Ctrl+P, then choose "Save as PDF"');
+        });
+
+        printBtn.addEventListener('click', function() {
+            const modalBody = document.querySelector('.modal-body');
+            const printWindow = window.open('', '', 'width=800,height=600');
+            printWindow.document.write('<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Research Proposal Report</title><style>body{font-family:Arial;padding:30px;margin:0}.preview-header{text-align:center;margin-bottom:1.5rem}.preview-header p{font-size:0.875rem;margin:0.25rem 0}.preview-header .title{font-weight:bold;font-size:1.125rem;margin:0.5rem 0}.preview-divider{border-top:2px solid black;border-bottom:2px solid black;padding:0.5rem 0;text-align:center;font-weight:bold;margin:1.5rem 0}.preview-title{text-align:center;font-weight:bold;margin-bottom:1.5rem}.preview-table{width:100%;border:1px solid black;border-collapse:collapse}.preview-table td{border:1px solid black;padding:0.5rem}.preview-table .section-header{background:#f3f4f6;font-weight:600}.preview-table .label{width:33.333%;font-weight:500}@media print{body{padding:20px}}</style></head><body>' + modalBody.innerHTML + '<script>window.onload=function(){window.print();}<\/script></body></html>');
+            printWindow.document.close();
+        });
+
+        function renderProposalsTable() {
+            const tableBody = document.getElementById('proposals-table');
+            tableBody.innerHTML = '';
+            savedProposals.forEach(function(proposal) {
+                const row = document.createElement('tr');
+                row.innerHTML = '<td>' + proposal.id + '</td><td>' + proposal.title + '</td><td>' + proposal.leader + '</td><td>' + proposal.date + '</td><td><span class="status-badge status-' + proposal.status + '">' + proposal.status + '</span></td><td><button class="btn-link generate-report-btn">Generate Report</button></td>';
+                tableBody.appendChild(row);
+            });
+            document.querySelectorAll('.generate-report-btn').forEach(function(btn) {
+                btn.addEventListener('click', showPreviewModal);
+            });
         }
     </script>
 </body>

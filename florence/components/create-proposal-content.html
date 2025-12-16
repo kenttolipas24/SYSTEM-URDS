@@ -1,0 +1,168 @@
+<!-- Create Proposal Content -->
+<div class="dashboard-content create-proposal-page">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="page-headings">
+            <h1 class="portal-title">Create New Proposal</h1>
+            <p class="portal-subtitle">Submit a new research proposal following the official guidelines.</p>
+        </div>
+    </div>
+
+    <!-- Proposal Form -->
+    <div class="content-section proposal-form-card">
+        <form id="create-proposal-form" class="proposal-form">
+            <!-- Basic Information -->
+            <div class="form-section">
+                <div class="section-header">
+                    <h2>Basic Information</h2>
+                    <p>Provide the essential details of your research proposal.</p>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="proposal-title" class="form-label">Research Title <span class="required">*</span></label>
+                        <input type="text" id="proposal-title" class="form-control" placeholder="Enter research title" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="proposal-abstract" class="form-label">Abstract <span class="required">*</span></label>
+                    <textarea id="proposal-abstract" class="form-control textarea-control" rows="5" placeholder="Provide a brief summary of your research (200-300 words)" required></textarea>
+                    <div class="form-help">200-300 words recommended</div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="research-area" class="form-label">Research Area <span class="required">*</span></label>
+                        <div class="select-wrapper">
+                            <select id="research-area" class="form-control" required>
+                                <option value="">Select research area</option>
+                                <option value="natural-sciences">Natural Sciences</option>
+                                <option value="agriculture">Agriculture</option>
+                                <option value="engineering">Engineering</option>
+                                <option value="social-sciences">Social Sciences</option>
+                                <option value="education">Education</option>
+                                <option value="health">Health Sciences</option>
+                                <option value="environmental">Environmental Science</option>
+                            </select>
+                            <i class="fas fa-chevron-down select-arrow"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="commodity" class="form-label">Commodity/Field</label>
+                        <input type="text" id="commodity" class="form-control" placeholder="e.g., Rice, Water Quality, etc.">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Objectives -->
+            <div class="form-section">
+                <div class="section-header">
+                    <h2>Research Objectives</h2>
+                    <p>List the specific objectives of your research.</p>
+                </div>
+
+                <div id="objectives-container">
+                    <div class="objective-item">
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input type="text" class="form-control objective-input" placeholder="Enter objective" required>
+                                <button type="button" class="btn-icon remove-objective" style="display: none;">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn-secondary btn-icon" id="add-objective">
+                    <i class="fas fa-plus"></i>
+                    <span>Add Objective</span>
+                </button>
+            </div>
+
+            <!-- Methodology -->
+            <div class="form-section">
+                <div class="section-header">
+                    <h2>Methodology</h2>
+                    <p>Describe your research methodology and approach.</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="methodology" class="form-label">Research Methodology <span class="required">*</span></label>
+                    <textarea id="methodology" class="form-control textarea-control" rows="6" placeholder="Describe your research design, methods, data collection procedures, and analysis techniques" required></textarea>
+                </div>
+            </div>
+
+            <!-- Budget and Timeline -->
+            <div class="form-section">
+                <div class="section-header">
+                    <h2>Budget and Timeline</h2>
+                    <p>Provide budget details and research timeline.</p>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="budget" class="form-label">Total Budget (PHP) <span class="required">*</span></label>
+                        <div class="input-with-label">
+                            <input type="number" id="budget" class="form-control" placeholder="0.00" step="0.01" min="0" required>
+                            <span class="currency-label">PHP</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="duration" class="form-label">Duration (Months) <span class="required">*</span></label>
+                        <input type="number" id="duration" class="form-control" placeholder="e.g., 12" min="1" max="36" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="start-date" class="form-label">Proposed Start Date <span class="required">*</span></label>
+                        <input type="date" id="start-date" class="form-control" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="end-date" class="form-label">Proposed End Date <span class="required">*</span></label>
+                        <input type="date" id="end-date" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="budget-breakdown" class="form-label">Budget Breakdown</label>
+                    <textarea id="budget-breakdown" class="form-control textarea-control" rows="4" placeholder="Provide itemized budget breakdown (Personnel, Equipment, Supplies, Travel, etc.)"></textarea>
+                </div>
+            </div>
+
+            <!-- Documents -->
+            <div class="form-section">
+                <div class="section-header">
+                    <h2>Supporting Documents</h2>
+                    <p>Upload required documents and attachments.</p>
+                </div>
+
+                <div class="form-group">
+                    <label for="proposal-document" class="form-label">Proposal Document <span class="required">*</span></label>
+                    <input type="file" id="proposal-document" class="form-control" accept=".pdf,.doc,.docx" required>
+                    <div class="form-help">PDF or Word document (Max 10MB)</div>
+                </div>
+
+                <div class="form-group">
+                    <label for="attachments" class="form-label">Additional Attachments</label>
+                    <input type="file" id="attachments" class="form-control" accept=".pdf,.doc,.docx,.xlsx,.jpg,.png" multiple>
+                    <div class="form-help">You can upload multiple files (Max 5MB each)</div>
+                </div>
+            </div>
+
+            <!-- Form Actions -->
+            <div class="form-actions">
+                <button type="button" class="btn-secondary" id="save-draft">Save as Draft</button>
+                <button type="submit" class="btn-primary btn-icon">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>Submit Proposal</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+

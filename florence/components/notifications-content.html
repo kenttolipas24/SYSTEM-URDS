@@ -1,0 +1,58 @@
+<!-- Notifications Content -->
+<div class="dashboard-content notifications-page">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="page-headings">
+            <h1 class="portal-title">Notifications</h1>
+            <p class="portal-subtitle">Stay updated with important updates and alerts.</p>
+        </div>
+        <div class="page-actions">
+            <button class="btn-secondary" id="mark-all-read">Mark All as Read</button>
+        </div>
+    </div>
+
+    <!-- Filter Controls -->
+    <div class="filter-controls">
+        <select id="notifications-type-filter" class="form-control" style="max-width: 200px;">
+            <option value="">All Types</option>
+            <option value="status-change">Status Changes</option>
+            <option value="revision">Revisions</option>
+            <option value="approval">Approvals</option>
+            <option value="comment">Comments</option>
+            <option value="monitoring">Monitoring</option>
+        </select>
+        <div class="filter-toggle">
+            <label class="toggle-label">
+                <input type="checkbox" id="show-read-only">
+                <span>Show unread only</span>
+            </label>
+        </div>
+    </div>
+
+    <!-- Notifications List -->
+    <div class="notifications-list" id="notifications-container">
+        <!-- Notifications will be loaded dynamically -->
+    </div>
+</div>
+
+<!-- Notification Item Template -->
+<template id="notification-item-template">
+    <div class="notification-item">
+        <div class="notification-icon-wrapper">
+            <div class="notification-icon"></div>
+            <div class="unread-indicator"></div>
+        </div>
+        <div class="notification-content">
+            <div class="notification-header">
+                <h4 class="notification-title"></h4>
+                <span class="notification-date"></span>
+            </div>
+            <p class="notification-message"></p>
+            <div class="notification-footer">
+                <span class="notification-proposal-link"></span>
+                <button class="btn-link view-notification-btn">View Details</button>
+            </div>
+        </div>
+    </div>
+</template>
+

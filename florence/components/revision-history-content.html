@@ -1,0 +1,62 @@
+<!-- Revision History Content -->
+<div class="dashboard-content revision-history-page">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="page-headings">
+            <h1 class="portal-title">Revision History</h1>
+            <p class="portal-subtitle">Track all versions and revisions of your proposals.</p>
+        </div>
+    </div>
+
+    <!-- Filter Controls -->
+    <div class="filter-controls">
+        <select id="revision-proposal-filter" class="form-control" style="max-width: 300px;">
+            <option value="">All Proposals</option>
+        </select>
+    </div>
+
+    <!-- Revision Timeline -->
+    <div class="revision-timeline" id="revision-container">
+        <!-- Revisions will be loaded dynamically -->
+    </div>
+</div>
+
+<!-- Revision Item Template -->
+<template id="revision-item-template">
+    <div class="revision-item">
+        <div class="revision-timeline-marker">
+            <div class="timeline-dot"></div>
+            <div class="timeline-line"></div>
+        </div>
+        <div class="revision-content">
+            <div class="revision-header">
+                <div class="revision-info">
+                    <h3 class="revision-proposal-title"></h3>
+                    <span class="revision-version"></span>
+                </div>
+                <div class="revision-status-badge"></div>
+            </div>
+            <div class="revision-details">
+                <div class="revision-meta">
+                    <span><i class="fas fa-calendar"></i> <span class="revision-date"></span></span>
+                    <span><i class="fas fa-user"></i> <span class="revision-researcher"></span></span>
+                </div>
+                <div class="revision-changes" style="display: none;">
+                    <h4>Changes Made:</h4>
+                    <ul class="changes-list"></ul>
+                </div>
+                <div class="revision-actions">
+                    <button class="btn-secondary btn-icon view-revision-btn">
+                        <i class="fas fa-eye"></i>
+                        <span>View Document</span>
+                    </button>
+                    <button class="btn-secondary btn-icon compare-revision-btn" style="display: none;">
+                        <i class="fas fa-code-branch"></i>
+                        <span>Compare Versions</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
