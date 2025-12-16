@@ -233,73 +233,73 @@ function initializePurchase() {
 }
 
 // Initialize Workplan Page
-function initializeWorkplan() {
-    const workplanForm = document.getElementById('workplan-form');
-    const container = document.getElementById('activities-container');
-    const addRowBtn = document.querySelector('.btn-add-row');
+// function initializeWorkplan() {
+//     const workplanForm = document.getElementById('workplan-form');
+//     const container = document.getElementById('activities-container');
+//     const addRowBtn = document.querySelector('.btn-add-row');
 
-    // Handle Form Submission
-    if (workplanForm) {
-        workplanForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Work Plan Saved!');
-            // Optional: Return to proposal page
-            // showPage('purchase');
-        });
-    }
+//     // Handle Form Submission
+//     if (workplanForm) {
+//         workplanForm.addEventListener('submit', function(e) {
+//             e.preventDefault();
+//             alert('Work Plan Saved!');
+//             // Optional: Return to proposal page
+//             // showPage('purchase');
+//         });
+//     }
 
-    // Handle "Add New Activity" Button
-    if (addRowBtn && container) {
-        addRowBtn.addEventListener('click', function() {
-            // Create a new row
-            const newRow = document.createElement('div');
-            newRow.className = 'activity-row';
+//     // Handle "Add New Activity" Button
+//     if (addRowBtn && container) {
+//         addRowBtn.addEventListener('click', function() {
+//             // Create a new row
+//             const newRow = document.createElement('div');
+//             newRow.className = 'activity-row';
             
-            // Generate a random ID suffix for checkboxes to ensure they are unique
-            const idSuffix = Math.floor(Math.random() * 10000);
+//             // Generate a random ID suffix for checkboxes to ensure they are unique
+//             const idSuffix = Math.floor(Math.random() * 10000);
 
-            newRow.innerHTML = `
-                <div class="input-wrapper">
-                    <input type="text" class="form-control activity-input" placeholder="Enter activity description...">
-                </div>
-                <div class="quarter-check">
-                    <input type="checkbox" id="q1_${idSuffix}" class="custom-checkbox">
-                    <label for="q1_${idSuffix}"></label>
-                </div>
-                <div class="quarter-check">
-                    <input type="checkbox" id="q2_${idSuffix}" class="custom-checkbox">
-                    <label for="q2_${idSuffix}"></label>
-                </div>
-                <div class="quarter-check">
-                    <input type="checkbox" id="q3_${idSuffix}" class="custom-checkbox">
-                    <label for="q3_${idSuffix}"></label>
-                </div>
-                <div class="quarter-check">
-                    <input type="checkbox" id="q4_${idSuffix}" class="custom-checkbox">
-                    <label for="q4_${idSuffix}"></label>
-                </div>
-                <div class="row-action">
-                    <button type="button" class="btn-remove" title="Remove Row"><i class="fas fa-trash-alt"></i></button>
-                </div>
-            `;
+//             newRow.innerHTML = `
+//                 <div class="input-wrapper">
+//                     <input type="text" class="form-control activity-input" placeholder="Enter activity description...">
+//                 </div>
+//                 <div class="quarter-check">
+//                     <input type="checkbox" id="q1_${idSuffix}" class="custom-checkbox">
+//                     <label for="q1_${idSuffix}"></label>
+//                 </div>
+//                 <div class="quarter-check">
+//                     <input type="checkbox" id="q2_${idSuffix}" class="custom-checkbox">
+//                     <label for="q2_${idSuffix}"></label>
+//                 </div>
+//                 <div class="quarter-check">
+//                     <input type="checkbox" id="q3_${idSuffix}" class="custom-checkbox">
+//                     <label for="q3_${idSuffix}"></label>
+//                 </div>
+//                 <div class="quarter-check">
+//                     <input type="checkbox" id="q4_${idSuffix}" class="custom-checkbox">
+//                     <label for="q4_${idSuffix}"></label>
+//                 </div>
+//                 <div class="row-action">
+//                     <button type="button" class="btn-remove" title="Remove Row"><i class="fas fa-trash-alt"></i></button>
+//                 </div>
+//             `;
             
-            container.appendChild(newRow);
-        });
-    }
+//             container.appendChild(newRow);
+//         });
+//     }
 
-    // Handle "Remove Row" Buttons (Event Delegation)
-    if (container) {
-        container.addEventListener('click', function(e) {
-            // Check if the clicked element is a remove button or its icon
-            if (e.target.closest('.btn-remove')) {
-                const row = e.target.closest('.activity-row');
-                if (row) {
-                    row.remove();
-                }
-            }
-        });
-    }
-}
+//     // Handle "Remove Row" Buttons (Event Delegation)
+//     if (container) {
+//         container.addEventListener('click', function(e) {
+//             // Check if the clicked element is a remove button or its icon
+//             if (e.target.closest('.btn-remove')) {
+//                 const row = e.target.closest('.activity-row');
+//                 if (row) {
+//                     row.remove();
+//                 }
+//             }
+//         });
+//     }
+// }
 
 // --- Helper: Save Draft Data to LocalStorage ---
 function saveFormDataToLocal() {
