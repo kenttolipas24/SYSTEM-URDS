@@ -38,13 +38,13 @@ body {
 }
 
 .fade-in {
-    animation: fadeInApp 0.8s ease-out forwards;
+    animation: fadeInApp 0.5s ease-out forwards;
 }
 
 .sidebar {
     width: 240px;
     background: white;
-    border-right: 1px solid #e0e0e0;
+    border-right: 1px solid #f1f1f1;
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -52,8 +52,51 @@ body {
     /* slide-in effect for sidebar */
     transform: translateX(-250px);
     opacity: 0;
-    animation: slideInSidebar 0.8s ease-out forwards;
+    animation: slideInSidebar 0.5s ease-out forwards;
     animation-delay: 0.2s;
+}
+
+/* Transition for collapsing the sidebar */
+.sidebar {
+    transition: width 0.22s ease, min-width 0.22s ease;
+}
+
+/* Collapsed sidebar — icon-only */
+.sidebar.collapsed {
+    width: 72px;
+    min-width: 72px;
+}
+
+.sidebar.collapsed .logo {
+    justify-content: center;
+    gap: 8px;
+}
+
+.sidebar.collapsed .logo-text {
+    display: none;
+}
+
+.sidebar.collapsed .logo-icon img {
+    height: 50px;
+}
+
+.sidebar.collapsed .nav-item {
+    justify-content: center;
+    padding: 12px 8px;
+}
+
+.sidebar.collapsed .nav-item span {
+    display: none;
+}
+
+/* move the active indicator to the left when collapsed */
+.sidebar.collapsed .nav-item.active {
+    border-right: none;
+    border-left: 3px solid #2196f3;
+}
+
+.sidebar.collapsed .sidebar-footer .logout span {
+    display: none;
 }
 
 /* optional: highlight class for emphasis */
@@ -78,7 +121,7 @@ body {
 }
 
 .logo-icon img {
-    height: 55px;
+    height: 50px;
     width: auto;
     object-fit: contain;
 }
@@ -157,11 +200,19 @@ body {
 
 .header {
     background: white;
-    padding: 20px 40px;
+    padding: 40px 40px;
     border-bottom: 1px solid #e0e0e0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 94.5px;
+}
+
+/* Make header stick to the top of the scrollable main-content */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 20;
 }
 
 .header h1 {
@@ -240,27 +291,30 @@ body {
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 20px;
+    gap: 12px;
     margin-bottom: 40px;
 }
 
 .stat-card {
     background: white;
-    padding: 24px;
+    padding: 12px;
+    display: flex;
     border-radius: 12px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     position: relative;
+    flex-direction: row;
 }
 
 .stat-icon {
     width: 48px;
     height: 48px;
-    border-radius: 12px;
+    border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 16px;
     font-size: 24px;
+    margin-right: 12px;
 }
 
 .stat-icon.blue {
@@ -285,15 +339,15 @@ body {
 
 .stat-label {
     color: #7f8c8d;
-    font-size: 14px;
-    margin-bottom: 8px;
+    font-size: 13px;
+    margin-bottom: 5px;
 }
 
 .stat-value {
-    font-size: 32px;
+    font-size: 24px;
     font-weight: bold;
     color: #2c3e50;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
 }
 
 .stat-change {
