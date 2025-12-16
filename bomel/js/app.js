@@ -56,3 +56,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
+
+fetch("../pages/settings.html")
+    .then(response => response.text())
+    .then(html => {
+
+        // NOW the button exists
+        const btn = document.getElementById("darkModeBtn");
+
+        if (btn) {
+            btn.addEventListener("click", () => {
+                document.body.classList.toggle("dark-mode");
+
+                const isDark = document.body.classList.contains("dark-mode");
+                btn.textContent = isDark ? "On" : "Off";
+                btn.classList.toggle("active", isDark);
+            });
+        }
+    });
+
+
+

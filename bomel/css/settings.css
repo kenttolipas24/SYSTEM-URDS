@@ -192,21 +192,30 @@
    DARK MODE (GLOBAL)
 ========================= */
 
-:root[data-theme="dark"] {
-    --bg-main: #1c1f26;
-    --bg-surface: #232733;
-    --bg-card: #2b3040;
-
-    --border-soft: #3a3f50;
-
-    --text-main: #e5e7eb;
-    --text-muted: #9ca3af;
-    --text-heading: #f3f4f6;
-
-    --accent: #8b93ff;
-    /* muted UEP blue */
+body {
+    font-family: system-ui, sans-serif;
+    background: #f1f5f9;
+    color: #0f172a;
+    transition: background 0.3s, color 0.3s;
 }
 
+.dark-btn {
+    padding: 6px 16px;
+    border-radius: 20px;
+    border: none;
+    cursor: pointer;
+    background: #cbd5f5;
+}
+
+.dark-btn.active {
+    background: #0f172a;
+    color: white;
+}
+
+.dark-mode {
+    background: #0f172a;
+    color: #e5e7eb;
+}
 /* BACKGROUND */
 [data-theme="dark"] body {
     background: var(--bg-main);
