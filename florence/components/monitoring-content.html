@@ -1,0 +1,140 @@
+<!-- Monitoring Reports Content -->
+<div class="dashboard-content monitoring-page">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="page-headings">
+            <h1 class="portal-title">Monitoring Reports</h1>
+            <p class="portal-subtitle">Submit periodic progress reports for your ongoing research.</p>
+        </div>
+        <div class="page-actions">
+            <button class="btn-primary btn-icon" id="btn-new-monitoring-report">
+                <i class="fas fa-plus"></i>
+                <span>New Report</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Filter Controls -->
+    <div class="filter-controls">
+        <select id="monitoring-proposal-filter" class="form-control" style="max-width: 300px;">
+            <option value="">All Projects</option>
+        </select>
+    </div>
+
+    <!-- Monitoring Reports List -->
+    <div class="monitoring-reports-list" id="monitoring-container">
+        <!-- Reports will be loaded dynamically -->
+    </div>
+</div>
+
+<!-- Monitoring Report Card Template -->
+<template id="monitoring-report-card-template">
+    <div class="monitoring-report-card">
+        <div class="report-header">
+            <div class="report-info">
+                <h3 class="report-proposal-title"></h3>
+                <div class="report-meta">
+                    <span class="report-period"></span>
+                    <span class="report-date"></span>
+                </div>
+            </div>
+            <div class="report-status-badge"></div>
+        </div>
+        <div class="report-progress">
+            <div class="progress-info">
+                <span>Progress: <strong class="progress-percentage"></strong></span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+        <div class="report-summary">
+            <div class="summary-item">
+                <i class="fas fa-tasks"></i>
+                <div>
+                    <strong>Activities:</strong>
+                    <p class="activities-text"></p>
+                </div>
+            </div>
+            <div class="summary-item">
+                <i class="fas fa-exclamation-triangle"></i>
+                <div>
+                    <strong>Challenges:</strong>
+                    <p class="challenges-text"></p>
+                </div>
+            </div>
+        </div>
+        <div class="report-actions">
+            <button class="btn-secondary btn-icon view-report-btn">
+                <i class="fas fa-eye"></i>
+                <span>View Details</span>
+            </button>
+        </div>
+    </div>
+</template>
+
+<!-- New Monitoring Report Modal -->
+<div id="new-monitoring-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Submit Monitoring Report</h2>
+            <span class="modal-close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form id="monitoring-report-form">
+                <div class="form-group">
+                    <label class="form-label">Select Project <span class="required">*</span></label>
+                    <div class="select-wrapper">
+                        <select id="monitoring-proposal-select" class="form-control" required>
+                            <option value="">Select active research project</option>
+                        </select>
+                        <i class="fas fa-chevron-down select-arrow"></i>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Reporting Period <span class="required">*</span></label>
+                        <input type="month" id="report-period" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Report Date <span class="required">*</span></label>
+                        <input type="date" id="report-date" class="form-control" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Overall Progress (%) <span class="required">*</span></label>
+                    <input type="number" id="progress-percentage" class="form-control" min="0" max="100" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Activities Completed <span class="required">*</span></label>
+                    <textarea id="activities-completed" class="form-control textarea-control" rows="4" placeholder="Describe activities completed during this reporting period" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Challenges Encountered</label>
+                    <textarea id="challenges" class="form-control textarea-control" rows="3" placeholder="Describe any challenges or issues encountered"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Next Steps</label>
+                    <textarea id="next-steps" class="form-control textarea-control" rows="3" placeholder="Describe planned activities for the next period"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Supporting Documents</label>
+                    <input type="file" class="form-control" accept=".pdf,.doc,.docx,.jpg,.png" multiple>
+                    <div class="form-help">Upload photos, reports, or other supporting documents</div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Submit Report</button>
+                    <button type="button" class="btn-secondary modal-cancel">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

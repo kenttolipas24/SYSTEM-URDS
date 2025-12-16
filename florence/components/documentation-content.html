@@ -1,0 +1,157 @@
+<!-- Documentation Content -->
+<div class="dashboard-content documentation-page">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="page-headings">
+            <h1 class="portal-title">Research Documentation</h1>
+            <p class="portal-subtitle">Manage and submit all required research documentation.</p>
+        </div>
+    </div>
+
+    <!-- Filter Controls -->
+    <div class="filter-controls">
+        <select id="doc-proposal-filter" class="form-control" style="max-width: 300px;">
+            <option value="">All Projects</option>
+        </select>
+    </div>
+
+    <!-- Documentation Sections -->
+    <div class="documentation-sections" id="documentation-container">
+        <!-- Documentation will be loaded dynamically -->
+    </div>
+</div>
+
+<!-- Documentation Section Template -->
+<template id="documentation-section-template">
+    <div class="documentation-section">
+        <div class="section-header">
+            <h2 class="project-title"></h2>
+            <span class="project-id"></span>
+        </div>
+
+        <div class="documentation-categories">
+            <div class="doc-category">
+                <h3><i class="fas fa-shield-alt"></i> Ethical Clearance</h3>
+                <div class="doc-list" data-category="ethical">
+                    <!-- Documents will be added here -->
+                </div>
+                <button class="btn-secondary btn-icon add-doc-btn" data-category="ethical">
+                    <i class="fas fa-plus"></i>
+                    <span>Add Document</span>
+                </button>
+            </div>
+
+            <div class="doc-category">
+                <h3><i class="fas fa-receipt"></i> Purchase Receipts</h3>
+                <div class="doc-list" data-category="receipts">
+                    <!-- Documents will be added here -->
+                </div>
+                <button class="btn-secondary btn-icon add-doc-btn" data-category="receipts">
+                    <i class="fas fa-plus"></i>
+                    <span>Add Receipt</span>
+                </button>
+            </div>
+
+            <div class="doc-category">
+                <h3><i class="fas fa-camera"></i> Research Photos</h3>
+                <div class="doc-list" data-category="photos">
+                    <!-- Documents will be added here -->
+                </div>
+                <button class="btn-secondary btn-icon add-doc-btn" data-category="photos">
+                    <i class="fas fa-plus"></i>
+                    <span>Add Photos</span>
+                </button>
+            </div>
+
+            <div class="doc-category">
+                <h3><i class="fas fa-file-alt"></i> Other Documents</h3>
+                <div class="doc-list" data-category="other">
+                    <!-- Documents will be added here -->
+                </div>
+                <button class="btn-secondary btn-icon add-doc-btn" data-category="other">
+                    <i class="fas fa-plus"></i>
+                    <span>Add Document</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</template>
+
+<!-- Document Item Template -->
+<template id="document-item-template">
+    <div class="document-item">
+        <div class="doc-icon">
+            <i class="fas fa-file-pdf"></i>
+        </div>
+        <div class="doc-info">
+            <span class="doc-name"></span>
+            <span class="doc-date"></span>
+        </div>
+        <div class="doc-actions">
+            <button class="btn-icon download-doc-btn">
+                <i class="fas fa-download"></i>
+            </button>
+            <button class="btn-icon delete-doc-btn">
+                <i class="fas fa-trash"></i>
+            </button>
+        </div>
+    </div>
+</template>
+
+<!-- Add Document Modal -->
+<div id="add-document-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Add Document</h2>
+            <span class="modal-close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form id="add-document-form">
+                <div class="form-group">
+                    <label class="form-label">Select Project <span class="required">*</span></label>
+                    <div class="select-wrapper">
+                        <select id="doc-proposal-select" class="form-control" required>
+                            <option value="">Select project</option>
+                        </select>
+                        <i class="fas fa-chevron-down select-arrow"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Document Type <span class="required">*</span></label>
+                    <div class="select-wrapper">
+                        <select id="doc-type-select" class="form-control" required>
+                            <option value="">Select type</option>
+                            <option value="ethical">Ethical Clearance</option>
+                            <option value="receipts">Purchase Receipt</option>
+                            <option value="photos">Research Photos</option>
+                            <option value="other">Other Document</option>
+                        </select>
+                        <i class="fas fa-chevron-down select-arrow"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Document Name</label>
+                    <input type="text" id="doc-name" class="form-control" placeholder="Enter document name">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Upload File <span class="required">*</span></label>
+                    <input type="file" id="doc-file" class="form-control" accept=".pdf,.jpg,.jpeg,.png,.doc,.docx" multiple>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Description</label>
+                    <textarea id="doc-description" class="form-control textarea-control" rows="3" placeholder="Optional description"></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Upload Document</button>
+                    <button type="button" class="btn-secondary modal-cancel">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -4,7 +4,7 @@
     <div class="proposals-top">
         <div class="proposals-headings">
             <h1 class="portal-title">Research Proposals</h1>
-            <p class="portal-subtitle">View and manage research submissions.</p>
+            <p class="portal-subtitle">Track your proposals through the research and development process.</p>
         </div>
         <div class="proposals-actions">
             <button id="btn-submit-proposal" class="btn-primary btn-icon">
@@ -21,11 +21,24 @@
             <input type="text" placeholder="Search proposals..." id="proposals-search">
         </div>
         <div class="control-buttons">
-            <button class="btn-secondary btn-icon">
+            <select id="status-filter" class="form-control" style="max-width: 200px; padding: 10px 16px;">
+                <option value="">All Status</option>
+                <option value="pending-twg">Pending TWG Evaluation</option>
+                <option value="revision">For Revision</option>
+                <option value="endorsed">Endorsed to URDS</option>
+                <option value="inhouse">In-House Review</option>
+                <option value="urec">UREC Review</option>
+                <option value="bor">BOR Approval</option>
+                <option value="notice-proceed">Notice to Proceed</option>
+                <option value="implementing">Implementing</option>
+                <option value="monitoring">Under Monitoring</option>
+                <option value="completed">Completed</option>
+            </select>
+            <button class="btn-secondary btn-icon" id="btn-filter">
                 <i class="fas fa-filter"></i>
                 <span>Filter</span>
             </button>
-            <button class="btn-secondary btn-icon">
+            <button class="btn-secondary btn-icon" id="btn-export">
                 <i class="fas fa-download"></i>
                 <span>Export</span>
             </button>
@@ -38,15 +51,16 @@
             <thead>
                 <tr>
                     <th>Proposal Details</th>
-                    <th>Researcher</th>
+                    <th>Phase</th>
                     <th>Submission Date</th>
                     <th>Budget</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
+            <tbody id="proposals-tbody">
+                <!-- Proposal 1: Phase 1 - Pending TWG -->
+                <tr data-status="pending-twg" data-phase="1">
                     <td>
                         <div class="proposal-info">
                             <div class="proposal-title">Biodiversity Assessment of Mt. Apo Natural Park</div>
@@ -54,9 +68,9 @@
                         </div>
                     </td>
                     <td>
-                        <div class="researcher-info">
-                            <div class="researcher-name">Prof. Elena Gilbert</div>
-                            <div class="researcher-dept">Biology Dept</div>
+                        <div class="phase-indicator">
+                            <span class="phase-badge phase-1">Phase 1</span>
+                            <span class="phase-label">Initial Proposal</span>
                         </div>
                     </td>
                     <td>Dec 02, 2025</td>
@@ -65,10 +79,16 @@
                         <span class="status-badge status-pending-twg">Pending TWG</span>
                     </td>
                     <td>
-                        <a href="#" class="action-link">View Details</a>
+                        <div class="action-buttons">
+                            <button class="action-btn view-btn" data-proposal-id="RP-2025-001">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                        </div>
                     </td>
                 </tr>
-                <tr>
+                
+                <!-- Proposal 2: Phase 1 - For Revision -->
+                <tr data-status="revision" data-phase="1">
                     <td>
                         <div class="proposal-info">
                             <div class="proposal-title">AI-Driven Traffic Management System</div>
@@ -76,9 +96,9 @@
                         </div>
                     </td>
                     <td>
-                        <div class="researcher-info">
-                            <div class="researcher-name">Engr. Damon Salvatore</div>
-                            <div class="researcher-dept">Engineering</div>
+                        <div class="phase-indicator">
+                            <span class="phase-badge phase-1">Phase 1</span>
+                            <span class="phase-label">Initial Proposal</span>
                         </div>
                     </td>
                     <td>Nov 28, 2025</td>
@@ -87,10 +107,19 @@
                         <span class="status-badge status-revision">For Revision</span>
                     </td>
                     <td>
-                        <a href="#" class="action-link">View Details</a>
+                        <div class="action-buttons">
+                            <button class="action-btn revision-btn" data-proposal-id="RP-2025-002">
+                                <i class="fas fa-edit"></i> Revise
+                            </button>
+                            <button class="action-btn view-btn" data-proposal-id="RP-2025-002">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                        </div>
                     </td>
                 </tr>
-                <tr>
+                
+                <!-- Proposal 3: Phase 2 - Endorsed to URDS -->
+                <tr data-status="endorsed" data-phase="2">
                     <td>
                         <div class="proposal-info">
                             <div class="proposal-title">Sustainable Agriculture Practices in Rice Production</div>
@@ -98,21 +127,27 @@
                         </div>
                     </td>
                     <td>
-                        <div class="researcher-info">
-                            <div class="researcher-name">Dr. Caroline Forbes</div>
-                            <div class="researcher-dept">Agriculture</div>
+                        <div class="phase-indicator">
+                            <span class="phase-badge phase-2">Phase 2</span>
+                            <span class="phase-label">Review & Approval</span>
                         </div>
                     </td>
                     <td>Nov 25, 2025</td>
                     <td class="budget-cell">P 180,000.00</td>
                     <td>
-                        <span class="status-badge status-endorsed">Endorsed</span>
+                        <span class="status-badge status-endorsed">Endorsed to URDS</span>
                     </td>
                     <td>
-                        <a href="#" class="action-link">View Details</a>
+                        <div class="action-buttons">
+                            <button class="action-btn view-btn" data-proposal-id="RP-2025-003">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                        </div>
                     </td>
                 </tr>
-                <tr>
+                
+                <!-- Proposal 4: Phase 2 - In-House Review -->
+                <tr data-status="inhouse" data-phase="2">
                     <td>
                         <div class="proposal-info">
                             <div class="proposal-title">Mental Health Impact of Hybrid Learning</div>
@@ -120,9 +155,9 @@
                         </div>
                     </td>
                     <td>
-                        <div class="researcher-info">
-                            <div class="researcher-name">Prof. Alaric Saltzman</div>
-                            <div class="researcher-dept">Psychology</div>
+                        <div class="phase-indicator">
+                            <span class="phase-badge phase-2">Phase 2</span>
+                            <span class="phase-label">Review & Approval</span>
                         </div>
                     </td>
                     <td>Nov 20, 2025</td>
@@ -131,11 +166,240 @@
                         <span class="status-badge status-inhouse">In-House Review</span>
                     </td>
                     <td>
-                        <a href="#" class="action-link">View Details</a>
+                        <div class="action-buttons">
+                            <button class="action-btn view-btn" data-proposal-id="RP-2025-004">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                
+                <!-- Proposal 5: Phase 2 - Notice to Proceed -->
+                <tr data-status="notice-proceed" data-phase="2">
+                    <td>
+                        <div class="proposal-info">
+                            <div class="proposal-title">Renewable Energy Solutions for Rural Communities</div>
+                            <div class="proposal-id">RP-2025-005</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="phase-indicator">
+                            <span class="phase-badge phase-2">Phase 2</span>
+                            <span class="phase-label">Review & Approval</span>
+                        </div>
+                    </td>
+                    <td>Oct 15, 2025</td>
+                    <td class="budget-cell">P 300,000.00</td>
+                    <td>
+                        <span class="status-badge status-notice-proceed">Notice to Proceed</span>
+                    </td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="action-btn proceed-btn" data-proposal-id="RP-2025-005">
+                                <i class="fas fa-play"></i> Start Research
+                            </button>
+                            <button class="action-btn view-btn" data-proposal-id="RP-2025-005">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                
+                <!-- Proposal 6: Phase 3 - Implementing -->
+                <tr data-status="implementing" data-phase="3">
+                    <td>
+                        <div class="proposal-info">
+                            <div class="proposal-title">Water Quality Assessment of Local Rivers</div>
+                            <div class="proposal-id">RP-2025-006</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="phase-indicator">
+                            <span class="phase-badge phase-3">Phase 3</span>
+                            <span class="phase-label">Implementation</span>
+                        </div>
+                    </td>
+                    <td>Sep 10, 2025</td>
+                    <td class="budget-cell">P 120,000.00</td>
+                    <td>
+                        <span class="status-badge status-implementing">Implementing</span>
+                    </td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="action-btn monitor-btn" data-proposal-id="RP-2025-006">
+                                <i class="fas fa-chart-line"></i> Progress
+                            </button>
+                            <button class="action-btn purchase-btn" data-proposal-id="RP-2025-006">
+                                <i class="fas fa-shopping-cart"></i> Purchase
+                            </button>
+                            <button class="action-btn view-btn" data-proposal-id="RP-2025-006">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                
+                <!-- Proposal 7: Phase 3 - Under Monitoring -->
+                <tr data-status="monitoring" data-phase="3">
+                    <td>
+                        <div class="proposal-info">
+                            <div class="proposal-title">Ethnobotanical Study of Medicinal Plants</div>
+                            <div class="proposal-id">RP-2025-007</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="phase-indicator">
+                            <span class="phase-badge phase-3">Phase 3</span>
+                            <span class="phase-label">Implementation</span>
+                        </div>
+                    </td>
+                    <td>Aug 05, 2025</td>
+                    <td class="budget-cell">P 95,000.00</td>
+                    <td>
+                        <span class="status-badge status-monitoring">Under Monitoring</span>
+                    </td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="action-btn complete-btn" data-proposal-id="RP-2025-007">
+                                <i class="fas fa-check-circle"></i> Submit Completion
+                            </button>
+                            <button class="action-btn extension-btn" data-proposal-id="RP-2025-007">
+                                <i class="fas fa-clock"></i> Request Extension
+                            </button>
+                            <button class="action-btn view-btn" data-proposal-id="RP-2025-007">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+                
+                <!-- Proposal 8: Phase 3 - Completed -->
+                <tr data-status="completed" data-phase="3">
+                    <td>
+                        <div class="proposal-info">
+                            <div class="proposal-title">Climate Change Adaptation Strategies</div>
+                            <div class="proposal-id">RP-2024-015</div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="phase-indicator">
+                            <span class="phase-badge phase-3">Phase 3</span>
+                            <span class="phase-label">Implementation</span>
+                        </div>
+                    </td>
+                    <td>Jun 15, 2024</td>
+                    <td class="budget-cell">P 200,000.00</td>
+                    <td>
+                        <span class="status-badge status-completed">Completed</span>
+                    </td>
+                    <td>
+                        <div class="action-buttons">
+                            <button class="action-btn view-btn" data-proposal-id="RP-2024-015">
+                                <i class="fas fa-eye"></i> View
+                            </button>
+                            <button class="action-btn download-btn" data-proposal-id="RP-2024-015">
+                                <i class="fas fa-download"></i> Download
+                            </button>
+                        </div>
                     </td>
                 </tr>
             </tbody>
         </table>
+    </div>
+</div>
+
+<!-- Proposal Details Modal -->
+<div id="proposal-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 id="modal-title">Proposal Details</h2>
+            <span class="modal-close">&times;</span>
+        </div>
+        <div class="modal-body" id="modal-body">
+            <!-- Content will be dynamically loaded -->
+        </div>
+    </div>
+</div>
+
+<!-- Revision Modal -->
+<div id="revision-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Submit Revised Proposal</h2>
+            <span class="modal-close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form id="revision-form">
+                <div class="form-group">
+                    <label class="form-label">Revision Notes</label>
+                    <textarea class="form-control textarea-control" rows="4" placeholder="Describe the revisions made based on TWG feedback..."></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Upload Revised Proposal</label>
+                    <input type="file" class="form-control" accept=".pdf,.doc,.docx">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Submit Revision</button>
+                    <button type="button" class="btn-secondary modal-cancel">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Extension Request Modal -->
+<div id="extension-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Request Extension</h2>
+            <span class="modal-close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form id="extension-form">
+                <div class="form-group">
+                    <label class="form-label">Requested New Deadline</label>
+                    <input type="date" class="form-control" id="new-deadline">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Justification</label>
+                    <textarea class="form-control textarea-control" rows="5" placeholder="Explain why an extension is needed..."></textarea>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Submit Request</button>
+                    <button type="button" class="btn-secondary modal-cancel">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Completion Submission Modal -->
+<div id="completion-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Submit Completed Research</h2>
+            <span class="modal-close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form id="completion-form">
+                <div class="form-group">
+                    <label class="form-label">Final Research Report</label>
+                    <input type="file" class="form-control" accept=".pdf,.doc,.docx" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Executive Summary</label>
+                    <textarea class="form-control textarea-control" rows="5" placeholder="Provide a brief summary of your research findings..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Additional Documents (Optional)</label>
+                    <input type="file" class="form-control" accept=".pdf,.doc,.docx" multiple>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Submit for In-House Review</button>
+                    <button type="button" class="btn-secondary modal-cancel">Cancel</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
