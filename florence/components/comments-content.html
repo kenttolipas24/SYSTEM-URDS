@@ -1,0 +1,58 @@
+<!-- Comments Content -->
+<div class="dashboard-content comments-page">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="page-headings">
+            <h1 class="portal-title">Comments & Feedback</h1>
+            <p class="portal-subtitle">View feedback and comments from evaluators and reviewers.</p>
+        </div>
+    </div>
+
+    <!-- Filter Controls -->
+    <div class="filter-controls">
+        <select id="comments-proposal-filter" class="form-control" style="max-width: 300px;">
+            <option value="">All Proposals</option>
+        </select>
+        <select id="comments-type-filter" class="form-control" style="max-width: 200px;">
+            <option value="">All Types</option>
+            <option value="comment">Comments</option>
+            <option value="revision">Revision Requests</option>
+            <option value="monitoring">Monitoring Feedback</option>
+        </select>
+    </div>
+
+    <!-- Comments List -->
+    <div class="comments-list" id="comments-container">
+        <!-- Comments will be loaded dynamically -->
+    </div>
+</div>
+
+<!-- Comment Card Template -->
+<template id="comment-card-template">
+    <div class="comment-card">
+        <div class="comment-header">
+            <div class="comment-author">
+                <div class="author-avatar"></div>
+                <div class="author-info">
+                    <h4 class="author-name"></h4>
+                    <span class="author-role"></span>
+                </div>
+            </div>
+            <div class="comment-meta">
+                <span class="comment-date"></span>
+                <span class="comment-type-badge"></span>
+            </div>
+        </div>
+        <div class="comment-body">
+            <p class="comment-message"></p>
+            <div class="comment-attachments" style="display: none;">
+                <i class="fas fa-paperclip"></i>
+                <a href="#" class="attachment-link"></a>
+            </div>
+        </div>
+        <div class="comment-footer">
+            <span class="proposal-link"></span>
+        </div>
+    </div>
+</template>
+

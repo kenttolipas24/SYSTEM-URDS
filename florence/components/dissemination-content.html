@@ -1,0 +1,170 @@
+<!-- Dissemination Record Content -->
+<div class="dashboard-content dissemination-page">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="page-headings">
+            <h1 class="portal-title">Dissemination & Publication Record</h1>
+            <p class="portal-subtitle">Record publications, presentations, and other dissemination activities.</p>
+        </div>
+        <div class="page-actions">
+            <button class="btn-primary btn-icon" id="btn-new-dissemination">
+                <i class="fas fa-plus"></i>
+                <span>Add Record</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Filter Controls -->
+    <div class="filter-controls">
+        <select id="dissemination-proposal-filter" class="form-control" style="max-width: 300px;">
+            <option value="">All Projects</option>
+        </select>
+        <select id="dissemination-type-filter" class="form-control" style="max-width: 200px;">
+            <option value="">All Types</option>
+            <option value="publication">Publications</option>
+            <option value="presentation">Presentations</option>
+            <option value="conference">Conferences</option>
+            <option value="workshop">Workshops</option>
+        </select>
+    </div>
+
+    <!-- Dissemination Records List -->
+    <div class="dissemination-list" id="dissemination-container">
+        <!-- Records will be loaded dynamically -->
+    </div>
+</div>
+
+<!-- Dissemination Card Template -->
+<template id="dissemination-card-template">
+    <div class="dissemination-card">
+        <div class="dissemination-icon">
+            <i class="fas fa-book"></i>
+        </div>
+        <div class="dissemination-content">
+            <div class="dissemination-header">
+                <h3 class="dissemination-title"></h3>
+                <span class="dissemination-type-badge"></span>
+            </div>
+            <div class="dissemination-details">
+                <div class="detail-item">
+                    <i class="fas fa-project-diagram"></i>
+                    <span class="proposal-link"></span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span class="venue"></span>
+                </div>
+                <div class="detail-item">
+                    <i class="fas fa-calendar"></i>
+                    <span class="date"></span>
+                </div>
+                <div class="detail-item status-item">
+                    <span class="status-badge"></span>
+                </div>
+            </div>
+            <div class="dissemination-footer">
+                <a href="#" class="btn-link view-link" style="display: none;">
+                    <i class="fas fa-external-link-alt"></i>
+                    View Publication
+                </a>
+                <div class="dissemination-actions">
+                    <button class="btn-secondary btn-icon edit-dissemination-btn">
+                        <i class="fas fa-edit"></i>
+                        <span>Edit</span>
+                    </button>
+                    <button class="btn-secondary btn-icon delete-dissemination-btn">
+                        <i class="fas fa-trash"></i>
+                        <span>Delete</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<!-- New Dissemination Modal -->
+<div id="new-dissemination-modal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Add Dissemination Record</h2>
+            <span class="modal-close">&times;</span>
+        </div>
+        <div class="modal-body">
+            <form id="dissemination-form">
+                <div class="form-group">
+                    <label class="form-label">Select Project <span class="required">*</span></label>
+                    <div class="select-wrapper">
+                        <select id="dissemination-proposal-select" class="form-control" required>
+                            <option value="">Select research project</option>
+                        </select>
+                        <i class="fas fa-chevron-down select-arrow"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Type <span class="required">*</span></label>
+                    <div class="select-wrapper">
+                        <select id="dissemination-type-select" class="form-control" required>
+                            <option value="">Select type</option>
+                            <option value="publication">Publication</option>
+                            <option value="presentation">Presentation</option>
+                            <option value="conference">Conference</option>
+                            <option value="workshop">Workshop</option>
+                        </select>
+                        <i class="fas fa-chevron-down select-arrow"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Title <span class="required">*</span></label>
+                    <input type="text" id="dissemination-title" class="form-control" placeholder="Enter title" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Venue/Journal <span class="required">*</span></label>
+                    <input type="text" id="dissemination-venue" class="form-control" placeholder="e.g., Journal of Science, International Conference, etc." required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label class="form-label">Date <span class="required">*</span></label>
+                        <input type="date" id="dissemination-date" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Status</label>
+                        <div class="select-wrapper">
+                            <select id="dissemination-status" class="form-control">
+                                <option value="published">Published</option>
+                                <option value="accepted">Accepted</option>
+                                <option value="submitted">Submitted</option>
+                                <option value="presented">Presented</option>
+                            </select>
+                            <i class="fas fa-chevron-down select-arrow"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Location</label>
+                    <input type="text" id="dissemination-location" class="form-control" placeholder="City, Country">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Link/DOI</label>
+                    <input type="url" id="dissemination-link" class="form-control" placeholder="https://...">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Additional Notes</label>
+                    <textarea id="dissemination-notes" class="form-control textarea-control" rows="3" placeholder="Any additional information"></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Save Record</button>
+                    <button type="button" class="btn-secondary modal-cancel">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+

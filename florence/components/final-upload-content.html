@@ -1,0 +1,120 @@
+<!-- Final Upload Content -->
+<div class="dashboard-content final-upload-page">
+    <!-- Page Header -->
+    <div class="page-header">
+        <div class="page-headings">
+            <h1 class="portal-title">Final Research Upload</h1>
+            <p class="portal-subtitle">Submit your completed research for In-House Review.</p>
+        </div>
+    </div>
+
+    <!-- Projects Ready for Final Upload -->
+    <div class="upload-section">
+        <h2>Projects Ready for Submission</h2>
+        <div class="projects-list" id="ready-projects-container">
+            <!-- Projects will be loaded dynamically -->
+        </div>
+    </div>
+
+    <!-- Upload Form -->
+    <div class="content-section upload-form-card" id="upload-form-section" style="display: none;">
+        <div class="section-header">
+            <h2>Final Research Submission</h2>
+            <p>Upload all required documents for your completed research.</p>
+        </div>
+
+        <form id="final-upload-form">
+            <div class="form-group">
+                <label class="form-label">Research Project <span class="required">*</span></label>
+                <div class="select-wrapper">
+                    <select id="upload-proposal-select" class="form-control" required>
+                        <option value="">Select completed research project</option>
+                    </select>
+                    <i class="fas fa-chevron-down select-arrow"></i>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Final Research Report <span class="required">*</span></label>
+                <input type="file" id="final-report" class="form-control" accept=".pdf,.doc,.docx" required>
+                <div class="form-help">Complete research manuscript (PDF or Word format)</div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Executive Summary <span class="required">*</span></label>
+                <textarea id="executive-summary" class="form-control textarea-control" rows="5" placeholder="Provide a comprehensive summary of your research findings, methodology, and conclusions" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Abstract</label>
+                <textarea id="final-abstract" class="form-control textarea-control" rows="3" placeholder="Brief abstract of the research"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Keywords</label>
+                <input type="text" id="keywords" class="form-control" placeholder="Enter keywords separated by commas">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Additional Documents</label>
+                <div class="upload-grid">
+                    <div class="upload-item">
+                        <label>Data Files / Datasets</label>
+                        <input type="file" class="form-control" accept=".xlsx,.csv,.zip" multiple>
+                    </div>
+                    <div class="upload-item">
+                        <label>Research Photos</label>
+                        <input type="file" class="form-control" accept=".jpg,.jpeg,.png" multiple>
+                    </div>
+                    <div class="upload-item">
+                        <label>Presentation Slides</label>
+                        <input type="file" class="form-control" accept=".pptx,.pdf">
+                    </div>
+                    <div class="upload-item">
+                        <label>Other Supporting Documents</label>
+                        <input type="file" class="form-control" accept=".pdf,.doc,.docx" multiple>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Completion Date <span class="required">*</span></label>
+                <input type="date" id="completion-date" class="form-control" required>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn-primary btn-icon">
+                    <i class="fas fa-upload"></i>
+                    <span>Submit for In-House Review</span>
+                </button>
+                <button type="button" class="btn-secondary" id="cancel-upload">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Project Card Template -->
+<template id="project-card-template">
+    <div class="project-card">
+        <div class="project-info">
+            <h3 class="project-title"></h3>
+            <div class="project-meta">
+                <span class="project-id"></span>
+                <span class="project-deadline">Deadline: <strong></strong></span>
+            </div>
+        </div>
+        <div class="project-progress">
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <span class="progress-text"></span>
+        </div>
+        <div class="project-actions">
+            <button class="btn-primary btn-icon upload-project-btn">
+                <i class="fas fa-upload"></i>
+                <span>Upload Final Report</span>
+            </button>
+        </div>
+    </div>
+</template>
+
