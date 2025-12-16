@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>URDS Evaluator - Research Evaluation Portal</title>
-    <link rel="stylesheet" href="/sm/css/research_evaluator.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="/sm/css/research_evaluator.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
+
 <body>
     <div class="app-container">
         <!-- Sidebar Navigation -->
         <aside class="sidebar" id="sidebar">
             <div class="sidebar-header">
                 <div class="logo">
-                    <div class="logo-icon"><img src="/assets/pictures/UEP_logo-transparent.png" alt="UEP_logo-transparent"></div>
+                    <div class="logo-icon">
+                        <img src="/assets/pictures/UEP_logo-transparent.png" alt="UEP_logo-transparent" />
+                    </div>
                     <div class="logo-text">
                         <div class="logo-brand">URDS</div>
                         <div class="logo-subtitle">Evaluator</div>
@@ -41,7 +45,7 @@
                     <i class="fas fa-cog"></i>
                     <span>Settings</span>
                 </a>
-                <a href="/kent/pages/homepage.html" class="nav-item logout">
+                <a href="/kent/frontpage.html" class="nav-item logout">
                     <i class="fas fa-sign-out-alt"></i>
                     <span>Logout</span>
                 </a>
@@ -57,7 +61,7 @@
                     <!-- Made search box functional with clear button -->
                     <div class="search-box">
                         <i class="fas fa-search"></i>
-                        <input type="text" placeholder="Search..." id="searchInput">
+                        <input type="text" placeholder="Search..." id="searchInput" />
                         <button class="search-clear" id="searchClear" aria-label="Clear search">
                             <i class="fas fa-times"></i>
                         </button>
@@ -71,7 +75,9 @@
                         <div class="notification-dropdown" id="notificationDropdown">
                             <div class="notification-dropdown-header">
                                 <h3>Notifications</h3>
-                                <button class="notification-clear-all" id="clearAllNotifications">Clear All</button>
+                                <button class="notification-clear-all" id="clearAllNotifications">
+                                    Clear All
+                                </button>
                             </div>
                             <div class="notification-list" id="notificationList">
                                 <!-- Notifications will be populated by JavaScript -->
@@ -94,20 +100,27 @@
                 <div id="dashboard-page" class="page-content active">
                     <div class="page-header">
                         <h2>Evaluator Portal</h2>
-                        <p class="page-subtitle">Review proposals, grade ongoing research, and decide on continuation.</p>
+                        <p class="page-subtitle">
+                            Review proposals, grade ongoing research, and decide on
+                            continuation.
+                        </p>
                     </div>
 
                     <div class="dashboard-grid">
                         <!-- Left Column: Pending Evaluations -->
                         <div class="dashboard-section">
                             <h3 class="section-title">Pending Evaluations</h3>
-                            <p class="section-subtitle">Proposals and studies assigned to you</p>
+                            <p class="section-subtitle">
+                                Proposals and studies assigned to you
+                            </p>
 
                             <!-- Proposal Card 1: New Proposal -->
                             <div class="research-card">
                                 <div class="card-header">
                                     <span class="badge badge-new">New Proposal</span>
-                                    <button class="btn btn-primary btn-lg">Start Evaluation</button>
+                                    <button class="btn btn-primary btn-lg">
+                                        Start Evaluation
+                                    </button>
                                 </div>
                                 <div class="card-content">
                                     <h4 class="research-title">AI-Driven Traffic Management</h4>
@@ -131,7 +144,9 @@
                                     <h4 class="research-title">Mangrove Restoration Project</h4>
                                     <p class="research-meta">Environmental Science</p>
                                     <div class="card-actions">
-                                        <button class="btn btn-secondary btn-outline">View Progress</button>
+                                        <button class="btn btn-secondary btn-outline">
+                                            View Progress
+                                        </button>
                                     </div>
                                     <div class="action-buttons">
                                         <button class="btn btn-success">
@@ -190,7 +205,9 @@
                 <div id="pending-reviews-page" class="page-content">
                     <div class="page-header">
                         <h2>Pending Reviews</h2>
-                        <p class="page-subtitle">Evaluate research proposals assigned to you.</p>
+                        <p class="page-subtitle">
+                            Evaluate research proposals assigned to you.
+                        </p>
                     </div>
 
                     <div class="evaluation-form-container">
@@ -198,10 +215,16 @@
                             <div class="card-header">
                                 <div>
                                     <span class="badge badge-new">New Assignment</span>
-                                    <h4 class="research-title">AI-Driven Traffic Management System</h4>
-                                    <p class="research-meta">Engineering Department • RP-2025-002</p>
+                                    <h4 class="research-title">
+                                        AI-Driven Traffic Management System
+                                    </h4>
+                                    <p class="research-meta">
+                                        Engineering Department • RP-2025-002
+                                    </p>
                                 </div>
-                                <button class="btn btn-secondary btn-outline">Download Full PDF</button>
+                                <button class="btn btn-primary" id="viewProposalBtn">
+                                    <i class="fas fa-file-alt"></i> View Proposal
+                                </button>
                             </div>
 
                             <div class="evaluation-form">
@@ -212,7 +235,8 @@
                                             <label class="criteria-label">Technical Merit (40%)</label>
                                             <span class="criteria-value" id="technical-value">85</span>
                                         </div>
-                                        <input title="technical-merit" type="range" class="slider" min="0" max="100" value="85" id="technical-merit">
+                                        <input type="range" class="slider" min="0" max="100" value="85"
+                                            id="technical-merit" />
                                     </div>
 
                                     <div class="criteria-item">
@@ -220,7 +244,8 @@
                                             <label class="criteria-label">Relevance to Agenda (30%)</label>
                                             <span class="criteria-value" id="relevance-value">90</span>
                                         </div>
-                                        <input title="relevance-agenda" type="range" class="slider" min="0" max="100" value="90" id="relevance-agenda">
+                                        <input type="range" class="slider" min="0" max="100" value="90"
+                                            id="relevance-agenda" />
                                     </div>
 
                                     <div class="criteria-item">
@@ -228,14 +253,17 @@
                                             <label class="criteria-label">Budget Feasibility (30%)</label>
                                             <span class="criteria-value" id="budget-value">75</span>
                                         </div>
-                                        <input title="budget-feasibility" type="range" class="slider" min="0" max="100" value="75" id="budget-feasibility">
+                                        <input type="range" class="slider" min="0" max="100" value="75"
+                                            id="budget-feasibility" />
                                     </div>
                                 </div>
 
-                                <!-- Comments Section -->
+                                <!-- Qualitative Comments -->
                                 <div class="comments-section">
-                                    <label for="qualitative-comments" class="comments-label">Qualitative Comments</label>
-                                    <textarea id="qualitative-comments" class="comments-textarea" placeholder="Enter your detailed feedback..."></textarea>
+                                    <label for="qualitative-comments" class="comments-label">Qualitative
+                                        Comments</label>
+                                    <textarea id="qualitative-comments" class="comments-textarea"
+                                        placeholder="Enter your detailed feedback..."></textarea>
                                 </div>
 
                                 <!-- Action Buttons -->
@@ -258,16 +286,20 @@
                     <!-- Pending Final Evaluation Section -->
                     <div class="section-card">
                         <h3 class="section-title">Pending Final Evaluation</h3>
-                        <p class="section-subtitle">Completed studies awaiting your final rating.</p>
+                        <p class="section-subtitle">
+                            Completed studies awaiting your final rating.
+                        </p>
 
-                        <div class="research-card">
+                        <div class="research-card large">
                             <div class="card-header">
-                                <span class="badge badge-manuscript">Manuscript Submitted</span>
-                                <button class="btn btn-primary btn-lg">Rate Research</button>
-                            </div>
-                            <div class="card-content">
-                                <h4 class="research-title">Ethnobotanical Study of Medicinal Plants</h4>
-                                <p class="research-meta">Biology Dept • Prof. Elena Gilbert</p>
+                                <div>
+                                    <span class="badge badge-manuscript">Manuscript Submitted</span>
+                                    <h4 class="research-title">Ethnobotanical Study of Medicinal Plants</h4>
+                                    <p class="research-meta">Biology Dept • Prof. Elena Gilbert</p>
+                                </div>
+                                <button class="btn btn-primary btn-lg" onclick="openRatingModal()">
+                                    Rate Research
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -306,6 +338,456 @@
     <!-- Added sidebar overlay for mobile -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
+    <!-- Added rating modal for completed research evaluation -->
+    <div id="ratingModal" class="rating-modal">
+        <div class="rating-modal-overlay" onclick="closeRatingModal()"></div>
+        <div class="rating-modal-content">
+            <div class="rating-modal-header">
+                <div>
+                    <h2 class="rating-modal-title">Rate Research</h2>
+                    <p class="rating-modal-subtitle">Ethnobotanical Study of Medicinal Plants</p>
+                </div>
+                <button class="rating-modal-close" onclick="closeRatingModal()" aria-label="Close modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="rating-modal-body">
+                <!-- Research Overview -->
+                <div class="rating-section">
+                    <div class="rating-section-header">
+                        <i class="fas fa-info-circle"></i>
+                        <h3>Research Overview</h3>
+                    </div>
+                    <div class="rating-overview-grid">
+                        <div class="rating-overview-item">
+                            <span class="rating-overview-label">Department</span>
+                            <span class="rating-overview-value">Biology Department</span>
+                        </div>
+                        <div class="rating-overview-item">
+                            <span class="rating-overview-label">Researcher</span>
+                            <span class="rating-overview-value">Prof. Elena Gilbert</span>
+                        </div>
+                        <div class="rating-overview-item">
+                            <span class="rating-overview-label">Submission Date</span>
+                            <span class="rating-overview-value">October 15, 2025</span>
+                        </div>
+                        <div class="rating-overview-item">
+                            <span class="rating-overview-label">Status</span>
+                            <span class="badge badge-manuscript">Manuscript Submitted</span>
+                        </div>
+                    </div>
+                    <div class="rating-overview-actions">
+                        <button class="btn btn-secondary btn-outline" onclick="downloadManuscript()">
+                            <i class="fas fa-file-pdf"></i> View Manuscript
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Rating Criteria -->
+                <div class="rating-section">
+                    <div class="rating-section-header">
+                        <i class="fas fa-star"></i>
+                        <h3>Evaluation Criteria</h3>
+                    </div>
+
+                    <!-- Research Significance -->
+                    <div class="rating-criterion">
+                        <div class="rating-criterion-header">
+                            <div>
+                                <label class="rating-criterion-label">Research Significance</label>
+                                <p class="rating-criterion-description">Impact and importance of the research contribution</p>
+                            </div>
+                            <div class="rating-stars" id="significance-stars">
+                                <i class="fas fa-star" data-value="1" onclick="setRating('significance', 1)"></i>
+                                <i class="fas fa-star" data-value="2" onclick="setRating('significance', 2)"></i>
+                                <i class="fas fa-star" data-value="3" onclick="setRating('significance', 3)"></i>
+                                <i class="fas fa-star" data-value="4" onclick="setRating('significance', 4)"></i>
+                                <i class="fas fa-star" data-value="5" onclick="setRating('significance', 5)"></i>
+                            </div>
+                        </div>
+                        <textarea class="rating-comment-input" id="significance-comment" placeholder="Add your comments about research significance..." rows="2"></textarea>
+                    </div>
+
+                    <!-- Methodology -->
+                    <div class="rating-criterion">
+                        <div class="rating-criterion-header">
+                            <div>
+                                <label class="rating-criterion-label">Methodology</label>
+                                <p class="rating-criterion-description">Rigor and appropriateness of research methods</p>
+                            </div>
+                            <div class="rating-stars" id="methodology-stars">
+                                <i class="fas fa-star" data-value="1" onclick="setRating('methodology', 1)"></i>
+                                <i class="fas fa-star" data-value="2" onclick="setRating('methodology', 2)"></i>
+                                <i class="fas fa-star" data-value="3" onclick="setRating('methodology', 3)"></i>
+                                <i class="fas fa-star" data-value="4" onclick="setRating('methodology', 4)"></i>
+                                <i class="fas fa-star" data-value="5" onclick="setRating('methodology', 5)"></i>
+                            </div>
+                        </div>
+                        <textarea class="rating-comment-input" id="methodology-comment" placeholder="Add your comments about methodology..." rows="2"></textarea>
+                    </div>
+
+                    <!-- Data Quality -->
+                    <div class="rating-criterion">
+                        <div class="rating-criterion-header">
+                            <div>
+                                <label class="rating-criterion-label">Data Quality</label>
+                                <p class="rating-criterion-description">Validity and reliability of data and results</p>
+                            </div>
+                            <div class="rating-stars" id="dataQuality-stars">
+                                <i class="fas fa-star" data-value="1" onclick="setRating('dataQuality', 1)"></i>
+                                <i class="fas fa-star" data-value="2" onclick="setRating('dataQuality', 2)"></i>
+                                <i class="fas fa-star" data-value="3" onclick="setRating('dataQuality', 3)"></i>
+                                <i class="fas fa-star" data-value="4" onclick="setRating('dataQuality', 4)"></i>
+                                <i class="fas fa-star" data-value="5" onclick="setRating('dataQuality', 5)"></i>
+                            </div>
+                        </div>
+                        <textarea class="rating-comment-input" id="dataQuality-comment" placeholder="Add your comments about data quality..." rows="2"></textarea>
+                    </div>
+
+                    <!-- Literature Review -->
+                    <div class="rating-criterion">
+                        <div class="rating-criterion-header">
+                            <div>
+                                <label class="rating-criterion-label">Literature Review</label>
+                                <p class="rating-criterion-description">Comprehensiveness and relevance of literature review</p>
+                            </div>
+                            <div class="rating-stars" id="literature-stars">
+                                <i class="fas fa-star" data-value="1" onclick="setRating('literature', 1)"></i>
+                                <i class="fas fa-star" data-value="2" onclick="setRating('literature', 2)"></i>
+                                <i class="fas fa-star" data-value="3" onclick="setRating('literature', 3)"></i>
+                                <i class="fas fa-star" data-value="4" onclick="setRating('literature', 4)"></i>
+                                <i class="fas fa-star" data-value="5" onclick="setRating('literature', 5)"></i>
+                            </div>
+                        </div>
+                        <textarea class="rating-comment-input" id="literature-comment" placeholder="Add your comments about literature review..." rows="2"></textarea>
+                    </div>
+
+                    <!-- Writing Quality -->
+                    <div class="rating-criterion">
+                        <div class="rating-criterion-header">
+                            <div>
+                                <label class="rating-criterion-label">Writing Quality</label>
+                                <p class="rating-criterion-description">Clarity, organization, and presentation of findings</p>
+                            </div>
+                            <div class="rating-stars" id="writing-stars">
+                                <i class="fas fa-star" data-value="1" onclick="setRating('writing', 1)"></i>
+                                <i class="fas fa-star" data-value="2" onclick="setRating('writing', 2)"></i>
+                                <i class="fas fa-star" data-value="3" onclick="setRating('writing', 3)"></i>
+                                <i class="fas fa-star" data-value="4" onclick="setRating('writing', 4)"></i>
+                                <i class="fas fa-star" data-value="5" onclick="setRating('writing', 5)"></i>
+                            </div>
+                        </div>
+                        <textarea class="rating-comment-input" id="writing-comment" placeholder="Add your comments about writing quality..." rows="2"></textarea>
+                    </div>
+
+                    <!-- Originality -->
+                    <div class="rating-criterion">
+                        <div class="rating-criterion-header">
+                            <div>
+                                <label class="rating-criterion-label">Originality</label>
+                                <p class="rating-criterion-description">Novel contributions to the field</p>
+                            </div>
+                            <div class="rating-stars" id="originality-stars">
+                                <i class="fas fa-star" data-value="1" onclick="setRating('originality', 1)"></i>
+                                <i class="fas fa-star" data-value="2" onclick="setRating('originality', 2)"></i>
+                                <i class="fas fa-star" data-value="3" onclick="setRating('originality', 3)"></i>
+                                <i class="fas fa-star" data-value="4" onclick="setRating('originality', 4)"></i>
+                                <i class="fas fa-star" data-value="5" onclick="setRating('originality', 5)"></i>
+                            </div>
+                        </div>
+                        <textarea class="rating-comment-input" id="originality-comment" placeholder="Add your comments about originality..." rows="2"></textarea>
+                    </div>
+                </div>
+
+                <!-- Overall Assessment -->
+                <div class="rating-section">
+                    <div class="rating-section-header">
+                        <i class="fas fa-clipboard-check"></i>
+                        <h3>Overall Assessment</h3>
+                    </div>
+                    <div class="rating-overall-group">
+                        <label class="rating-overall-label">Comprehensive Feedback</label>
+                        <textarea class="rating-overall-textarea" id="overall-feedback" placeholder="Provide your detailed evaluation and recommendations for this research..." rows="6"></textarea>
+                    </div>
+                    <div class="rating-overall-group">
+                        <label class="rating-overall-label">Final Recommendation</label>
+                        <select class="rating-recommendation-select" id="final-recommendation">
+                            <option value="">Select recommendation...</option>
+                            <option value="approved">Approved - Excellent work</option>
+                            <option value="approved-minor">Approved with Minor Revisions</option>
+                            <option value="revision">Needs Major Revision</option>
+                            <option value="rejected">Not Recommended</option>
+                        </select>
+                    </div>
+                    <div class="rating-confidentiality">
+                        <i class="fas fa-lock"></i>
+                        <p>Your evaluation will be kept confidential and shared only with authorized personnel.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="rating-modal-footer">
+                <button class="btn btn-secondary" onclick="saveDraftRating()">
+                    <i class="fas fa-save"></i> Save Draft
+                </button>
+                <button class="btn btn-primary" onclick="submitRating()">
+                    <i class="fas fa-paper-plane"></i> Submit Evaluation
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Proposal Modal -->
+    <div id="proposalModal" class="rating-modal">
+        <div class="rating-modal-overlay" onclick="closeProposalModal()"></div>
+        <div class="rating-modal-content proposal-modal-wide">
+            <div class="rating-modal-header">
+                <div>
+                    <h2 class="rating-modal-title">Research Proposal</h2>
+                    <p class="rating-modal-subtitle">AI-Driven Traffic Management System</p>
+                </div>
+                <button class="rating-modal-close" onclick="closeProposalModal()" aria-label="Close modal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="rating-modal-body">
+                <div class="proposal-form">
+                    <!-- Header Section -->
+                    <div class="proposal-header">
+                        <div class="proposal-header-logo">
+                            <img src="/assets/pictures/UEP_logo-transparent.png" alt="UEP Logo" style="height: 60px;">
+                        </div>
+                        <div class="proposal-header-text">
+                            <h3>UNIVERSITY OF EASTERN PHILIPPINES</h3>
+                            <h4>University Town, Northern Samar</h4>
+                            <h4>UNIVERSITY RESEARCH AND DEVELOPMENT SERVICES</h4>
+                        </div>
+                    </div>
+
+                    <div class="proposal-form-title">
+                        <h3>RESEARCH PROPOSAL</h3>
+                        <p class="proposal-form-code">UEP-URDS-FM-003</p>
+                    </div>
+
+                    <!-- Basic Information Table -->
+                    <table class="proposal-table">
+                        <tr class="table-section-header">
+                            <td colspan="2">I. BASIC INFORMATION</td>
+                        </tr>
+                        <tr>
+                            <td class="table-label">Research Title:</td>
+                            <td class="table-value">AI-Driven Traffic Management System</td>
+                        </tr>
+                        <tr>
+                            <td class="table-label">Project Leader:</td>
+                            <td class="table-value">Dr. Michael Chen, Ph.D.</td>
+                        </tr>
+                        <tr>
+                            <td class="table-label">Team Members:</td>
+                            <td class="table-value">
+                                Prof. Sarah Johnson (Computer Vision Specialist)<br>
+                                Dr. Robert Lee (Machine Learning Expert)<br>
+                                Engr. Maria Santos (IoT Systems Engineer)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="table-label">Department/College:</td>
+                            <td class="table-value">College of Engineering - Computer Engineering Department</td>
+                        </tr>
+                        <tr>
+                            <td class="table-label">Research Classification:</td>
+                            <td class="table-value">Applied Research</td>
+                        </tr>
+                        <tr>
+                            <td class="table-label">Location:</td>
+                            <td class="table-value">University Town, Northern Samar and Metro Manila Test Sites</td>
+                        </tr>
+                        <tr>
+                            <td class="table-label">Duration:</td>
+                            <td class="table-value">24 months (January 2026 - December 2027)</td>
+                        </tr>
+                        <tr>
+                            <td class="table-label">Total Budget:</td>
+                            <td class="table-value">PHP 2,500,000.00</td>
+                        </tr>
+                    </table>
+
+                    <!-- Technical Information -->
+                    <table class="proposal-table">
+                        <tr class="table-section-header">
+                            <td colspan="2">II. TECHNICAL INFORMATION</td>
+                        </tr>
+                        <tr>
+                            <td class="table-label">Background and Rationale:</td>
+                            <td class="table-value">
+                                Traffic congestion in urban areas has become a critical challenge affecting economic productivity, 
+                                environmental sustainability, and quality of life. Traditional traffic management systems rely on 
+                                fixed-time signals and manual intervention, which are inefficient in handling dynamic traffic patterns. 
+                                This research proposes an AI-driven traffic management system that uses computer vision, machine learning, 
+                                and IoT sensors to optimize traffic flow in real-time, reduce congestion, and improve overall urban mobility.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="table-label">Research Objectives:</td>
+                            <td class="table-value">
+                                1. Develop a computer vision system for real-time vehicle detection and traffic density analysis<br>
+                                2. Design machine learning algorithms for predictive traffic pattern modeling<br>
+                                3. Create an adaptive traffic signal control system based on real-time data<br>
+                                4. Implement IoT sensor networks for comprehensive traffic monitoring<br>
+                                5. Evaluate system performance in reducing congestion and travel time
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- Review of Literature -->
+                    <table class="proposal-table">
+                        <tr class="table-section-header">
+                            <td colspan="2">III. REVIEW OF RELATED LITERATURE</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="table-value">
+                                Recent studies in intelligent transportation systems (Zhang et al., 2024) demonstrate that AI-based 
+                                traffic management can reduce congestion by up to 35% compared to traditional systems. Deep learning 
+                                approaches, particularly convolutional neural networks, have shown 95% accuracy in vehicle detection 
+                                (Kumar & Wang, 2023). Reinforcement learning algorithms have been successfully applied to optimize 
+                                traffic signal timing (Li et al., 2024), achieving 28% reduction in average wait times. IoT sensor 
+                                integration provides comprehensive data collection for traffic prediction models (Santos & Rodriguez, 2023).
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- Methodology -->
+                    <table class="proposal-table">
+                        <tr class="table-section-header">
+                            <td colspan="2">IV. METHODOLOGY</td>
+                        </tr>
+                        <tr>
+                            <td class="table-label">Research Design:</td>
+                            <td class="table-value">Experimental research with mixed-methods approach</td>
+                        </tr>
+                        <tr>
+                            <td class="table-label">Data Collection Methods:</td>
+                            <td class="table-value">
+                                - High-resolution cameras for video capture<br>
+                                - IoT sensors for vehicle counting and speed measurement<br>
+                                - GPS data from mobile applications<br>
+                                - Historical traffic data from local traffic management offices
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="table-label">Implementation Phases:</td>
+                            <td class="table-value">
+                                Phase 1 (Months 1-6): System design and algorithm development<br>
+                                Phase 2 (Months 7-12): Prototype implementation and laboratory testing<br>
+                                Phase 3 (Months 13-18): Field deployment and pilot testing<br>
+                                Phase 4 (Months 19-24): Performance evaluation and optimization
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="table-label">Analysis Techniques:</td>
+                            <td class="table-value">
+                                Statistical analysis of traffic flow metrics, machine learning model evaluation, 
+                                comparative analysis with baseline systems
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- Expected Outputs -->
+                    <table class="proposal-table">
+                        <tr class="table-section-header">
+                            <td colspan="2">V. EXPECTED OUTPUTS AND DELIVERABLES</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="table-value">
+                                1. Functional AI-driven traffic management system prototype<br>
+                                2. Published research papers in peer-reviewed journals (minimum 2)<br>
+                                3. Technical documentation and system architecture<br>
+                                4. Training materials for traffic management operators<br>
+                                5. Policy recommendations for local government implementation
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- Budget Breakdown -->
+                    <table class="proposal-table">
+                        <tr class="table-section-header">
+                            <td colspan="2">VI. BUDGET BREAKDOWN</td>
+                        </tr>
+                        <tr>
+                            <td class="table-label">Personnel:</td>
+                            <td class="table-value">PHP 800,000.00</td>
+                        </tr>
+                        <tr>
+                            <td class="table-label">Equipment and Supplies:</td>
+                            <td class="table-value">PHP 1,200,000.00</td>
+                        </tr>
+                        <tr>
+                            <td class="table-label">Travel and Field Work:</td>
+                            <td class="table-value">PHP 200,000.00</td>
+                        </tr>
+                        <tr>
+                            <td class="table-label">Publication and Dissemination:</td>
+                            <td class="table-value">PHP 150,000.00</td>
+                        </tr>
+                        <tr>
+                            <td class="table-label">Miscellaneous:</td>
+                            <td class="table-value">PHP 150,000.00</td>
+                        </tr>
+                        <tr class="table-total">
+                            <td class="table-label">TOTAL:</td>
+                            <td class="table-value">PHP 2,500,000.00</td>
+                        </tr>
+                    </table>
+
+                    <!-- Signatures -->
+                    <table class="proposal-table">
+                        <tr class="table-section-header">
+                            <td colspan="2">VII. ENDORSEMENTS AND APPROVALS</td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="signature-section">
+                                <div class="signature-grid">
+                                    <div class="signature-block">
+                                        <div class="signature-line"></div>
+                                        <div class="signature-label">Project Leader</div>
+                                        <div class="signature-name">Dr. Michael Chen</div>
+                                    </div>
+                                    <div class="signature-block">
+                                        <div class="signature-line"></div>
+                                        <div class="signature-label">Department Chair</div>
+                                        <div class="signature-name">Dr. Elena Martinez</div>
+                                    </div>
+                                </div>
+                                <div class="signature-grid">
+                                    <div class="signature-block">
+                                        <div class="signature-line"></div>
+                                        <div class="signature-label">Dean, College of Engineering</div>
+                                        <div class="signature-name">Dr. Ramon Villareal</div>
+                                    </div>
+                                    <div class="signature-block">
+                                        <div class="signature-line"></div>
+                                        <div class="signature-label">Director, URDS</div>
+                                        <div class="signature-name">Dr. Patricia Gomez</div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="rating-modal-footer">
+                <button class="btn btn-secondary" onclick="closeProposalModal()">Close</button>
+                <button class="btn btn-primary" onclick="window.print()">
+                    <i class="fas fa-print"></i> Print
+                </button>
+            </div>
+        </div>
+    </div>
+
     <script src="/sm/js/research_evaluator.js"></script>
 </body>
+
 </html>
