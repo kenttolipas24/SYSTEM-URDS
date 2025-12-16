@@ -67,10 +67,10 @@ function handleSignUp(event) {
   // Role Mapping: "Exact text from <option>" → target dashboard page
   // ==================================================================
   const roleRedirectMap = {
-    'faculty':      'pages/faculty.html',
+    'faculty':      '../castillo/pages/faculty.html',
     'coordinator':  'pages/coordinator.html',
     'dean':         '../kent/pages/dean.html',
-    'director':     '../bowmeal/admin.html',
+    'director':     '../bomel/index.html',
     'staff':        '../kent/pages/urds-staff.html',
     'cluster':      'pages/cluster.html',
     'researcher':   'pages/evaluator.html'

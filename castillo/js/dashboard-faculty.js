@@ -157,11 +157,10 @@ function showPage(page) {
 
 // Logout function
 function PagesLogout() {
-    if (confirm('Are you sure you want to logout?')) {
-        // Add logout logic here
-        console.log('Logging out...');
-        // window.location.href = '../index.php';
-    }
+    localStorage.removeItem('userSession');
+    sessionStorage.clear();
+    
+    window.location.href = '../frontpage.html';
 }
 
 // Initialize dashboard page
