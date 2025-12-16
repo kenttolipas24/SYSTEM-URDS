@@ -199,9 +199,9 @@ function initializeProposalsPage() {
 /* ===============================
    INITIALIZE AFTER FETCH LOAD
 =============================== */
-fetch('../components/dean-dashboard/sidebar-content/endo-content.html')
+fetch('../components/dean-dashboard/sidebar-content/proposal-content.html')
     .then(res => res.text())
     .then(html => {
-        document.getElementById('endo_con-placeholder').innerHTML = html;
+        document.getElementById('proposal-placeholder').innerHTML = html;
         initializeProposalsPage();
     });

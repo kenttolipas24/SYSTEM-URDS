@@ -1,3 +1,9 @@
+fetch('../components/dean-dashboard/sidebar-content/dash-content.html')
+  .then(res => res.text())
+  .then(data => {
+    document.getElementById('dash_con-placeholder').innerHTML = data;
+  });
+
 // Load components when page loads
 document.addEventListener('DOMContentLoaded', () => {
     // These loaders will run automatically
