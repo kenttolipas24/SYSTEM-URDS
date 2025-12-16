@@ -179,36 +179,37 @@
 // document.addEventListener('DOMContentLoaded', initDeanDashboard);
 
 // Main loader - runs once everything is ready
-document.addEventListener('DOMContentLoaded', () => {
-  loadComponents();
-});
+document.addEventListener('DOMContentLoaded', loadComponents);
 
 function loadComponents() {
-  // Load Sidebar
+
+  // Sidebar
   fetch('../components/dean-dashboard/sidebar.html')
     .then(res => res.text())
     .then(html => {
       document.getElementById('sidebar-placeholder').innerHTML = html;
-      initSidebar();        // from sidebar.js
-      initNavigation();     // from deanNav.js
+      initSidebar();
+      initNavigation();
     });
 
-  // Load Header
-  fetch('../components/dean-dashboard/header.html')
-    .then(res => res.text())
-    .then(html => document.getElementById('header-placeholder').innerHTML = html);
+  // Pages
+  const pages = [
+    { name: 'dashboard', init: initDashboardContent },
+    { name: 'announce', init: initAnnouncements },
+    { name: 'proposals', init: initProposalsPage },
+    { name: 'faculty', init: initFacultyPage },
+    { name: 'reports', init: initReportsPage }
+  ];
 
-  // Load All Pages
-  const pages = ['dashboard', 'proposals', 'faculty', 'reports'];
   pages.forEach(page => {
-    fetch(`../components/dean-dashboard/${page}-page.html`)
+    fetch(`../components/dean-dashboard/${page.name}-page.html`)
       .then(res => res.text())
       .then(html => {
-        document.getElementById(`${page}-placeholder`).innerHTML = html;
-        if (page === 'dashboard') {
-          document.getElementById('dashboard')?.classList.add('active');
-          initDashboardContent(); // from dash-con.js
-        }
+        const container = document.getElementById(`${page.name}-placeholder`);
+        if (!container) return;
+
+        container.innerHTML = html;
+        page.init?.();
       });
   });
 }

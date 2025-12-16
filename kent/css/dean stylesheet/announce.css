@@ -1,280 +1,252 @@
-.header {
-            margin-bottom: 32px;
-        }
+.main-content {
+    flex: 1;
+    padding: 32px 48px;
+    overflow-y: auto;
+}
 
-        .header h1 {
-            font-size: 32px;
-            margin-bottom: 8px;
-        }
+.announcement-count {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #5b47ed;
+    font-size: 14px;
+    margin-bottom: 24px;
+}
 
-        .header p {
-            color: #86868b;
-            font-size: 15px;
-        }
+.announcement-card {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: all 0.2s;
+}
 
-        .announcement-count {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #5b47ed;
-            font-size: 14px;
-            margin-bottom: 24px;
-        }
+.announcement-card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+}
 
-        .announcement-card {
-            background: white;
-            border-radius: 12px;
-            padding: 24px;
-            margin-bottom: 16px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-            transition: all 0.2s;
-        }
+.announcement-header {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+}
 
-        .announcement-card:hover {
-            box-shadow: 0 4px 16px rgba(0,0,0,0.12);
-        }
+.tag {
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+}
 
-        .announcement-header {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 16px;
-        }
+.tag.important {
+    background: #1d1d1f;
+    color: white;
+}
 
-        .tag {
-            padding: 4px 12px;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 500;
-        }
+.tag.funding, .tag.policy, .tag.compliance, .tag.event {
+    background: #f5f5f7;
+    color: #1d1d1f;
+}
 
-        .tag.important {
-            background: #1d1d1f;
-            color: white;
-        }
+.announcement-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
 
-        .tag.funding {
-            background: #f5f5f7;
-            color: #1d1d1f;
-        }
+.announcement-meta {
+    display: flex;
+    gap: 16px;
+    font-size: 14px;
+    color: #86868b;
+    margin-bottom: 16px;
+}
 
-        .tag.policy {
-            background: #f5f5f7;
-            color: #1d1d1f;
-        }
+.announcement-body {
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
 
-        .tag.compliance {
-            background: #f5f5f7;
-            color: #1d1d1f;
-        }
+.forward-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background: white;
+    border: 1px solid #d2d2d7;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
 
-        .tag.event {
-            background: #f5f5f7;
-            color: #1d1d1f;
-        }
+.forward-btn:hover {
+    background: #f5f5f7;
+    border-color: #b8b8bd;
+}
 
-        .announcement-title {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
+/* Modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
 
-        .announcement-meta {
-            display: flex;
-            gap: 16px;
-            font-size: 14px;
-            color: #86868b;
-            margin-bottom: 16px;
-        }
+.modal.active {
+    display: flex;
+}
 
-        .announcement-body {
-            font-size: 15px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
+.modal-content {
+    background: white;
+    border-radius: 16px;
+    padding: 32px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+}
 
-        .forward-btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 20px;
-            background: white;
-            border: 1px solid #d2d2d7;
-            border-radius: 8px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 8px;
+}
 
-        .forward-btn:hover {
-            background: #f5f5f7;
-            border-color: #b8b8bd;
-        }
+.modal-header h2 {
+    font-size: 24px;
+}
 
-        /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-            align-items: center;
-            justify-content: center;
-            z-index: 1000;
-        }
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: #86868b;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        .modal.active {
-            display: flex;
-        }
+.modal-subtitle {
+    color: #86868b;
+    margin-bottom: 24px;
+    font-size: 14px;
+}
 
-        .modal-content {
-            background: white;
-            border-radius: 16px;
-            padding: 32px;
-            max-width: 500px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-        }
+.announcement-preview {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 18px;
+    margin: 20px 0;
+    border-left: 4px solid #5b47ed;
+}
 
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 8px;
-        }
+.preview-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+}
 
-        .modal-header h2 {
-            font-size: 24px;
-        }
+.preview-meta {
+    font-size: 13px;
+    color: #86868b;
+    margin-bottom: 12px;
+    display: flex;
+    gap: 12px;
+}
 
-        .close-btn {
-            background: none;
-            border: none;
-            font-size: 24px;
-            cursor: pointer;
-            color: #86868b;
-            padding: 0;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+.preview-body {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+}
 
-        .modal-subtitle {
-            color: #86868b;
-            margin-bottom: 24px;
-            font-size: 14px;
-        }
+.recipients-label, .message-label {
+    font-weight: 600;
+    margin-bottom: 8px;
+}
 
-        .recipients-label {
-            font-weight: 600;
-            margin-bottom: 12px;
-        }
+.optional-text {
+    color: #86868b;
+    font-weight: 400;
+}
 
-        .checkbox-group {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 24px;
-        }
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+}
 
-        .checkbox-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 12px;
-            border: 2px solid #e5e5ea;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border: 2px solid #e5e5ea;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
 
-        .checkbox-item:hover {
-            border-color: #5b47ed;
-            background: #f8f7ff;
-        }
+.checkbox-item:hover {
+    border-color: #5b47ed;
+    background: #f8f7ff;
+}
 
-        .checkbox-item input[type="checkbox"] {
-            width: 20px;
-            height: 20px;
-            cursor: pointer;
-        }
+textarea {
+    width: 100%;
+    min-height: 100px;
+    padding: 12px;
+    border: 2px solid #e5e5ea;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    resize: vertical;
+    margin-bottom: 24px;
+}
 
-        .checkbox-icon {
-            width: 20px;
-            height: 20px;
-            color: #86868b;
-        }
+textarea:focus {
+    outline: none;
+    border-color: #5b47ed;
+}
 
-        .checkbox-label {
-            flex: 1;
-            font-size: 15px;
-        }
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
 
-        .message-label {
-            font-weight: 600;
-            margin-bottom: 8px;
-        }
+.btn-cancel, .btn-forward {
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
 
-        .optional-text {
-            color: #86868b;
-            font-weight: 400;
-        }
+.btn-cancel {
+    background: white;
+    border: 1px solid #d2d2d7;
+    color: #1d1d1f;
+}
 
-        textarea {
-            width: 100%;
-            min-height: 100px;
-            padding: 12px;
-            border: 2px solid #e5e5ea;
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 14px;
-            resize: vertical;
-            margin-bottom: 24px;
-        }
-
-        textarea:focus {
-            outline: none;
-            border-color: #5b47ed;
-        }
-
-        .modal-footer {
-            display: flex;
-            gap: 12px;
-            justify-content: flex-end;
-        }
-
-        .btn {
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.2s;
-            border: none;
-        }
-
-        .btn-cancel {
-            background: white;
-            border: 1px solid #d2d2d7;
-            color: #1d1d1f;
-        }
-
-        .btn-cancel:hover {
-            background: #f5f5f7;
-        }
-
-        .btn-forward {
-            background: #1d1d1f;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .btn-forward:hover {
-            background: #2d2d2f;
-        }
+.btn-forward {
+    background: #1d1d1f;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
