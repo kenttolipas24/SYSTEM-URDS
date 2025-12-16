@@ -7,6 +7,7 @@
     <title>URDS Evaluator - Research Evaluation Portal</title>
     <link rel="stylesheet" href="/sm/css/research_evaluator.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="icon" type="image/png" href="../assets/pictures/UEP_logo-transparent.png">
 </head>
 
 <body>
@@ -539,253 +540,205 @@
     </div>
 
     <!-- Proposal Modal -->
-    <div id="proposalModal" class="rating-modal">
-        <div class="rating-modal-overlay" onclick="closeProposalModal()"></div>
-        <div class="rating-modal-content proposal-modal-wide">
-            <div class="rating-modal-header">
-                <div>
-                    <h2 class="rating-modal-title">Research Proposal</h2>
-                    <p class="rating-modal-subtitle">AI-Driven Traffic Management System</p>
+<div id="proposalModal" class="rating-modal">
+    <div class="rating-modal-overlay" onclick="closeProposalModal()"></div>
+    
+    <div class="rating-modal-content proposal-modal-wide">
+        <button class="rating-modal-close" onclick="closeProposalModal()">
+            <i class="fas fa-times"></i>
+        </button>
+
+        <div class="rating-modal-body paper-document">
+            
+            <div class="header-container">
+                <div class="header-logo">
+                    <img src="/assets/pictures/UEP_logo-transparent.png" alt="UEP Logo">
                 </div>
-                <button class="rating-modal-close" onclick="closeProposalModal()" aria-label="Close modal">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-
-            <div class="rating-modal-body">
-                <div class="proposal-form">
-                    <!-- Header Section -->
-                    <div class="proposal-header">
-                        <div class="proposal-header-logo">
-                            <img src="/assets/pictures/UEP_logo-transparent.png" alt="UEP Logo" style="height: 60px;">
-                        </div>
-                        <div class="proposal-header-text">
-                            <h3>UNIVERSITY OF EASTERN PHILIPPINES</h3>
-                            <h4>University Town, Northern Samar</h4>
-                            <h4>UNIVERSITY RESEARCH AND DEVELOPMENT SERVICES</h4>
-                        </div>
-                    </div>
-
-                    <div class="proposal-form-title">
-                        <h3>RESEARCH PROPOSAL</h3>
-                        <p class="proposal-form-code">UEP-URDS-FM-003</p>
-                    </div>
-
-                    <!-- Basic Information Table -->
-                    <table class="proposal-table">
-                        <tr class="table-section-header">
-                            <td colspan="2">I. BASIC INFORMATION</td>
-                        </tr>
-                        <tr>
-                            <td class="table-label">Research Title:</td>
-                            <td class="table-value">AI-Driven Traffic Management System</td>
-                        </tr>
-                        <tr>
-                            <td class="table-label">Project Leader:</td>
-                            <td class="table-value">Dr. Michael Chen, Ph.D.</td>
-                        </tr>
-                        <tr>
-                            <td class="table-label">Team Members:</td>
-                            <td class="table-value">
-                                Prof. Sarah Johnson (Computer Vision Specialist)<br>
-                                Dr. Robert Lee (Machine Learning Expert)<br>
-                                Engr. Maria Santos (IoT Systems Engineer)
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="table-label">Department/College:</td>
-                            <td class="table-value">College of Engineering - Computer Engineering Department</td>
-                        </tr>
-                        <tr>
-                            <td class="table-label">Research Classification:</td>
-                            <td class="table-value">Applied Research</td>
-                        </tr>
-                        <tr>
-                            <td class="table-label">Location:</td>
-                            <td class="table-value">University Town, Northern Samar and Metro Manila Test Sites</td>
-                        </tr>
-                        <tr>
-                            <td class="table-label">Duration:</td>
-                            <td class="table-value">24 months (January 2026 - December 2027)</td>
-                        </tr>
-                        <tr>
-                            <td class="table-label">Total Budget:</td>
-                            <td class="table-value">PHP 2,500,000.00</td>
-                        </tr>
-                    </table>
-
-                    <!-- Technical Information -->
-                    <table class="proposal-table">
-                        <tr class="table-section-header">
-                            <td colspan="2">II. TECHNICAL INFORMATION</td>
-                        </tr>
-                        <tr>
-                            <td class="table-label">Background and Rationale:</td>
-                            <td class="table-value">
-                                Traffic congestion in urban areas has become a critical challenge affecting economic productivity, 
-                                environmental sustainability, and quality of life. Traditional traffic management systems rely on 
-                                fixed-time signals and manual intervention, which are inefficient in handling dynamic traffic patterns. 
-                                This research proposes an AI-driven traffic management system that uses computer vision, machine learning, 
-                                and IoT sensors to optimize traffic flow in real-time, reduce congestion, and improve overall urban mobility.
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="table-label">Research Objectives:</td>
-                            <td class="table-value">
-                                1. Develop a computer vision system for real-time vehicle detection and traffic density analysis<br>
-                                2. Design machine learning algorithms for predictive traffic pattern modeling<br>
-                                3. Create an adaptive traffic signal control system based on real-time data<br>
-                                4. Implement IoT sensor networks for comprehensive traffic monitoring<br>
-                                5. Evaluate system performance in reducing congestion and travel time
-                            </td>
-                        </tr>
-                    </table>
-
-                    <!-- Review of Literature -->
-                    <table class="proposal-table">
-                        <tr class="table-section-header">
-                            <td colspan="2">III. REVIEW OF RELATED LITERATURE</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="table-value">
-                                Recent studies in intelligent transportation systems (Zhang et al., 2024) demonstrate that AI-based 
-                                traffic management can reduce congestion by up to 35% compared to traditional systems. Deep learning 
-                                approaches, particularly convolutional neural networks, have shown 95% accuracy in vehicle detection 
-                                (Kumar & Wang, 2023). Reinforcement learning algorithms have been successfully applied to optimize 
-                                traffic signal timing (Li et al., 2024), achieving 28% reduction in average wait times. IoT sensor 
-                                integration provides comprehensive data collection for traffic prediction models (Santos & Rodriguez, 2023).
-                            </td>
-                        </tr>
-                    </table>
-
-                    <!-- Methodology -->
-                    <table class="proposal-table">
-                        <tr class="table-section-header">
-                            <td colspan="2">IV. METHODOLOGY</td>
-                        </tr>
-                        <tr>
-                            <td class="table-label">Research Design:</td>
-                            <td class="table-value">Experimental research with mixed-methods approach</td>
-                        </tr>
-                        <tr>
-                            <td class="table-label">Data Collection Methods:</td>
-                            <td class="table-value">
-                                - High-resolution cameras for video capture<br>
-                                - IoT sensors for vehicle counting and speed measurement<br>
-                                - GPS data from mobile applications<br>
-                                - Historical traffic data from local traffic management offices
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="table-label">Implementation Phases:</td>
-                            <td class="table-value">
-                                Phase 1 (Months 1-6): System design and algorithm development<br>
-                                Phase 2 (Months 7-12): Prototype implementation and laboratory testing<br>
-                                Phase 3 (Months 13-18): Field deployment and pilot testing<br>
-                                Phase 4 (Months 19-24): Performance evaluation and optimization
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="table-label">Analysis Techniques:</td>
-                            <td class="table-value">
-                                Statistical analysis of traffic flow metrics, machine learning model evaluation, 
-                                comparative analysis with baseline systems
-                            </td>
-                        </tr>
-                    </table>
-
-                    <!-- Expected Outputs -->
-                    <table class="proposal-table">
-                        <tr class="table-section-header">
-                            <td colspan="2">V. EXPECTED OUTPUTS AND DELIVERABLES</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="table-value">
-                                1. Functional AI-driven traffic management system prototype<br>
-                                2. Published research papers in peer-reviewed journals (minimum 2)<br>
-                                3. Technical documentation and system architecture<br>
-                                4. Training materials for traffic management operators<br>
-                                5. Policy recommendations for local government implementation
-                            </td>
-                        </tr>
-                    </table>
-
-                    <!-- Budget Breakdown -->
-                    <table class="proposal-table">
-                        <tr class="table-section-header">
-                            <td colspan="2">VI. BUDGET BREAKDOWN</td>
-                        </tr>
-                        <tr>
-                            <td class="table-label">Personnel:</td>
-                            <td class="table-value">PHP 800,000.00</td>
-                        </tr>
-                        <tr>
-                            <td class="table-label">Equipment and Supplies:</td>
-                            <td class="table-value">PHP 1,200,000.00</td>
-                        </tr>
-                        <tr>
-                            <td class="table-label">Travel and Field Work:</td>
-                            <td class="table-value">PHP 200,000.00</td>
-                        </tr>
-                        <tr>
-                            <td class="table-label">Publication and Dissemination:</td>
-                            <td class="table-value">PHP 150,000.00</td>
-                        </tr>
-                        <tr>
-                            <td class="table-label">Miscellaneous:</td>
-                            <td class="table-value">PHP 150,000.00</td>
-                        </tr>
-                        <tr class="table-total">
-                            <td class="table-label">TOTAL:</td>
-                            <td class="table-value">PHP 2,500,000.00</td>
-                        </tr>
-                    </table>
-
-                    <!-- Signatures -->
-                    <table class="proposal-table">
-                        <tr class="table-section-header">
-                            <td colspan="2">VII. ENDORSEMENTS AND APPROVALS</td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" class="signature-section">
-                                <div class="signature-grid">
-                                    <div class="signature-block">
-                                        <div class="signature-line"></div>
-                                        <div class="signature-label">Project Leader</div>
-                                        <div class="signature-name">Dr. Michael Chen</div>
-                                    </div>
-                                    <div class="signature-block">
-                                        <div class="signature-line"></div>
-                                        <div class="signature-label">Department Chair</div>
-                                        <div class="signature-name">Dr. Elena Martinez</div>
-                                    </div>
-                                </div>
-                                <div class="signature-grid">
-                                    <div class="signature-block">
-                                        <div class="signature-line"></div>
-                                        <div class="signature-label">Dean, College of Engineering</div>
-                                        <div class="signature-name">Dr. Ramon Villareal</div>
-                                    </div>
-                                    <div class="signature-block">
-                                        <div class="signature-line"></div>
-                                        <div class="signature-label">Director, URDS</div>
-                                        <div class="signature-name">Dr. Patricia Gomez</div>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
+                <div class="header-text">
+                    <p>Republic of the Philippines</p>
+                    <h3>UNIVERSITY OF EASTERN PHILIPPINES</h3>
+                    <p>University Town, Northern Samar, Philippines</p>
+                    <p>Web: <a href="http://uep.edu.ph">http://uep.edu.ph</a>; Email: <a href="mailto:uepnsofficial@gmail.com">uepnsofficial@gmail.com</a></p>
                 </div>
             </div>
 
-            <div class="rating-modal-footer">
-                <button class="btn btn-secondary" onclick="closeProposalModal()">Close</button>
-                <button class="btn btn-primary" onclick="window.print()">
-                    <i class="fas fa-print"></i> Print
-                </button>
+            <div class="header-divider"></div>
+            
+            <div class="header-text" style="text-align: center;">
+                <h3>UNIVERSITY RESEARCH AND DEVELOPMENT SERVICES</h3>
             </div>
+
+            <h3 class="main-title">CAPSULE RESEARCH PROPOSAL TEMPLATE</h3>
+
+            <table class="official-form-table">
+                <tr>
+                    <td colspan="2" style="font-weight: bold; border-bottom: 2px solid #000;">Detailed Research Proposal</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" class="section-header">I. &nbsp;&nbsp; Basic Information</td>
+                </tr>
+                <tr>
+                    <td class="col-label">Title</td>
+                    <td><strong>"Development of an Enhanced Faculty Workload Computation System"</strong></td>
+                </tr>
+                <tr>
+                    <td>Nature of Research<br>(Please check one)</td>
+                    <td>___ Program ___ Project <u> x </u> Study</td>
+                </tr>
+                <tr>
+                    <td>Leader/ Main Proponent</td>
+                    <td>Emmanuel D. Santos</td>
+                </tr>
+                <tr>
+                    <td>Other Personnel Involved</td>
+                    <td>Celeste J. Chan, Ronato S. Ballado, Mary Jane Calpa and Danilo Isagani B. Masloc</td>
+                </tr>
+                <tr>
+                    <td>Project Location/s</td>
+                    <td>UEP Main Campus</td>
+                </tr>
+                <tr>
+                    <td>Duration</td>
+                    <td>1 Year</td>
+                </tr>
+                <tr>
+                    <td>Budget for the Year</td>
+                    <td><strong>16,000.00</strong></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" class="section-header">II. &nbsp;&nbsp; Technical Information</td>
+                </tr>
+                <tr>
+                    <td>Rationale/Significance of Research</td>
+                    <td style="text-align: justify;">
+                        A Microsoft-based Excel application is currently being used by the UEP System to calculate the workload equivalent of teaching personnel, where there are still certain problems and issues that need to be resolved. For example, distinct Excel application files are sent to various departments and colleges to complete independently, that is prone on encoding errors. Additionally, to protect UEP System from software piracy cases, the Microsoft Excel application must have a Microsoft license.
+                        <br><br>
+                        Activities related to research and extension are essential to educational institutions, particularly universities. They provide a substantial contribution to the creation of knowledge, the improvement of communities, and the advancement of teachers' and students' careers. However, because of their complexity and scale, controlling and overseeing these operations can be difficult. The management of these operations can be simplified and made visible with the use of an organized monitoring-system.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Objectives</td>
+                    <td style="text-align: justify;">
+                        1. Assess the effectiveness of the existing workload computation template.<br>
+                        2. Develop a user-friendly interface ensuring that the system is accessible and simple to use for all stakeholders while encoding, tracking, and reporting processes.<br>
+                        3. Generate complete workload and contact hours reports workload point accumulation using advanced reporting.<br>
+                        4. Incorporate a function that calculates the points automatically to measure the contribution of each activity.<br>
+                        5. Conduct an assessment using TAM/TTF on the acceptability of the Workload Computation System.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="section-header" style="vertical-align: top;">III. &nbsp;&nbsp; Review of Literature</td>
+                    <td style="text-align: justify;">
+                        Workload monitoring in hybrid clouds was researched by V. Naik and K. Beaty (2013), who outline the architecture and design of a cutting-edge integrated monitoring system for workload monitoring in a cloud environment. The approach outlined here enables the monitoring of a workload separated by an enterprise firewall and distributed over public and private clouds using commercially available off-the-shelf monitoring products and services.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="section-header" style="vertical-align: top;">
+                        IV. &nbsp;&nbsp; Detailed Methodology<br>
+                        <span style="font-weight: normal; font-size: 0.9em;">(including questionnaires for social science research)</span>
+                    </td>
+                    <td style="text-align: justify;">
+                        This study used the Mix Method, which combines quantitative and qualitative methods. When evaluating the current workload computation file, a Likert scale-based questionnaire is used to apply quantitative methods.<br><br>
+                        Applying qualitative methods involves interviewing key UEP Main Campus administrators...
+                    </td>
+                </tr>
+
+                 <tr>
+                    <td></td>
+                    <td style="text-align: justify;">
+                        <strong>Performance Monitoring</strong><br>
+                        Implement monitoring tools to track the system's performance, usage, and any errors or issues.<br><br>
+                        <strong>Output:</strong><br>
+                        The intended output for the assessment is to find out the effectiveness of the existing workload computation...<br><br>
+                        <strong>Impact/Sustainability:</strong><br>
+                        The research's identified impact is to assist in the UEP System's transition to a paperless system.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="section-header">V. &nbsp;&nbsp; Work plan</td>
+                    <td>See another file attached</td>
+                </tr>
+
+                <tr>
+                    <td class="section-header">VI. &nbsp;&nbsp; Detailed Budgetary Requirement</td>
+                    <td>See another file attached</td>
+                </tr>
+            </table>
+
+            <div class="signatures-wrapper">
+                <div class="sig-grid">
+                    <div class="sig-col">
+                        <strong>Prepared by:</strong>
+                        <div class="sig-block">
+                            <div class="sig-name">EMMANUEL D. SANTOS</div>
+                            <div class="sig-line"></div>
+                            <div class="sig-title">Proponent</div>
+                        </div>
+                    </div>
+                    <div class="sig-col">
+                        <strong>Endorsed by:</strong>
+                        <div class="sig-sub-grid">
+                            <div style="flex: 1;">
+                                <div class="sig-name">FRANKLIN E. CORTEZ</div>
+                                <div class="sig-line"></div>
+                                <div class="sig-title">College Research Coordinator</div>
+                            </div>
+                            <div style="flex: 1;">
+                                <div class="sig-name">ANELITA M. OBRAR, PhD</div>
+                                <div class="sig-line"></div>
+                                <div class="sig-title">College Dean</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sig-grid">
+                    <div class="sig-col">
+                        <strong>Recommending Approval:</strong>
+                        <div class="sig-block">
+                            <div class="sig-line"></div>
+                            <div class="sig-title">Director, URDS</div>
+                        </div>
+                    </div>
+                    <div class="sig-col">
+                        <strong>Approved:</strong>
+                        <div class="sig-sub-grid">
+                            <div style="flex: 1;">
+                                <div class="sig-line"></div>
+                                <div class="sig-title">VP for RDE</div>
+                            </div>
+                            <div style="flex: 1;">
+                                <div class="sig-line"></div>
+                                <div class="sig-title">President</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <table class="doc-control-table">
+                <tr>
+                    <td style="text-align: left;">DOCUMENT NO.:<br>&nbsp;&nbsp;&nbsp;&nbsp;UEP-URDS-FM-003</td>
+                    <td>REVISION NO.:<br>00</td>
+                    <td>EFFECTIVITY<br>SEPTEMBER 12, 2022</td>
+                </tr>
+            </table>
+
+        </div>
+
+        <div class="rating-modal-footer">
+            <button class="btn btn-secondary" onclick="closeProposalModal()">Close</button>
+            <button class="btn btn-primary" onclick="window.print()">
+                <i class="fas fa-print"></i> Print
+            </button>
         </div>
     </div>
+</div>
 
     <script src="/sm/js/research_evaluator.js"></script>
 </body>

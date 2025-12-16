@@ -1219,119 +1219,227 @@ img {
 
 /* Adding proposal modal styles */
 /* Proposal Modal Specific Styles */
-.proposal-modal-wide {
-  max-width: 1000px;
+.rating-modal-content.proposal-modal-wide {
+    max-width: 850px; /* Standard A4 width feel */
+    width: 100%;
+    margin: 20px auto;
+    background: white;
+    font-family: Arial, Helvetica, sans-serif; /* Matches screenshot font */
+    color: #000;
 }
 
-.proposal-form {
-  background-color: var(--white);
-  font-family: var(--font-sans);
+.paper-document {
+    padding: 40px;
+    font-size: 11pt;
+    line-height: 1.3;
 }
 
-.proposal-header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: var(--spacing-xl);
-  margin-bottom: var(--spacing-xl);
-  padding: var(--spacing-xl);
-  border-bottom: 2px solid var(--gray-900);
+/* --- Header Section --- */
+.header-container {
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
 }
 
-.proposal-header-logo img {
-  height: 60px;
+.header-logo img {
+    height: 80px;
+    position: absolute;
+    left: 20px;
+    top: 0;
 }
 
-.proposal-header-text {
-  text-align: center;
+.header-text h3 {
+    font-size: 11pt;
+    font-weight: bold;
+    margin: 0;
+    text-transform: uppercase;
 }
 
-.proposal-header-text h3 {
-  font-size: 1.125rem;
-  font-weight: 700;
-  color: var(--gray-900);
-  margin-bottom: var(--spacing-xs);
+.header-text p {
+    font-size: 10pt;
+    margin: 2px 0;
 }
 
-.proposal-header-text h4 {
-  font-size: 0.9rem;
-  font-weight: 600;
-  color: var(--gray-700);
-  margin-bottom: 0.25rem;
+.header-text a {
+    color: blue;
+    text-decoration: underline;
 }
 
-.proposal-form-title {
-  text-align: center;
-  margin-bottom: var(--spacing-2xl);
+.header-divider {
+    border-top: 2px solid #000;
+    border-bottom: 1px solid #000;
+    height: 3px;
+    margin: 10px 0;
 }
 
-.proposal-form-title h3 {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--gray-900);
-  margin-bottom: var(--spacing-sm);
+.main-title {
+    text-align: center;
+    font-weight: bold;
+    font-size: 12pt;
+    margin: 20px 0;
+    text-transform: uppercase;
 }
 
-.proposal-form-code {
-  font-size: 0.875rem;
-  color: var(--gray-600);
-  font-weight: 600;
+/* --- Main Table Styles --- */
+.official-form-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #000;
+    margin-bottom: 20px;
 }
 
-/* Proposal Table Styles */
-.proposal-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: var(--spacing-xl);
-  border: 1px solid var(--gray-900);
+.official-form-table td {
+    border: 1px solid #000;
+    padding: 5px 8px;
+    vertical-align: top;
+    font-size: 10pt;
 }
 
-.proposal-table tr {
-  border: 1px solid var(--gray-900);
+.section-header {
+    font-weight: bold;
+    background-color: #fff;
+    text-align: left;
 }
 
-.proposal-table td {
-  padding: var(--spacing-md);
-  border: 1px solid var(--gray-900);
-  vertical-align: top;
+.col-label {
+    width: 25%; /* Matches the screenshot column ratio */
 }
 
-.table-section-header {
-  background-color: var(--gray-200);
-  font-weight: 700;
-  color: var(--gray-900);
-  font-size: 0.95rem;
-  text-align: left;
+/* --- Document Control Footer (FM-003) --- */
+.doc-control-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 2px solid #000; /* Thicker outer border */
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 9pt;
+    font-weight: bold;
+    page-break-inside: avoid; /* Don't cut this table in half */
 }
 
-.table-section-header td {
-  padding: var(--spacing-md);
+.doc-control-table td {
+    border: 1px solid #000;
+    padding: 5px;
+    text-align: center;
+    width: 33.33%;
 }
 
-.table-label {
-  width: 30%;
-  font-weight: 600;
-  color: var(--gray-900);
-  background-color: var(--gray-50);
-  font-size: 0.875rem;
+/* --- Signatures Section --- */
+.signatures-wrapper {
+    margin-top: 30px;
+    page-break-inside: avoid; /* Keeps signatures together on print */
 }
 
-.table-value {
-  width: 70%;
-  color: var(--gray-800);
-  font-size: 0.875rem;
-  line-height: 1.6;
+.sig-grid {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
 }
 
-.table-total {
-  font-weight: 700;
-  background-color: var(--gray-100);
+.sig-col {
+    width: 48%;
 }
 
-.table-total .table-label,
-.table-total .table-value {
-  font-weight: 700;
-  font-size: 0.95rem;
+.sig-sub-grid {
+    display: flex;
+    gap: 20px;
+}
+
+.sig-block {
+    margin-top: 40px;
+}
+
+.sig-line {
+    border-bottom: 1px solid #000;
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+.sig-name {
+    font-weight: bold;
+    text-transform: uppercase;
+    font-size: 10pt;
+}
+
+.sig-title {
+    font-size: 10pt;
+}
+
+/* Official Form Table */
+.official-form-table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #000;
+    margin-top: 10px;
+}
+
+.official-form-table td {
+    border: 1px solid #000;
+    padding: 5px 10px;
+    vertical-align: top;
+}
+
+.section-title {
+    font-weight: bold;
+    background-color: #f0f0f0; /* Optional: light gray for sections */
+}
+
+.col-label {
+    width: 25%;
+    font-weight: bold;
+}
+
+.col-input {
+    width: 75%;
+}
+
+.checkbox-group {
+    display: flex;
+    gap: 20px;
+}
+
+.custom-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+/* Signatures Section */
+.signatures-container {
+    margin-top: 20px;
+}
+
+.sig-row {
+    margin-bottom: 30px;
+}
+
+.sig-flex {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.sig-flex.three-col .sig-block {
+    width: 30%;
+}
+
+.sig-block {
+    text-align: center;
+    width: 40%;
+}
+
+.sig-name {
+    font-weight: bold;
+    text-decoration: underline;
+    text-transform: uppercase;
+    margin-bottom: 2px;
+}
+
+.sig-title {
+    font-size: 10pt;
+}
+
+.sig-label {
+    margin-bottom: 10px;
 }
 
 /* Signature Section */
@@ -1701,19 +1809,50 @@ img {
 
 /* Print Styles */
 @media print {
-  .rating-modal-header,
-  .rating-modal-footer {
-    display: none;
-  }
+    /* Hide everything in the background (sidebar, nav, overlays) */
+    body * {
+        visibility: hidden;
+        overflow: visible !important;
+    }
 
-  .proposal-form {
-    padding: 0;
-  }
+    /* Show only the modal content */
+    #proposalModal, 
+    #proposalModal .rating-modal-content, 
+    #proposalModal .rating-modal-content * {
+        visibility: visible;
+        position: static; /* Removes 'fixed' or 'absolute' positioning */
+        overflow: visible !important; /* Allows content to flow to next page */
+    }
 
-  .rating-modal-content {
-    max-height: none;
-    box-shadow: none;
-  }
+    /* Reset the modal container to fill the paper */
+    #proposalModal {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: auto;
+        background: white;
+        z-index: 9999;
+    }
+
+    .rating-modal-content {
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        max-width: 100% !important;
+    }
+
+    .rating-modal-close, 
+    .rating-modal-footer, 
+    .rating-modal-overlay {
+        display: none !important; /* Hide buttons and gray background */
+    }
+
+    /* Page Setup */
+    @page {
+        size: A4;
+        margin: 1cm;
+    }
 }
 
 /* ===== Disable all animations & transitions ===== */

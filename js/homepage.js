@@ -73,7 +73,7 @@ function handleSignUp(event) {
     'director':     '../bomel/index.html',
     'staff':        '../kent/pages/urds-staff.html',
     'cluster':      'pages/cluster.html',
-    'researcher':   'pages/evaluator.html'
+    'researcher':   '../sm/research_evaluator.html'
   };
 
   // ==================================================================
