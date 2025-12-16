@@ -3,12 +3,12 @@
 }
 
 .navbar {
-    position: fixed;                 /* Changed to fixed for reliable shifting */
+    position: fixed;
     top: 0;
-    left: 240px;                     /* Default expanded */
+    left: 240px;
     right: 0;
     height: 70px;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid #e5e7eb;
