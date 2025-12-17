@@ -196,6 +196,6 @@ const logoutBtn = document.getElementById("logoutBtn");
 if (logoutBtn) {
     logoutBtn.onclick = () => {
         localStorage.removeItem("adminUser");
-        window.location.href = "../kent/frontpage.html";
+        window.location.href = "../homepage.html";
     };
 }
