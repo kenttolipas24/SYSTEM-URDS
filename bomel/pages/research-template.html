@@ -1,0 +1,188 @@
+<div id="proposalModal" class="rating-modal">
+    <div class="rating-modal-overlay" onclick="closeProposalModal()"></div>
+    
+    <div class="rating-modal-content proposal-modal-wide">
+        
+        <div class="top-actions">
+            <div></div> 
+            <div style="display: flex;">
+                <button class="btn btn-secondary" onclick="closeProposalModal()">
+                    <i class="fas fa-times"></i> Close
+                </button>
+                <button class="btn btn-primary" onclick="window.print()">
+                    <i class="fas fa-print"></i> Print
+                </button>
+            </div>
+        </div>
+
+        <div class="rating-modal-body paper-document">
+            
+            <div class="header-container">
+                <div class="header-logo">
+                    <img src="/assets/pictures/UEP_logo-transparent.png" alt="UEP Logo">
+                </div>
+                <div class="header-text">
+                    <p>Republic of the Philippines</p>
+                    <h3>UNIVERSITY OF EASTERN PHILIPPINES</h3>
+                    <p>University Town, Northern Samar, Philippines</p>
+                    <p>Web: <a href="#">http://uep.edu.ph</a>; Email: <a href="#">uepnsofficial@gmail.com</a></p>
+                </div>
+            </div>
+
+            <div class="header-divider"></div>
+            
+            <div class="header-text" style="text-align: center;">
+                <h3>UNIVERSITY RESEARCH AND DEVELOPMENT SERVICES</h3>
+            </div>
+
+            <h3 class="main-title">CAPSULE RESEARCH PROPOSAL TEMPLATE</h3>
+
+            <table class="official-form-table">
+                <tr>
+                    <td colspan="2" style="font-weight: bold; border-bottom: 2px solid #000;">Detailed Research Proposal</td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" class="section-header">I. &nbsp;&nbsp; Basic Information</td>
+                </tr>
+                <tr>
+                    <td class="col-label">Title</td>
+                    <td><strong id="prop-title">Loading...</strong></td>
+                </tr>
+                <tr>
+                    <td>Nature of Research<br>(Please check one)</td>
+                    <td>___ Program ___ Project <u> x </u> Study</td>
+                </tr>
+                <tr>
+                    <td>Leader/ Main Proponent</td>
+                    <td id="prop-proponent">Loading...</td>
+                </tr>
+                <tr>
+                    <td>Other Personnel Involved</td>
+                    <td>Celeste J. Chan, Ronato S. Ballado, Mary Jane Calpa and Danilo Isagani B. Masloc</td>
+                </tr>
+                <tr>
+                    <td>Project Location/s</td>
+                    <td id="prop-campus">UEP Main Campus</td>
+                </tr>
+                <tr>
+                    <td>Duration</td>
+                    <td>1 Year</td>
+                </tr>
+                <tr>
+                    <td>Budget for the Year</td>
+                    <td><strong>16,000.00</strong></td>
+                </tr>
+
+                <tr>
+                    <td colspan="2" class="section-header">II. &nbsp;&nbsp; Technical Information</td>
+                </tr>
+                <tr>
+                    <td>Rationale/Significance of Research</td>
+                    <td style="text-align: justify;">
+                        A Microsoft-based Excel application is currently being used by the UEP System to calculate the workload equivalent of teaching personnel, where there are still certain problems and issues that need to be resolved. For example, distinct Excel application files are sent to various departments and colleges to complete independently, that is prone on encoding errors.<br><br>
+                        Activities related to research and extension are essential to educational institutions, particularly universities.
+                    </td>
+                </tr>
+                <tr>
+                    <td>Objectives</td>
+                    <td style="text-align: justify;">
+                        1. Assess the effectiveness of the existing workload computation template.<br>
+                        2. Develop a user-friendly interface ensuring that the system is accessible and simple to use for all stakeholders while encoding, tracking, and reporting processes.<br>
+                        3. Generate complete workload and contact hours reports workload point accumulation using advanced reporting.<br>
+                        4. Incorporate a function that calculates the points automatically to measure the contribution of each activity.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="section-header" style="vertical-align: top;">III. &nbsp;&nbsp; Review of Literature</td>
+                    <td style="text-align: justify;">
+                        Workload monitoring in hybrid clouds was researched by V. Naik and K. Beaty (2013), who outline the architecture and design of a cutting-edge integrated monitoring system for workload monitoring in a cloud environment.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="section-header" style="vertical-align: top;">
+                        IV. &nbsp;&nbsp; Detailed Methodology<br>
+                        <span style="font-weight: normal; font-size: 0.9em;">(including questionnaires for social science research)</span>
+                    </td>
+                    <td style="text-align: justify;">
+                        This study used the Mix Method, which combines quantitative and qualitative methods. When evaluating the current workload computation file, a Likert scale-based questionnaire is used to apply quantitative methods.<br><br>
+                        <strong>Output:</strong><br>
+                        The intended output for the assessment is to find out the effectiveness of the existing workload computation...
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="section-header">V. &nbsp;&nbsp; Work plan</td>
+                    <td>See another file attached</td>
+                </tr>
+
+                <tr>
+                    <td class="section-header">VI. &nbsp;&nbsp; Detailed Budgetary Requirement</td>
+                    <td>See another file attached</td>
+                </tr>
+            </table>
+
+            <div class="signatures-wrapper">
+                <div class="sig-grid">
+                    <div class="sig-col">
+                        <strong>Prepared by:</strong>
+                        <div class="sig-block">
+                            <div class="sig-name" id="sig-proponent">EMMANUEL D. SANTOS</div>
+                            <div class="sig-line"></div>
+                            <div class="sig-title">Proponent</div>
+                        </div>
+                    </div>
+                    <div class="sig-col">
+                        <strong>Endorsed by:</strong>
+                        <div class="sig-sub-grid">
+                            <div style="flex: 1;">
+                                <div class="sig-name">FRANKLIN E. CORTEZ</div>
+                                <div class="sig-line"></div>
+                                <div class="sig-title">College Research Coordinator</div>
+                            </div>
+                            <div style="flex: 1;">
+                                <div class="sig-name">ANELITA M. OBRAR, PhD</div>
+                                <div class="sig-line"></div>
+                                <div class="sig-title">College Dean</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sig-grid">
+                    <div class="sig-col">
+                        <strong>Recommending Approval:</strong>
+                        <div class="sig-block">
+                            <div class="sig-line"></div>
+                            <div class="sig-title">Director, URDS</div>
+                        </div>
+                    </div>
+                    <div class="sig-col">
+                        <strong>Approved:</strong>
+                        <div class="sig-sub-grid">
+                            <div style="flex: 1;">
+                                <div class="sig-line"></div>
+                                <div class="sig-title">VP for RDE</div>
+                            </div>
+                            <div style="flex: 1;">
+                                <div class="sig-line"></div>
+                                <div class="sig-title">President</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <table class="doc-control-table">
+                <tr>
+                    <td style="text-align: left;">DOCUMENT NO.:<br><strong>UEP-URDS-FM-003</strong></td>
+                    <td>REVISION NO.:<br><strong>00</strong></td>
+                    <td>EFFECTIVITY<br><strong>SEPTEMBER 12, 2022</strong></td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+</div>
